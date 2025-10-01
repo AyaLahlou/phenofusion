@@ -1,0 +1,20 @@
+name: CI
+on:
+  push:
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+      - run: uv python install 3.11
+      - run: uv pip install -e ".[dev,docs]"
+      - run: ruff check .
+      - run: black --check .
+      - run: mypy src/your_package
+      - run: pytest -q --maxfail=1
+      - name: Build docs
+        run: |
+          pip install .[docs]
+          mkdocs build --strict

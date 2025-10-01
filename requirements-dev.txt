@@ -1,0 +1,16 @@
+# core dev tools
+pre-commit>=3.5
+black>=24.8.0
+ruff>=0.6.8
+mypy>=1.10
+pytest>=8.3
+pytest-cov>=5.0
+
+# notebooks & cleaning
+jupyterlab>=4.2
+nbqa>=1.9.0
+nbstripout>=0.7
+
+# docs
+mkdocs-material>=9.5
+mkdocstrings[python]>=0.25

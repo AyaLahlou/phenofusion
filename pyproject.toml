@@ -1,0 +1,24 @@
+[project]
+name = "phenofusion"
+version = "0.1.0"
+description = "Phenology/land modeling toolkit (reproducible workflows)."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+authors = [{ name = "Aya Lahlou", email = "al4385@columbia.edu" }]
+dependencies = [
+  "numpy",
+  "pandas",
+  "xarray",
+  "scipy",
+  "matplotlib",
+  "typer>=0.12",
+  "pydantic>=2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov", "ruff", "black", "mypy", "pre-commit", "nbstripout"]
+docs = ["mkdocs-material", "mkdocstrings[python]"]
+
+[project.scripts]
+your-cli = "phenofusion.cli:app"   # `your-cli ...`
