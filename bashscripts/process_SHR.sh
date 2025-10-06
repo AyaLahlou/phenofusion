@@ -22,5 +22,4 @@ OUT_DIR="/burg-archive/glab/users/al4385/data/TFT_30/"
 
 
 
-
-python /burg-archive/home/ms7073/phenofusion/src/phenofusion/dataio/TFT_process.py  --data_path $DATA_DIR --output_path $OUT_DIR
+python /burg-archive/home/$USER/phenofusion/src/phenofusion/dataio/TFT_process.py  --data_path $DATA_DIR --output_path $OUT_DIR
