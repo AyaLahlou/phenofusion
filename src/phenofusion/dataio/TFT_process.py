@@ -1,13 +1,9 @@
 import os
-import glob
 import pickle
 from datetime import datetime, timedelta
-from pathlib import Path
 from tqdm import tqdm
 import numpy as np
 import pandas as pd
-import pandas.api.types as ptypes
-import matplotlib.pyplot as plt
 from sklearn.preprocessing import (
     QuantileTransformer,
     LabelEncoder,
@@ -20,53 +16,62 @@ import argparse
 def sort_loc_time(data_path: str, output_path: str):
     """
     Sort the data by location and time and save to new file.
+
     Args:
-        data_path: str, the path to the data file
-
-    Returns:
-        None
+        data_path: Path to the input data file
+        output_path: Path to save the sorted data file
     """
-    file_name = data_path.split("/")[-1]
-    # output_path=output_path+'/sorted_'+file_name
-
     data_df = pd.read_parquet(data_path)
 
     sorting_order = {
-        "location": "asc",  # descending order
-        "time": "asc",  # ascending order
+        "location": "asc",
+        "time": "asc",
     }
 
-    # Convert the sorting order to ascending/descending values
     sorting_values = {
         col: (True if order == "asc" else False) for col, order in sorting_order.items()
     }
 
-    # Sort the DataFrame based on the specified columns and order
     data_df = data_df.sort_values(
         by=list(sorting_order.keys()), ascending=list(sorting_values.values())
     )
     data_df.to_parquet(output_path)
 
 
-def tft_process(path, hist_len, fut_len, samp_interval, output_path):
+def tft_process(path, hist_len, fut_len, samp_interval, output_path, test_mode=False):
     """
-    Process the data for TFT model training and save to new file.
+    Processes time series data for Temporal Fusion Transformer (TFT) model training.
+
+    This function reads a parquet file containing time series data, applies preprocessing steps
+    including feature selection, missing value removal, scaling/encoding, and splits the data
+    into sliding windows for model input.
 
     Args:
-    path: str, the path to the data file
-    hist_len: int, the length of the historical time series
-    fut_len: int, the length of the future time series
-    output_path: str, the path to the output file
-    output_filename: str, the name of the output file
-
-    Returns:
-        None
+        path (str): Path to the input parquet data file.
+        hist_len (int): Length of the historical time series window.
+        fut_len (int): Length of the future time series window.
+        samp_interval (int): Step size for sliding window sampling.
+        output_path (str): Directory path to save the processed output file.
+        test_mode (bool): Whether to use test mode (40-year test) or regular training split.
     """
-
     output_filename = path.split("/")[-1].split(".")[0] + ".pkl"
     data_df = pd.read_parquet(path)
-    print(data_df.columns)
-    # validation columns before dropping na
+    print(f"Columns: {data_df.columns}")
+
+    # Check for soil moisture column name and standardize it
+    soil_moisture_col = None
+    if "swvl1" in data_df.columns:
+        soil_moisture_col = "swvl1"
+    elif "sm" in data_df.columns:
+        soil_moisture_col = "sm"
+        # Rename to standardize
+        data_df = data_df.rename(columns={"sm": "swvl1"})
+    else:
+        raise ValueError("Neither 'swvl1' nor 'sm' column found in the data")
+
+    print(f"Using soil moisture column: {soil_moisture_col} (standardized as 'swvl1')")
+
+    # Select validation columns
     data_df = data_df[
         [
             "time",
@@ -78,43 +83,32 @@ def tft_process(path, hist_len, fut_len, samp_interval, output_path):
             "precipitation",
             "radiation",
             "photoperiod",
-            "swvl1",
+            "swvl1",  # Now standardized name
             "sif_clear_inst",
             "soil",
         ]
     ]
-    # print size of
-    print("length of sorted parquet file", len(data_df))
+
+    print(f"Length of sorted parquet file: {len(data_df)}")
     data_df = data_df.dropna()
-
-    # data_df=data_df[data_df['latitude']>0]# northern hemisphere only
     data_df["time"] = pd.to_datetime(data_df["time"])
-    # No records will be considered outside these bounds
-    start_date = datetime(1982, 1, 14)
-    end_date = datetime(2022, 1, 1)
 
-    print(data_df["time"].min())
-    print(data_df["time"].max())
+    print(f"Time range: {data_df['time'].min()} to {data_df['time'].max()}")
 
-    # these will not be included as part of the input data which will end up feeding the model
+    # Define feature categories
     meta_attrs = ["time", "location", "soil_x", "soil_y", "id"]
-
-    # These are the variables that are known in advance, and will compose the futuristic time-series
     known_attrs = ["tmin", "tmax", "radiation", "precipitation", "swvl1", "photoperiod"]
-    # The following set of variables will be considered as static, i.e. containing non-temporal information
-    # every attribute which is not listed here will be considered as temporal.
     static_attrs = ["latitude", "longitude", "soil"]
-    # The following set of variables will be considered as categorical.
-    # The rest of the variables (which are not listed below) will be considered as numeric.
-    categorical_attrs = ["soil"]  # soil used to be here
-    target_signal = "sif_clear_inst"
+    categorical_attrs = ["soil"]
+    # target_signal = "sif_clear_inst"
 
     unique_locations = data_df["location"].unique()
-    print(str(unique_locations) + " unique locations.")
+    print(f"{len(unique_locations)} unique locations.")
 
     all_cols = list(data_df.columns)
     feature_cols = [col for col in all_cols if col not in meta_attrs]
 
+    # Create feature map
     feature_map = {
         "static_feats_numeric": [
             col
@@ -147,23 +141,24 @@ def tft_process(path, hist_len, fut_len, samp_interval, output_path):
             if col in known_attrs and col in categorical_attrs
         ],
     }
-    # allocate a dictionary to contain the scaler and encoder objects after fitting them
+
+    # Initialize scalers and cardinalities
     scalers = {"numeric": dict(), "categorical": dict()}
-    # for the categorical variables we would like to keep the cardinalities (how many categories for each variable)
     categorical_cardinalities = dict()
 
     only_train = data_df
 
-    for col in tqdm(feature_cols):
+    # Fit scalers and encoders
+    for col in tqdm(feature_cols, desc="Fitting scalers"):
         if col in categorical_attrs:
             scalers["categorical"][col] = LabelEncoder().fit(only_train[col].values)
             categorical_cardinalities[col] = only_train[col].nunique()
         else:
-            if col in ["sif_clear_inst"]:
+            if col == "sif_clear_inst":
                 scalers["numeric"][col] = StandardScaler().fit(
                     only_train[col].values.astype(float).reshape(-1, 1)
                 )
-            elif col in ["day_of_year"]:
+            elif col == "day_of_year":
                 scalers["numeric"][col] = MinMaxScaler().fit(
                     only_train[col].values.astype(float).reshape(-1, 1)
                 )
@@ -172,12 +167,10 @@ def tft_process(path, hist_len, fut_len, samp_interval, output_path):
                     only_train[col].values.astype(float).reshape(-1, 1)
                 )
 
-    for col in tqdm(feature_cols):
+    # Transform data
+    for col in tqdm(feature_cols, desc="Transforming data"):
         if col in categorical_attrs:
-            # le = scalers['categorical'][col]
-            # handle cases with unseen keys
-            # le_dict = dict(zip(le.classes_, le.transform(le.classes_)))
-            # data_df[col] = data_df[col].apply(lambda x: le_dict.get(x, max(le.transform(le.classes_)) + 1))
+            data_df[col] = scalers["categorical"][col].transform(data_df[col].values)
             data_df[col] = data_df[col].astype(np.int32)
         else:
             data_df[col] = (
@@ -187,112 +180,84 @@ def tft_process(path, hist_len, fut_len, samp_interval, output_path):
             )
             data_df[col] = data_df[col].astype(np.float32)
 
-    # split data also by location: keep some locations for training, some for validation, and some for testing
-    # Split locations into train, validation, and test sets (60%, 20%, 20%)
-    # np.random.seed(42)  # for reproducibility
-    # unique_locations = np.random.permutation(unique_locations)
-    # num_locations = len(unique_locations)
-    # train_end = int(0.7 * num_locations)
-    # validation_end = int(0.9 * num_locations)
+    print(
+        f"Time range after processing: {data_df['time'].min()} to {data_df['time'].max()}"
+    )
 
-    # train_locations = unique_locations[:train_end]
-    # validation_locations = unique_locations[train_end:validation_end]
-    # test_locations = unique_locations[validation_end:]
+    # Create data splits
+    if not test_mode:
+        # Regular training split
+        train_subset_start = data_df.loc[data_df["time"] < datetime(1992, 1, 1)]
+        train_subset_end = data_df.loc[data_df["time"] >= datetime(2011, 1, 1)]
+        train_subset = pd.concat([train_subset_start, train_subset_end], axis=0)
+        validation_subset = data_df[
+            (data_df["time"] >= datetime(1992, 1, 1))
+            & (data_df["time"] < datetime(2001, 1, 1))
+        ]
+        test_subset = data_df[
+            (data_df["time"] >= datetime(2001, 1, 1))
+            & (data_df["time"] < datetime(2011, 1, 1))
+        ]
 
-    print(data_df["time"].min())
-    print(data_df["time"].max())
+        print(f"{len(train_subset['location'].unique())} train unique locations.")
+        print(
+            f"{len(validation_subset['location'].unique())} validation unique locations."
+        )
+    else:
+        # 40-year test
+        train_subset = pd.DataFrame()  # Empty for test mode
+        validation_subset = pd.DataFrame()  # Empty for test mode
+        test_subset = data_df[
+            (data_df["time"] >= datetime(1982, 1, 1))
+            & (data_df["time"] < datetime(2022, 1, 1))
+        ]
 
-    # regular splitting (not testing)
-    # train_subset_start = data_df.loc[data_df['time'] < datetime(1992, 1, 1)]
-    # train_subset_end = data_df.loc[data_df['time'] >= datetime(2011, 1, 1)]
-    # validation_subset = data_df[(data_df['time']  >= datetime(1992, 1, 1)) & (data_df['time'] < datetime(2001, 1, 1))]
-    # test_subset = data_df[(data_df['time'] >= datetime(2001, 1, 1))& (data_df['time'] < datetime(2011, 1, 1))]
-    # train_subset = pd.concat([train_subset_start, train_subset_end], axis=0)
+    print(f"{len(test_subset['location'].unique())} test unique locations.")
 
-    # 40 year test
-    test_subset = data_df[
-        (data_df["time"] >= datetime(1982, 1, 1))
-        & (data_df["time"] < datetime(2022, 1, 1))
-    ]
-
-    # print(str(len(train_subset['location'].unique()))+" train unique locations.")
-    # print(str(len(validation_subset['location'].unique()))+" validation unique locations.")
-    print(str(len(test_subset["location"].unique())) + " test unique locations.")
-
-    # Split data by location
-    # train_subset = train_subset[train_subset['location'].isin(train_locations)]
-    # validation_subset = validation_subset[validation_subset['location'].isin(validation_locations)]
-    # test_subset = test_subset[test_subset['location'].isin(test_locations)]
-
-    """subsets_dict = {'train': train_subset,
-                    'validation': validation_subset,
-                    'test': test_subset}"""
-
-    subsets_dict = {"test": test_subset}
-
-    # print(str(len(train_subset['location'].unique()))+" train unique locations.")
-    # print(str(len(validation_subset['location'].unique()))+" validation unique locations.")
-    print(str(len(test_subset["location"].unique())) + " test unique locations.")
+    subsets_dict = {
+        "train": train_subset,
+        "validation": validation_subset,
+        "test": test_subset,
+    }
 
     data_sets = {"train": dict(), "validation": dict(), "test": dict()}
 
+    # Add ID column
     for subset_name, subset_data in subsets_dict.items():
-        subset_data["id"] = (
-            subset_data["location"].astype(str) + "_" + subset_data["time"].astype(str)
-        )
+        if not subset_data.empty:
+            subset_data["id"] = (
+                subset_data["location"].astype(str)
+                + "_"
+                + subset_data["time"].astype(str)
+            )
 
+    # Process sliding windows
     for subset_key, subset_data in subsets_dict.items():
-        print(subset_key)
-        samp_interval = samp_interval
-        history_len = hist_len
-        future_len = fut_len
-        # sliding window, according to samp_interval skips between adjacent windows
-        for i in range(0, len(subset_data), samp_interval):
-            slc = subset_data.iloc[i : i + history_len + future_len]
-            # print(i,i + history_len + future_len)
-            # print("first", str(slc.iloc[0]['location']))
-            # print("second", str(slc.iloc[0]['time']))
-            # print("third", str(slc.iloc[0][feature_map['static_feats_numeric']].values.astype(np.float32))))
+        if subset_data.empty:
+            continue
 
+        print(f"Processing {subset_key} subset...")
+
+        for i in tqdm(
+            range(0, len(subset_data) - hist_len - fut_len + 1, samp_interval)
+        ):
+            slc = subset_data.iloc[i : i + hist_len + fut_len]
+
+            # Validate slice
             if (
-                len(slc) < (history_len + future_len)
+                len(slc) < (hist_len + fut_len)
                 or slc.iloc[0]["location"] != slc.iloc[-1]["location"]
                 or (slc.iloc[-1]["time"] - slc.iloc[0]["time"])
-                > timedelta(days=history_len + future_len)
+                > timedelta(days=hist_len + fut_len)
             ):
-                print("first", str(len(slc) < (history_len + future_len)))
-                print(
-                    "second", str(slc.iloc[0]["location"] != slc.iloc[-1]["location"])
-                )
-                print(
-                    "third",
-                    str(
-                        (slc.iloc[-1]["time"] - slc.iloc[0]["time"])
-                        > timedelta(days=history_len + future_len)
-                    ),
-                )
-
-                print("INSUFFICIENT DATA or LOCATION MISMATCH or TIME GAP")
-                # skip edge cases, where not enough steps are included
-                if (slc.iloc[-1]["time"] - slc.iloc[0]["time"]) > timedelta(
-                    days=history_len + future_len
-                ):
-                    print(
-                        "SKIP starts at:",
-                        slc.iloc[0]["time"],
-                        "ends at ",
-                        slc.iloc[-1]["time"],
-                    )
-                # print('switching time series: ', slc.iloc[0]['location'], slc.iloc[-1]['location'])
                 continue
 
+            # Store time index
             data_sets[subset_key].setdefault("time_index", []).append(
-                slc.iloc[history_len - 1]["location"]
+                slc.iloc[hist_len - 1]["location"]
             )
-            # print(slc.iloc[:history_len]['location'])
-            # print(slc.iloc[history_len:]['sif_clear_inst'])
 
-            # static attributes
+            # Static attributes
             data_sets[subset_key].setdefault("static_feats_numeric", []).append(
                 slc.iloc[0][feature_map["static_feats_numeric"]].values.astype(
                     np.float32
@@ -304,66 +269,59 @@ def tft_process(path, hist_len, fut_len, samp_interval, output_path):
                 )
             )
 
-            # historical
+            # Historical time series
             data_sets[subset_key].setdefault("historical_ts_numeric", []).append(
-                slc.iloc[:history_len][feature_map["historical_ts_numeric"]]
+                slc.iloc[:hist_len][feature_map["historical_ts_numeric"]]
                 .values.astype(np.float32)
-                .reshape(history_len, -1)
+                .reshape(hist_len, -1)
             )
             data_sets[subset_key].setdefault("historical_ts_categorical", []).append(
-                slc.iloc[:history_len][feature_map["historical_ts_categorical"]]
+                slc.iloc[:hist_len][feature_map["historical_ts_categorical"]]
                 .values.astype(np.int32)
-                .reshape(history_len, -1)
+                .reshape(hist_len, -1)
             )
 
-            # futuristic (known)
+            # Future time series
             data_sets[subset_key].setdefault("future_ts_numeric", []).append(
-                slc.iloc[history_len:][feature_map["future_ts_numeric"]]
+                slc.iloc[hist_len:][feature_map["future_ts_numeric"]]
                 .values.astype(np.float32)
-                .reshape(future_len, -1)
+                .reshape(fut_len, -1)
             )
             data_sets[subset_key].setdefault("future_ts_categorical", []).append(
-                slc.iloc[history_len:][feature_map["future_ts_categorical"]]
+                slc.iloc[hist_len:][feature_map["future_ts_categorical"]]
                 .values.astype(np.int32)
-                .reshape(future_len, -1)
+                .reshape(fut_len, -1)
             )
 
-            # target
+            # Target
             data_sets[subset_key].setdefault("target", []).append(
-                slc.iloc[history_len:]["sif_clear_inst"].values.astype(np.float32)
+                slc.iloc[hist_len:]["sif_clear_inst"].values.astype(np.float32)
             )
             data_sets[subset_key].setdefault("id", []).append(
-                slc.iloc[history_len:]["id"].values.astype(str)
+                slc.iloc[hist_len:]["id"].values.astype(str)
             )
-            # break
-        # break
-    # for each set
-    print("Saving...")
-    for set_key in list(data_sets.keys()):
-        # for each component in the set
-        for arr_key in list(data_sets[set_key].keys()):
-            # list of arrays will be concatenated
-            if isinstance(data_sets[set_key][arr_key], np.ndarray):
-                data_sets[set_key][arr_key] = np.stack(
-                    data_sets[set_key][arr_key], axis=0
-                )
-            # lists will be transformed into arrays
-            else:
-                data_sets[set_key][arr_key] = np.array(data_sets[set_key][arr_key])
 
+    # Convert lists to numpy arrays
+    print("Converting to arrays...")
+    for set_key in data_sets.keys():
+        for arr_key in data_sets[set_key].keys():
+            if (
+                isinstance(data_sets[set_key][arr_key], list)
+                and data_sets[set_key][arr_key]
+            ):
+                if isinstance(data_sets[set_key][arr_key][0], np.ndarray):
+                    data_sets[set_key][arr_key] = np.stack(
+                        data_sets[set_key][arr_key], axis=0
+                    )
+                else:
+                    data_sets[set_key][arr_key] = np.array(data_sets[set_key][arr_key])
+
+    # Ensure output directory exists
     output_path = os.path.abspath(output_path)
-    file_name = output_filename
+    os.makedirs(output_path, exist_ok=True)
 
-    # testing the output
-    # check if length of train subset time index >0 and print it
-    # print('length of train subset time index:',len(data_sets['train']['time_index']))
-    # check if length of validation subset time index >0 and print it
-    # print('length of validation subset time index:',len(data_sets['validation']['time_index']))
-    # check if length of test subset time index >0 and print it
-    # print('length of test subset time index:',len(data_sets['test']['time_index']))
-    # if len test subset time index <0 pritn error message
-
-    with open(os.path.join(output_path, file_name), "wb") as f:
+    # Save processed data
+    with open(os.path.join(output_path, output_filename), "wb") as f:
         pickle.dump(
             {
                 "data_sets": data_sets,
@@ -377,47 +335,54 @@ def tft_process(path, hist_len, fut_len, samp_interval, output_path):
     print("Done!")
 
 
-if __name__ == "__main__":
-    print("start")
+def main():
     parser = argparse.ArgumentParser(
-        description="Generate driver attention maps using per-pixel phenology."
-    )
-    parser.add_argument("--PFT", type=str, required=False, help="PFT")
-    parser.add_argument(
-        "--data_path", type=str, required=True, help="Path to data pickle file"
+        description="Process time series data for TFT model training."
     )
     parser.add_argument(
-        "--output_path", type=str, required=True, help="Directory to save output maps"
+        "--data_path", type=str, required=True, help="Path to input parquet file"
     )
+    parser.add_argument(
+        "--output_path", type=str, required=True, help="Directory to save output"
+    )
+    parser.add_argument(
+        "--hist_len", type=int, default=365, help="Historical window length"
+    )
+    parser.add_argument("--fut_len", type=int, default=30, help="Future window length")
+    parser.add_argument(
+        "--samp_interval",
+        type=int,
+        default=395,
+        help="Step size for sliding window sampling (default: hist_len + fut_len for non-overlapping windows)",
+    )
+    parser.add_argument(
+        "--test_mode", action="store_true", help="Use test mode (40-year test)"
+    )
+
     args = parser.parse_args()
 
-    """filename = "merged_BDT_1982_2021.parquet"
-    data_path='/burg/glab/users/al4385/data/CSIFMETEO/'+filename
-    sorted_path= "/burg/glab/users/al4385/data/data/sorted_TFT_30_40_BDTinterval/sorted"+filename
-    output_path="/burg/glab/users/al4385/data/TFT_30_40_BDTinterval"
+    # Use provided samp_interval or calculate default for non-overlapping windows
+    if args.samp_interval is None:
+        samp_interval = args.hist_len + args.fut_len
+    else:
+        samp_interval = args.samp_interval
 
-    hist_len=365
-    fut_len=30
+    print(f"Data path: {args.data_path}")
+    print(f"Output path: {args.output_path}")
+    print(f"Historical length: {args.hist_len}")
+    print(f"Future length: {args.fut_len}")
+    print(f"Sampling interval: {samp_interval}")
+    print(f"Test mode: {args.test_mode}")
+
+    tft_process(
+        args.data_path,
+        args.hist_len,
+        args.fut_len,
+        samp_interval,
+        args.output_path,
+        args.test_mode,
+    )
 
 
-    print('Checking data path:', data_path)
-    print('Checking output path:', output_path)
-    sort_loc_time(data_path, sorted_path)
-    tft_process(sorted_path, hist_len, fut_len, output_path)"""
-
-    # filename = "sorted_BDT_-20_-60_1982_2021.parquet"
-    # filename = "sorted_BDT_-20_20_merged_1982_2021.parquet"
-    # filename = "sorted_BDT_50_20_merged_1982_2021.parquet"
-    filename = "sorted_merged_BDT_1982_2021.parquet"
-
-    data_path = args.data_path
-    output_path = args.output_path
-
-    hist_len = 365
-    fut_len = 30
-    samp_interval = 70
-
-    print("Checking data path:", data_path)
-    print("Checking output path:", output_path)
-    # sort_loc_time(data_path, sorted_path)
-    tft_process(data_path, hist_len, fut_len, samp_interval, output_path)
+if __name__ == "__main__":
+    main()
