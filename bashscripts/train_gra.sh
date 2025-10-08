@@ -11,8 +11,6 @@
 #SBATCH -c 1                  # The number of cpu cores to use (up to 32 cores per server)
 #SBATCH --time=4-23:00        # The time the job will take to run in D-HH:MM
 #SBATCH --mem-per-cpu=126gb   # The memory the job will use per cpu core
-#SBATCH --constraint=v100s    # Specify node constraint for v100s GPUs
-#SBATCH --nodelist=g050            # Specify the node to run the job
 
 export CUDA_VISIBLE_DEVICES=0
 export TORCH_CUDA_ARCH_LIST="7.0"
@@ -31,11 +29,11 @@ CHECKPOINT_PATH="/burg/glab/users/al4385/weights/pretrained_1219/weights_merged_
 FILENAME="GRA.pkl"
 DATA_DIR="/burg/glab/users/al4385/data/TFT_30/"
 WEIGHTS_DIR="/burg/glab/users/al4385/weights/pretrained_1219/"
-WANDB_PROJECT="Transfer_Learning_BET_freeze"
+WANDB_PROJECT="Transfer_Learning_GRA_freeze"
 
-# Train SCH vegetation type with transfer learning
+# Train GRA vegetation type with transfer learning
 python /burg-archive/home/al4385/phenofusion/src/phenofusion/models/train_tft_TL.py \
-    "$DATA_FILE" \
+    --filename "$FILENAME" \
     --checkpoint "$CHECKPOINT_PATH" \
     --data_directory "$DATA_DIR" \
     --weights_directory "$WEIGHTS_DIR" \

@@ -2,23 +2,11 @@ import pandas as pd
 import numpy as np
 from itertools import product
 import pickle
-import math
-import numpy as np
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
-from datetime import datetime, timedelta
+from datetime import datetime
 import seaborn as sns
-import matplotlib.pyplot as plt
-from matplotlib.colors import LinearSegmentedColormap
-import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np
-from mpl_toolkits.axes_grid1 import make_axes_locatable
-from mpl_toolkits.axes_grid1 import make_axes_locatable
-from matplotlib.gridspec import GridSpec
-import numpy as np
-import matplotlib.pyplot as plt
-import cartopy.crs as ccrs
+from matplotlib.colors import LinearSegmentedColormap, TwoSlopeNorm
 
 
 def get_analysis_df(data, preds, coord_path):
@@ -278,7 +266,6 @@ def colorize(full):
     for i in x_color:  # temp
         lon = []
         for j in i:
-            r = math.fabs(w - j) / w
             if np.isnan(j):
                 lon.append(255)
             else:
@@ -288,7 +275,6 @@ def colorize(full):
     for i in y_color:  # sol
         lon = []
         for j in i:
-            g = math.fabs(w - j) / w
             if np.isnan(j):
                 lon.append(255)
             else:
@@ -299,7 +285,6 @@ def colorize(full):
     for i in z_color:
         lon = []
         for j in i:
-            b = math.fabs(w - j) / w
             if np.isnan(j):
                 lon.append(255)
             else:
@@ -322,10 +307,6 @@ def plot_map_robinson(rgb_list, title=None):
     # Verify the shape of the RGB data (should be 2D grid with 3 color channels)
     if rgb_data.ndim != 3 or rgb_data.shape[-1] != 3:
         raise ValueError("Stacked RGB data should have a shape of (height, width, 3).")
-
-    # Define latitude and longitude values for ticks
-    latitudes = np.linspace(90.0, -90.0, rgb_data.shape[0])  # Match the grid shape
-    longitudes = np.linspace(-180.0, 180.0, rgb_data.shape[1])  # Match the grid shape
 
     # Create a new figure and plot
     plt.figure(figsize=(16, 8))
@@ -477,12 +458,6 @@ def plot_map_legacy(channel_data, season, pft):
     # Ensure the input is a 2D array (single channel)
     if channel_data.ndim != 2:
         raise ValueError("Input data must be a 2D array for a single channel.")
-
-    # Define latitude and longitude values for ticks
-    latitudes = np.linspace(90.0, -90.0, channel_data.shape[0])  # Match the grid shape
-    longitudes = np.linspace(
-        -180.0, 180.0, channel_data.shape[1]
-    )  # Match the grid shape
 
     # Create a new figure and plot
     plt.figure(figsize=(16, 8))
@@ -721,20 +696,12 @@ solar_radiation_difference = np.reshape(difference["hist_sol"], (720, 1440))
 water_availability_difference = np.reshape(difference["hist_p"], (720, 1440))
 
 
-from matplotlib.colors import TwoSlopeNorm
-
-
 def plot_map_difference(channel_data, season, title):
     # Convert channel_data to a numeric array if it's not already
     channel_data = np.asarray(channel_data, dtype=np.float32)
     # Ensure the input is a 2D array (single channel)
     if channel_data.ndim != 2:
         raise ValueError("Input data must be a 2D array for a single channel.")
-    # Define latitude and longitude values for ticks
-    latitudes = np.linspace(90.0, -90.0, channel_data.shape[0])  # Match the grid shape
-    longitudes = np.linspace(
-        -180.0, 180.0, channel_data.shape[1]
-    )  # Match the grid shape
     # Create a new figure and plot
     plt.figure(figsize=(16, 8))
     # Create a Cartopy projection using Robinson projection
