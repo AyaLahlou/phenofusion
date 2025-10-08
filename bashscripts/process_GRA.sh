@@ -16,8 +16,8 @@ module load cuda11.1/toolkit
 pip install tft-torch
 
 
-PFT="GRA"
-DATA_DIR="/burg-archive/glab/users/al4385/data/CSIFMETEO/GRA_merged.parquet"
+PFT="SCH"
+DATA_DIR="/burg-archive/glab/users/al4385/data/CSIFMETEO/SCH_merged.parquet"
 OUT_DIR="/burg-archive/glab/users/al4385/data/TFT_30/"
 
 
