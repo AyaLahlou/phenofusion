@@ -26,4 +26,4 @@ WEIGHTS_DIR=/burg/glab/users/$USER/weights/pretrained_1219/weights_sorted_SHR_de
 PRED_DIR="/burg/glab/users/$USER/predictions/pred_TFT_30_dev/SHR/SHR_1982_2021.pkl"
 
 
-python /burg/home/$USER/code/predict_tft.py  --data_dir $DATA_DIR --weights_dir $WEIGHTS_DIR --pred_dir $PRED_DIR
+python /burg-archive/home/$USER/phenofusion/src/phenofusion/dataio/predict_tft.py  --data_dir $DATA_DIR --weights_dir $WEIGHTS_DIR --pred_dir $PRED_DIR
