@@ -1,36 +1,11 @@
 import pickle
-from typing import Dict, List, Tuple
-from functools import partial
-import copy
 import numpy as np
-from omegaconf import OmegaConf, DictConfig
 import pandas as pd
-from tqdm import tqdm
-from datetime import datetime
-from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
+from sklearn.metrics import mean_squared_error, r2_score
 from scipy.stats import gaussian_kde
-import mpl_scatter_density  # adds projection='scatter_density'
 from matplotlib.colors import LinearSegmentedColormap
 import argparse
-
-import os
-import glob
-import pickle
-from datetime import datetime
-from pathlib import Path
-from tqdm import tqdm
-import numpy as np
-import pandas as pd
-import pandas.api.types as ptypes
 import matplotlib.pyplot as plt
-from sklearn.preprocessing import (
-    QuantileTransformer,
-    LabelEncoder,
-    StandardScaler,
-    MinMaxScaler,
-)
-from astropy.visualization import LogStretch
-from astropy.visualization.mpl_normalize import ImageNormalize
 
 
 def data_to_plot(file_path, data_path):
@@ -173,7 +148,7 @@ def plot(df, across_site, title, figure_path):
 
     # Create the scatter plot
     # ax1.scatter(x, y, c=z,  s=10, alpha=0.1)
-    norm = ImageNormalize(vmin=0, vmax=7000, stretch=LogStretch())
+    # norm = ImageNormalize(vmin=0, vmax=7000, stretch=LogStretch())
     density = gaussian_kde(
         np.vstack([df["Flattened_Values"][::1000], df["pred_05"][::1000]])
     )(np.vstack([df["Flattened_Values"][::1000], df["pred_05"][::1000]]))
@@ -237,7 +212,7 @@ def plot(df, across_site, title, figure_path):
 
     # Create the scatter plot
     # ax2.scatter(x, y, c=z,  s=10, alpha=0.5)
-    norm = ImageNormalize(vmin=0, vmax=200, stretch=LogStretch())
+    # norm = ImageNormalize(vmin=0, vmax=200, stretch=LogStretch())
     density = gaussian_kde(
         np.vstack([across_site["F_site"][::1000], across_site["F_site_pred"][::1000]])
     )(np.vstack([across_site["F_site"][::1000], across_site["F_site_pred"][::1000]]))
@@ -288,7 +263,7 @@ def plot(df, across_site, title, figure_path):
     bias = np.mean(residuals)
 
     # ax3.scatter( x, y, c=z,  s=10, alpha=0.1)
-    norm = ImageNormalize(vmin=0, vmax=9000, stretch=LogStretch())
+    # norm = ImageNormalize(vmin=0, vmax=9000, stretch=LogStretch())
     # ax3.scatter_density( df['tvar'], df['tvar_pred'], color='blue', norm=norm)
     density = gaussian_kde(np.vstack([df["tvar"][::1000], df["tvar_pred"][::1000]]))(
         np.vstack([df["tvar"][::1000], df["tvar_pred"][::1000]])
@@ -352,7 +327,6 @@ def plot(df, across_site, title, figure_path):
     bias = np.mean(residuals)
 
     # Create the scatter plot
-    norm = ImageNormalize(vmin=2, vmax=3000, stretch=LogStretch())
     # ax4.scatter_density(df['ano'],  df['ano_pred'], color='blue', norm=norm)
     density = gaussian_kde(np.vstack([df["ano"][::10], df["ano_pred"][::10]]))(
         np.vstack([df["ano"][::10], df["ano_pred"][::10]])

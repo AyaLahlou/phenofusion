@@ -1,1 +1,17 @@
 *.ipynb_checkpoints
+wandb/*
+*.png
+*.out
+__pycache__/
+*.pyc
+*.pkl
+*.pth
+*.log
+*.csv
+.DS_Store
+.vscode/
+.env
+.venv
+env/
+venv/
+.conda/
