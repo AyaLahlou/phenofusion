@@ -488,13 +488,13 @@ def main():
 
             batch_idx += 1
 
-        # Update scheduler and log metrics
     print("Training completed. Saving model...")
     output_dir = os.path.dirname(output_path)
     if output_dir:
         os.makedirs(output_dir, exist_ok=True)
     torch.save(model.state_dict(), output_path)
-    wandb.finish()
+
+    # Update scheduler and log final metrics
     scheduler.step(validation_loss)
     wandb.log(
         {
