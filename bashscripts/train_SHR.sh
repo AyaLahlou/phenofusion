@@ -11,6 +11,8 @@
 #SBATCH -c 1                  # The number of cpu cores to use (up to 32 cores per server)
 #SBATCH --time=4-23:00        # The time the job will take to run in D-HH:MM
 #SBATCH --mem-per-cpu=126gb   # The memory the job will use per cpu core
+#SBATCH --constraint=v100s    # Specify node constraint for v100s GPUs
+#SBATCH --nodelist=g050            # Specify the node to run the job
 
 export CUDA_VISIBLE_DEVICES=0
 export TORCH_CUDA_ARCH_LIST="7.0"
@@ -26,14 +28,14 @@ pip install tft-torch
 
 # Set paths
 CHECKPOINT_PATH="/burg/glab/users/al4385/weights/pretrained_1219/weights_merged_BDT_1982_2021_feb2025_checkpoint.pth"
-FILENAME="sorted_GRA.pkl"
+FILENAME="sorted_SHR.pkl"
 DATA_DIR="/burg/glab/users/al4385/data/TFT_30/"
 WEIGHTS_DIR="/burg/glab/users/al4385/weights/pretrained_1219/"
-WANDB_PROJECT="Transfer_Learning_GRA_freeze"
+WANDB_PROJECT="Transfer_Learning_SHR_freeze"
 
-# Train GRA vegetation type with transfer learning
+# Train SCH vegetation type with transfer learning
 python /burg-archive/home/al4385/phenofusion/src/phenofusion/models/train_tft_TL.py \
-    --filename "$FILENAME" \
+    "$DATA_FILE" \
     --checkpoint "$CHECKPOINT_PATH" \
     --data_directory "$DATA_DIR" \
     --weights_directory "$WEIGHTS_DIR" \
