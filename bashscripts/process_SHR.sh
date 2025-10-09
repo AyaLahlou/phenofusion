@@ -23,4 +23,4 @@ DATA_DIR="/burg-archive/glab/users/al4385/data/CSIFMETEO/sorted_SHR.parquet"
 #python /burg-archive/home/$USER/phenofusion/src/phenofusion/dataio/TFT_process.py  --data_path $DATA_DIR --output_path $OUT_DIR
 
 OUT_DIR="/burg/glab/users/al4385/data/TFT_40_overlapping_samples/"
-python /burg-archive/home/$USER/phenofusion/src/phenofusion/dataio/TFT_process.py  --data_path $DATA_DIR --output_path $OUT_DIR --test_mode true --samp_interval 70
+python /burg-archive/home/$USER/phenofusion/src/phenofusion/dataio/TFT_process.py  --data_path $DATA_DIR --output_path $OUT_DIR --test_mode --samp_interval 70
