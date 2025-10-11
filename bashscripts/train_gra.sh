@@ -26,7 +26,7 @@ pip install tft-torch
 
 # Set paths
 CHECKPOINT_PATH="/burg/glab/users/al4385/weights/pretrained_1219/weights_merged_BDT_1982_2021_feb2025_checkpoint.pth"
-FILENAME="GRA.pkl"
+FILENAME="sorted_GRA.pkl"
 DATA_DIR="/burg/glab/users/al4385/data/TFT_30/"
 WEIGHTS_DIR="/burg/glab/users/al4385/weights/pretrained_1219/"
 WANDB_PROJECT="Transfer_Learning_GRA_freeze"
