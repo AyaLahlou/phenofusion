@@ -33,6 +33,7 @@ import cartopy.crs as ccrs
 from matplotlib.colors import TwoSlopeNorm
 from datetime import datetime
 from itertools import product
+from scipy.stats import linregress
 
 # Suppress warnings for cleaner output
 warnings.filterwarnings("ignore")
@@ -72,48 +73,7 @@ class PhenologicalDataProcessor:
         self.config = config
         self.output_dir = Path(config.output_directory)
         self.output_dir.mkdir(parents=True, exist_ok=True)
-
-        # Seasonal timing dictionaries for different latitude bands
-        self.eos_timing = {
-            (60, 90): (7, 8),
-            (35, 60): (8, 9),
-            (30, 35): (8, 9),
-            (20, 30): (9, 9),
-            (15, 20): (9, 10),
-            (5, 15): (9, 10),
-            (0, 5): (7, 9),
-            (-3, 0): (5, 6),
-            (-5, -3): (4, 5),
-            (-10, -5): (4, 5),
-            (-24, -10): (3, 4),
-            (-30, -24): (4, 5),
-            (-40, -30): (7, 8),
-            (-50, -40): (4, 5),
-            (-61, -50): (5, 6),
-        }
-
-        self.sos_timing = {
-            (60, 90): (5, 6),
-            (55, 60): (4, 5),
-            (40, 55): (3, 5),
-            (30, 40): (4, 6),
-            (20, 30): (5, 6),
-            (15, 20): (6, 7),
-            (12, 15): (5, 6),
-            (10, 12): (4, 5),
-            (7, 10): (3, 4),
-            (3, 7): (2, 4),
-            (0, 3): (3, 4),
-            (-2, 0): (5, 6),
-            (-5, -2): (6, 7),
-            (-13, -5): (8, 9),
-            (-20, -13): (9, 11),
-            (-26, -20): (9, 10),
-            (-30, -26): (8, 9),
-            (-40, -30): (7, 9),
-            (-50, -40): (7, 8),
-            (-61, -50): (8, 9),
-        }
+        self.forecast_window = 30
 
     def load_prediction_data(self, data_path: str, pred_path: str) -> Tuple[Dict, Dict]:
         """
@@ -253,17 +213,64 @@ class PhenologicalDataProcessor:
         max_sum = -np.inf
         best_start_index = None
 
-        # Slide 30-day window to find maximum attention
-        for i in range(396 - 30):
-            current_sum = np.sum(att_array[i : i + 30])
+        # Slide forecast_window to find maximum attention
+        for i in range(396 - self.forecast_window):
+            current_sum = np.sum(att_array[i : i + self.forecast_window])
             if current_sum > max_sum:
                 max_sum = current_sum
                 best_start_index = i
 
         return best_start_index
 
+    def end_or_start_growing_season(self, df: pd.DataFrame, season: str, pft: str = None) -> List[int]:
+        """
+        Determine end or start of growing season months based change in slope of CSIF.
+
+        Args:
+            df: DataFrame containing latitude data
+            season: 'sos' or 'eos', specifying if we want end of season or start of season months.
+            pft: string specifying the plant functional type
+
+        Returns:
+            List of month numbers for specified season
+
+        Raises:
+            ValueError: If season is not 'sos' or 'eos'
+        """
+        # check if season is valid
+        if season not in ["sos", "eos"]:
+            raise ValueError("Season must be 'sos' or 'eos'")
+        
+        min_diff = 0.20
+        min_slope = 0.002
+        if pft == "BET":
+            min_diff = 0.08
+            min_slope = 0.001
+
+        batch_size = self.forecast_window
+        SOS_index = []
+        EOS_index = []
+        # Iterate over DataFrame in batches of self.forecast_window (default 30) rows
+        for start in range(0, len(df), batch_size):
+            batch_df = df.iloc[start : start + batch_size]
+            x = range(len(batch_df))
+            y = batch_df["CSIF"].values
+            if abs(y[0] - y[-1]) > min_diff:
+                slope, _, _, _, _ = linregress(x, y)
+                if slope >= min_slope:
+                    SOS_index.append(batch_df.index[0])
+                elif slope <= -min_slope - 0.0005:
+                    EOS_index.append(batch_df.index[0])
+
+        SOS_indices = [int(i / self.forecast_window) for i in SOS_index]
+        EOS_indices = [int(i / self.forecast_window) for i in EOS_index]
+
+        if season == "sos":
+            return SOS_indices
+        return EOS_indices
+
     def extract_attention_weights(
-        self, data: Dict, preds: Dict, coord_path: str, year: int, season: str
+        self, data: Dict, preds: Dict, coord_path: str, year: int, season: str, pft: str = None
     ) -> pd.DataFrame:
         """
         Extract attention weights for climate drivers.
@@ -274,23 +281,15 @@ class PhenologicalDataProcessor:
             coord_path: Path to coordinates file
             year: Year to analyze
             season: Season ('sos' or 'eos')
+            pft: Plant functional type 
 
         Returns:
             DataFrame with attention weights by location
         """
         df = self.get_analysis_dataframe(data, preds, coord_path)
 
-        # Select timing dictionary based on season
-        timing_dict = self.sos_timing if season == "sos" else self.eos_timing
-
-        select_indices = []
-
-        # Get indices for each latitude band
-        for lats, months in timing_dict.items():
-            df_current = df[(df["latitude"] > lats[0]) & (df["latitude"] <= lats[1])]
-            indices = self.get_seasonal_indices(df_current, months[0], months[1], year)
-            select_indices.extend(indices)
-
+        select_indices = self.end_or_start_growing_season(df, season, pft=pft)
+        
         # Initialize attention weights DataFrame
         attention_df = pd.DataFrame(
             columns=[
@@ -323,7 +322,7 @@ class PhenologicalDataProcessor:
                 ):
                     weights[var] = np.median(
                         preds["historical_selection_weights"][
-                            index, window_start : window_start + 30, i
+                            index, window_start : window_start + self.forecast_window, i
                         ]
                     )
 
@@ -448,8 +447,8 @@ class SensitivityAnalyzer:
         df_list = []
 
         for cluster in self.config.cluster_names:
-            data_path = os.path.join(self.config.data_directory, f"{cluster}.pickle")
-            pred_path = os.path.join(self.config.pred_directory, f"pred_{cluster}.pkl")
+            data_path = os.path.join(self.config.data_directory, f"{cluster}_1982_2021.pkl")
+            pred_path = os.path.join(self.config.pred_directory, f"{cluster}_1982_2021.pkl")
             coord_path = os.path.join(self.config.coord_directory, f"{cluster}.parquet")
 
             # Check if files exist
@@ -462,7 +461,7 @@ class SensitivityAnalyzer:
                 data, preds = self.processor.load_prediction_data(data_path, pred_path)
                 if data and preds:
                     df_coord_att = self.processor.extract_attention_weights(
-                        data, preds, coord_path, year, season
+                        data, preds, coord_path, year, season, pft=cluster
                     )
                     df_list.append(df_coord_att)
 

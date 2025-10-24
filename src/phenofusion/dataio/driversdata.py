@@ -123,7 +123,7 @@ def spring_series_indices(df, month_start, month_end, specific_year=None):
 # TO DO : case for EOS
 
 
-def max_attention_window(preds, index, window_length = 30):
+def max_attention_window(preds, index, forecast_window=30):
     # get array of mean attention of all horizons at each timesteps
     
     att_array = np.mean(preds["attention_scores"][index], axis=0)
@@ -133,8 +133,8 @@ def max_attention_window(preds, index, window_length = 30):
     best_start_index = None
 
     # Slide over the columns
-    for i in range(396 - window_length):  # We slide up to 365th index for a 30-day window
-        current_sum = np.sum(att_array[i : i + window_length])
+    for i in range(396 - forecast_window):  # We slide up to 365th index for a 30-day window
+        current_sum = np.sum(att_array[i : i + forecast_window])
         if current_sum > max_sum:
             max_sum = current_sum
             best_start_index = i
@@ -400,13 +400,13 @@ def impute_nearby_leg(df, lat_range=0.5, lon_range=0.5):
     return df
 
 
-def legacy_df(index_list, data, preds, coord_path, output_path, size=0.25, window_length=30):
+def legacy_df(index_list, data, preds, coord_path, output_path, size=0.25, forecast_window=30):
     df = get_analysis_df(data, preds, coord_path)
 
     df_attention_map = pd.DataFrame(columns=["location", "attention"])
 
     for index in index_list:
-        window_start = max_attention_window(preds, index, window_length=30)
+        window_start = max_attention_window(preds, index, forecast_window=forecast_window)
 
         location = np.int64(data["data_sets"]["test"]["id"][index][0].split("_")[0])
 
@@ -657,7 +657,7 @@ def att_drivers_df(data, preds, coord_path, year, season, size=0.25):
     return imputed_coord_att
 
 
-def get_attention_weights_df(index_list, preds, data, window_length=30):
+def get_attention_weights_df(index_list, preds, data, forecast_window=30):
     df_attention_map = pd.DataFrame(
         columns=[
             "location",
@@ -670,36 +670,36 @@ def get_attention_weights_df(index_list, preds, data, window_length=30):
         ]
     )
     for index in index_list:
-        window_start = max_attention_window(preds, index, window_length)
-        if window_start <= 365 - window_length:
+        window_start = max_attention_window(preds, index, forecast_window)
+        if window_start <= 365 - forecast_window:
             tmin_weight = np.median(
                 preds["historical_selection_weights"][
-                    index, window_start : window_start + window_length, 1
+                    index, window_start : window_start + forecast_window, 1
                 ]
             )
             tmax_weight = np.median(
                 preds["historical_selection_weights"][
-                    index, window_start : window_start + window_length, 2
+                    index, window_start : window_start + forecast_window, 2
                 ]
             )
             rad_weight = np.median(
                 preds["historical_selection_weights"][
-                    index, window_start : window_start + window_length, 3
+                    index, window_start : window_start + forecast_window, 3
                 ]
             )
             precip_weight = np.median(
                 preds["historical_selection_weights"][
-                    index, window_start : window_start + window_length, 4
+                    index, window_start : window_start + forecast_window, 4
                 ]
             )
             photo_weight = np.median(
                 preds["historical_selection_weights"][
-                    index, window_start : window_start + window_length, 5
+                    index, window_start : window_start + forecast_window, 5
                 ]
             )  # 5 is photoperiod, 3 is rad
             sm_weight = np.median(
                 preds["historical_selection_weights"][
-                    index, window_start : window_start + window_length, 6
+                    index, window_start : window_start + forecast_window, 6
                 ]
             )
             location = np.int64(data["data_sets"]["test"]["id"][index][0].split("_")[0])
@@ -720,8 +720,8 @@ def get_attention_weights_df(index_list, preds, data, window_length=30):
     return df_attention_map
 
 
-def save_imput_coord_att(index_list, data, preds, coord_path, output_path, window_length =30):
-    df_attention_map = get_attention_weights_df(index_list, preds, data, window_length)
+def save_imput_coord_att(index_list, data, preds, coord_path, output_path, forecast_window=30):
+    df_attention_map = get_attention_weights_df(index_list, preds, data, forecast_window=forecast_window)
     coords = pd.read_parquet(coord_path)
     coords = coords.drop_duplicates()
     df_coord_att = pd.merge(coords, df_attention_map, on="location", how="left")
@@ -794,11 +794,9 @@ if __name__ == "__main__":
     EOS_indices = [int(i / 30) for i in EOS_index]
 
     # attention drivers analysis
-    save_imput_coord_att(SOS_indices, data, preds, coord_path, output_path + "_SOS.csv", window_length = args.forecast_window_length)
-    save_imput_coord_att(EOS_indices, data, preds, coord_path, output_path + "_EOS.csv", window_length = args.forecast_window_length)
-
-    # sensitivity analysis
+    save_imput_coord_att(SOS_indices, data, preds, coord_path, output_path + "_SOS.csv", forecast_window=args.forecast_window_length)
+    save_imput_coord_att(EOS_indices, data, preds, coord_path, output_path + "_EOS.csv", forecast_window=args.forecast_window_length)
 
     # legacy analysis
-    legacy_df(SOS_indices, data, preds, coord_path, output_path + "_legacy_SOS.csv", size=0.25, window_length = args.forecast_window_length)
-    legacy_df(EOS_indices, data, preds, coord_path, output_path + "_legacy_EOS.csv", size=0.25, window_length = args.forecast_window_length)
+    legacy_df(SOS_indices, data, preds, coord_path, output_path + "_legacy_SOS.csv", size=0.25, forecast_window=args.forecast_window_length)
+    legacy_df(EOS_indices, data, preds, coord_path, output_path + "_legacy_EOS.csv", size=0.25, forecast_window=args.forecast_window_length)
