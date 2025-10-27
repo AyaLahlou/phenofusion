@@ -135,7 +135,7 @@ def plot(df, across_site, title, figure_path):
 
     # ________________________________________________________OVERALL ________________________________________________________
     # Calculate Mean Squared Error (MSE)
-    rmse = mean_squared_error(df["Flattened_Values"], df["pred_05"], squared=True)
+    rmse = mean_squared_error(df["Flattened_Values"], df["pred_05"])
 
     # Calculate R-squared (R2) score
     r2 = r2_score(df["Flattened_Values"], df["pred_05"])
@@ -177,7 +177,6 @@ def plot(df, across_site, title, figure_path):
     ax1.plot([-5, 5], [-5, 5], color="black", linestyle="--")
     # Add text for R-squared and Mean Squared Error
     r_squared = r2
-    rmse = rmse
     text = f"$R^2$: {r_squared:.2f}\nRMSE: {rmse:.2f}\nBIAS: {bias:.2f}"
     # ax1.text(1.75, -0.9, text, ha='center', va='center')
     x_s = min_value / 1.1
@@ -198,9 +197,7 @@ def plot(df, across_site, title, figure_path):
     # ________________________________________________________ACROSS SITE ________________________________________________________
 
     # Calculate Mean Squared Error (MSE)
-    rmse = mean_squared_error(
-        across_site["F_site"], across_site["F_site_pred"], squared=True
-    )
+    rmse = mean_squared_error(across_site["F_site"], across_site["F_site_pred"])
 
     # Calculate R-squared (R2) score
     r2 = r2_score(across_site["F_site"], across_site["F_site_pred"])
@@ -232,7 +229,6 @@ def plot(df, across_site, title, figure_path):
 
     # Add text for R-squared and Mean Squared Error
     r_squared = r2
-    rmse = rmse
     text = f"$R^2$: {r_squared:.2f}\nRMSE: {rmse:.2f}\nBIAS: {bias:.2f}"
     # ax2.text(0.6, 0, text, ha='center', va='center')
     x_s = min_value / 1
@@ -251,10 +247,10 @@ def plot(df, across_site, title, figure_path):
 
     # ________________________________________________________MSC ________________________________________________________
     # Calculate Mean Squared Error (MSE)
-    rmse = mean_squared_error(df["tvar"], df["tvar_pred"], squared=True)
+    rmse = mean_squared_error(df["tvar"], df["tvar_pred"])
 
     # Calculate R-squared (R2) score
-    rmse = mean_squared_error(df["tvar"], df["tvar_pred"], squared=True)
+    rmse = mean_squared_error(df["tvar"], df["tvar_pred"])
 
     # Calculate the residuals
     residuals = df["tvar"] - df["tvar_pred"]
@@ -297,7 +293,6 @@ def plot(df, across_site, title, figure_path):
 
     # Add text for R-squared and Mean Squared Error
     r_squared = r2
-    rmse = rmse
     text = f"$R^2$: {r_squared:.2f}\nRMSE: {rmse:.2f}\nBIAS: {bias:.2f}"
     x_s = min_value / 1.1
     x_e = max_value / 1.5
@@ -315,7 +310,7 @@ def plot(df, across_site, title, figure_path):
 
     #### Anomalies
     # Calculate Mean Squared Error (MSE)
-    rmse = mean_squared_error(df["ano"], df["ano_pred"], squared=True)
+    rmse = mean_squared_error(df["ano"], df["ano_pred"])
 
     # Calculate R-squared (R2) score
     r2 = r2_score(df["ano"], df["ano_pred"])
@@ -345,7 +340,6 @@ def plot(df, across_site, title, figure_path):
 
     # Add text for R-squared and Mean Squared Error
     r_squared = r2
-    rmse = rmse
     text = f"$R^2$: {r_squared:.2f}\nRMSE: {rmse:.2f}\nBIAS: {bias:.2f}"
 
     x_s = -0.05

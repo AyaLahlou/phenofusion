@@ -17,6 +17,10 @@ module load anaconda
 module load cuda11.1/toolkit
 pip install tft-torch
 
+DATA_DIR="/burg/glab/users/al4385/data/TFT_40_overlapping_samples/"
+PRED_DIR="/burg/glab/users/al4385/predictions/pred_40year_moresamples/"
+COORD_DIR="/burg/glab/users/al4385/data/coordinates/"
+OUTPUT_DIR="/burg/glab/users/ms7073/analysis/sensitivity_analysis_oversampling/"
 
 
-python /burg-archive/home/al4385/phenofusion/src/phenofusion/analysis/run_sensitivity_analysis.py
+python /burg-archive/home/$USER/phenofusion/src/phenofusion/analysis/run_sensitivity_analysis.py --data-dir $DATA_DIR --pred-dir $PRED_DIR --coord-dir $COORD_DIR --output-dir $OUTPUT_DIR --show-plots

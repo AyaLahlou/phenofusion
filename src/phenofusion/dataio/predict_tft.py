@@ -18,7 +18,7 @@ import json
 import os
 from datetime import datetime
 import argparse
-
+import re
 
 class DictDataSet(Dataset):
     def __init__(self, array_dict: Dict[str, np.ndarray]):
@@ -105,8 +105,25 @@ def process_batch(
     )
     return q_loss, q_risk
 
+def aggregate_outputs(output_aggregator, validation_outputs = None):
+    """
+    Concatenate lists of arrays in output_aggregator into single arrays for each key.
+    Returns a new dictionary in the same format as validation_outputs.
+    """
+    if validation_outputs is None:
+        validation_outputs = dict()
 
-def predict(data_path, weights, file_path, cardinalities_map):
+    for k in list(output_aggregator.keys()):
+        if len(output_aggregator[k]) == 0:
+            continue
+        new_output = np.concatenate(output_aggregator[k], axis=0)
+        if k in validation_outputs:
+            validation_outputs[k] = np.concatenate([validation_outputs[k], new_output], axis=0)
+        else:
+            validation_outputs[k] = new_output
+    return validation_outputs
+
+def predict(data_path, weights, file_path, cardinalities_map, start_from_checkpoint = False):
     print("predict open")
 
     with open(data_path, "rb") as fp:
@@ -133,7 +150,6 @@ def predict(data_path, weights, file_path, cardinalities_map):
 
     feature_map = data["feature_map"]
     # cardinalities_map = data['categorical_cardinalities']
-    cardinalities_map = cardinalities_map
 
     structure = {
         "num_historical_numeric": len(feature_map["historical_ts_numeric"]),
@@ -187,13 +203,6 @@ def predict(data_path, weights, file_path, cardinalities_map):
         "id",
     ]  #### CHANGED THIS since Boreal runs
 
-    test_set, test_loader, test_serial_loader = get_set_and_loaders(
-        data["data_sets"]["test"],
-        serial_loader_config,
-        serial_loader_config,
-        ignore_keys=meta_keys,
-    )
-
     shuffled_loader_config = {"batch_size": 128, "drop_last": True, "shuffle": False}
 
     serial_loader_config = {"batch_size": 128, "drop_last": False, "shuffle": False}
@@ -215,12 +224,63 @@ def predict(data_path, weights, file_path, cardinalities_map):
         dict()
     )  # will be used for aggregating the outputs across batches
 
+    validation_outputs = dict()
+    resume_batch_idx = 0  # zero-based index to start processing
+    pred_folder = os.path.dirname(file_path)
+    pred_filename = os.path.splitext(os.path.basename(file_path))[0]
+        
+    if start_from_checkpoint:
+        # find the latest checkpoint file
+        checkpoint_files = [
+            f for f in os.listdir(pred_folder) if "checkpoint" in f and pred_filename in f and f.endswith('.pkl')
+        ]
+        batch_indices = []
+        for fname in checkpoint_files:
+            match = re.search(r"checkpoint_batch_(\d+)\.pkl", fname)
+            if match:
+                batch_indices.append(int(match.group(1)))
+
+        if batch_indices:
+            batch_indices = sorted(batch_indices)
+            resume_batch_idx = batch_indices[-1]
+            print("Resume at batch index:", resume_batch_idx)
+
+            # aggregate outputs from all previous checkpoints
+            loaded_per_key = dict()
+            for b_idx in batch_indices:
+                checkpoint_path = f"{pred_folder}/{pred_filename}_checkpoint_batch_{b_idx}.pkl"
+                print(f"Loading checkpoint: {checkpoint_path}")
+                with open(checkpoint_path, "rb") as cp_file:
+                    checkpoint_data = pickle.load(cp_file)
+
+                if not isinstance(checkpoint_data, dict):
+                    raise TypeError(f"Checkpoint {checkpoint_path} did not contain a dict")
+
+                for k, v in checkpoint_data.items():
+                    loaded_per_key.setdefault(k, []).append(np.asarray(v))
+
+            for k, list_of_arrays in loaded_per_key.items():
+                try:
+                    validation_outputs[k] = np.concatenate(list_of_arrays, axis=0)
+                except Exception as e:
+                    raise RuntimeError(f"Failed to concatenate loaded checkpoints for key '{k}': {e}")
+        
     with torch.no_grad():
+        total_batches = len(test_serial_loader)
+        print("total batches", total_batches)
+        checkpoint_interval = max(1, total_batches // 10) # Save every 10% of progress
         # go over the batches of the serial data loader
-        for batch in tqdm(
+        
+        checkpoint_output_aggregator = dict()
+
+        for batch_idx, batch in enumerate(tqdm(
             test_serial_loader
-        ):  # change this from validation serial loader
+        )):  # change this from validation serial loader
             # process each batch
+            if batch_idx < resume_batch_idx and start_from_checkpoint:
+                print(f"Skipping batch {batch_idx + 1} as it's already processed.")
+                continue  # skip already processed batches  
+
             if is_cuda:
                 for k in list(batch.keys()):
                     batch[k] = batch[k].to(device)
@@ -228,13 +288,25 @@ def predict(data_path, weights, file_path, cardinalities_map):
 
             # accumulate outputs, as well as labels
             for output_key, output_tensor in batch_outputs.items():
-                output_aggregator.setdefault(output_key, []).append(
+                checkpoint_output_aggregator.setdefault(output_key, []).append(
                     output_tensor.cpu().numpy()
                 )
 
-    validation_outputs = dict()
-    for k in list(output_aggregator.keys()):
-        validation_outputs[k] = np.concatenate(output_aggregator[k], axis=0)
+            # Checkpoint every 10% or at last batch
+            if (batch_idx + 1) % checkpoint_interval == 0 or (batch_idx + 1) == total_batches:
+                checkpoint_path = f"{pred_folder}/{pred_filename}_checkpoint_batch_{batch_idx+1}.pkl"
+                print(f"Checkpoint at batch {batch_idx+1} to {checkpoint_path}")
+                checkpoint_dict = aggregate_outputs(checkpoint_output_aggregator)
+                with open(checkpoint_path, "wb") as cp_file:
+                    pickle.dump(checkpoint_dict, cp_file)
+                
+                # After checkpointing, append to output_aggregator for final aggregation
+                for k, v in checkpoint_output_aggregator.items():
+                    output_aggregator.setdefault(k, []).extend(v)
+                
+                checkpoint_output_aggregator = dict()  # Reset for next checkpoint window
+            
+    validation_outputs = aggregate_outputs(output_aggregator, validation_outputs = validation_outputs)
 
     # Save the dictionary using Pickle
     with open(file_path, "wb") as pickle_file:
@@ -248,12 +320,16 @@ if __name__ == "__main__":
     parser.add_argument("--data_dir", type=str, help="data directory")
     parser.add_argument("--weights_dir", type=str, help="weight directory")
     parser.add_argument("--pred_dir", type=str, help="prediction directory")
+    parser.add_argument(
+        "--start_from_checkpoint", action="store_true", help="Start predicting from last checkpoint file"
+    )
     args = parser.parse_args()
 
     training_directory = args.training_dir
     data_directory = args.data_dir
     weight_directory = args.weights_dir
     prediction_path = args.pred_dir
+    start_from_checkpoint = args.start_from_checkpoint
 
     # only when predicting for 40 years
     # "/burg/glab/users/al4385/data/TFT_30_40years/"
@@ -274,4 +350,4 @@ if __name__ == "__main__":
 
     weights = weight_directory
     file_path = prediction_path
-    predict(data_directory, weights, file_path, cardinalities_map)
+    predict(data_directory, weights, file_path, cardinalities_map, start_from_checkpoint=start_from_checkpoint)

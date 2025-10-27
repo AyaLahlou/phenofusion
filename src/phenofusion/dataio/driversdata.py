@@ -104,18 +104,17 @@ def spring_series_indices(df, month_start, month_end, specific_year=None):
     for year in year_range:
         dt_start = datetime(year, month_start, 1)
         dt_end = datetime(year, month_end, 30)
-        df_current_year = df[df["year"] == year]
+
         ###### THIS MAY BE THE ISSUE ########
         # filtered_df =df_current_year.groupby('location').filter(lambda x: (x['time'].iloc[0] >= dt_start ) and (x['time'].iloc[0] <= dt_end))
         #####################################
-        date_mask = (df_current_year["time"] >= dt_start) & (
-            df_current_year["time"] <= dt_end
+        date_mask = (df["time"] >= dt_start) & (
+            df["time"] <= dt_end
         )
-        valid_locations = df_current_year[date_mask]["location"].unique()
-        filtered_df = df_current_year[df_current_year["location"].isin(valid_locations)]
+        filtered_df = df[date_mask]
 
         indices_array = np.unique(filtered_df[::30].index.to_numpy())
-        print("indeces_array", indices_array)
+        print("indices_array", indices_array)
         res_indices.extend(np.round(indices_array / 30).astype(int))
 
     return res_indices
@@ -124,8 +123,9 @@ def spring_series_indices(df, month_start, month_end, specific_year=None):
 # TO DO : case for EOS
 
 
-def max_attention_window(preds, index):
+def max_attention_window(preds, index, forecast_window=30):
     # get array of mean attention of all horizons at each timesteps
+    
     att_array = np.mean(preds["attention_scores"][index], axis=0)
 
     # Initialize variables
@@ -133,8 +133,8 @@ def max_attention_window(preds, index):
     best_start_index = None
 
     # Slide over the columns
-    for i in range(396 - 20):  # We slide up to 365th index for a 30-day window
-        current_sum = np.sum(att_array[i : i + 20])
+    for i in range(396 - forecast_window):  # We slide up to 365th index for a 30-day window
+        current_sum = np.sum(att_array[i : i + forecast_window])
         if current_sum > max_sum:
             max_sum = current_sum
             best_start_index = i
@@ -400,75 +400,13 @@ def impute_nearby_leg(df, lat_range=0.5, lon_range=0.5):
     return df
 
 
-def legacy_df(data, preds, coord_path, year, season, size=0.25):
+def legacy_df(index_list, data, preds, coord_path, output_path, size=0.25, forecast_window=30):
     df = get_analysis_df(data, preds, coord_path)
-
-    eos_dic = {
-        (60, 90): (7, 8),
-        (35, 60): (8, 9),
-        (30, 35): (8, 9),
-        (20, 30): (9, 9),
-        (15, 20): (9, 10),
-        (5, 15): (9, 10),
-        (0, 5): (7, 9),
-        (-3, 0): (5, 6),
-        (-5, -3): (4, 5),
-        (-10, -5): (4, 5),
-        (-24, -10): (3, 4),
-        (-30, -24): (4, 5),
-        (-40, -30): (7, 8),
-        (-50, -40): (4, 5),
-        (-61, -50): (5, 6),
-    }
-    sos_dic = {
-        (60, 90): (5, 6),
-        (55, 60): (4, 5),
-        (40, 55): (3, 5),
-        (30, 40): (4, 6),
-        (20, 30): (5, 6),
-        (15, 20): (6, 7),
-        (12, 15): (5, 6),
-        (10, 12): (4, 5),
-        (7, 10): (3, 4),
-        (3, 7): (2, 4),
-        (0, 3): (3, 4),
-        (-2, 0): (5, 6),
-        (-5, -2): (6, 7),
-        (-13, -5): (8, 9),
-        (-20, -13): (9, 11),
-        (-26, -20): (9, 10),
-        (-30, -26): (8, 9),
-        (-40, -30): (7, 9),
-        (-50, -40): (7, 8),
-        (-61, -50): (8, 9),
-    }
-
-    select_indices = []
-    if season == "eos":
-        for lats, months in eos_dic.items():
-            df_current = df[df["latitude"] > lats[0]]
-            df_current = df_current[df_current["latitude"] <= lats[1]]
-            select_indices = np.concatenate(
-                (
-                    select_indices,
-                    spring_series_indices(df_current, months[0], months[1], year),
-                )
-            ).astype(int)
-    elif season == "sos":
-        for lats, months in sos_dic.items():
-            df_current = df[df["latitude"] > lats[0]]
-            df_current = df_current[df_current["latitude"] <= lats[1]]
-            select_indices = np.concatenate(
-                (
-                    select_indices,
-                    spring_series_indices(df_current, months[0], months[1], year),
-                )
-            ).astype(int)
 
     df_attention_map = pd.DataFrame(columns=["location", "attention"])
 
-    for index in select_indices:
-        window_start = max_attention_window(preds, index)
+    for index in index_list:
+        window_start = max_attention_window(preds, index, forecast_window=forecast_window)
 
         location = np.int64(data["data_sets"]["test"]["id"][index][0].split("_")[0])
 
@@ -479,7 +417,7 @@ def legacy_df(data, preds, coord_path, year, season, size=0.25):
     coords = coords.drop_duplicates()
     df_coord_att = pd.merge(coords, df_attention_map, on="location", how="left")
     imputed_coord_att = impute_nearby_leg(df_coord_att, size, size)
-    return imputed_coord_att
+    imputed_coord_att.to_csv(output_path)
 
 
 def concatenate_legacy(df_list):
@@ -649,6 +587,8 @@ def att_drivers_df(data, preds, coord_path, year, season, size=0.25):
                     spring_series_indices(df_current, months[0], months[1], year),
                 )
             ).astype(int)
+    else:
+        raise ValueError("Season must be 'sos' or 'eos'")
 
     df_attention_map = pd.DataFrame(
         columns=[
@@ -717,7 +657,7 @@ def att_drivers_df(data, preds, coord_path, year, season, size=0.25):
     return imputed_coord_att
 
 
-def get_attention_weights_df(index_list, preds, data):
+def get_attention_weights_df(index_list, preds, data, forecast_window=30):
     df_attention_map = pd.DataFrame(
         columns=[
             "location",
@@ -730,36 +670,36 @@ def get_attention_weights_df(index_list, preds, data):
         ]
     )
     for index in index_list:
-        window_start = max_attention_window(preds, index)
-        if window_start <= 335:
+        window_start = max_attention_window(preds, index, forecast_window)
+        if window_start <= 365 - forecast_window:
             tmin_weight = np.median(
                 preds["historical_selection_weights"][
-                    index, window_start : window_start + 30, 1
+                    index, window_start : window_start + forecast_window, 1
                 ]
             )
             tmax_weight = np.median(
                 preds["historical_selection_weights"][
-                    index, window_start : window_start + 30, 2
+                    index, window_start : window_start + forecast_window, 2
                 ]
             )
             rad_weight = np.median(
                 preds["historical_selection_weights"][
-                    index, window_start : window_start + 30, 3
+                    index, window_start : window_start + forecast_window, 3
                 ]
             )
             precip_weight = np.median(
                 preds["historical_selection_weights"][
-                    index, window_start : window_start + 30, 4
+                    index, window_start : window_start + forecast_window, 4
                 ]
             )
             photo_weight = np.median(
                 preds["historical_selection_weights"][
-                    index, window_start : window_start + 30, 5
+                    index, window_start : window_start + forecast_window, 5
                 ]
             )  # 5 is photoperiod, 3 is rad
             sm_weight = np.median(
                 preds["historical_selection_weights"][
-                    index, window_start : window_start + 30, 6
+                    index, window_start : window_start + forecast_window, 6
                 ]
             )
             location = np.int64(data["data_sets"]["test"]["id"][index][0].split("_")[0])
@@ -780,8 +720,8 @@ def get_attention_weights_df(index_list, preds, data):
     return df_attention_map
 
 
-def save_imput_coord_att(index_list, data, preds, coord_path, output_path):
-    df_attention_map = get_attention_weights_df(index_list, preds, data)
+def save_imput_coord_att(index_list, data, preds, coord_path, output_path, forecast_window=30):
+    df_attention_map = get_attention_weights_df(index_list, preds, data, forecast_window=forecast_window)
     coords = pd.read_parquet(coord_path)
     coords = coords.drop_duplicates()
     df_coord_att = pd.merge(coords, df_attention_map, on="location", how="left")
@@ -807,6 +747,11 @@ if __name__ == "__main__":
     parser.add_argument(
         "--output_path", type=str, required=True, help="Directory to save output maps"
     )
+
+    parser.add_argument(
+        "--forecast_window_length", type=int, required=True, help="Forecast window size"
+    )
+
     args = parser.parse_args()
 
     min_diff = 0.20
@@ -834,7 +779,6 @@ if __name__ == "__main__":
     SOS_index = []
     EOS_index = []
     # Iterate over DataFrame in batches of 30 rows
-    # Iterate over DataFrame in batches of 30 rows
     for start in range(0, len(df), batch_size):
         batch_df = df.iloc[start : start + batch_size]
         x = range(len(batch_df))
@@ -849,5 +793,10 @@ if __name__ == "__main__":
     SOS_indices = [int(i / 30) for i in SOS_index]
     EOS_indices = [int(i / 30) for i in EOS_index]
 
-    save_imput_coord_att(SOS_indices, data, preds, coord_path, output_path + "_SOS.csv")
-    save_imput_coord_att(EOS_indices, data, preds, coord_path, output_path + "_EOS.csv")
+    # attention drivers analysis
+    save_imput_coord_att(SOS_indices, data, preds, coord_path, output_path + "_SOS.csv", forecast_window=args.forecast_window_length)
+    save_imput_coord_att(EOS_indices, data, preds, coord_path, output_path + "_EOS.csv", forecast_window=args.forecast_window_length)
+
+    # legacy analysis
+    legacy_df(SOS_indices, data, preds, coord_path, output_path + "_legacy_SOS.csv", size=0.25, forecast_window=args.forecast_window_length)
+    legacy_df(EOS_indices, data, preds, coord_path, output_path + "_legacy_EOS.csv", size=0.25, forecast_window=args.forecast_window_length)
