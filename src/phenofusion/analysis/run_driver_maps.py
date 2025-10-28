@@ -18,8 +18,8 @@ import logging
 
 
 def run_driver_map_generation(
-    data_dir: str = "/burg/home/al4385/code/phenology_analysis/drivers_data/",
-    output_dir: str = "./driver_maps_output/",
+    data_dir: str = "/burg/glab/users/ms7073/analysis/driversdata/oversampling/",
+    output_dir: str = "/burg/glab/users/al4385/figures/drivermaps/",
     show_plots: bool = False,
     projection: str = "PlateCarree",
 ):
@@ -78,7 +78,7 @@ def run_driver_map_generation(
     # Generate individual PFT maps
     logger.info("\n=== Generating individual PFT maps ===")
 
-    for pft in ["BET", "NET", "NDT"]:
+    for pft in ["BET", "NET", "NDT", "SHR", "GRA"]:
         for phase in ["SOS", "EOS"]:
             total_count += 1
             if pft in file_mapping and phase in file_mapping[pft]:
@@ -98,7 +98,7 @@ def run_driver_map_generation(
     # Generate combined BDT maps
     logger.info("\n=== Generating combined BDT maps ===")
 
-    bdt_types = ["BDT_5020", "BDT_2020", "BDT_2060", "BDT_5090"]
+    bdt_types = ["BDT_5020", "BDT_2020", "BDT_2060", "BDT_5090", "BDT_-20_-60"]
 
     for phase in ["SOS", "EOS"]:
         total_count += 1
@@ -163,13 +163,13 @@ if __name__ == "__main__":
     parser.add_argument(
         "--data-dir",
         type=str,
-        default="/burg/home/al4385/code/phenology_analysis/drivers_data/",
+        default="/burg/glab/users/ms7073/analysis/driversdata/oversampling/",
         help="Directory containing CSV data files",
     )
     parser.add_argument(
         "--output-dir",
         type=str,
-        default="./driver_maps_output/",
+        default="/burg/glab/users/al4385/figures/drivermaps/",
         help="Directory to save output plots",
     )
     parser.add_argument(

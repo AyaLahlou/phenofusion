@@ -1,0 +1,46 @@
+
+[notice] A new release of pip is available: 24.3.1 -> 25.2
+[notice] To update, run: pip install --upgrade pip
+2025-10-13 14:59:37,192 - INFO - Loading predictions from: /burg/glab/users/al4385/predictions/pretrained_1219/SHR_20251009.pkl
+2025-10-13 14:59:37,192 - INFO - Loading data from: /burg/glab/users/al4385/data/TFT_30/sorted_SHR.pkl
+/burg-archive/home/al4385/.local/lib/python3.11/site-packages/sklearn/base.py:376: InconsistentVersionWarning: Trying to unpickle estimator QuantileTransformer from version 1.3.2 when using version 1.4.1.post1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/burg-archive/home/al4385/.local/lib/python3.11/site-packages/sklearn/base.py:376: InconsistentVersionWarning: Trying to unpickle estimator StandardScaler from version 1.3.2 when using version 1.4.1.post1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/burg-archive/home/al4385/.local/lib/python3.11/site-packages/sklearn/base.py:376: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.3.2 when using version 1.4.1.post1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+2025-10-13 14:59:42,608 - INFO - Processed 881640 data points
+2025-10-13 14:59:42,704 - ERROR - Error during analysis: Unknown projection 'scatter_density'
+Traceback (most recent call last):
+  File "/burg-archive/home/al4385/.local/lib/python3.11/site-packages/matplotlib/projections/__init__.py", line 120, in get_projection_class
+    return projection_registry.get_projection_class(projection)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/burg-archive/home/al4385/.local/lib/python3.11/site-packages/matplotlib/projections/__init__.py", line 83, in get_projection_class
+    return self._all_projection_types[name]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'scatter_density'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/burg-archive/home/al4385/phenofusion/src/phenofusion/analysis/metrics_tft.py", line 1272, in <module>
+    main()
+  File "/burg-archive/home/al4385/phenofusion/src/phenofusion/analysis/metrics_tft.py", line 465, in main
+    metrics = plotter.create_metrics_plot(df, site_agg, title, figure_path)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/burg-archive/home/al4385/phenofusion/src/phenofusion/analysis/metrics_tft.py", line 377, in create_metrics_plot
+    fig.add_subplot(141, projection="scatter_density"),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/burg-archive/home/al4385/.local/lib/python3.11/site-packages/matplotlib/figure.py", line 709, in add_subplot
+    projection_class, pkw = self._process_projection_requirements(**kwargs)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/burg-archive/home/al4385/.local/lib/python3.11/site-packages/matplotlib/figure.py", line 1717, in _process_projection_requirements
+    projection_class = projections.get_projection_class(projection)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/burg-archive/home/al4385/.local/lib/python3.11/site-packages/matplotlib/projections/__init__.py", line 122, in get_projection_class
+    raise ValueError("Unknown projection %r" % projection) from err
+ValueError: Unknown projection 'scatter_density'
+[0;31m[ERROR][0m 2025-10-13 14:59:42: Metrics analysis failed

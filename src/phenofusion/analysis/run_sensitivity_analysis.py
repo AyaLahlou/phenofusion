@@ -83,6 +83,8 @@ def run_sensitivity_analysis(
             "BET",
             "NET",
             "NDT",
+            "SHR",
+            "GRA",
         ],
     )
 
@@ -159,13 +161,13 @@ def main():
     parser.add_argument(
         "--data-dir",
         type=str,
-        default="/burg/glab/users/al4385/data/TFT_30_40years/",
+        default="/burg/glab/users/al4385/data/TFT_40_overlapping_samples/",
         help="Directory containing data pickle files",
     )
     parser.add_argument(
         "--pred-dir",
         type=str,
-        default="/burg/glab/users/al4385/predictions/TFT_30_40years/",
+        default="/burg/glab/users/al4385/predictions/pred_40year_moresamples/",
         help="Directory containing prediction pickle files",
     )
     parser.add_argument(

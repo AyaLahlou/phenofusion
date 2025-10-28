@@ -22,7 +22,7 @@ PFT="BET"
 DATE=$(date '+%Y%m%d')
 
 DATA_DIR="/burg/glab/users/al4385/data/TFT_40_overlapping_samples/${PFT}_1982_2021.pkl"
-PRED_DIR="/burg/glab/users/al4385/predictions/pred_40year_moresamples/BDT/${PFT}_1982_2021.pkl"
+PRED_DIR="/burg/glab/users/al4385/predictions/pred_40year_moresamples/${PFT}_1982_2021.pkl"
 COORD_DIR="/burg/glab/users/al4385/data/coordinates/${PFT}.parquet"
 OUTPUT_DIR="/burg/glab/users/ms7073/analysis/driversdata/oversampling/${PFT}_${DATE}"
 FORECAST_WINDOW=30
@@ -32,5 +32,5 @@ python /burg-archive/home/$USER/phenofusion/src/phenofusion/dataio/driversdata.p
 
 # generate driver maps
 MAP_DATA_DIR="/burg/glab/users/ms7073/analysis/driversdata/oversampling/"
-MAP_OUTPUT_DIR="/burg/glab/users/ms7073/analysis/driversdata/driver_maps_oversampling/"
-python /burg-archive/home/$USER/phenofusion/src/phenofusion/analysis/run_driver_maps.py --data-dir $MAP_DATA_DIR --output-dir $MAP_OUTPUT_DIR --show-plots
+MAP_OUTPUT_DIR="/burg/glab/users/al4385/figures/drivermaps/"
+python /burg-archive/home/$USER/phenofusion/src/phenofusion/analysis/run_driver_maps.py --data-dir $MAP_DATA_DIR --output-dir $MAP_OUTPUT_DIR
