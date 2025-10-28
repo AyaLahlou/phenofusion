@@ -59,6 +59,8 @@ class DriverMapGenerator:
             "BET": 30,  # Broadleaf Evergreen Trees
             "NET": 75,  # Needleleaf Evergreen Trees
             "NDT": 75,  # Needleleaf Deciduous Trees
+            "SHR": 75,  # Shrubs
+            "GRA": 75,  # Grasses
             "BDT_5020": (20, 50),  # Broadleaf Deciduous Trees (20-50N)
             "BDT_2020": (-20, 20),  # Broadleaf Deciduous Trees (-20-20)
             "BDT_2060": (-60, -20),  # Broadleaf Deciduous Trees (-60--20)
@@ -337,6 +339,8 @@ def create_file_mapping(data_dir: str) -> Dict[str, Dict[str, str]]:
         "BET": {"SOS": "BET_*_SOS*.csv", "EOS": "BET_*_EOS*.csv"},
         "NET": {"SOS": "NET_*_SOS*.csv", "EOS": "NET_*_EOS*.csv"},
         "NDT": {"SOS": "NDT_*_SOS*.csv", "EOS": "NDT_*_EOS*.csv"},
+        "SHR": {"SOS": "SHR_*_SOS*.csv", "EOS": "SHR_*_EOS*.csv"},
+        "GRA": {"SOS": "GRA_*_SOS*.csv", "EOS": "GRA_*_EOS*.csv"},
         "BDT_5020": {"SOS": "BDT_50_20_*_SOS*.csv", "EOS": "BDT_50_20_*_EOS*.csv"},
         "BDT_2020": {"SOS": "BDT_-20_20_*_SOS*.csv", "EOS": "BDT_-20_20_*_EOS*.csv"},
         "BDT_2060": {"SOS": "BDT_-20_-60_*_SOS*.csv", "EOS": "BDT_-20_-60_*_EOS*.csv"},
@@ -399,7 +403,7 @@ def main():
     # Generate individual PFT maps
     logger.info("Generating individual PFT maps...")
 
-    for pft in ["BET", "NET", "NDT"]:
+    for pft in ["BET", "NET", "NDT", "SHR", "GRA"]:
         for phase in ["SOS", "EOS"]:
             if pft in file_mapping and phase in file_mapping[pft]:
                 file_path = file_mapping[pft][phase]

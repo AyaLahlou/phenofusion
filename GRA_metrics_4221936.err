@@ -1,0 +1,17 @@
+2025-10-14 10:56:36,426 - INFO - Loading predictions from: /burg/glab/users/al4385/predictions/pretrained_1219/GRA_20251013.pkl
+2025-10-14 10:56:36,427 - INFO - Loading data from: /burg/glab/users/al4385/data/TFT_30/sorted_GRA.pkl
+/burg-archive/home/al4385/.local/lib/python3.11/site-packages/sklearn/base.py:376: InconsistentVersionWarning: Trying to unpickle estimator QuantileTransformer from version 1.3.2 when using version 1.4.1.post1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/burg-archive/home/al4385/.local/lib/python3.11/site-packages/sklearn/base.py:376: InconsistentVersionWarning: Trying to unpickle estimator StandardScaler from version 1.3.2 when using version 1.4.1.post1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/burg-archive/home/al4385/.local/lib/python3.11/site-packages/sklearn/base.py:376: InconsistentVersionWarning: Trying to unpickle estimator LabelEncoder from version 1.3.2 when using version 1.4.1.post1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+2025-10-14 10:56:50,597 - INFO - Processed 2946060 data points
+2025-10-14 11:12:56,230 - INFO - Plot saved to: /burg-archive/home/al4385/phenofusion/metrics_output/metrics_GRA.png
+2025-10-14 11:12:56,232 - INFO - Metrics - R²: [0.9899507947036374, 0.9949406564601158, 0.9861353977827032, 0.24177653249196152]
+2025-10-14 11:12:56,232 - INFO - Metrics - RMSE: [0.1023541, 0.048691813, 0.089422904, 0.010461865]
+2025-10-14 11:12:56,232 - INFO - Metrics - Bias: [-0.022319406, -0.022208108, 4.0593456e-10, 3.6139386e-12]
+2025-10-14 11:12:56,232 - INFO - Analysis completed successfully

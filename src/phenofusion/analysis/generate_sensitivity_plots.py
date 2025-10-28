@@ -222,7 +222,9 @@ class PhenologicalDataProcessor:
 
         return best_start_index
 
-    def end_or_start_growing_season(self, df: pd.DataFrame, season: str, pft: str = None) -> List[int]:
+    def end_or_start_growing_season(
+        self, df: pd.DataFrame, season: str, pft: str = None
+    ) -> List[int]:
         """
         Determine end or start of growing season months based change in slope of CSIF.
 
@@ -240,11 +242,11 @@ class PhenologicalDataProcessor:
         # check if season is valid
         if season not in ["sos", "eos"]:
             raise ValueError("Season must be 'sos' or 'eos'")
-        
+
         min_diff = 0.20
         min_slope = 0.002
         if pft == "BET":
-            min_diff = 0.08
+            min_diff = 0.05
             min_slope = 0.001
 
         batch_size = self.forecast_window
@@ -270,7 +272,13 @@ class PhenologicalDataProcessor:
         return EOS_indices
 
     def extract_attention_weights(
-        self, data: Dict, preds: Dict, coord_path: str, year: int, season: str, pft: str = None
+        self,
+        data: Dict,
+        preds: Dict,
+        coord_path: str,
+        year: int,
+        season: str,
+        pft: str = None,
     ) -> pd.DataFrame:
         """
         Extract attention weights for climate drivers.
@@ -281,7 +289,7 @@ class PhenologicalDataProcessor:
             coord_path: Path to coordinates file
             year: Year to analyze
             season: Season ('sos' or 'eos')
-            pft: Plant functional type 
+            pft: Plant functional type
 
         Returns:
             DataFrame with attention weights by location
@@ -289,7 +297,7 @@ class PhenologicalDataProcessor:
         df = self.get_analysis_dataframe(data, preds, coord_path)
 
         select_indices = self.end_or_start_growing_season(df, season, pft=pft)
-        
+
         # Initialize attention weights DataFrame
         attention_df = pd.DataFrame(
             columns=[
@@ -447,8 +455,12 @@ class SensitivityAnalyzer:
         df_list = []
 
         for cluster in self.config.cluster_names:
-            data_path = os.path.join(self.config.data_directory, f"{cluster}_1982_2021.pkl")
-            pred_path = os.path.join(self.config.pred_directory, f"{cluster}_1982_2021.pkl")
+            data_path = os.path.join(
+                self.config.data_directory, f"{cluster}_1982_2021.pkl"
+            )
+            pred_path = os.path.join(
+                self.config.pred_directory, f"{cluster}_1982_2021.pkl"
+            )
             coord_path = os.path.join(self.config.coord_directory, f"{cluster}.parquet")
 
             # Check if files exist
@@ -611,6 +623,8 @@ def create_default_config() -> AnalysisConfig:
             "BET",
             "NET",
             "NDT",
+            "SHR",
+            "GRA",
         ],
     )
 
@@ -682,6 +696,8 @@ def main():
             "BET",
             "NET",
             "NDT",
+            "SHR",
+            "GRA",
         ],
     )
 
