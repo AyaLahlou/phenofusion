@@ -759,6 +759,11 @@ if __name__ == "__main__":
     batch_size = 30
     SOS_index = []
     EOS_index = []
+
+    # Debug counters for BET
+    bet_total_batches = 0
+    bet_matched_batches = 0
+
     # Iterate over DataFrame in batches of 30 rows
 
     for start in range(0, len(df), batch_size):
@@ -766,119 +771,191 @@ if __name__ == "__main__":
 
         # Special case for BET PFT: use latitude and DOY-based detection
         if args.PFT and args.PFT == "BET":
+            bet_total_batches += 1
             lat = batch_df["latitude"].iloc[0]
             doy = batch_df["doy"].iloc[0]
+            doy_2 = batch_df["doy"].iloc[-1]
+            buffer_days = 40
 
+            # First check if there's a valid slope signal
+            x = range(len(batch_df))
+            y = batch_df["CSIF"].values
+            has_signal = abs(y[0] - y[-1]) > min_diff
+
+            if not has_signal:
+                continue
+
+            slope, _, _, _, _ = linregress(x, y)
+            is_sos = slope >= min_slope
+            is_eos = slope <= -min_slope - 0.0005
+
+            matched = False
+            # Define latitude bands and corresponding DOY ranges for SOS and EOS
+            # Check if window overlaps with expected range AND has correct slope
             if lat >= 27 and lat <= 30.5:
-                if doy >= 50 and doy <= 150:
+                if is_sos and doy >= 50 - buffer_days and doy_2 <= 150 + buffer_days:
                     SOS_index.append(batch_df.index[0])
-                elif doy >= 200 and doy <= 300:
+                    matched = True
+                elif is_eos and doy >= 200 - buffer_days and doy_2 <= 300 + buffer_days:
                     EOS_index.append(batch_df.index[0])
+                    matched = True
             elif lat >= 25.75 and lat <= 27:
-                if doy >= 25 and doy <= 150:
+                if is_sos and doy >= 25 - buffer_days and doy_2 <= 150 + buffer_days:
                     SOS_index.append(batch_df.index[0])
-                elif doy >= 210 and doy <= 310:
+                    matched = True
+                elif is_eos and doy >= 210 - buffer_days and doy_2 <= 310 + buffer_days:
                     EOS_index.append(batch_df.index[0])
+                    matched = True
             elif lat >= 20 and lat <= 25.5:
-                if doy >= 40 and doy <= 170:
+                if is_sos and doy >= 40 - buffer_days and doy_2 <= 170 + buffer_days:
                     SOS_index.append(batch_df.index[0])
-                elif doy >= 220 and doy <= 315:
+                    matched = True
+                elif is_eos and doy >= 220 - buffer_days and doy_2 <= 315 + buffer_days:
                     EOS_index.append(batch_df.index[0])
+                    matched = True
             elif lat >= 13 and lat <= 19.75:
-                if doy >= 25 and doy <= 160:
+                if is_sos and doy >= 25 - buffer_days and doy_2 <= 160 + buffer_days:
                     SOS_index.append(batch_df.index[0])
-                elif doy >= 230 and doy <= 315:
+                    matched = True
+                elif is_eos and doy >= 230 - buffer_days and doy_2 <= 315 + buffer_days:
                     EOS_index.append(batch_df.index[0])
+                    matched = True
             elif lat >= 10 and lat <= 12.75:
-                if doy >= 25 and doy <= 160:
+                if is_sos and doy >= 25 - buffer_days and doy_2 <= 160 + buffer_days:
                     SOS_index.append(batch_df.index[0])
-                elif doy >= 240 and doy <= 325:
+                    matched = True
+                elif is_eos and doy >= 240 - buffer_days and doy_2 <= 325 + buffer_days:
                     EOS_index.append(batch_df.index[0])
+                    matched = True
             elif lat >= 9 and lat <= 9.75:
-                if doy >= 10 and doy <= 110:
+                if is_sos and doy >= 10 - buffer_days and doy_2 <= 110 + buffer_days:
                     SOS_index.append(batch_df.index[0])
-                elif doy >= 250 and doy <= 315:
+                    matched = True
+                elif is_eos and doy >= 250 - buffer_days and doy_2 <= 315 + buffer_days:
                     EOS_index.append(batch_df.index[0])
+                    matched = True
             elif lat >= 7 and lat <= 9:
-                if doy >= 10 and doy <= 90:
+                if is_sos and doy >= 10 - buffer_days and doy_2 <= 90 + buffer_days:
                     SOS_index.append(batch_df.index[0])
-                elif doy >= 260 and doy <= 325:
+                    matched = True
+                elif is_eos and doy >= 260 - buffer_days and doy_2 <= 325 + buffer_days:
                     EOS_index.append(batch_df.index[0])
+                    matched = True
             elif lat >= 4 and lat <= 7:
-                if doy >= 25 and doy <= 75:
+                if is_sos and doy >= 25 - buffer_days and doy_2 <= 75 + buffer_days:
                     SOS_index.append(batch_df.index[0])
-                elif doy >= 260 and doy <= 325:
+                    matched = True
+                elif is_eos and doy >= 260 - buffer_days and doy_2 <= 325 + buffer_days:
                     EOS_index.append(batch_df.index[0])
+                    matched = True
             elif lat >= 2 and lat <= 4:
-                if doy >= 20 and doy <= 70:
+                if is_sos and doy >= 20 - buffer_days and doy_2 <= 70 + buffer_days:
                     SOS_index.append(batch_df.index[0])
-                elif doy >= 275 and doy <= 340:
+                    matched = True
+                elif is_eos and doy >= 275 - buffer_days and doy_2 <= 340 + buffer_days:
                     EOS_index.append(batch_df.index[0])
+                    matched = True
             elif lat >= -2 and lat <= 2:
-                if (doy >= 20 and doy <= 70) or (doy >= 190 and doy <= 250):
+                # Tropical region with bimodal phenology
+                if is_sos and (
+                    (doy >= 20 - buffer_days and doy_2 <= 70 + buffer_days)
+                    or (doy >= 190 - buffer_days and doy_2 <= 250 + buffer_days)
+                ):
                     SOS_index.append(batch_df.index[0])
-                elif (doy >= 90 and doy <= 150) or (doy >= 275 and doy <= 340):
+                    matched = True
+                elif is_eos and (
+                    (doy >= 90 - buffer_days and doy_2 <= 150 + buffer_days)
+                    or (doy >= 275 - buffer_days and doy_2 <= 340 + buffer_days)
+                ):
                     EOS_index.append(batch_df.index[0])
+                    matched = True
             elif lat >= -6.5 and lat <= -2:
-                if doy >= 190 and doy <= 250:
+                if is_sos and doy >= 190 - buffer_days and doy_2 <= 250 + buffer_days:
                     SOS_index.append(batch_df.index[0])
-                elif doy >= 80 and doy <= 150:
+                    matched = True
+                elif is_eos and doy >= 80 - buffer_days and doy_2 <= 150 + buffer_days:
                     EOS_index.append(batch_df.index[0])
+                    matched = True
             elif lat >= -9.5 and lat <= -6.5:
-                if doy >= 180 and doy <= 250:
+                if is_sos and doy >= 180 - buffer_days and doy_2 <= 250 + buffer_days:
                     SOS_index.append(batch_df.index[0])
-                elif doy >= 60 and doy <= 150:
+                    matched = True
+                elif is_eos and doy >= 60 - buffer_days and doy_2 <= 150 + buffer_days:
                     EOS_index.append(batch_df.index[0])
+                    matched = True
             elif lat >= -12 and lat <= -9.5:
-                if doy >= 190 and doy <= 275:
+                if is_sos and doy >= 190 - buffer_days and doy_2 <= 275 + buffer_days:
                     SOS_index.append(batch_df.index[0])
-                elif doy >= 50 and doy <= 120:
+                    matched = True
+                elif is_eos and doy >= 50 - buffer_days and doy_2 <= 120 + buffer_days:
                     EOS_index.append(batch_df.index[0])
+                    matched = True
             elif lat >= -16.5 and lat <= -12:
-                if doy >= 200 and doy <= 275:
+                if is_sos and doy >= 200 - buffer_days and doy_2 <= 275 + buffer_days:
                     SOS_index.append(batch_df.index[0])
-                elif doy >= 50 and doy <= 120:
+                    matched = True
+                elif is_eos and doy >= 50 - buffer_days and doy_2 <= 120 + buffer_days:
                     EOS_index.append(batch_df.index[0])
+                    matched = True
             elif lat >= -18 and lat <= -16.5:
-                if doy >= 220 and doy <= 300:
+                if is_sos and doy >= 220 - buffer_days and doy_2 <= 300 + buffer_days:
                     SOS_index.append(batch_df.index[0])
-                elif doy >= 40 and doy <= 120:
+                    matched = True
+                elif is_eos and doy >= 40 - buffer_days and doy_2 <= 120 + buffer_days:
                     EOS_index.append(batch_df.index[0])
+                    matched = True
             elif lat >= -20.75 and lat <= -18:
-                if doy >= 240 and doy <= 320:
+                if is_sos and doy >= 240 - buffer_days and doy_2 <= 320 + buffer_days:
                     SOS_index.append(batch_df.index[0])
-                elif doy >= 40 and doy <= 120:
+                    matched = True
+                elif is_eos and doy >= 40 - buffer_days and doy_2 <= 120 + buffer_days:
                     EOS_index.append(batch_df.index[0])
+                    matched = True
             elif lat >= -22 and lat <= -21:
-                if doy >= 200 and doy <= 275:
+                if is_sos and doy >= 200 - buffer_days and doy_2 <= 275 + buffer_days:
                     SOS_index.append(batch_df.index[0])
-                elif doy >= 40 and doy <= 120:
+                    matched = True
+                elif is_eos and doy >= 40 - buffer_days and doy_2 <= 120 + buffer_days:
                     EOS_index.append(batch_df.index[0])
+                    matched = True
             elif lat >= -22.75 and lat <= -22.25:
-                if doy >= 240 and doy <= 320:
+                if is_sos and doy >= 240 - buffer_days and doy_2 <= 320 + buffer_days:
                     SOS_index.append(batch_df.index[0])
-                elif doy >= 40 and doy <= 120:
+                    matched = True
+                elif is_eos and doy >= 40 - buffer_days and doy_2 <= 120 + buffer_days:
                     EOS_index.append(batch_df.index[0])
+                    matched = True
             elif lat >= -37.75 and lat <= -23:
-                if doy >= 200 and doy <= 320:
+                if is_sos and doy >= 200 - buffer_days and doy_2 <= 320 + buffer_days:
                     SOS_index.append(batch_df.index[0])
-                elif doy >= 30 and doy <= 110:
+                    matched = True
+                elif is_eos and doy >= 30 - buffer_days and doy_2 <= 110 + buffer_days:
                     EOS_index.append(batch_df.index[0])
+                    matched = True
             elif lat >= -41 and lat <= -38:
-                if doy >= 200 and doy <= 300:
+                if is_sos and doy >= 200 - buffer_days and doy_2 <= 300 + buffer_days:
                     SOS_index.append(batch_df.index[0])
-                elif doy >= 0 and doy <= 100:
+                    matched = True
+                elif is_eos and doy >= 0 - buffer_days and doy_2 <= 100 + buffer_days:
                     EOS_index.append(batch_df.index[0])
+                    matched = True
             elif lat >= -45.75 and lat <= -41:
-                if doy >= 200 and doy <= 300:
+                if is_sos and doy >= 200 - buffer_days and doy_2 <= 300 + buffer_days:
                     SOS_index.append(batch_df.index[0])
-                elif doy >= 20 and doy <= 120:
+                    matched = True
+                elif is_eos and doy >= 20 - buffer_days and doy_2 <= 120 + buffer_days:
                     EOS_index.append(batch_df.index[0])
+                    matched = True
             elif lat <= -46:
-                if doy >= 200 and doy <= 300:
+                if is_sos and doy >= 200 - buffer_days and doy_2 <= 300 + buffer_days:
                     SOS_index.append(batch_df.index[0])
-                elif doy >= 30 and doy <= 120:
+                    matched = True
+                elif is_eos and doy >= 30 - buffer_days and doy_2 <= 120 + buffer_days:
                     EOS_index.append(batch_df.index[0])
+                    matched = True
+
+            if matched:
+                bet_matched_batches += 1
         else:
             # Default behavior: slope-based detection for non-BET PFTs
             x = range(len(batch_df))
@@ -902,6 +979,13 @@ if __name__ == "__main__":
     print(f"Number of valid SOS indices: {len(SOS_indices)}")
     print(f"Number of valid EOS indices: {len(EOS_indices)}")
 
+    # Print BET-specific debug info if applicable
+    if args.PFT and args.PFT == "BET":
+        print("\n=== BET Debug Info ===")
+        print(f"Total batches processed: {bet_total_batches}")
+        print(f"Batches matched (before filtering): {bet_matched_batches}")
+        print(f"Match rate: {bet_matched_batches/bet_total_batches*100:.2f}%")
+        print("======================\n")
     # attention drivers analysis
     save_imput_coord_att(
         SOS_indices,
