@@ -12,20 +12,38 @@ module load cuda11.1/toolkit
 pip install tft-torch
 pip install cartopy
 
-
 PFT="SHR"
 DATE=$(date '+%Y%m%d')
-
+# Parse command line arguments
+TEST_MODE=""
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --test-mode|--test_mode)
+            TEST_MODE="--test_mode"
+            shift
+            ;;
+        *)
+            echo "Unknown option $1"
+            exit 1
+            ;;
+    esac
+done
 DATA_DIR="/burg/glab/users/al4385/data/TFT_40_overlapping_samples/${PFT}_1982_2021.pkl"
-PRED_DIR="/burg/glab/users/al4385/predictions/pred_40year_moresamples/SHR/${PFT}_20251023.pkl"
+PRED_DIR="/burg/glab/users/al4385/predictions/pred_40year_moresamples/${PFT}_20251023.pkl"
 COORD_DIR="/burg/glab/users/al4385/data/coordinates/${PFT}.parquet"
-OUTPUT_DIR="/burg/glab/users/ms7073/analysis/driversdata/oversampling/${PFT}_${DATE}"
+if [[ -n "$TEST_MODE" ]]; then
+    OUTPUT_DIR="/burg/glab/users/ms7073/analysis/driversdata/oversampling/test/${PFT}_${DATE}"
+    MAP_DATA_DIR="/burg/glab/users/ms7073/analysis/driversdata/oversampling/test/"
+    MAP_OUTPUT_DIR="/burg/glab/users/al4385/figures/drivermaps/test/"
+else
+    OUTPUT_DIR="/burg/glab/users/ms7073/analysis/driversdata/oversampling/${PFT}_${DATE}"
+    MAP_DATA_DIR="/burg/glab/users/ms7073/analysis/driversdata/oversampling/"
+    MAP_OUTPUT_DIR="/burg/glab/users/al4385/figures/drivermaps/"
+fi
 FORECAST_WINDOW=30
 
 # generate drivers data
-python /burg-archive/home/$USER/phenofusion/src/phenofusion/dataio/driversdata.py --PFT $PFT --pred_path $PRED_DIR --data_path $DATA_DIR --coord_path $COORD_DIR --output_path $OUTPUT_DIR --forecast_window_length $FORECAST_WINDOW
+python /burg-archive/home/$USER/phenofusion/src/phenofusion/dataio/driversdata.py --PFT $PFT --pred_path $PRED_DIR --data_path $DATA_DIR --coord_path $COORD_DIR --output_path $OUTPUT_DIR --forecast_window_length $FORECAST_WINDOW $TEST_MODE
 
-# generate driver maps
-#MAP_DATA_DIR="/burg/glab/users/ms7073/analysis/driversdata/oversampling/"
-#MAP_OUTPUT_DIR="/burg/glab/users/ms7073/analysis/driversdata/driver_maps_oversampling/"
-#python /burg-archive/home/$USER/phenofusion/src/phenofusion/analysis/run_driver_maps.py --data-dir $MAP_DATA_DIR --output-dir $MAP_OUTPUT_DIR --show-plots
+# This script generates and saves spatial driver maps from the processed drivers data.
+python /burg-archive/home/$USER/phenofusion/src/phenofusion/analysis/run_driver_maps.py --data-dir $MAP_DATA_DIR --output-dir $MAP_OUTPUT_DIR
