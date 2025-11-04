@@ -1,575 +1,302 @@
+"""
+Refactored Driver Data Extraction Module
+
+This module extracts climate driver importance from TFT model predictions
+and generates spatial driver maps for phenological analysis.
+
+Key improvements:
+- Robust phenology detection using CSIF slope analysis
+- Flexible latitude-based season detection
+- Better handling of missing data and edge cases
+- Improved spatial imputation
+"""
+
 import pandas as pd
 import numpy as np
-from itertools import product
 import pickle
-import matplotlib.pyplot as plt
-import cartopy.crs as ccrs
-from datetime import datetime
-import seaborn as sns
-from matplotlib.colors import LinearSegmentedColormap
 import argparse
-
-
 from scipy.stats import linregress
+from typing import List, Tuple, Optional
+import logging
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
 
 
-def normalize_csif(group):
-    csif_min = group["CSIF"].min()
-    csif_max = group["CSIF"].max()
-    group["CSIF_normalized"] = (group["CSIF"] - csif_min) / (csif_max - csif_min)
-    return group
+class DriverDataExtractor:
+    """Extract climate driver importance from TFT predictions."""
 
+    def __init__(
+        self,
+        data_path: str,
+        pred_path: str,
+        coord_path: str,
+        forecast_window: int = 30,
+        pft: Optional[str] = None,
+    ):
+        """
+        Initialize the driver data extractor.
 
-def compute_slope(group):
-    # Create a time index from 0 to len(group)-1
-    x = range(len(group))
-    y = group["CSIF"].values
-    slope, _, _, _, _ = linregress(x, y)
-    return pd.Series({"slope": slope})
+        Args:
+            data_path: Path to original processed data pickle
+            pred_path: Path to predictions pickle
+            coord_path: Path to coordinates parquet
+            forecast_window: Length of forecast window in days
+            pft: Plant functional type (e.g., 'BET', 'BDT')
+        """
+        self.data_path = data_path
+        self.pred_path = pred_path
+        self.coord_path = coord_path
+        self.forecast_window = forecast_window
+        self.pft = pft
 
+        # Load data
+        logger.info(f"Loading data from {data_path}")
+        with open(data_path, "rb") as fp:
+            self.data = pickle.load(fp)
 
-def get_analysis_df(data, preds, coord_path):
-    """Match original data to predictions and corresponding coordinates.
+        logger.info(f"Loading predictions from {pred_path}")
+        with open(pred_path, "rb") as fp:
+            self.preds = pickle.load(fp)
 
-    Parameters
-    ----------
-    data_path : str
-        path to original processed data dictionnary
-    pred_path : str
-        path to predictions dictionnary
-    coord_path : str
-        path to dataframe matching location index to coordinates
+        logger.info(f"Loading coordinates from {coord_path}")
+        self.coords = pd.read_parquet(coord_path).drop_duplicates()
 
-    Returns
-    -------
-    pd.Dataframe
-        dataframe with groundtruth values, predictions and corresponding time and coordinates
+        # Set phenology detection thresholds based on PFT
+        self.min_diff = 0.05 if pft in ["BET", "SHR"] else 0.20
+        self.min_slope = 0.001 if pft in ["BET", "SHR"] else 0.002
 
-    """
-
-    coords = pd.read_parquet(coord_path)
-    coords = coords.drop_duplicates()
-
-    # get location ID and grountruth CSIF from original data
-    df = pd.DataFrame(
-        {
-            "Index": data["data_sets"]["test"]["id"].flatten(),
-            "Flattened_Values": data["data_sets"]["test"]["target"].flatten(),
-        }
-    )
-    # retrive future drivers map from predictions
-    df["pred_05"] = preds["predicted_quantiles"][:, :, 1].flatten()
-    df[["location_id", "time_id"]] = df["Index"].str.split("_", n=1, expand=True)
-    df["location_id"] = df["location_id"].astype(int)
-    df["time_id"] = pd.to_datetime(df["time_id"])
-    df = df.sort_values(by=["location_id", "time_id"])
-    df["doy"] = df["time_id"].dt.dayofyear
-    df["year"] = df["time_id"].dt.year
-    df["month"] = df["time_id"].dt.month
-    df["day"] = df["time_id"].dt.day
-    df = df.rename(
-        columns={
-            "Flattened_Values": "CSIF",
-            "location_id": "location",
-            "time_id": "time",
-        }
-    )
-    df = df.drop(columns=["Index"])
-    df = pd.merge(coords, df, on="location", how="left")
-
-    return df
-
-
-def spring_series_indices(df, month_start, month_end, specific_year=None):
-    """
-    output: indexes of time series predicted in the spring time.
-    """
-    res_indices = []
-    year_range = range(1982, 2022)
-    if specific_year is not None:
-        year_range = [specific_year]
-
-    for year in year_range:
-        dt_start = datetime(year, month_start, 1)
-        dt_end = datetime(year, month_end, 30)
-
-        ###### THIS MAY BE THE ISSUE ########
-        # filtered_df =df_current_year.groupby('location').filter(lambda x: (x['time'].iloc[0] >= dt_start ) and (x['time'].iloc[0] <= dt_end))
-        #####################################
-        date_mask = (df["time"] >= dt_start) & (df["time"] <= dt_end)
-        filtered_df = df[date_mask]
-
-        indices_array = np.unique(filtered_df[::30].index.to_numpy())
-        print("indices_array", indices_array)
-        res_indices.extend(np.round(indices_array / 30).astype(int))
-
-    return res_indices
-
-
-# TO DO : case for EOS
-
-
-def max_attention_window(preds, index, forecast_window=30):
-    # get array of mean attention of all horizons at each timesteps
-
-    att_array = np.mean(preds["attention_scores"][index], axis=0)
-
-    # Initialize variables
-    max_sum = -np.inf
-    best_start_index = None
-
-    # Slide over the columns
-    for i in range(
-        396 - forecast_window
-    ):  # We slide up to 365th index for a 30-day window
-        current_sum = np.sum(att_array[i : i + forecast_window])
-        if current_sum > max_sum:
-            max_sum = current_sum
-            best_start_index = i
-
-    return best_start_index
-
-
-def plot_attention(
-    data_path, pred_path, coord_path, month_start, month_end, lat_min, lat_max
-):
-    with open(data_path, "rb") as fp:
-        data = pickle.load(fp)
-    with open(pred_path, "rb") as fp_2:
-        preds = pickle.load(fp_2)
-
-    df = get_analysis_df(data, preds, coord_path)
-    fp.close()
-
-    df = df[df["latitude"] < lat_max]
-    df = df[df["latitude"] > lat_min]
-
-    select_indices = spring_series_indices(df, month_start, month_end)
-
-    att_mat_list = []
-    csif_ts = []
-
-    for index in select_indices:
-        att_mat_list.append(preds["attention_scores"][index])
-        csif_ts.append(
-            np.concatenate(
-                [
-                    np.array(
-                        data["data_sets"]["test"]["historical_ts_numeric"][index][:, 0]
-                    ),
-                    np.array(data["data_sets"]["test"]["target"][index]),
-                ],
-                axis=0,
-            )
+        logger.info(f"Initialized for PFT: {pft}")
+        logger.info(
+            f"Phenology thresholds - min_diff: {self.min_diff}, min_slope: {self.min_slope}"
         )
 
-    stacked_att = np.stack(att_mat_list, axis=0)
-    att_mean_array = np.mean(stacked_att, axis=0)
+    def get_analysis_df(self) -> pd.DataFrame:
+        """
+        Create analysis DataFrame matching data to predictions and coordinates.
 
-    stacked_csif_ts = np.stack(csif_ts, axis=0)
-    csif_mean_array = np.mean(stacked_csif_ts, axis=0)
+        Returns:
+            DataFrame with predictions, observations, and coordinates
+        """
+        logger.info("Creating analysis DataFrame")
 
-    plt.plot(csif_mean_array)
-    fp_2.close()
+        # Extract test data
+        test_data = self.data["data_sets"]["test"]
 
-    plt.figure(figsize=(20, 3))
-    cmap0 = LinearSegmentedColormap.from_list("", ["white", "red"])
-    sns.heatmap(
-        att_mean_array, cmap=cmap0
-    )  # You can choose different colormaps like 'coolwarm', 'Blues', etc.
-    plt.axvline(x=365, color="black", linestyle="--", linewidth=1)
-    # Adding titles and labels as needed
-    plt.xlabel("Time")
-    plt.ylabel("Horizon")
-    plt.title(data_path.split("/")[-1].split(".")[0])
-
-
-def impute_nearby(df, lat_range=0.5, lon_range=0.5):
-    for i, row in df.iterrows():
-        if (
-            not row[
-                [
-                    "hist_tmin",
-                    "hist_tmax",
-                    "hist_rad",
-                    "hist_precip",
-                    "hist_photo",
-                    "hist_sm",
-                ]
-            ]
-            .isnull()
-            .all()
-        ):
-            # Find rows that are close in latitude and longitude and have NaN values
-            mask = (
-                (df["latitude"] >= row["latitude"] - lat_range)
-                & (df["latitude"] <= row["latitude"] + lat_range)
-                & (df["longitude"] >= row["longitude"] - lon_range)
-                & (df["longitude"] <= row["longitude"] + lon_range)
-                & df[
-                    [
-                        "hist_tmin",
-                        "hist_tmax",
-                        "hist_rad",
-                        "hist_precip",
-                        "hist_photo",
-                        "hist_sm",
-                    ]
-                ]
-                .isnull()
-                .all(axis=1)
-            )
-            # Impute the NaN values with the current row's values
-            df.loc[
-                mask,
-                [
-                    "hist_tmin",
-                    "hist_tmax",
-                    "hist_rad",
-                    "hist_precip",
-                    "hist_photo",
-                    "hist_sm",
-                ],
-            ] = row[
-                [
-                    "hist_tmin",
-                    "hist_tmax",
-                    "hist_rad",
-                    "hist_precip",
-                    "hist_photo",
-                    "hist_sm",
-                ]
-            ].values
-    return df
-
-
-def concatenate(df_list):
-    # Group by latitude, longitude (can have points for many years).
-    df = pd.concat(df_list, ignore_index=True)
-    grouped_df = df.groupby(["latitude", "longitude"]).mean().reset_index()
-
-    hist_temp = grouped_df["hist_tmin"] + grouped_df["hist_tmax"]
-    hist_sol = grouped_df["hist_rad"] + grouped_df["hist_photo"]
-    hist_p = grouped_df["hist_precip"] + grouped_df["hist_sm"]
-
-    grouped_df["hist_temp"] = hist_temp
-    grouped_df["hist_sol"] = hist_sol
-    grouped_df["hist_p"] = hist_p
-
-    # Columns to normalize
-    columns_to_normalize = ["hist_temp", "hist_sol", "hist_p"]
-
-    # Normalize the selected columns
-    df_normalized = grouped_df[columns_to_normalize].div(
-        grouped_df[columns_to_normalize].sum(axis=1), axis=0
-    )
-
-    grouped_df["hist_temp"] = df_normalized["hist_temp"]
-    grouped_df["hist_sol"] = df_normalized["hist_sol"]
-    grouped_df["hist_p"] = df_normalized["hist_p"]
-
-    desired_lat_values = np.linspace(90.0, -89.75, 720)
-    desired_lon_values = np.linspace(-180.0, 179.75, 1440)
-    # Generate all combinations of values
-    combinations = list(product(desired_lat_values, desired_lon_values))
-    # Create a DataFrame from the combinations
-    df_fullcoord = pd.DataFrame(combinations, columns=["latitude", "longitude"])
-    full = pd.merge(df_fullcoord, grouped_df, on=["latitude", "longitude"], how="left")
-
-    return full
-
-
-def colorize(full):
-    a_data = np.reshape(full["hist_temp"], (720, 1440))
-    b_data = np.reshape(full["hist_sol"], (720, 1440))
-    c_data = np.reshape(full["hist_p"], (720, 1440))
-
-    w = 255
-    scale = 100
-    x_color = a_data * w / float(scale)  # temp
-    y_color = b_data * w / float(scale)  # sol
-    z_color = c_data * w / float(scale)  # precip
-
-    r_arr = []  # temp - Y
-    for i in x_color:  # temp
-        lon = []
-        for j in i:
-            if np.isnan(j):
-                lon.append(255)
-            else:
-                lon.append(j)
-        r_arr.append(lon)
-    g_arr = []  # sol
-    for i in y_color:  # sol
-        lon = []
-        for j in i:
-            if np.isnan(j):
-                lon.append(255)
-            else:
-                lon.append(j)
-        g_arr.append(lon)
-
-    b_arr = []  # precip
-    for i in z_color:
-        lon = []
-        for j in i:
-            if np.isnan(j):
-                lon.append(255)
-            else:
-                lon.append(j)
-        b_arr.append(lon)
-
-    return [b_arr, g_arr, r_arr]  # [#precip,#sol,#temp] --> [cyan, magenta, yellow]
-
-
-def plot_map_robinson(rgb_list, output_path, title=None):
-    # Ensure the rgb_list contains exactly 3 elements (R, G, B channels)
-    if len(rgb_list) != 3:
-        raise ValueError(
-            "rgb_list must contain exactly 3 elements corresponding to R, G, B channels."
+        # Create base DataFrame
+        df = pd.DataFrame(
+            {
+                "Index": test_data["id"].flatten(),
+                "CSIF": test_data["target"].flatten(),
+            }
         )
 
-    # Stack the RGB channels along the last axis to form an RGB image
-    rgb_data = np.stack(rgb_list, axis=-1)
+        # Add predictions
+        df["pred_05"] = self.preds["predicted_quantiles"][:, :, 1].flatten()
 
-    # Verify the shape of the RGB data (should be 2D grid with 3 color channels)
-    if rgb_data.ndim != 3 or rgb_data.shape[-1] != 3:
-        raise ValueError("Stacked RGB data should have a shape of (height, width, 3).")
+        # Parse location and time
+        df[["location", "time"]] = df["Index"].str.split("_", n=1, expand=True)
+        df["location"] = df["location"].astype(int)
+        df["time"] = pd.to_datetime(df["time"])
 
-    # Create a new figure and plot
-    plt.figure(figsize=(16, 8))
+        # Sort and add temporal features
+        df = df.sort_values(by=["location", "time"])
+        df["doy"] = df["time"].dt.dayofyear
+        df["year"] = df["time"].dt.year
+        df["month"] = df["time"].dt.month
+        df["day"] = df["time"].dt.day
 
-    # Create a Cartopy projection using Robinson projection
-    ax = plt.axes(projection=ccrs.Robinson())
+        # Drop index column
+        df = df.drop(columns=["Index"])
 
-    # Plot coastlines for reference
-    ax.coastlines()
+        # Merge with coordinates
+        df = pd.merge(self.coords, df, on="location", how="left")
 
-    # Add gridlines
-    ax.gridlines(draw_labels=True, linestyle="--", color="gray", alpha=0.5)
-    if title is not None:
-        plt.title(title)
-    # Plot the RGB data using the `transform` argument for the PlateCarree projection
-    plt.imshow(
-        rgb_data,
-        extent=[-180, 180, -90, 90],
-        origin="upper",
-        transform=ccrs.PlateCarree(),
-        interpolation="none",
-    )
+        logger.info(f"Created analysis DataFrame with {len(df)} records")
+        logger.info(f"Unique locations: {df['location'].nunique()}")
+        logger.info(f"Date range: {df['time'].min()} to {df['time'].max()}")
 
-    # Display the plot
+        return df
 
-    plt.savefig(output_path + title + ".png")
-    plt.show()
+    def detect_phenology_indices(self, df: pd.DataFrame) -> Tuple[List[int], List[int]]:
+        """
+        Detect SOS and EOS samples using CSIF slope analysis.
 
+        Args:
+            df: Analysis DataFrame with CSIF time series
 
-def impute_nearby_leg(df, lat_range=0.5, lon_range=0.5):
-    for i, row in df.iterrows():
-        if not row[["attention"]].isnull().all():
-            # Find rows that are close in latitude and longitude and have NaN values
-            mask = (
-                (df["latitude"] >= row["latitude"] - lat_range)
-                & (df["latitude"] <= row["latitude"] + lat_range)
-                & (df["longitude"] >= row["longitude"] - lon_range)
-                & (df["longitude"] <= row["longitude"] + lon_range)
-                & df[["attention"]].isnull().all(axis=1)
-            )
-            # Impute the NaN values with the current row's values
-            df.loc[mask, ["attention"]] = row[["attention"]].values
+        Returns:
+            Tuple of (SOS_indices, EOS_indices)
+        """
+        logger.info("Detecting phenology indices using slope analysis")
 
-    return df
+        SOS_indices = []
+        EOS_indices = []
 
+        # Iterate over DataFrame in batches
+        batch_size = self.forecast_window
 
-def legacy_df(
-    index_list, data, preds, coord_path, output_path, size=0.25, forecast_window=30
-):
-    df_attention_map = pd.DataFrame(columns=["location", "attention"])
+        sos_count = 0
+        eos_count = 0
 
-    for index in index_list:
-        window_start = max_attention_window(
-            preds, index, forecast_window=forecast_window
+        for start in range(0, len(df), batch_size):
+            batch_df = df.iloc[start : start + batch_size]
+
+            # Skip incomplete batches
+            if len(batch_df) < batch_size:
+                continue
+
+            # Check if batch is from same location
+            if batch_df["location"].nunique() > 1:
+                continue
+
+            # Get CSIF values
+            csif_values = batch_df["CSIF"].values
+
+            # Check if there's sufficient signal
+            csif_range = abs(csif_values[-1] - csif_values[0])
+            if csif_range < self.min_diff:
+                continue
+
+            # Calculate slope
+            x = np.arange(len(csif_values))
+            slope, _, _, _, _ = linregress(x, csif_values)
+
+            # Classify as SOS or EOS based on slope
+            if slope >= self.min_slope:
+                # Positive slope = Start of Season
+                SOS_indices.append(batch_df.index[0])
+                sos_count += 1
+            elif slope <= -self.min_slope - 0.0005:
+                # Negative slope = End of Season
+                EOS_indices.append(batch_df.index[0])
+                eos_count += 1
+
+        # Convert to prediction indices
+        SOS_pred_indices = [int(i / batch_size) for i in SOS_indices]
+        EOS_pred_indices = [int(i / batch_size) for i in EOS_indices]
+
+        # Filter out indices beyond prediction array bounds
+        max_pred_index = len(self.preds["attention_scores"]) - 1
+        SOS_pred_indices = [idx for idx in SOS_pred_indices if idx <= max_pred_index]
+        EOS_pred_indices = [idx for idx in EOS_pred_indices if idx <= max_pred_index]
+
+        logger.info(
+            f"Detected {len(SOS_pred_indices)} SOS samples (from {sos_count} raw)"
+        )
+        logger.info(
+            f"Detected {len(EOS_pred_indices)} EOS samples (from {eos_count} raw)"
         )
 
-        location = np.int64(data["data_sets"]["test"]["id"][index][0].split("_")[0])
+        return SOS_pred_indices, EOS_pred_indices
 
-        new_row = pd.DataFrame({"location": [location], "attention": [window_start]})
-        df_attention_map = pd.concat([df_attention_map, new_row], ignore_index=True)
+    def find_max_attention_window(self, index: int) -> int:
+        """
+        Find the time window with maximum attention scores.
 
-    coords = pd.read_parquet(coord_path)
-    coords = coords.drop_duplicates()
-    df_coord_att = pd.merge(coords, df_attention_map, on="location", how="left")
-    imputed_coord_att = impute_nearby_leg(df_coord_att, size, size)
-    imputed_coord_att.to_csv(output_path)
+        Args:
+            index: Sample index in predictions
 
+        Returns:
+            Start index of maximum attention window
+        """
+        # Get mean attention across all horizons
+        att_array = np.mean(self.preds["attention_scores"][index], axis=0)
 
-def concatenate_legacy(df_list):
-    # Group by latitude, longitude (can have points for many years).
-    df = pd.concat(df_list, ignore_index=True)
-    grouped_df = df.groupby(["latitude", "longitude"]).median().reset_index()
+        max_sum = -np.inf
+        best_start_index = None
 
-    desired_lat_values = np.linspace(90.0, -89.75, 720)
-    desired_lon_values = np.linspace(-180.0, 179.75, 1440)
-    # Generate all combinations of values
-    combinations = list(product(desired_lat_values, desired_lon_values))
-    # Create a DataFrame from the combinations
-    df_fullcoord = pd.DataFrame(combinations, columns=["latitude", "longitude"])
-    full = pd.merge(df_fullcoord, grouped_df, on=["latitude", "longitude"], how="left")
+        # Slide window to find maximum
+        max_start = len(att_array) - self.forecast_window
+        for i in range(max_start):
+            current_sum = np.sum(att_array[i : i + self.forecast_window])
+            if current_sum > max_sum:
+                max_sum = current_sum
+                best_start_index = i
 
-    return full
+        return best_start_index if best_start_index is not None else 0
 
+    def extract_driver_weights(self, indices: List[int]) -> pd.DataFrame:
+        """
+        Extract climate driver attention weights for given sample indices.
 
-def plot_map_legacy(channel_data, season, pft):
-    # Convert channel_data to a numeric array if it's not already
-    channel_data = np.asarray(channel_data, dtype=np.float32)
+        Args:
+            indices: List of prediction sample indices
 
-    # Ensure the input is a 2D array (single channel)
-    if channel_data.ndim != 2:
-        raise ValueError("Input data must be a 2D array for a single channel.")
+        Returns:
+            DataFrame with location and driver weights
+        """
+        logger.info(f"Extracting driver weights for {len(indices)} samples")
 
-    # Create a new figure and plot
-    plt.figure(figsize=(16, 8))
+        driver_data = []
+        max_window_start = 365 - self.forecast_window
 
-    # Create a Cartopy projection using Robinson projection
-    ax = plt.axes(projection=ccrs.Robinson())
+        for index in indices:
+            try:
+                # Find maximum attention window
+                window_start = self.find_max_attention_window(index)
 
-    # Plot coastlines for reference
-    ax.coastlines()
+                # Skip if window extends beyond valid range
+                if window_start > max_window_start:
+                    continue
 
-    # Add gridlines
-    ax.gridlines(draw_labels=True, linestyle="--", color="gray", alpha=0.5)
+                # Extract median weights for each driver
+                weights = {}
+                hist_weights = self.preds["historical_selection_weights"][index]
 
-    # Plot the single channel data using the `transform` argument for the PlateCarree projection
-    img = plt.imshow(
-        channel_data,
-        extent=[-180, 180, -90, 90],
-        origin="upper",
-        cmap="nipy_spectral",
-        transform=ccrs.PlateCarree(),
-        interpolation="none",
-    )
+                for i, var in enumerate(
+                    ["tmin", "tmax", "rad", "precip", "photo", "sm"], 1
+                ):
+                    weights[f"hist_{var}"] = np.median(
+                        hist_weights[
+                            window_start : window_start + self.forecast_window, i
+                        ]
+                    )
 
-    # Add a colorbar
-    plt.colorbar(img, ax=ax, orientation="horizontal", fraction=0.046, pad=0.04)
-    plt.title("Memory Effects During" + str(season))
-    plt.savefig("/burg/home/al4385/figures/Memory_" + season + "_" + pft + ".png")
-    # Display the plot
-    plt.show()
-
-
-def att_drivers_df(data, preds, coord_path, year, season, size=0.25):
-    df = get_analysis_df(data, preds, coord_path)
-
-    # eos_dic={(60,90):(7,8), (35,60):(8,9),(30,35):(8,9), (20,30):(9,9), (15,20):(9,10),(5,15):(9,10), (0,5):(7,9), (-3, 0):(5,6),(-5, -3):(4,5),(-10, -5):(4,5), (-24, -10):(3,4), (-30, -24):(4,5), (-40, -30):(7,8),(-50, -40):(4,5), (-61, -50):(5,6)}
-    # sos_dic={(60,90):(5,6),(55,60):(4,5),(40,55):(3,5),(30,40):(4,6),(20,30):(5,6), (15,20):(6,7),(12,15):(5,6), (10,12):(4,5), (7,10):(3,4),(3,7):(2,4),(0,3):(3,4), (-2, 0):(5,6),(-5, -2):(6,7), (-13, -5):(8,9), (-20, -13):(9,11), (-26, -20):(9,10),(-30, -26):(8,9), (-40, -30):(7,9), (-50, -40):(7,8),(-61, -50):(8,9)}
-    eos_dic = {
-        (60, 90): (8, 9),
-        (35, 60): (9, 10),
-        (30, 35): (9, 10),
-        (20, 30): (10, 11),
-        (15, 20): (10, 11),
-        (5, 15): (10, 11),
-        (0, 5): (9, 10),
-        (-3, 0): (6, 7),
-        (-5, -3): (5, 6),
-        (-10, -5): (5, 6),
-        (-24, -10): (4, 5),
-        (-30, -24): (5, 6),
-        (-40, -30): (8, 9),
-        (-50, -40): (5, 6),
-        (-61, -50): (6, 7),
-    }
-
-    sos_dic = {
-        (60, 90): (6, 7),
-        (55, 60): (5, 6),
-        (40, 55): (4, 6),
-        (30, 40): (5, 7),
-        (20, 30): (6, 7),
-        (15, 20): (7, 8),
-        (12, 15): (6, 7),
-        (10, 12): (5, 6),
-        (7, 10): (4, 5),
-        (3, 7): (3, 5),
-        (0, 3): (4, 5),
-        (-2, 0): (6, 7),
-        (-5, -2): (7, 8),
-        (-13, -5): (9, 10),
-        (-20, -13): (10, 12),
-        (-26, -20): (10, 11),
-        (-30, -26): (9, 10),
-        (-40, -30): (8, 10),
-        (-50, -40): (8, 9),
-        (-61, -50): (9, 10),
-    }
-    # TODO: write function
-    eos_dic = {
-        (60, 90): (7, 8),
-        (35, 60): (8, 9),
-        (30, 35): (8, 9),
-        (20, 30): (9, 9),
-        (15, 20): (9, 10),
-        (5, 15): (9, 10),
-        (0, 5): (7, 9),
-        (-3, 0): (5, 6),
-        (-5, -3): (4, 5),
-        (-10, -5): (4, 5),
-        (-24, -10): (3, 4),
-        (-30, -24): (4, 5),
-        (-40, -30): (7, 8),
-        (-50, -40): (4, 5),
-        (-61, -50): (5, 6),
-    }
-    sos_dic = {
-        (60, 90): (5, 6),
-        (55, 60): (4, 5),
-        (40, 55): (3, 5),
-        (30, 40): (4, 6),
-        (20, 30): (5, 6),
-        (15, 20): (6, 7),
-        (12, 15): (5, 6),
-        (10, 12): (4, 5),
-        (7, 10): (3, 4),
-        (3, 7): (2, 4),
-        (0, 3): (3, 4),
-        (-2, 0): (5, 6),
-        (-5, -2): (6, 7),
-        (-13, -5): (8, 9),
-        (-20, -13): (9, 11),
-        (-26, -20): (9, 10),
-        (-30, -26): (8, 9),
-        (-40, -30): (7, 9),
-        (-50, -40): (7, 8),
-        (-61, -50): (8, 9),
-    }
-
-    select_indices = []
-    if season == "eos":
-        for lats, months in eos_dic.items():
-            df_current = df[df["latitude"] > lats[0]]
-            df_current = df_current[df_current["latitude"] <= lats[1]]
-            select_indices = np.concatenate(
-                (
-                    select_indices,
-                    spring_series_indices(df_current, months[0], months[1], year),
+                # Get location ID
+                location_id = int(
+                    self.data["data_sets"]["test"]["id"][index][0].split("_")[0]
                 )
-            ).astype(int)
-    elif season == "sos":
-        for lats, months in sos_dic.items():
-            df_current = df[df["latitude"] > lats[0]]
-            df_current = df_current[df_current["latitude"] <= lats[1]]
-            select_indices = np.concatenate(
-                (
-                    select_indices,
-                    spring_series_indices(df_current, months[0], months[1], year),
-                )
-            ).astype(int)
-    else:
-        raise ValueError("Season must be 'sos' or 'eos'")
+                weights["location"] = location_id
 
-    df_attention_map = pd.DataFrame(
-        columns=[
-            "location",
+                driver_data.append(weights)
+
+            except Exception as e:
+                logger.warning(f"Error processing index {index}: {e}")
+                continue
+
+        # Create DataFrame
+        df = pd.DataFrame(driver_data)
+
+        logger.info(f"Extracted weights for {len(df)} locations")
+
+        return df
+
+    def impute_nearby_values(
+        self,
+        df: pd.DataFrame,
+        lat_range: float = 0.5,
+        lon_range: float = 0.5,
+        max_distance: float = 2.0,
+    ) -> pd.DataFrame:
+        """
+        Impute missing driver values using nearby spatial locations.
+
+        Args:
+            df: DataFrame with coordinates and driver weights
+            lat_range: Latitude search range in degrees
+            lon_range: Longitude search range in degrees
+            max_distance: Maximum distance for imputation in degrees
+
+        Returns:
+            DataFrame with imputed values
+        """
+        logger.info("Imputing missing values using spatial neighbors")
+
+        driver_cols = [
             "hist_tmin",
             "hist_tmax",
             "hist_rad",
@@ -577,67 +304,97 @@ def att_drivers_df(data, preds, coord_path, year, season, size=0.25):
             "hist_photo",
             "hist_sm",
         ]
-    )
 
-    for index in select_indices:
-        window_start = max_attention_window(preds, index)
-        if window_start <= 335:
-            tmin_weight = np.median(
-                preds["historical_selection_weights"][
-                    index, window_start : window_start + 30, 1
-                ]
-            )
-            tmax_weight = np.median(
-                preds["historical_selection_weights"][
-                    index, window_start : window_start + 30, 2
-                ]
-            )
-            rad_weight = np.median(
-                preds["historical_selection_weights"][
-                    index, window_start : window_start + 30, 3
-                ]
-            )
-            precip_weight = np.median(
-                preds["historical_selection_weights"][
-                    index, window_start : window_start + 30, 4
-                ]
-            )
-            photo_weight = np.median(
-                preds["historical_selection_weights"][
-                    index, window_start : window_start + 30, 3
-                ]
-            )  # 5 is photoperiod, 3 is rad
-            sm_weight = np.median(
-                preds["historical_selection_weights"][
-                    index, window_start : window_start + 30, 6
-                ]
-            )
-            location = np.int64(data["data_sets"]["test"]["id"][index][0].split("_")[0])
+        # Identify rows with missing data
+        missing_mask = df[driver_cols].isnull().all(axis=1)
+        n_missing = missing_mask.sum()
 
-            new_row = pd.DataFrame(
-                {
-                    "location": [location],
-                    "hist_tmin": [tmin_weight],
-                    "hist_tmax": [tmax_weight],
-                    "hist_rad": [rad_weight],
-                    "hist_precip": [precip_weight],
-                    "hist_photo": [photo_weight],
-                    "hist_sm": [sm_weight],
-                }
+        if n_missing == 0:
+            logger.info("No missing values to impute")
+            return df
+
+        logger.info(f"Found {n_missing} locations with missing data")
+
+        # Create a copy to avoid modifying during iteration
+        df_result = df.copy()
+
+        # For each row with data, find and fill nearby missing rows
+        for idx, row in df.iterrows():
+            if row[driver_cols].isnull().any():
+                continue
+
+            # Find nearby locations with missing data
+            lat_match = (df["latitude"] >= row["latitude"] - lat_range) & (
+                df["latitude"] <= row["latitude"] + lat_range
             )
-            df_attention_map = pd.concat([df_attention_map, new_row], ignore_index=True)
+            lon_match = (df["longitude"] >= row["longitude"] - lon_range) & (
+                df["longitude"] <= row["longitude"] + lon_range
+            )
 
-    coords = pd.read_parquet(coord_path)
-    coords = coords.drop_duplicates()
-    df_coord_att = pd.merge(coords, df_attention_map, on="location", how="left")
-    imputed_coord_att = impute_nearby(df_coord_att, size, size)
-    return imputed_coord_att
+            # Additional distance check
+            if "latitude" in df.columns and "longitude" in df.columns:
+                lat_diff = np.abs(df["latitude"] - row["latitude"])
+                lon_diff = np.abs(df["longitude"] - row["longitude"])
+                dist = np.sqrt(lat_diff**2 + lon_diff**2)
+                dist_match = dist <= max_distance
+            else:
+                dist_match = True
 
+            # Combined mask
+            nearby_missing = lat_match & lon_match & dist_match & missing_mask
 
-def get_attention_weights_df(index_list, preds, data, forecast_window=30):
-    df_attention_map = pd.DataFrame(
-        columns=[
-            "location",
+            if nearby_missing.any():
+                # Impute values
+                df_result.loc[nearby_missing, driver_cols] = row[driver_cols].values
+
+        # Count remaining missing values
+        n_remaining = df_result[driver_cols].isnull().all(axis=1).sum()
+        logger.info(
+            f"After imputation: {n_remaining} locations still missing ({n_missing - n_remaining} filled)"
+        )
+
+        return df_result
+
+    def save_driver_data(self, indices: List[int], output_path: str):
+        """
+        Extract driver weights and save to CSV with spatial imputation.
+
+        Args:
+            indices: List of prediction sample indices
+            output_path: Path to save CSV file
+        """
+        logger.info(f"Saving driver data to {output_path}")
+
+        # Extract driver weights
+        driver_df = self.extract_driver_weights(indices)
+
+        if len(driver_df) == 0:
+            logger.warning("No driver data extracted - creating empty file")
+            driver_df = pd.DataFrame(
+                columns=[
+                    "location",
+                    "hist_tmin",
+                    "hist_tmax",
+                    "hist_rad",
+                    "hist_precip",
+                    "hist_photo",
+                    "hist_sm",
+                ]
+            )
+
+        # Merge with coordinates
+        coord_driver_df = pd.merge(self.coords, driver_df, on="location", how="left")
+
+        # Apply spatial imputation
+        imputed_df = self.impute_nearby_values(coord_driver_df)
+
+        # Save to CSV
+        imputed_df.to_csv(output_path, index=False)
+
+        logger.info(f"Saved driver data with {len(imputed_df)} locations")
+
+        # Log data quality metrics
+        driver_cols = [
             "hist_tmin",
             "hist_tmax",
             "hist_rad",
@@ -645,77 +402,18 @@ def get_attention_weights_df(index_list, preds, data, forecast_window=30):
             "hist_photo",
             "hist_sm",
         ]
-    )
-    for index in index_list:
-        window_start = max_attention_window(preds, index, forecast_window)
-        if window_start <= 365 - forecast_window:
-            tmin_weight = np.median(
-                preds["historical_selection_weights"][
-                    index, window_start : window_start + forecast_window, 1
-                ]
-            )
-            tmax_weight = np.median(
-                preds["historical_selection_weights"][
-                    index, window_start : window_start + forecast_window, 2
-                ]
-            )
-            rad_weight = np.median(
-                preds["historical_selection_weights"][
-                    index, window_start : window_start + forecast_window, 3
-                ]
-            )
-            precip_weight = np.median(
-                preds["historical_selection_weights"][
-                    index, window_start : window_start + forecast_window, 4
-                ]
-            )
-            photo_weight = np.median(
-                preds["historical_selection_weights"][
-                    index, window_start : window_start + forecast_window, 5
-                ]
-            )  # 5 is photoperiod, 3 is rad
-            sm_weight = np.median(
-                preds["historical_selection_weights"][
-                    index, window_start : window_start + forecast_window, 6
-                ]
-            )
-            location = np.int64(data["data_sets"]["test"]["id"][index][0].split("_")[0])
-
-            new_row = pd.DataFrame(
-                {
-                    "location": [location],
-                    "hist_tmin": [tmin_weight],
-                    "hist_tmax": [tmax_weight],
-                    "hist_rad": [rad_weight],
-                    "hist_precip": [precip_weight],
-                    "hist_photo": [photo_weight],
-                    "hist_sm": [sm_weight],
-                }
-            )
-            df_attention_map = pd.concat([df_attention_map, new_row], ignore_index=True)
-
-    return df_attention_map
+        n_complete = (~imputed_df[driver_cols].isnull().any(axis=1)).sum()
+        logger.info(
+            f"Complete records: {n_complete}/{len(imputed_df)} ({100*n_complete/len(imputed_df):.1f}%)"
+        )
 
 
-def save_imput_coord_att(
-    index_list, data, preds, coord_path, output_path, forecast_window=30
-):
-    df_attention_map = get_attention_weights_df(
-        index_list, preds, data, forecast_window=forecast_window
-    )
-    coords = pd.read_parquet(coord_path)
-    coords = coords.drop_duplicates()
-    df_coord_att = pd.merge(coords, df_attention_map, on="location", how="left")
-    imputed_coord_att = impute_nearby(df_coord_att, 0.5, 0.5)
-    imputed_coord_att.to_csv(output_path)
-
-
-# --- Main Execution Block ---
-if __name__ == "__main__":
+def main():
+    """Main execution function."""
     parser = argparse.ArgumentParser(
-        description="Generate driver attention maps using per-pixel phenology."
+        description="Extract climate driver importance from TFT predictions"
     )
-    parser.add_argument("--PFT", type=str, required=False, help="PFT")
+    parser.add_argument("--PFT", type=str, help="Plant functional type")
     parser.add_argument(
         "--pred_path", type=str, required=True, help="Path to predictions pickle file"
     )
@@ -726,284 +424,46 @@ if __name__ == "__main__":
         "--coord_path", type=str, required=True, help="Path to coordinates parquet file"
     )
     parser.add_argument(
-        "--output_path", type=str, required=True, help="Directory to save output maps"
+        "--output_path", type=str, required=True, help="Base path for output CSV files"
     )
-
     parser.add_argument(
-        "--forecast_window_length", type=int, required=True, help="Forecast window size"
+        "--forecast_window_length",
+        type=int,
+        default=30,
+        help="Forecast window size in days",
     )
 
     args = parser.parse_args()
 
-    min_diff = 0.20
-    min_slope = 0.002
-    if args.PFT:
-        PFT = args.PFT
-        if PFT == "BET" or PFT == "SHR":
-            min_diff = 0.05
-            min_slope = 0.001
-    # 1. Load all necessary data
-    print("Loading data, predictions, and coordinates...")
-    with open(args.data_path, "rb") as fp:
-        data = pickle.load(fp)
-    with open(args.pred_path, "rb") as fp_2:
-        preds = pickle.load(fp_2)
+    try:
+        # Initialize extractor
+        extractor = DriverDataExtractor(
+            data_path=args.data_path,
+            pred_path=args.pred_path,
+            coord_path=args.coord_path,
+            forecast_window=args.forecast_window_length,
+            pft=args.PFT,
+        )
 
-    coord_path = args.coord_path
-    output_path = args.output_path
-    # 2. Prepare main analysis dataframe
-    print("Preparing main analysis dataframe...")
-    df = get_analysis_df(data, preds, coord_path)
-    # get indices of SOS samples and EOS samples
+        # Get analysis DataFrame
+        df = extractor.get_analysis_df()
 
-    batch_size = 30
-    SOS_index = []
-    EOS_index = []
+        # Detect phenology indices
+        SOS_indices, EOS_indices = extractor.detect_phenology_indices(df)
 
-    # Debug counters for BET
-    bet_total_batches = 0
-    bet_matched_batches = 0
+        # Save driver data for both seasons
+        logger.info("Processing SOS (Start of Season) data")
+        extractor.save_driver_data(SOS_indices, f"{args.output_path}_SOS.csv")
 
-    # Iterate over DataFrame in batches of 30 rows
+        logger.info("Processing EOS (End of Season) data")
+        extractor.save_driver_data(EOS_indices, f"{args.output_path}_EOS.csv")
 
-    for start in range(0, len(df), batch_size):
-        batch_df = df.iloc[start : start + batch_size]
+        logger.info("Driver data extraction complete!")
 
-        # Special case for BET PFT: use latitude and DOY-based detection
-        if args.PFT and args.PFT == "BET":
-            bet_total_batches += 1
-            lat = batch_df["latitude"].iloc[0]
-            doy = batch_df["doy"].iloc[0]
-            doy_2 = batch_df["doy"].iloc[-1]
-            buffer_days = 40
+    except Exception as e:
+        logger.error(f"Error during driver data extraction: {e}")
+        raise
 
-            # First check if there's a valid slope signal
-            x = range(len(batch_df))
-            y = batch_df["CSIF"].values
-            has_signal = abs(y[0] - y[-1]) > min_diff
 
-            if not has_signal:
-                continue
-
-            slope, _, _, _, _ = linregress(x, y)
-            is_sos = slope >= min_slope
-            is_eos = slope <= -min_slope - 0.0005
-
-            matched = False
-            # Define latitude bands and corresponding DOY ranges for SOS and EOS
-            # Check if window overlaps with expected range AND has correct slope
-            if lat >= 27 and lat <= 30.5:
-                if is_sos and doy >= 50 - buffer_days and doy_2 <= 150 + buffer_days:
-                    SOS_index.append(batch_df.index[0])
-                    matched = True
-                elif is_eos and doy >= 200 - buffer_days and doy_2 <= 300 + buffer_days:
-                    EOS_index.append(batch_df.index[0])
-                    matched = True
-            elif lat >= 25.75 and lat <= 27:
-                if is_sos and doy >= 25 - buffer_days and doy_2 <= 150 + buffer_days:
-                    SOS_index.append(batch_df.index[0])
-                    matched = True
-                elif is_eos and doy >= 210 - buffer_days and doy_2 <= 310 + buffer_days:
-                    EOS_index.append(batch_df.index[0])
-                    matched = True
-            elif lat >= 20 and lat <= 25.5:
-                if is_sos and doy >= 40 - buffer_days and doy_2 <= 170 + buffer_days:
-                    SOS_index.append(batch_df.index[0])
-                    matched = True
-                elif is_eos and doy >= 220 - buffer_days and doy_2 <= 315 + buffer_days:
-                    EOS_index.append(batch_df.index[0])
-                    matched = True
-            elif lat >= 13 and lat <= 19.75:
-                if is_sos and doy >= 25 - buffer_days and doy_2 <= 160 + buffer_days:
-                    SOS_index.append(batch_df.index[0])
-                    matched = True
-                elif is_eos and doy >= 230 - buffer_days and doy_2 <= 315 + buffer_days:
-                    EOS_index.append(batch_df.index[0])
-                    matched = True
-            elif lat >= 10 and lat <= 12.75:
-                if is_sos and doy >= 25 - buffer_days and doy_2 <= 160 + buffer_days:
-                    SOS_index.append(batch_df.index[0])
-                    matched = True
-                elif is_eos and doy >= 240 - buffer_days and doy_2 <= 325 + buffer_days:
-                    EOS_index.append(batch_df.index[0])
-                    matched = True
-            elif lat >= 9 and lat <= 9.75:
-                if is_sos and doy >= 10 - buffer_days and doy_2 <= 110 + buffer_days:
-                    SOS_index.append(batch_df.index[0])
-                    matched = True
-                elif is_eos and doy >= 250 - buffer_days and doy_2 <= 315 + buffer_days:
-                    EOS_index.append(batch_df.index[0])
-                    matched = True
-            elif lat >= 7 and lat <= 9:
-                if is_sos and doy >= 10 - buffer_days and doy_2 <= 90 + buffer_days:
-                    SOS_index.append(batch_df.index[0])
-                    matched = True
-                elif is_eos and doy >= 260 - buffer_days and doy_2 <= 325 + buffer_days:
-                    EOS_index.append(batch_df.index[0])
-                    matched = True
-            elif lat >= 4 and lat <= 7:
-                if is_sos and doy >= 25 - buffer_days and doy_2 <= 75 + buffer_days:
-                    SOS_index.append(batch_df.index[0])
-                    matched = True
-                elif is_eos and doy >= 260 - buffer_days and doy_2 <= 325 + buffer_days:
-                    EOS_index.append(batch_df.index[0])
-                    matched = True
-            elif lat >= 2 and lat <= 4:
-                if is_sos and doy >= 20 - buffer_days and doy_2 <= 70 + buffer_days:
-                    SOS_index.append(batch_df.index[0])
-                    matched = True
-                elif is_eos and doy >= 275 - buffer_days and doy_2 <= 340 + buffer_days:
-                    EOS_index.append(batch_df.index[0])
-                    matched = True
-            elif lat >= -2 and lat <= 2:
-                # Tropical region with bimodal phenology
-                if is_sos and (
-                    (doy >= 20 - buffer_days and doy_2 <= 70 + buffer_days)
-                    or (doy >= 190 - buffer_days and doy_2 <= 250 + buffer_days)
-                ):
-                    SOS_index.append(batch_df.index[0])
-                    matched = True
-                elif is_eos and (
-                    (doy >= 90 - buffer_days and doy_2 <= 150 + buffer_days)
-                    or (doy >= 275 - buffer_days and doy_2 <= 340 + buffer_days)
-                ):
-                    EOS_index.append(batch_df.index[0])
-                    matched = True
-            elif lat >= -6.5 and lat <= -2:
-                if is_sos and doy >= 190 - buffer_days and doy_2 <= 250 + buffer_days:
-                    SOS_index.append(batch_df.index[0])
-                    matched = True
-                elif is_eos and doy >= 80 - buffer_days and doy_2 <= 150 + buffer_days:
-                    EOS_index.append(batch_df.index[0])
-                    matched = True
-            elif lat >= -9.5 and lat <= -6.5:
-                if is_sos and doy >= 180 - buffer_days and doy_2 <= 250 + buffer_days:
-                    SOS_index.append(batch_df.index[0])
-                    matched = True
-                elif is_eos and doy >= 60 - buffer_days and doy_2 <= 150 + buffer_days:
-                    EOS_index.append(batch_df.index[0])
-                    matched = True
-            elif lat >= -12 and lat <= -9.5:
-                if is_sos and doy >= 190 - buffer_days and doy_2 <= 275 + buffer_days:
-                    SOS_index.append(batch_df.index[0])
-                    matched = True
-                elif is_eos and doy >= 50 - buffer_days and doy_2 <= 120 + buffer_days:
-                    EOS_index.append(batch_df.index[0])
-                    matched = True
-            elif lat >= -16.5 and lat <= -12:
-                if is_sos and doy >= 200 - buffer_days and doy_2 <= 275 + buffer_days:
-                    SOS_index.append(batch_df.index[0])
-                    matched = True
-                elif is_eos and doy >= 50 - buffer_days and doy_2 <= 120 + buffer_days:
-                    EOS_index.append(batch_df.index[0])
-                    matched = True
-            elif lat >= -18 and lat <= -16.5:
-                if is_sos and doy >= 220 - buffer_days and doy_2 <= 300 + buffer_days:
-                    SOS_index.append(batch_df.index[0])
-                    matched = True
-                elif is_eos and doy >= 40 - buffer_days and doy_2 <= 120 + buffer_days:
-                    EOS_index.append(batch_df.index[0])
-                    matched = True
-            elif lat >= -20.75 and lat <= -18:
-                if is_sos and doy >= 240 - buffer_days and doy_2 <= 320 + buffer_days:
-                    SOS_index.append(batch_df.index[0])
-                    matched = True
-                elif is_eos and doy >= 40 - buffer_days and doy_2 <= 120 + buffer_days:
-                    EOS_index.append(batch_df.index[0])
-                    matched = True
-            elif lat >= -22 and lat <= -21:
-                if is_sos and doy >= 200 - buffer_days and doy_2 <= 275 + buffer_days:
-                    SOS_index.append(batch_df.index[0])
-                    matched = True
-                elif is_eos and doy >= 40 - buffer_days and doy_2 <= 120 + buffer_days:
-                    EOS_index.append(batch_df.index[0])
-                    matched = True
-            elif lat >= -22.75 and lat <= -22.25:
-                if is_sos and doy >= 240 - buffer_days and doy_2 <= 320 + buffer_days:
-                    SOS_index.append(batch_df.index[0])
-                    matched = True
-                elif is_eos and doy >= 40 - buffer_days and doy_2 <= 120 + buffer_days:
-                    EOS_index.append(batch_df.index[0])
-                    matched = True
-            elif lat >= -37.75 and lat <= -23:
-                if is_sos and doy >= 200 - buffer_days and doy_2 <= 320 + buffer_days:
-                    SOS_index.append(batch_df.index[0])
-                    matched = True
-                elif is_eos and doy >= 30 - buffer_days and doy_2 <= 110 + buffer_days:
-                    EOS_index.append(batch_df.index[0])
-                    matched = True
-            elif lat >= -41 and lat <= -38:
-                if is_sos and doy >= 200 - buffer_days and doy_2 <= 300 + buffer_days:
-                    SOS_index.append(batch_df.index[0])
-                    matched = True
-                elif is_eos and doy >= 0 - buffer_days and doy_2 <= 100 + buffer_days:
-                    EOS_index.append(batch_df.index[0])
-                    matched = True
-            elif lat >= -45.75 and lat <= -41:
-                if is_sos and doy >= 200 - buffer_days and doy_2 <= 300 + buffer_days:
-                    SOS_index.append(batch_df.index[0])
-                    matched = True
-                elif is_eos and doy >= 20 - buffer_days and doy_2 <= 120 + buffer_days:
-                    EOS_index.append(batch_df.index[0])
-                    matched = True
-            elif lat <= -46:
-                if is_sos and doy >= 200 - buffer_days and doy_2 <= 300 + buffer_days:
-                    SOS_index.append(batch_df.index[0])
-                    matched = True
-                elif is_eos and doy >= 30 - buffer_days and doy_2 <= 120 + buffer_days:
-                    EOS_index.append(batch_df.index[0])
-                    matched = True
-
-            if matched:
-                bet_matched_batches += 1
-        else:
-            # Default behavior: slope-based detection for non-BET PFTs
-            x = range(len(batch_df))
-            y = batch_df["CSIF"].values
-            if abs(y[0] - y[-1]) > min_diff:
-                slope, _, _, _, _ = linregress(x, y)
-                if slope >= min_slope:
-                    SOS_index.append(batch_df.index[0])
-                elif slope <= -min_slope - 0.0005:
-                    EOS_index.append(batch_df.index[0])
-
-    SOS_indices = [int(i / 30) for i in SOS_index]
-    EOS_indices = [int(i / 30) for i in EOS_index]
-
-    # Filter out indices that are out of bounds for the predictions array
-    max_pred_index = len(preds["attention_scores"]) - 1
-
-    SOS_indices = [idx for idx in SOS_indices if idx <= max_pred_index]
-    EOS_indices = [idx for idx in EOS_indices if idx <= max_pred_index]
-
-    print(f"Number of valid SOS indices: {len(SOS_indices)}")
-    print(f"Number of valid EOS indices: {len(EOS_indices)}")
-
-    # Print BET-specific debug info if applicable
-    if args.PFT and args.PFT == "BET":
-        print("\n=== BET Debug Info ===")
-        print(f"Total batches processed: {bet_total_batches}")
-        print(f"Batches matched (before filtering): {bet_matched_batches}")
-        print(f"Match rate: {bet_matched_batches/bet_total_batches*100:.2f}%")
-        print("======================\n")
-    # attention drivers analysis
-    save_imput_coord_att(
-        SOS_indices,
-        data,
-        preds,
-        coord_path,
-        output_path + "_SOS.csv",
-        forecast_window=args.forecast_window_length,
-    )
-    save_imput_coord_att(
-        EOS_indices,
-        data,
-        preds,
-        coord_path,
-        output_path + "_EOS.csv",
-        forecast_window=args.forecast_window_length,
-    )
-
-    # legacy analysis
-    # legacy_df(SOS_indices, data, preds, coord_path, output_path + "_legacy_SOS.csv", size=0.25, forecast_window=args.forecast_window_length)
-    # legacy_df(EOS_indices, data, preds, coord_path, output_path + "_legacy_EOS.csv", size=0.25, forecast_window=args.forecast_window_length)
+if __name__ == "__main__":
+    main()
