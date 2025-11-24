@@ -177,7 +177,7 @@ class AttentionAnalyzer:
         max_sum = -np.inf
         best_start_index = None
 
-        for i in range(396 - forecast_window):
+        for i in range(396 - (forecast_window) * 2):
             current_sum = np.sum(att_array[i : i + forecast_window])
             if current_sum > max_sum:
                 max_sum = current_sum
@@ -213,6 +213,7 @@ class AttentionAnalyzer:
         df_attention_map = pd.DataFrame(
             columns=[
                 "location",
+                "legacy window start",
                 "hist_tmin",
                 "hist_tmax",
                 "hist_rad",
@@ -251,7 +252,11 @@ class AttentionAnalyzer:
                 location = int(data["data_sets"]["test"]["id"][index][0].split("_")[0])
 
                 new_row = pd.DataFrame(
-                    {"location": [location], **{k: [v] for k, v in weights.items()}}
+                    {
+                        "location": [location],
+                        "legacy window start": [window_start],
+                        **{k: [v] for k, v in weights.items()},
+                    }
                 )
                 df_attention_map = pd.concat(
                     [df_attention_map, new_row], ignore_index=True
@@ -583,11 +588,11 @@ class AnalysisWorkflow:
 
                 # Merge with coordinates and impute
                 df_coord_att = pd.merge(coords, df_attention, on="location", how="left")
-                imputed_coord_att = self.spatial_processor.impute_nearby(df_coord_att)
+                # imputed_coord_att = self.spatial_processor.impute_nearby(df_coord_att)
 
                 # Save results
                 output_file = f"{output_path}_{season}.csv"
-                imputed_coord_att.to_csv(output_file, index=False)
+                df_coord_att.to_csv(output_file, index=False)
                 logger.info(f"Saved {season} results to {output_file}")
 
 
