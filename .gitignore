@@ -1,17 +1,93 @@
-*.ipynb_checkpoints
-wandb/*
-*.png
-*.out
+# Python
 __pycache__/
-*.pyc
-*.pkl
-*.pth
-*.log
-*.csv
-.DS_Store
-.vscode/
-.env
-.venv
-env/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
 venv/
-.conda/
+ENV/
+env/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs and outputs
+*.log
+*.out
+*.err
+wandb/
+logs/
+
+# Runtime artifacts
+debugging_data_artifacts/
+.virtual_documents/
+
+# Scratch / local-only scripts and diagnostics
+debugging/
+src/phenofusion/debugging/
+notebooks/scratch/
+notebooks/diagnostics/
+notebooks/plots/
+src/phenofusion/feature_importance/
+src/phenofusion/analysis/diagnose_latitude_bands.py
+src/phenofusion/analysis/quick_diagnostic_latitude.py
+src/phenofusion/dataio/driversdata_maria*.py
+
+# Claude Code internals
+.claude/
+
+# Large generated data (re-derived from predictions via extract_epoch_drivers.py)
+data/sensitivity_data/
+data/sensitivity_figures/
+data/analysis_dataframes/
+data/attention_window/maps/
+data/attention_window/*.png
+
+# Data files (large datasets)
+*.pkl
+*.parquet
+*.h5
+*.hdf5
+
+# Model weights and checkpoints
+*.pth
+*.ckpt
+
+# Output directories
+outputs/
+
+# Subprojects directory
+subprojects/

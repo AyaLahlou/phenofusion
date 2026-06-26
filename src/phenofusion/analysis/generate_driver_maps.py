@@ -119,7 +119,8 @@ class DriverMapGenerator:
 
         # Create composite driver variables
         grouped_df["hist_temp"] = grouped_df["hist_tmin"] + grouped_df["hist_tmax"]
-        grouped_df["hist_sol"] = grouped_df["hist_rad"] + grouped_df["hist_photo"]
+        # grouped_df["hist_sol"] = grouped_df["hist_rad"] + grouped_df["hist_photo"]
+        grouped_df["hist_sol"] = grouped_df["hist_rad"] + grouped_df["hist_rad"]
         grouped_df["hist_p"] = grouped_df["hist_precip"] + grouped_df["hist_sm"]
 
         # Normalize the driver variables
