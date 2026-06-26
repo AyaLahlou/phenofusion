@@ -130,7 +130,7 @@ python scripts/run_sensitivity_shifts.py --skip-tier 3 mosaic
 python scripts/run_sensitivity_shifts.py --pfts BDT BET
 ```
 
-> **Note:** `run_sensitivity_shifts.py` imports `from phenofusion.sensitivity_shifts import ...` after adding `src/` to sys.path. This means `sensitivity_shifts.py` must be at `src/phenofusion/sensitivity_shifts.py` to be importable — but currently it lives at `scripts/sensitivity_shifts.py`. Move it (or symlink it) before running the stage 2 script.
+> `run_sensitivity_shifts.py` imports `from phenofusion.sensitivity_shifts import ...` with `src/` on sys.path. The canonical module is `src/phenofusion/sensitivity_shifts.py`.
 
 ### Attention Window Maps (SLURM)
 Generates global scalar colormaps showing *when* (which 30-day window) the model paid maximum attention.
