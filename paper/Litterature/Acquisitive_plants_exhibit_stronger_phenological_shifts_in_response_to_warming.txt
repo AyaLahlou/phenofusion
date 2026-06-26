@@ -1,0 +1,1515 @@
+Article
+
+https://doi.org/10.1038/s41467-026-70474-4
+
+Acquisitive plants exhibit stronger
+phenological shifts in response to warming:
+insights from meta-analysis and long-term
+monitoring
+Received: 28 August 2025
+
+1234567890():,;
+
+1234567890():,;
+
+Accepted: 26 February 2026
+
+Check for updates
+
+Kexin Xiong 1, Peter B. Reich 2,3,4, Philippe Ciais 5, Chunyan Lu1,
+Huimin Zhou 1,6, Xinxin Wang1, Josep Peñuelas 7,8, Chaoyang Wu
+Huiying Liu 1
+
+&
+
+As climate warming accelerates, shifts in plant phenology are reshaping the
+functioning and stability of terrestrial ecosystems. While the roles of climatic
+drivers in shaping phenological responses to warming are well established, the
+inﬂuence of intrinsic plant functional traits remains poorly understood. Here,
+we combine two complementary approaches through a meta-analysis of 124
+ﬁeld warming experiments and an analysis of long-term phenological monitoring networks (CPON and USA‑NPN) to evaluate phenological responses to
+warming across a spectrum of resource-use strategies in seasonally cold
+biomes. Our meta-analysis demonstrates that resource-acquisitive plants,
+characterized by higher nutrient concentrations and thinner leaves, show
+signiﬁcantly stronger phenological responses to experimental warming. This
+pattern is observed consistently across both leaf-out in spring and senescence
+in autumn. These results from meta-analysis are further supported by two
+long-term observational datasets, which also show more pronounced phenological shifts in acquisitive species under long-term warming. Our ﬁndings
+present a trait-climate integration framework that extends beyond conventional environmental drivers, providing a mechanistic foundation to enhance
+the accuracy of forecasts for plant responses to climate change.
+
+Terrestrial ecosystems are rapidly changing in response to climatic
+warming1–3. Plant phenology is one of the most sensitive indicators
+of climatic warming4,5 and plays important roles in regulating ecosystem carbon, nutrient and water cycling6,7, biodiversity
+maintenance8,9 and ecological stability10,11. Extensive research has
+documented the environmental cues driving plant phenological
+shifts, including temperature, photoperiod, and precipitation12–15.
+Yet, phenological responses to climate warming, especially the frequently observed species-speciﬁc patterns, may arise from a complex interplay between these external drivers and internal plant
+
+A full list of afﬁliations appears at the end of the paper.
+
+Nature Communications | (2026)17:4430
+
+9,10
+
+traits16–19. Plant functional traits reﬂect fundamental ecological
+strategies for resource acquisition and growth20. Reich et al.21 and
+Wright et al.22 proposed the concept of the “leaf economic spectrum”, which characterizes species along a continuum from acquisitive (e.g., high speciﬁc leaf area and photosynthetic rates, but
+short lifespans) to conservative leaf strategies (e.g., low speciﬁc leaf
+area and photosynthetic rates, but long lifespans). Trait-based
+approaches have signiﬁcantly advanced understanding of plant
+responses to environmental change, by uncovering mechanisms
+behind carbon sequestration, ecosystem resistance, and temporal
+
+e-mail: wucy@igsnrr.ac.cn; hyliu@des.ecnu.edu.cn
+
+1
+
+Article
+stability23–25. However, how plant functional traits mediate phenological responses to climate warming remains poorly understood.
+Trait-based processes are likely to underpin plant phenological
+responses to climate warming16,26,27, with divergent possibilities
+underpinned by functional differences. In spring, warming often
+advances leaf-out by accelerating the fulﬁllment of thermal accumulation requirements4,28. Acquisitive species may show greater
+advancement, as their high foliar nitrogen concentrations
+support rapid macromolecule synthesis, including Rubisco, thereby
+enabling earlier initiation of leaf growth in response to warming29,30
+(see Fig. 1b: Hypothesis I). In contrast, conservative species,
+characterized by thicker leaves and low speciﬁc leaf area, may
+respond by advancing leaf-out even more markedly than acquisitive
+species due to their stronger resistance to early spring frost31. In
+autumn, warming typically delays leaf senescence by slowing
+chlorophyll degradation32. Acquisitive species may exhibit
+greater delays in autumnal phenology under warming, due to their
+higher photosynthetic rates and foliar nitrogen concentrations and
+sometimes younger leaves (for species with indeterminate growth),
+which sustain net carbon gain despite shortening photoperiods25.
+However, when warming induces water stress, the delay may
+become more pronounced in conservative species, which tend
+to have thicker leaves and lower water requirements, conferring
+greater drought tolerance24 (see Fig. 1c: Hypothesis II). Elucidating
+whether and how plant resource acquisition strategies, as deﬁned
+by the leaf economics spectrum, regulate phenological responses
+
+Fig. 1 | Distribution of the warming experiments and the research hypotheses
+in this study. a The distribution of the warming experiments and the long-term
+ground phenological observations are shown. Gray triangles represent warming
+experiments, and blue and red squares represent data from the USA National
+Phenology Network (USA-NPN) and the China Phenological Observation Network
+
+Nature Communications | (2026)17:4430
+
+https://doi.org/10.1038/s41467-026-70474-4
+
+to warming is crucial for improving predictions of future phenological shifts.
+We combine two complementary approaches through a metaanalysis of 124 global ﬁeld warming experiments and an analysis with
+data from two long-term phenological monitoring networks, China
+Phenological Observation Network (CPON) and USA National Phenology Network (USA-NPN), to position species along a resource-use
+continuum from acquisitive to conservative. These datasets enable us
+to explicitly link plant functional traits to phenological responses to
+climate warming in seasonally cold ecosystems. We test two competing hypotheses; Hypothesis I is that acquisitive species respond more
+to warming (Fig. 1b), while Hypothesis II is that conservative species
+respond more to warming (Fig. 1c). Our ﬁndings, as described below,
+provide compelling evidence that acquisitive species show greater
+phenological responses to warming than conservative species,
+underscoring the critical role of the leaf economic spectrum in shaping
+phenological changes under future climate change.
+
+Results
+The links between leaf traits and phenological responses: metaanalysis
+Our meta-analysis showed that warming-induced advances in spring
+phenology were modestly greater in species with higher foliar nitrogen
+and phosphorus concentrations, larger leaf area, and lower carbon-tonitrogen ratios (Supplementary Fig. 1). Shifts in autumnal foliar coloring were also associated with multiple foliar traits. For instance,
+
+(CPON), respectively. b, c The hypotheses in this study (more details are in the
+Introduction). Hypothesis I posits that acquisitive species exhibit stronger phenological shifts. Hypothesis II posits that conservative species exhibit greater phenological shifts. ΔPheno, shifts in foliar phenology; Acquisi., acquisitive species;
+Conser., conservative species. Source data are provided as a Source Data ﬁle.
+
+2
+
+Article
+
+https://doi.org/10.1038/s41467-026-70474-4
+
+delays in autumnal foliar coloring were more signiﬁcant in species with
+higher foliar nitrogen and phosphorus concentrations, larger leaf area,
+lower carbon-to-nitrogen ratios, and shorter leaf lifespans (Supplementary Fig. 1). Most of the results remained robust regardless of
+whether we controlled for confounding climatic factors and experimental variables (see Methods) (Supplementary Fig. 2). These trends
+were consistent across subgroups based on mean annual temperature,
+mean annual precipitation, ecosystem type, warming method, warming magnitude, and experimental duration, although the response
+levels varied (Supplementary Figs. 3-8). Principal component analysis
+(PCA) reduced the dimensionality of ﬁve foliar functional traits. The
+ﬁrst principal component (PC1), which explained 54.3% of the total
+variance, was positively correlated with foliar nitrogen concentrations
+and speciﬁc leaf area, and negatively correlated with foliar dry-matter
+concentrations and leaf thickness (Fig. 2a and Supplementary Table 1).
+Species with low PC1 scores (thicker leaves and lower foliar nitrogen
+concentrations) tended to be resource-conservative, and those with
+Conservative
+
+a
+
+Acquisitive
+FP
+
+Sensitivity (d °C−1)
+
+PC2 (20.2%)
+
+LT
+FN
+FDMC
+
+−2
+
+b
+
+30
+
+2
+
+0
+
+high PC1 scores (thinner leaves and higher foliar nitrogen concentrations) were resource-acquisitive. Warming-induced shifts in spring
+phenology were negatively correlated with PC1, and shifts in autumnal
+phenology were positively correlated with PC1 (Fig. 2b, c). The conclusion remained consistent when we used all ten foliar traits collected
+in our study (Supplementary Fig. 9). Hierarchical clustering also conﬁrmed that spring and autumnal phenology changed more for acquisitive species but minimally for conservative species (Fig. 2d-f and
+Supplementary Table 2). The phylogenetic analysis conﬁrmed these
+patterns, even after controlling for phylogeny (Supplementary Fig. 10
+and Supplementary Tables 3,4).
+When analyzing the data separately for woody and herbaceous
+plants, we found that although the impact of functional traits on
+phenological responses to warming was more pronounced and statistically signiﬁcant in woody plants, herbaceous plants exhibited a
+similar directional trend. Speciﬁcally, for herbaceous plants, the
+warming-induced delays in autumn senescence were more evident in
+
+SLA
+
+20
+
+Spring phenology: Slope = −0.15
+P = 0.023
+
+20
+
+c
+
+Autumnal phenology: Slope = 0.81
+P = 6.096e-23
+
+10
+
+10
+0
+
+0
+−10
+
+−10
+−20
+−2.5
+
+0.0
+
+2.5
+
+−2.5
+
+0.0
+
+PC1 (54.3%)
+
+d
+
+2.5
+
+−4
+
+−2
+
+PC1
+
+0
+
+2
+
+Acquisitive
+
+Intermediate
+
+Abies balsamea
+Picea abies
+Pinus edulis
+Picea glauca
+Pseudotsuga menziesii
+Picea mariana
+Pinus nigra
+Pinus banksiana
+Pinus sylvestris
+Pinus strobus
+Quercus ilex
+Oxytropis ochrocephala
+Lathyrus venosus
+Sambucus nigra
+Populus alba
+Spiraea japonica
+Quercus petraea
+Quercus pubescens
+Vaccinium myrtillus
+Betula nana
+Quercus robur
+Vaccinium uliginosum
+Larix gmelinii
+Solidago canadensis
+Sorbus aucuparia
+Acer rubrum
+Liquidambar styraciflua
+Betula pendula
+Salix herbacea
+Populus tremuloides
+Quercus macrocarpa
+Quercus mongolica
+Betula papyrifera
+Populus grandidentata
+Juglans mandshurica
+Quercus alba
+Aesculus hippocastanum
+Quercus rubra
+Larix laricina
+Salix pulchra
+Stipa aliena
+Stipa breviflora
+Carex moorcroftii
+Kobresia humilis
+Kobresia pygmaea
+Lycium ruthenicum
+Kobresia kansuensis
+Kobresia tibetica
+Achillea millefolium
+Convolvulus ammannii
+Ambrosia psilostachya
+Lonicera hispida
+Delphinium caeruleum
+Klasea centauroides
+Spiraea mongolica
+Carex korshinskyi
+Stipa krylovii
+Cleistogenes squarrosa
+Leymus chinensis
+Achnatherum hymenoides
+Eriophorum vaginatum
+Bouteloua gracilis
+Quercus fabrei
+Schizachyrium scoparium
+Vaccinium pallidum
+Potentilla acaulis
+Elymus nutans
+Salix arctica
+Salix glauca
+Gentiana lawrencei
+Artemisia frigida
+Potentilla nivea
+Artemisia scoparia
+Poa pratensis
+Carex bigelowii
+Thalictrum alpinum
+Anemone obtusiloba
+Anemone rivularis
+Kobresia macrantha
+Carex atrofusca
+Tibetia himalaica
+Potentilla anserina
+Oxytropis kansuensis
+Euphorbia esula
+Potentilla saundersiana
+Medicago ruthenica
+Betula ermanii
+Phragmites australis
+Acer campestre
+Carpinus betulus
+Rubus chamaemorus
+Taraxacum mongolicum
+Gentiana straminea
+Pteridium aquilinum
+Meconopsis integrifolia
+Triticum aestivum
+Betula alleghaniensis
+Tilia mandshurica
+Acer saccharum
+Fagus sylvatica
+Trientalis borealis
+Setaria viridis
+Maianthemum canadense
+Cerastium glomeratum
+Veronica arvensis
+Trifolium repens
+Chenopodium album
+Dryopteris crassirhizoma
+Zea mays
+Aralia nudicaulis
+Phryma leptostachya
+Diervilla lonicera
+Corylus cornuta
+Rubus idaeus
+Eurybia macrophylla
+Bromus tectorum
+Betula utilis
+Phalaris arundinacea
+
+Conservative
+
+4
+
+PC1
+
+Spring phenology
+
+e
+
+Autumnal phenology
+
+f
+
+P = 6.513e-6
+
+Overall
+
+1891
+
+Conservative
+
+244
+
+Intermediate
+
+853
+
+Acquisitive
+
+150
+
+P = 1.173e-4
+
+Overall
+
+1107
+
+Conservative
+
+156
+
+Intermediate
+
+507
+
+Acquisitive
+
+121
+
+P = 0.256
+
+P = 0.022
+
+P = 0.044
+
+P = 0.002
+
+P = 1.610e-10
+
+−4
+
+−2
+
+P = 0.038
+
+0
+
+Sensitivity (d °C−1)
+Fig. 2 | Contrasting phenological responses to warming among species with
+different resource-use strategies based on experimental manipulations. a The
+leaf economic spectrum based on plant traits, where plants with bluer and redder
+colors are more resource-acquisitive and -conservative, respectively, in their
+resource use. b, c Relationships between the ﬁrst principal component (PC1) of the
+economic spectrum and the sensitivities of spring and autumnal phenology to
+temperature. Solid regression lines indicate signiﬁcant correlations (P < 0.05). The
+size of the points is proportional to the weight in this meta-analysis. d, Classiﬁcation
+of species into three functional hierarchical clusters: resource-conservative (pink),
+intermediate (cyan), and resource-acquisitive (blue). e, f Comparison of the
+
+Nature Communications | (2026)17:4430
+
+−8
+
+−4
+
+0
+
+4
+
+Sensitivity (d °C−1)
+sensitivities of spring and autumnal phenology to temperature across strategy
+groups. Points with error bars represent mean values and 95% conﬁdence intervals
+(CIs), with vertical dashed lines representing an effect size of zero. The effects of
+warming are considered signiﬁcant if the 95% CIs do not overlap with zero. Statistical signiﬁcance (P < 0.05) was tested using two-sided tests from multi-level
+meta-analytic linear mixed-effects models without adjustments for multiple comparisons. The numbers on the left denote the sample size. FN, foliar nitrogen
+concentration; FP, foliar phosphorus concentration; SLA, speciﬁc leaf area; FDMC,
+foliar dry-matter concentration; LT, leaf thickness. Source data are provided as a
+Source Data ﬁle.
+
+3
+
+Article
+
+https://doi.org/10.1038/s41467-026-70474-4
+Conservative
+
+Acquisitive
+
+a
+PC2 (19.1%)
+
+0
+
+SLA
+
+−1
+FDMC
+−5.0
+
+−2.5
+
+b
+
+Spring phenology: Slope = −0.63
+P = 0.036
+
+15
+
+20
+
+0
+
+0
+
+−15
+
+−20
+
+0.0
+
+2.5
+
+−7.0
+
+−3.5
+
+3.5
+
+−5.0
+
+−2.5
+
+0.0
+
+2.5
+
+PC1
+
+50
+
+Sensitivity (d °C−1)
+
+FP
+
+FN
+
+0
+SLA
+
+Spring phenology: Slope = −0.09
+P = 0.500
+
+e
+
+50
+
+f
+
+Autumnal phenology: Slope = 1.76
+P = 0.013
+
+25
+
+25
+
+USA-NPN
+
+PC2 (24.0%)
+
+0.0
+
+Acquisitive
+
+LT
+
+FDMC
+
+Autumnal phenology: Slope = −0.22
+P = 0.670
+
+PC1
+
+d
+2
+
+c
+
+FN
+
+PC1 (46.4%)
+Conservative
+
+40
+
+CPON
+
+LT
+
+1
+
+Sensitivity (d °C−1)
+
+30
+FP
+
+2
+
+0
+0
+−25
+
+−25
+−50
+
+−2
+−2.5
+
+0.0
+
+2.5
+
+5.0
+
+PC1 (41.9%)
+
+−3.5
+
+0.0
+
+3.5
+
+7.0
+
+PC1
+
+−1.5
+
+0.0
+
+1.5
+
+3.0
+
+PC1
+
+Fig. 3 | Relationships between foliar economic spectrum and the sensitivity of
+plant phenology to temperature based on long-term ground observations. The
+dataset includes China Phenological Observation Network (CPON) a–c and the USA
+National Phenology Network (USA-NPN) d–f. a, d Leaf economic spectrum derived
+from functional traits, with color gradients representing resource-use strategies.
+The red-to-blue continuum indicates resource-conservative (low SLA, high FDMC)
+to resource-acquisitive (high SLA, low FDMC) species. b, c, e and f, Relationships
+between leaf economic spectrum principal component (PC1) and the sensitivities of
+
+spring and autumnal phenology to temperature. Statistical signiﬁcance (P < 0.05)
+was tested using two-sided tests from linear mixed-effects models without
+adjustments for multiple comparisons. Solid regression lines indicate signiﬁcant
+correlations (P < 0.05). Dashed regression lines denote nonsigniﬁcant correlations
+(P > 0.05). FN, foliar nitrogen concentration; FP, foliar phosphorus concentration;
+SLA, speciﬁc leaf area; FDMC, foliar dry-matter concentration; LT, leaf thickness.
+Source data are provided as a Source Data ﬁle.
+
+species with larger leaf areas (Supplementary Fig. 11n). This overall
+pattern, where acquisitive species (e.g., those with larger leaf areas)
+showed greater phenological responses, was further supported by PCA
+for herbaceous plants, even though the results did not reach statistical
+signiﬁcance (Supplementary Fig. 11u-w).
+
+was positively correlated with PC1, suggesting that acquisitive species
+also experienced greater delays in autumnal phenology under climate
+change (Fig. 3f). Plant functional traits generally played a key role in the
+phenological responses to warming, second only to environmental
+factors (Supplementary Fig. 13).
+
+The links between leaf traits and phenological responses: longterm observations
+
+Trait-based forecasting of future plant phenological change
+
+Analyses of long-term phenological data from CPON and USA-NPN
+indicated that plant traits were key to explain the phenological
+responses to warming. In the CPON dataset, the advancement of
+spring phenology was greater in species with thinner leaves and the
+delay of autumnal phenology was greater in species with larger leaf
+area (Supplementary Fig. 12). The PCA of the CPON dataset explained
+46.4% of the variance, with positive loadings on speciﬁc leaf area and
+negative loadings on leaf thickness (Fig. 3a and Supplementary
+Table 1). Higher PC1 values indicated stronger acquisitive strategies,
+and phenological sensitivity in spring was negatively correlated with
+PC1, indicating that the acquisitive species in China had more pronounced advancement in spring phenology with long-term climate
+change (Fig. 3b). In the USA-NPN dataset, the advancement of spring
+phenology was greater in species with thinner leaves and the delay of
+autumnal phenology was greater in species with higher foliar phosphorus concentrations (Supplementary Fig. 12). The PCA of USA-NPN
+dataset indicated that PC1 explained 41.9% of the variance, with positive loadings on foliar nitrogen concentrations and speciﬁc leaf area
+and negative loadings on leaf thickness and foliar dry-matter concentrations (Fig. 3d and Supplementary Table 1). Higher PC1 values
+indicated acquisitive strategies, and lower values indicated conservative strategies. We found that phenological sensitivity in autumn
+
+Nature Communications | (2026)17:4430
+
+Instead of using a ﬁxed temperature sensitivity obtained from the
+meta-analysis, we calculated the dynamic phenological sensitivity by
+parameterizing it with different foliar nitrogen concentrations (Supplementary Fig. 14). Compared to the climate-only projection, our
+trait-integrated projections forecast smaller phenological shifts in
+both spring and autumn. Across the two climate scenarios (SSP1-2.6
+and SSP5-8.5), incorporating plant traits reduces the projected shifts
+by 4.00-7.90 days in spring and 1.73-3.45 days in autumn, suggesting
+systematic overestimation bias in traditional climatically driven projections (Fig. 4, Supplementary Fig. 15 and Supplementary Table 5).
+
+Discussion
+Our meta-analysis, combined with two long-term ground-based datasets, reveals that acquisitive species exhibit stronger phenological
+responses to climate warming than conservative species, underscoring
+the pivotal role of plant functional traits, as presented by the leaf
+economic spectrum, in reshaping phenological patterns. The greater
+spring advancement and autumn delay in acquisitive species support
+Hypothesis I. This pattern suggests that acquisitive species may gain a
+phenological advantage in carbon sequestration under warming, but
+also face a heightened risk of frost damage33,34, potentially altering
+competitive dynamics and inﬂuencing species coexistence35. Our
+ﬁndings highlight the need to integrate plant functional traits (e.g.,
+4
+
+Article
+
+https://doi.org/10.1038/s41467-026-70474-4
+
+a
+
+b
+
+Climate-only projections
+
+Traits integration projections
+
+SSP1-2.6
+
+SSP1-2.6
+
+75
+
+Latitude(°)
+
+Latitude(°)
+
+50
+25
+0
+
+50
+25
+0
+
+−25
+
+−25
+
+−50
+
+−50
+−14 −7
+
+0
+
+−10 −5 0
+
+SSP5-8.5
+
+SSP5-8.5
+
+75
+
+75
+
+50
+
+50
+
+Latitude(°)
+
+Latitude(°)
+
+Spring phenology
+
+75
+
+25
+0
+
+25
+0
+
+−25
+
+−25
+
+−50
+
+−50
+−20 −10 0
+
+−10 −5 0
+
+75
+
+75
+
+50
+
+50
+
+Latitude(°)
+
+Latitude(°)
+
+SSP1-2.6
+
+25
+0
+
+25
+0
+
+−25
+
+−25
+−50
+
+−50
+0 8 16
+
+0 8 16
+
+SSP5-8.5
+
+SSP5-8.5
+
+75
+
+75
+
+50
+
+50
+
+Latitude(°)
+
+Latitude(°)
+
+Autumnal phenology
+
+SSP1-2.6
+
+25
+0
+
+−25
+
+25
+0
+
+−25
+
+−50
+
+−50
+0 8 16
+
+0 8 16
+
+Advanced
+-12
+
+-9
+
+Delayed
+-6
+
+-3
+
+0
+
+3
+
+6
+
+9
+
+12
+
+Δ phenology (d)
+Fig. 4 | Projections of future foliar phenological changes in terrestrial ecosystems based on climate-only and traits integration projections under two climatic scenarios. a Projected distribution of potential shifts in spring and autumnal
+phenology by 2100 under the SSP1-2.6 and SSP5-8.5 scenarios using the climateonly projections. b Projected distribution of potential shifts in spring and autumnal
+
+phenology by 2100 under the SSP1-2.6 and SSP5-8.5 scenarios using the traits
+integration projections. Gray indicates areas with missing data. Each panel incorporates the variation of foliar phenological sensitivity across latitudes. SSP, Shared
+Socioeconomic Paths. Δphenology, shifts in foliar phenology. Source data are
+provided as a Source Data ﬁle.
+
+foliar nitrogen concentrations, speciﬁc leaf area), beyond wellestablished environmental drivers, into predictive models to
+enhance the accuracy of phenological forecasts under climate change.
+The greater phenological sensitivity of acquisitive species to
+warming that we observed may be attributed to several reasons. First,
+acquisitive species are characterized by their greater abilities to
+acquire resources, which enable them to effectively capitalize on the
+increased ability to acquire resources under warming temperatures,
+the increased availability of resources due to warmer temperatures36,
+or both, thus allowing them to extend their growing season more than
+conservative species. For instance, climate warming accelerates
+enzyme-driven reactions and high-nitrogen species, due to their
+higher nitrogen concentrations, can respond more rapidly to temperature increases29,30. In addition, acquisitive species, with higher
+foliar nitrogen concentrations, are able to accumulate photosynthetic
+products more rapidly30,37, providing sufﬁcient resource reserves for
+
+earlier spring phenology under climate warming. Second, acquisitive
+species are sometimes associated with higher plasticity, enabling them
+to rapidly adjust to new environmental conditions25,38. Acquisitive
+species under warming may be able to adjust their traits more rapidly,
+enhancing their ability to cope with changing environmental
+conditions39. In contrast, species with conservative strategies, due to
+their greater investment in structural development, may incur higher
+plasticity costs and thus require more time to adapt to new environmental conditions40. Third, plants like temperate deciduous woody
+species need to fulﬁll both chilling and heat requirements to break
+endodormancy and ecodormancy, thereby initiating spring leaf-out4,12.
+In many regions, such as subtropical areas, acquisitive species begin
+accumulating chilling requirements earlier than conservative species,
+leading to an earlier break in dormancy and an earlier onset of spring
+phenology39. Since acquisitive species start their spring phenology
+earlier, when temperatures are typically lower and temperature
+
+Nature Communications | (2026)17:4430
+
+5
+
+Article
+limitations are more pronounced, this may also explain why they
+exhibit a stronger response in our study.
+We also found that warming delayed the autumnal phenology of
+acquisitive species but tended to advance that of conservative species.
+The delays in foliar coloring in acquisitive plants under warming may
+be attributed to the delayed degradation of chlorophyll and other
+pigments, maintenance of the activity of the Rubisco enzyme, and the
+alleviation of constraints of low temperatures at the end of the growing
+season32. This also suggests that in seasonally cold biomes, the
+autumnal phenology of acquisitive plants may fail to reach carbon sink
+saturation during autumn under warming condition, contrary to the
+results from previous studies41–43. This could be due to ongoing limitations on photosynthesis imposed by temperature, water, and light
+conditions in these regions44,45. These direct warming effects currently
+outweigh the indirect effects of warming on an earlier saturation of the
+carbon sink46 and the consumption of soil resources47. This effect,
+however, could change as global warming continues, so the saturation
+of the carbon sink could play an increasingly important role46. It is
+worth noting that if plants possess adaptive capabilities, their resilience to environmental constraints may increase. This could, in turn,
+reduce the relative importance of carbon sink saturation in the context
+of future climate change.
+We were also surprised to ﬁnd that experimental warming tended
+to hasten foliar coloring for conservative species. Conservative plants
+are typically adapted to resource-scarce environments and may be less
+plastic48. As global warming advanced the leaf-out dates for conservative species, we suspect they were and will be able to adjust their
+timing of foliar coloring to maintain a relatively stable length of the
+growing season13; however, other conservative evergreen species, such
+as needle-leafed conifers, will maintain photosynthetic surfaces comprised of multiple leaf cohorts for whatever longer extent the growing
+season becomes, and do so with larger leaves with shorter leaflifetimes5. Likewise, conservative species often possess thicker leaves
+and higher foliar dry-matter concentrations, which come with high
+construction costs. Previous studies have reported that in autumn,
+climate warming typically results in carbon losses through respiration,
+outweighing the carbon gains through photosynthesis49,50. As a result,
+conservative species may opt to end their growing season earlier under
+warming conditions to conserve more carbon and reabsorb essential
+nutrients from their leaves, thereby enhancing their ability to adapt to
+environmental changes51.
+Notably, we found that acquisitive plant species exhibited a
+stronger phenological response to climate warming, a pattern that was
+more pronounced in woody plants than in herbaceous plants. Herbaceous plants, particularly perennial grass, tend to store nutrients in
+underground organs during unfavorable seasons52. Consequently,
+their phenology may be more dependent on the state of these
+underground storage organs, with weaker relationships to the traits of
+the above-ground leaves52. In contrast, the buds of woody plants are
+usually exposed to the air and can directly sense temperature changes,
+whereas herbaceous plant buds are often close to the ground or buried
+in the soil, where they are buffered by the soil environment. As a result,
+their responses may be more delayed, and the regulatory effect of
+traits may be slower. Finally, woody plants generally exhibit stable
+resource allocation patterns and ﬁxed reproductive cycles (e.g., ﬂowering once a year)53, while herbaceous plants, especially annual species, have more ﬂexible growth strategies, quickly shifting from
+vegetative to reproductive growth under favorable conditions, sometimes completing multiple reproductive cycles within a year54. This
+high variability might make it more challenging to capture the role of
+traits in regulating phenological responses.
+Beyond plant growth forms, our study reveals that climate background conditions also modulate how functional traits regulate phenological responses. For instance, functional traits showed minimal
+effect on autumnal phenology in CPON dataset but a stronger effect in
+
+Nature Communications | (2026)17:4430
+
+https://doi.org/10.1038/s41467-026-70474-4
+
+the USA-NPN dataset. In East Asia’s monsoon region, synchronized
+water-heat conditions in spring drive plants to signiﬁcantly advance
+spring phenology, possibly maximizing resource use and resulting in a
+strong spring response to warming55,56. However, intrinsic constraints
+on growing season length might limit autumnal phenological plasticity, potentially weakening the observable regulatory role of traits in
+the CPON dataset. In contrast, in North America’s continental climate,
+the spring phenological response to warming is comparatively weaker,
+which could allow plants greater ﬂexibility in adjusting autumnal
+phenology, and might make trait regulation more detectable55. These
+ﬁndings underscore that investigating the regulatory role of traits on
+phenological responses requires integrating additional factors such as
+plant growth forms and climatic context.
+Most phenological models currently focus primarily on the
+impact of environmental factors on phenology while overlooking the
+inﬂuence of plant traits57,58. Our research found that species-level
+functional traits regulated the extent of phenological responses to
+future warming, making it essential to incorporate this factor into
+phenological simulations. Our trait-explicit projections, integrating
+future climate scenarios with species trait distribution data, reveal that
+phenological shifts may be systematically overestimated when the
+regulatory role of functional traits is omitted. If this prediction is
+accurate, such overestimations of phenological shifts could lead to
+inﬂated projections of ecosystem function changes driven by these
+shifts, including plant productivity and other related ecological
+processes50,59,60. It is worth emphasizing, however, that our current
+predictions, which are based solely on temperature effects on phenology, may oversimplify reality and therefore urgently require further
+reﬁnement using empirical studies with multiple drivers of phenology
+coupled with process-based models. Our ﬁndings thus underscore the
+need for a more comprehensive approach to phenological modeling,
+one that integrates both environmental and trait-driven dynamics.
+
+Methods
+Meta-analysis data compilation
+We compiled a data set on the effects of experimental warming on
+spring (i.e. leaf-out) and autumnal (i.e. leaf coloring) phenology
+before January 2024. Speciﬁcally, relevant peer-reviewed literature
+was identiﬁed through systematic searches of Web of Science, Google Scholar, and the China National Knowledge Infrastructure, using
+the following key words: (climate change OR warming OR temperature rise OR elevated temperature OR increased temperature) AND
+(leaf out OR leaf unfold* OR leaf emergence OR bud burst OR burst
+break OR green-up OR leaf color OR leaf senescence) AND (experiment* OR treatment* OR control*).
+We then included studies that met the following criteria: (i)
+warming experiments were conducted in terrestrial ecosystems, (ii)
+initial environmental conditions were comparable between control
+and warming plots, (iii) the method, duration, and magnitude of
+warming were clearly described, (iv) experimental species were known
+and indicated, and (v) the timing of phenological events (measured as
+day of year) under both warming and control treatments, or the phenological shifts induced by warming (in days), along with their sample
+sizes, were reported. Based on the included studies, phenological data
+were extracted either directly from tables and appendices or extracted
+from ﬁgures using WebPlotDigitizer version 4.7 (https://apps.
+automeris.io/wpd/). In total, our screening process (Supplementary
+Fig. 16) produced 3079 observations (including herbaceous and
+woody plants) from 124 peer-reviewed articles published, comprising
+1941 observations for spring phenology and 1138 observations for
+autumnal phenology (Fig. 1a).
+We gathered information on environmental and experimental
+conditions from each study, including latitude, longitude, ecosystem
+type, mean annual temperature (MAT), mean annual precipitation
+(MAP), warming method, experimental duration, and warming
+6
+
+Article
+
+https://doi.org/10.1038/s41467-026-70474-4
+
+magnitude. In cases where MAT and MAP were not provided in the
+articles, we obtained them from the WorldClim database (https://www.
+worldclim.org/). We provide a comprehensive overview and descriptions of all predictor variables in Supplementary Table 6.
+
+Long-term ground phenological observations
+We constructed the database for the long-term ground monitoring of
+spring and autumnal phenology using data from the China Phenology
+Observation Network61 (CPON, 1982-2018) and the USA National Phenology Network62 (USA-NPN, 1949-2020). We also considered the
+dataset from the Pan European Phenological database (PEP725; www.
+pep725.eu) but did not conduct a detailed analysis due to the small
+number of species in this dataset, which prevented the formation of a
+standard economic spectrum. In CPON, we extracted the data (only for
+woody plants) of leaf-out and leaf senescence with records of no less
+than 10 years. In USA-NPN, we downloaded all “individual phenometrics” data (including herbaceous and woody plants) with at least 5
+years of observations and deﬁned the data as spring or autumnal
+phenology based on the description of phenophase (Supplementary
+Table 7). In both datasets, robust statistical methods were used for
+detecting outliers, with records more than 2.5 × the median absolute
+deviation excluded63. We elaborated on the processing ﬂow of USANPN data in detail in Supplementary Fig. 17. The ﬁnal database
+encompassed 395 observation sites (30-55°N) and 705 taxa of plants
+(spanning 114 families and 339 genera), comprising 40098 observations of foliar phenological sequences. Data for mean monthly temperature and mean monthly precipitation for each location were
+obtained from the CRU TS v.4.08 data set at a spatial resolution of 0.5°
+(https://crudata.uea.ac.uk/cru/data/hrg/cru_ts_4.08/).
+
+Plant trait data collection
+We quantiﬁed trait-mediated phenological responses to warming by
+systematically compiling a suite of 10 foliar functional traits from the
+TRY Plant Trait Database (version 5.0, www.try-db.org)64. The selected
+traits, critical for characterizing variation in the leaf economic
+spectrum were: foliar nitrogen concentration (FN, mg g⁻¹), foliar
+phosphorus concentration (FP, mg g⁻¹), foliar nitrogen/phosphorus
+ratio (FN:FP), leaf area (LA, cm²), speciﬁc leaf area (SLA, mm² mg⁻¹),
+foliar carbon concentration (FC, mg g⁻¹), foliar carbon/nitrogen
+ratio (FC:FN), foliar dry-matter concentration (FDMC, %), leaf thickness
+(LT, mm), and leaf lifespan (LLS, month). We calculated the mean for
+each species where the database contained multiple entries for these
+traits.
+
+Statistical analysis
+Meta-analysis. We quantiﬁed the effects of warming on spring and
+autumnal phenology for each observation using phenological sensitivity (d °C⁻¹)65,66, calculated as in Eq. (1):
+Phenological sensitivity =
+
+Xw  Xc
+ΔT
+
+ð1Þ
+
+where Xw and Xc are the phenological timings in the warming and
+control plots, respectively, and ΔT is the temperature difference
+induced by experimental warming.
+Each observation was weighted by its reported sample sizes67 as
+follows (Eq. (2)):
+Wr =
+
+Nw × Nc
+Nw + Nc
+
+ð2Þ
+
+where Wr is the weight, and Nw and Nc are the sample sizes for the
+warming and control plots, respectively. Larger values of Wr, derived
+from larger sample sizes, typically provided more precise effect size
+estimates and were thus given greater weight in the analysis.
+
+Nature Communications | (2026)17:4430
+
+We conducted a hierarchical random-effects meta-analysis to
+estimate the overall effect sizes of warming on phenology and their
+95% conﬁdence intervals. The meta-analytical model was implemented
+using the ‘ram.mv’ function from the ‘metafor’ R package (version 4.40), with the variable ‘Article ID’ included as a random factor to account
+for potential non-independence among multiple observations reported within the same study68. We considered the effects of warming to
+be signiﬁcant if the 95% conﬁdence intervals did not overlap with 0.
+Egger’s regression and a fail-safe analysis were used to test the publication bias (Supplementary Table 8).
+We also conducted a phylogenetic meta-analysis that incorporated evolutionary information among species to account for the
+potential inﬂuence of phylogenetic relatedness on phenological
+sensitivity to warming. To do so, we used the following steps. First,
+we constructed phylogenetic trees for species using the ‘V.phyloMaker’ R package69 (version 0.1.0). Second, the phylogenetic trees
+were transformed into ultrametric trees based on Grafen’s methods
+in the ‘ape’ R package70 (version 5.8-1). Third, we then transformed
+the ultrametric trees into variance-covariance matrices that represented the phylogenetic relatedness among plant species. Finally, we
+calculated the sensitivity of species to warming using the phylogenetic meta-analysis by including the corresponding matrix as an
+additional random factor. We also assessed whether the phenological sensitivity to warming was inﬂuenced by phylogenetic relatedness using the “phylosignal” function in the “picante” R package
+(version 1.8.2) to calculate Blomberg’s K metric71.
+We classiﬁed species into the three functional types (acquisitive,
+intermediate, and conservative) based on 10 foliar traits mentioned
+above using hierarchical clustering in the ‘stats’ R package (version
+4.3.2). Subsequently, we used the hierarchical random-effects metaanalysis and phylogenetic meta-analysis to calculate spring and
+autumnal phenological sensitivities to temperature for the three
+functional types species respectively. We also categorized plants into
+deciduous, evergreen, angiosperms, and gymnosperms and calculated their phenological sensitivities to temperature using the hierarchical random-effects meta-analysis (Supplementary Fig. 10 and
+Supplementary Table 2).
+To analyze the regulatory role of plant functional traits in phenological sensitivity to warming, we ﬁrst used the ‘rma.mv’ function to
+investigate the relationships between the foliar traits and the sensitivity of phenology to temperature, incorporating the 10 foliar traits as
+moderating variables. Then we performed a principal component
+analysis (PCA) on 5 foliar traits (FN, FP, SLA, LT and FDMC), standardized using Z-scores, using the ‘FactoMineR’ package (version 2.9)72 to
+capture the underlying plant economic spectrum. We used the ‘rcorr’
+function from the ‘Hmisc’ package (version 5.2-2) to calculate the
+correlations between the ﬁrst principal component from the PCA and 5
+foliar traits. Consistent with the methodology applied in the ﬁrst step,
+we investigated the relationships between the ﬁrst principal component from the PCA (PC1) and the sensitivity of phenology to temperature. We also used ecosystem type, MAT, MAP, latitude, warming
+method, experimental duration, and magnitude of warming as random
+factors in the hierarchical model to test the robustness of the results.
+Besides, we categorized environmental and experimental manipulation factors into subsets to identify differences in the relationships
+between the plant functional traits and the sensitivity of phenology to
+temperature across various subsets, and we also examined the interaction effects of foliar functional traits and experimental and environmental factors on foliar phenology temperature sensitivity of
+warming (Supplementary Table 9).
+
+Long-term ground phenological data analysis
+To calculate the sensitivity of spring and autumnal phenology to longterm temperature change, we ﬁrst used a partial correlation analysis to
+calculate the optimal preseason length for each species at each
+7
+
+Article
+location. The optimal preseason length is the period (with 30-d steps)
+before the mean leaf-out or foliar coloring date for which the partial
+correlation coefﬁcient between leaf-out or foliar coloring and air
+temperature was highest. We then calculated the phenological sensitivity to temperature as the slope of the least-squares regression
+between the date of leaf-out or foliar coloring and mean air temperature over the preseason for each species at each location. For the longterm data of ground phenological observations, we ﬁrst used the ‘lme’
+function in the ‘nlme’ package (version 3.1-163) to analyze the relationship between the sensitivity of spring and autumnal phenology to
+temperature and 10 foliar traits, with ‘Site ID’ as a random factor. Then,
+we used a PCA to analyze the relationship between the 5 foliar traits
+(FN, FP, SLA, LT and FDMC) for all species and examined the relationship between the sensitivity of spring and autumnal phenology to
+temperature and PC1. We also calculated the correlations between PC1
+and 5 foliar traits. Since USA-NPN is a citizen-science dataset, we
+screened and reanalyzed the data for at least three observed individuals of the same species in a single site to reduce potential bias in the
+results (Supplementary Fig. 17).
+
+https://doi.org/10.1038/s41467-026-70474-4
+
+08/). The long-term ground phenological data of USA National Phenology Network (USA-NPN) are available from the website: https://
+www.usanpn.org/ results/data. The phenological data from China
+Phenological Observation Network (CPON) were provided by the
+Meteorological Information Center of the China Meteorological
+Administration. Source data are provided with this paper.
+
+Code availability
+Codes for analysis are available in the Figshare repository (https://doi.
+org/10.6084/m9.ﬁgshare.29917052).
+
+References
+1.
+2.
+
+3.
+
+Importance of predictors inﬂuencing the sensitivity of phenology to temperature
+
+4.
+
+The importance of factors affecting the sensitivity of foliar phenology
+to temperature was ranked using the ‘randomForest’ function from the
+‘randomForest’ package (version 4.7-1.2). A regression model with
+1000 decision trees was constructed based on the random-forest
+algorithm. The relative importance of environmental and experimental
+variables was quantiﬁed using two metrics: the permutation importance score and the Gini decrease index. We then used the ‘rcorr’
+function from the ‘Hmisc’ package to calculate the correlations
+between the sensitivity of phenology to temperature and the experimental and environmental factors (Supplementary Table 10).
+
+5.
+
+Projections of future phenological changes
+
+9.
+
+To assess how plant traits would affect the prediction of future changes in foliar phenology, we calculated the shifts of foliar phenology
+with and without the consideration of plant traits under different climatic scenarios (Supplementary Fig. 14). Initially, when considering
+plant traits, we reﬁned our model by incorporating foliar nitrogen
+concentrations. First, we sourced the global distribution of foliar
+nitrogen concentrations from publicly available data provided by
+Butler et al.73. With this data, we obtained plant phenological sensitivities to foliar nitrogen concentration from this study (Supplementary Fig. 2a,k), which allowed us to calculated how nitrogen levels
+could inﬂuence phenological responses. Next, we collected historical
+temperature data (1970-2000) and future projections (2081–2100)
+under two climate scenarios (SSP1-2.6, and SSP5-8.5) from the WorldClim database. Using these temperature data, we predicted future
+shifts in foliar phenology by integrating the projected temperature
+changes with both the sensitivity of phenology to temperature and the
+effects of foliar nitrogen concentrations. However, when plant traits
+were not considered, we estimated shifts in foliar phenology by multiplying temperature changes by a ﬁxed sensitivity value derived from
+our meta-analysis. All statistical analyses were conducted in R 4.3.274,75.
+
+6.
+
+7.
+
+8.
+
+10.
+
+11.
+12.
+13.
+
+14.
+
+15.
+
+16.
+
+17.
+
+Reporting summary
+Further information on research design is available in the Nature
+Portfolio Reporting Summary linked to this article.
+18.
+
+Data availability
+The data generated in this study have been deposited in Figshare at
+https://doi.org/10.6084/m9.ﬁgshare.29917052. Plant traits data were
+obtained from TRY Plant Trait Database (https://www.try-db.org/),
+climate data from WorldClim (https://www.worldclim.org/) and Climate Research Unit (https://crudata.uea.ac.uk/cru/data/hrg/cru_ts_4.
+
+Nature Communications | (2026)17:4430
+
+19.
+
+Piao, S. et al. Net carbon dioxide losses of northern ecosystems in
+response to autumn warming. Nature 451, 49–52 (2008).
+Manlick, P. J., Perryman, N. L., Koltz, A. M., Cook, J. A. & Newsome, S.
+D. Climate warming restructures food webs and carbon ﬂow in
+high-latitude ecosystems. Nat. Clim. Chang. 14, 184–189 (2024).
+Xi, Y., Zhang, W., Wei, F., Fang, Z. & Fensholt, R. Boreal tree species
+diversity increases with global warming but is reversed by
+extremes. Nat. Plants 10, 1473–1483 (2024).
+Körner, C. & Basler, D. Phenology under global warming. Science
+327, 1461–1462 (2010).
+Oleksyn, J. et al. A ﬁngerprint of climate change across pine forests
+of Sweden. Ecol. Lett. 23, 1739–1746 (2020).
+Reich, P. B., Rich, R. L., Lu, X., Wang, Y.-P. & Oleksyn, J. Biogeographic variation in evergreen conifer needle longevity and impacts
+on boreal forest carbon cycle projections. Proc. Natl. Acad. Sci. USA
+111, 13703–13708 (2014).
+Elmore, A. J., Nelson, D. M. & Craine, J. M. Earlier springs are causing
+reduced nitrogen availability in North American eastern deciduous
+forests. Nat. Plants 2, 16133 (2016).
+Chuine, I. Why does phenology drive species distribution?. Philos.
+Trans. R. Soc. B: Biol. Sci. 365, 3149–3160 (2010).
+Fridley, J. D. Extended leaf phenology and the autumn niche in
+deciduous forest invasions. Nature 485, 359–362 (2012).
+Yang, X. et al. Plant phenology response to nitrogen addition
+decreases community biomass stability in an alpine meadow. New
+Phytol. nph.70132, (2025).
+Shen, M. et al. Plant phenology changes and drivers on the
+Qinghai–Tibetan Plateau. Nat. Rev. Earth Environ. 3, 633–651 (2022).
+Fu, Y. H. et al. Declining global warming effects on the phenology of
+spring leaf unfolding. Nature 526, 104–107 (2015).
+Möhl, P., Von Büren, R. S. & Hiltbrunner, E. Growth of alpine
+grassland will start and stop earlier under climate warming. Nat.
+Commun. 13, 7398 (2022).
+Meng, L. et al. Photoperiod decelerates the advance of spring
+phenology of six deciduous tree species under climate warming.
+Glob. Chang. Biol. 27, 2914–2927 (2021).
+Wang, H. et al. Divergent phenological responses of soil microorganisms and plants to climate warming. Nat. Geosci. 18,
+753–760 (2025).
+Peaucelle, M., Peñuelas, J. & Verbeeck, H. Accurate phenology
+analyses require bud traits and energy budgets. Nat. Plants 8,
+915–922 (2022).
+Montgomery, R. A., Rice, K. E., Stefanski, A., Rich, R. L. & Reich, P. B.
+Phenological responses of temperate and boreal trees to warming
+depend on ambient spring temperatures, leaf habit, and geographic range. Proc. Natl. Acad. Sci. USA 117, 10397–10405 (2020).
+Shen, P. et al. Biodiversity buffers the response of spring leaf
+unfolding to climate warming. Nat. Clim. Chang. 14,
+863–868 (2024).
+Rauschkolb, R. et al. Spatial variability in herbaceous plant phenology is mostly explained by variability in temperature but also by
+photoperiod and functional traits. Int J Biometeorol 68,
+761–775 (2024).
+
+8
+
+Article
+20. Joswig, J. S. et al. Climatic and soil factors explain the twodimensional spectrum of global plant trait variation. Nat. Ecol. Evol.
+6, 36–50 (2022).
+21. Reich, P. B., Walters, M. B. & Ellsworth, D. S. From tropics to tundra:
+global convergence in plant functioning. Proc. Natl. Acad. Sci. USA
+94, 13730–13734 (1997).
+22. Wright, I. J. et al. The worldwide leaf economics spectrum. Nature
+428, 821–827 (2004).
+23. Quan, Q. et al. Plant height as an indicator for alpine carbon
+sequestration and ecosystem response to warming. Nat. Plants 10,
+890–900 (2024).
+24. Augusto, L. et al. Widespread slow growth of acquisitive tree species. Nature 640, 395–401 (2025).
+25. Yan, P. et al. Plant acquisitive strategies promote resistance and
+temporal stability of semiarid grasslands. Ecol. Lett. 28,
+e70110 (2025).
+26. Dorji, T. et al. Plant functional traits mediate reproductive phenology and success in response to experimental warming and snow
+addition in Tibet. Glob. Chang. Biol. 19, 459–472 (2013).
+27. Bucher, S. F. & Römermann, C. The timing of leaf senescence
+relates to ﬂowering phenology and functional traits in 17 herbaceous species along elevational gradients. J. Ecol. 109,
+1537–1548 (2021).
+28. Chuine, I. A uniﬁed model for budburst of trees. J. Theor. Biol. 207,
+337–347 (2000).
+29. Herms, D. A. & Mattson, W. J. The dilemma of plants: to grow or
+defend. Q. Rev. Biol. 67, 283–335 (1992).
+30. de Bello, F. et al. Functional trait effects on ecosystem stability:
+assembling the jigsaw puzzle. Trends Ecol. Evol. 36,
+822–836 (2021).
+31. Ma, Q., Huang, J.-G., Hänninen, H. & Berninger, F. Divergent trends
+in the risk of spring frost damage to trees in Europe with recent
+warming. Glob. Chang. Biol. 25, 351–360 (2019).
+32. Guo, Y. et al. Leaf senescence: progression, regulation, and application. Mol. Hortic. 1, 1–25 (2021).
+33. Liu, Q. et al. Extension of the growing season increases vegetation
+exposure to frost. Nat. Commun. 9, 426 (2018).
+34. Richardson, A. D. et al. Ecosystem warming extends vegetation
+activity but heightens vulnerability to cold temperatures. Nature
+560, 368–371 (2018).
+35. Alexander, J. M. & Levine, J. M. Earlier phenology of a nonnative
+plant increases impacts on native competitors. Proc. Natl. Acad. Sci.
+USA 116, 6199–6204 (2019).
+36. Craven, D. et al. Multiple facets of biodiversity drive the
+diversity–stability relationship. Nat. Ecol. Evol. 2, 1579–1587 (2018).
+37. Májeková, M., de Bello, F., Doležal, J. & Lepš, J. Plant functional traits
+as determinants of population stability. Ecology 95,
+2369–2374 (2014).
+38. Zhang, X. et al. Resource-acquisitive species have greater plasticity
+in leaf functional traits than resource-conservative species in
+response to nitrogen addition in subtropical China. Sci. Total
+Environ. 903, 166177 (2023).
+39. Li, H.-L. et al. China’s subtropical deciduous plants are more sensitive to climate change than evergreen plants by ﬂowering phenology. Glob. Chang. Biol. 30, e17168 (2024).
+40. Polley, H. W., Isbell, F. I. & Wilsey, B. J. Plant functional traits improve
+diversity-based predictions of temporal stability of grassland productivity. Oikos 122, 1275–1282 (2013).
+41. Zohner, C. M. et al. Effect of climate warming on the timing of
+autumn leaf senescence reverses after the summer solstice. Science 381, eadf5098 (2023).
+42. Bigler, C. & Vitasse, Y. Premature leaf discoloration of European deciduous trees is caused by drought and heat in late
+spring and cold spells in early fall. Agric. For. Meteorol. 307,
+108492 (2021).
+
+Nature Communications | (2026)17:4430
+
+https://doi.org/10.1038/s41467-026-70474-4
+43. Vitasse, Y. et al. Impact of microclimatic conditions and resource
+availability on spring and autumn phenology of temperate tree
+seedlings. New Phytol 232, 537–550 (2021).
+44. Wu, X. et al. Canopy structure regulates autumn phenology by
+mediating the microclimate in temperate forests. Nat. Clim. Chang.
+14, 1299–1305 (2024).
+45. Bai, Y. et al. Heating up the roof of the world: tracing the impacts of
+in-situ warming on carbon cycle in alpine grasslands on the Tibetan
+Plateau. Natl. Sci. Rev. 12, nwae371 (2024).
+46. Zani, D., Crowther, T. W., Mo, L., Renner, S. S. & Zohner, C. M.
+Increased growing-season productivity drives earlier autumn
+leaf senescence in temperate trees. Science 370, 1066–1071
+(2020).
+47. Wang, H. et al. Alpine grassland plants grow earlier and faster but
+biomass remains unchanged over 35 years of climate change. Ecol.
+Lett. 23, 701–710 (2020).
+48. Umaña, M. N. et al. Upscaling the effect of traits in response to
+drought: the relative importance of safety–efﬁciency and
+acquisitive–conservation functional axes. Ecol. Lett. 26,
+2098–2109 (2023).
+49. Zhang, W. et al. Seasonal stabilization effects slowed the greening
+of the Northern Hemisphere over the last two decades. Nat Commun 16, 6287 (2025).
+50. Richardson, A. D. et al. Inﬂuence of spring and autumn phenological transitions on forest ecosystem productivity. Philos. Trans. R.
+Soc. B: Biol. Sci. 365, 3227–3246 (2010).
+51. Gallinat, A. S., Primack, R. B. & Wagner, D. L. Autumn, the neglected
+season in climate change research. Trends Ecol. Evol. 30,
+169–176 (2015).
+52. Lubbe, F. C., Klimešová, J. & Henry, H. A. L. Winter belowground:
+changing winters and the perennating organs of herbaceous plants.
+Funct. Ecol. 35, 1627–1639 (2021).
+53. Xu, H. et al. Convergent strategies for leaf traits in tree species from
+divergent habitats. Glob. Chang. Biol. 31, e70108 (2025).
+54. Harris, T. et al. Capital and income breeders among herbs: how
+relative biomass allocation into a storage organ relates to clonal
+traits, phenology and environmental gradients. New Phytol 245,
+154–168 (2025).
+55. Jiang, B. et al. Complex interactions of ‘water-light-heat’ climatic
+conditions on spring phenology in the mid-high latitudes of the
+Northern Hemisphere. Agric. For. Meteorol. 367, 110520 (2025).
+56. Peaucelle, M. et al. Spatial variance of spring phenology in temperate deciduous forests is constrained by background climatic
+conditions. Nat Commun 10, 5388 (2019).
+57. Delpierre, N. et al. Modelling interannual and spatial variability of
+leaf senescence for three deciduous tree species in France. Agric.
+For. Meteorol. 149, 938–948 (2009).
+58. Hänninen, H. et al. Experiments are necessary in process-based tree
+phenology modelling. Trends Plant Sci 24, 199–209 (2019).
+59. Gu, H. et al. Warming-induced increase in carbon uptake is linked to
+earlier spring phenology in temperate and boreal forests. Nat.
+Commun. 13, 3698 (2022).
+60. Li, D., Belitz, M., Campbell, L. & Guralnick, R. Extreme weather
+events have strong but different impacts on plant and insect phenology. Nat. Clim. Chang. 15, 321–328 (2025).
+61. Ge, Q., Wang, H., Rutishauser, T. & Dai, J. Phenological response to
+climate change in China: a meta-analysis. Glob. Chang. Biol. 21,
+265–274 (2015).
+62. USA National Phenology Network. Plant individual phenometrics
+data, 2009–2024. USA-NPN https://doi.org/10.5066/
+F78S4N1V (2024).
+63. Leys, C., Ley, C., Klein, O., Bernard, P. & Licata, L. Detecting outliers:
+do not use standard deviation around the mean, use absolute
+deviation around the median. J. Exp. Soc. Psychol. 49,
+764–766 (2013).
+
+9
+
+Article
+64. Kattge, J. et al. TRY – a global database of plant traits. Glob. Chang.
+Biol. 17, 2905–2935 (2011).
+65. Kembel, S. W. et al. Picante: R tools for integrating phylogenies and
+ecology. Bioinformatics 26, 1463–1464 (2010).
+66. Lu, C. et al. Diminishing warming effects on plant phenology over
+time. New Phytol 245, 523–533 (2025).
+67. Adams, D. C., Gurevitch, J. & Rosenberg, M. S. Resampling tests for
+meta-analysis of ecological data. Ecology 78, 1277–1283 (1997).
+68. Viechtbauer, W. Conducting meta-analyses in R with the metafor
+package. J. Stat. Softw. 36, 1–48 (2010).
+69. Jin, Y. & Qian, H. V. PhyloMaker: an R package that can generate
+very large phylogenies for vascular plants. Ecography 42,
+1353–1359 (2019).
+70. Paradis, E., Claude, J. & Strimmer, K. APE: analyses of phylogenetics
+and evolution in R language. Bioinformatics 20, 289–290 (2004).
+71. Blomberg, S. P., Garland, T. & Ives, A. R. Testing for phylogenetic
+signal in comparative data: behavioral traits are more labile. Evolution 57, 717–745 (2003).
+72. Lê, S., Josse, J. & Husson, F. FactoMineR: an R package for multivariate analysis. J. Stat. Softw. 25, 1–18 (2008).
+73. Butler, E. E. et al. Mapping local and global variability in plant trait
+distributions. Proc. Natl. Acad. Sci. USA 114, E10937–E10946 (2017).
+74. R. Core Team. R: A language and environment for statistical computing (R Foundation for Statistical Computing, 2025).
+75. Xiong, K. Dataset and R code for ‘Acquisitive plants exhibit stronger
+phenological shifts in response to warming: insights from metaanalysis and long-term monitoring’. ﬁgshare https://doi.org/10.
+6084/m9.ﬁgshare.29917052 (2025).
+
+Acknowledgements
+This research was supported by the National Natural Science Foundation
+of China (Grant Nos. 32422055 (H.L.), 32130065 (H.L.) and 42125101
+(C.W.)) and the National R&D Program of China (Grant No.
+2023YFF0806800 (H.L.)). H.L. also acknowledges support from the
+Shanghai Rising-Star Program (Grant No. 23QA1402900) and Fundamental and Interdisciplinary Disciplines Breakthrough Plan of the Ministry of Education of China (JYB2025XDXM904). We would like to
+express our gratitude to all the authors of the published papers included
+in our meta-analysis, as well as to the contributors of the two long-term
+phenological datasets. We also thank the contributors of the TRY database, as well as the authors who provided the spatial distribution data of
+the traits used in Fig. 4.
+
+https://doi.org/10.1038/s41467-026-70474-4
+
+Author contributions
+H.L. and C.W. conceived the study. K.X., H.Z., and H.L. conducted the
+analysis with inputs from C.L. and X.W. P.R., P.C., J.P., and C.W. provided
+signiﬁcant revisions. K.X., C.W., and H.L. wrote the manuscript, with
+contributions from all co-authors.
+
+Competing interests
+The authors declare no competing interests.
+
+Additional information
+Supplementary information The online version contains
+supplementary material available at
+https://doi.org/10.1038/s41467-026-70474-4.
+Correspondence and requests for materials should be addressed to
+Chaoyang Wu or Huiying Liu.
+Peer review information Nature Communications thanks the anonymous reviewers for their contribution to the peer review of this work. A
+peer review ﬁle is available.
+Reprints and permissions information is available at
+http://www.nature.com/reprints
+Publisher’s note Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional afﬁliations.
+Open Access This article is licensed under a Creative Commons
+Attribution 4.0 International License, which permits use, sharing,
+adaptation, distribution and reproduction in any medium or format, as
+long as you give appropriate credit to the original author(s) and the
+source, provide a link to the Creative Commons licence, and indicate if
+changes were made. The images or other third party material in this
+article are included in the article’s Creative Commons licence, unless
+indicated otherwise in a credit line to the material. If material is not
+included in the article’s Creative Commons licence and your intended
+use is not permitted by statutory regulation or exceeds the permitted
+use, you will need to obtain permission directly from the copyright
+holder. To view a copy of this licence, visit http://creativecommons.org/
+licenses/by/4.0/.
+© The Author(s) 2026
+
+1
+
+Zhejiang Tiantong Forest Ecosystem National Observation and Research Station, Institute of Eco-Chongming, Zhejiang Zhoushan Island Ecosystem
+Observation and Research Station, School of Ecological and Environmental Sciences, East China Normal University, Shanghai, China. 2Department of Forest
+Resources, University of Minnesota, St. Paul, MN, USA. 3Hawkesbury Institute for the Environment, Western Sydney University, Penrith, NSW, Australia.
+4
+Institute for Global Change Biology and School for Environment and Sustainability, University of Michigan, Ann Arbor, MI, USA. 5Laboratoire des Sciences du
+Climat et de l’Environnement, LSCE/IPSL, CEA-CNRS- UVSQ, Université Paris-Saclay, Gif-sur-Yvette, France. 6State Key Laboratory of Grassland Agroecosystems, College of Ecology, Lanzhou University, Lanzhou, China. 7CREAF, Cerdanyola del Vallès, Barcelona, Catalonia, Spain. 8CSIC, Global Ecology Unit,
+CREAF-CSIC-UAB, Cerdanyola del Vallès, Barcelona, Catalonia, Spain. 9The Key Laboratory of Land Surface Pattern and Simulation, Institute of Geographic
+Sciences and Natural Resources Research, Chinese Academy of Sciences, Beijing, China. 10University of the Chinese Academy of Sciences, Beijing, China.
+e-mail: wucy@igsnrr.ac.cn; hyliu@des.ecnu.edu.cn
+
+Nature Communications | (2026)17:4430
+
+10

@@ -1,0 +1,1163 @@
+Article
+
+https://doi.org/10.1038/s41467-026-71959-y
+
+Ozone mitigates extended growing season
+and enhanced vegetation greenness driven
+by environmental change
+Received: 2 January 2025
+
+Check for updates
+
+1234567890():,;
+
+1234567890():,;
+
+Accepted: 3 April 2026
+
+Hao Yin1, Lin Meng 1 , Andrew D. Richardson2,3, Maria Val Martin 4,
+Jiafu Mao 5, Huidong Li 1, Jonathan M. Gilligan 1, Hemraj Bhattarai 6 &
+Amos P. K. Tai 7,8
+
+Rising temperature and elevated CO2 concentrations lead to extended growing seasons and enhanced vegetation greenness in terrestrial ecosystems,
+especially across the Northern Hemisphere. However, whether and to what
+extent surface ozone, an anthropogenic environmental factor, affects vegetation phenology and greenness remains unexplored at a large scale. Integrating ground-based ozone observations with multiple satellite observations,
+we demonstrate that surface ozone signiﬁcantly shortened the growing season
+by delaying start of season and advancing end of season. Additionally, ozone
+reduced growing-season vegetation greenness, as reﬂected in decreased
+annual accumulated Enhanced Vegetation Index and maximum Enhanced
+Vegetation Index. These impacts show pronounced spatial heterogeneity,
+varying in magnitude across the United States, Europe, and China over the past
+decade, highlighting ozone’s diverse impact on vegetation across regions. Our
+study predicts that continuously increasing surface ozone concentration will
+mitigate warming-driven lengthening the growing season by 2 to 4 days,
+reduce maximum Enhanced Vegetation Index by 0.4% to 8.3%, and reduce
+annual accumulated Enhanced Vegetation Index by 1.0% to 5.6% in 2050 under
+Shared Socioeconomic Pathway 5-8.5 scenario. Our ﬁndings highlight the
+imperative need for strategic surface ozone regulation to optimize vegetation
+health and maximize the capacity for carbon sequestration.
+
+Rising temperatures and elevated carbon dioxide (CO2) levels alter
+vegetation canopy dynamics and carbon uptake in the terrestrial
+ecosystem1,2. An increase in temperature causes an earlier start of
+season (SOS) by 7–9 days, and a later end of season (EOS) by 5–8 days
+over the Northern Hemisphere, resulting in a prolonged growing
+period3,4. Rising atmospheric CO2 levels and warming increase
+
+vegetation greenness, as indicated by integrated annual enhanced
+vegetation index (EVI) and peak EVI5,6. These changes in vegetation
+seasonality and canopy density inﬂuence the energy budget, biogeochemical cycles, and feedback mechanisms of climate system. In
+addition, these ecosystem changes also enhance the terrestrial carbon
+sink, serving as key considerations in the development and
+
+1
+
+Department of Earth and Environmental Science, Vanderbilt University, Nashville, TN, USA. 2Center for Ecosystem Science and Society, Northern Arizona
+University, Flagstaff, AZ, USA. 3School of Informatics, Computing, and Cyber Systems, Northern Arizona University, Flagstaff, AZ, USA. 4Leverhulme Centre for
+Climate Change Mitigation, School of Biosciences, University of Shefﬁeld, Shefﬁeld, UK. 5Environmental Sciences Division, Oak Ridge National Laboratory,
+Oak Ridge, TN, USA. 6Division of Environment and Sustainability, The Hong Kong University of Science and Technology, Hong Kong, China. 7Department of
+Earth and Environmental Sciences, The Chinese University of Hong Kong, Hong Kong, China. 8State Key Laboratory of Agrobiotechnology, and Institute of
+e-mail: lin.meng@vanderbilt.edu
+Environment, Energy and Sustainability, The Chinese University of Hong Kong, Hong Kong, China.
+
+Nature Communications | (2026)17:5445
+
+1
+
+Article
+
+https://doi.org/10.1038/s41467-026-71959-y
+
+Fig. 1 | Schematic representation of ozone, temperature, and CO2 effects on
+vegetation phenology and greenness. a Increasing temperatures (T) advance
+start of season (SOS) and delay end of season (EOS), while both elevated T and CO2
+concentrations increase vegetation greenness, i.e., the maximum EVI (EVImax) and
+
+cumulative EVI throughout the growing season (EVIarea). b Increased surface ozone
+concentration (O3) offsets the inﬂuence of CO2 and T by delaying SOS, advancing
+EOS, and diminishing EVImax and EVIarea during the growing season.
+
+implementation of carbon-neutral policies7,8. However, the inﬂuence
+of anthropogenic factors beyond temperature and CO2, notably surface ozone, on the timing (i.e., phenology) and magnitude (i.e.,
+greenness level) of vegetation canopy changes remains relatively
+unexplored at large scales, leading to large biases in predicting future
+ecosystem functioning.
+Surface ozone, a secondary pollutant formed from the reaction of
+precursor species (e.g., carbon monoxide, volatile organic compounds, and nitrogen oxides) in the presence of sunlight, has long
+been recognized as a harmful air pollutant with detrimental effects on
+vegetation9,10. Human activities, including the emissions of pollutants
+from industrial processes and transportation, along with environmental factors like rising temperatures, drought, and wildﬁres, are
+identiﬁed as crucial drivers of increasing surface ozone
+concentrations11–14. In developed regions like the USA and Europe,
+policies aimed at reducing ozone precursors led to a gradual decline in
+surface ozone levels of −0.81 and −0.30 ppbv/year, respectively, over
+the past decades15,16. In contrast, many developing countries, particularly those undergoing rapid industrialization and urbanization,
+experienced rising surface ozone levels (e.g., by 2.4 ppbv/year in
+China), which poses signiﬁcant challenges for ecosystem health17,18.
+These contrasting ozone trends, which interact with environmental
+change, may imply diverging effects on ecological processes and
+functions in different regions.
+Beyond visible ozone injury on individual species, the impacts of
+surface ozone on vegetation phenology and growth are observed
+primarily at the site level, using ﬁeld observation or greenhouse
+experiments, or at the ecosystem scale through modeling approaches.
+For example, ozone pollution is found to delay spring phenology by a
+week for birch, horse chestnut, and Populus19,20. Ozone exposure
+reduces photosynthetic rates and accelerates leaf senescence, thereby
+reducing ecosystem productivity and carbon sink21–24. However, the
+extent to which reduced ecosystem productivity is attributed to
+declines in canopy greenness, as well as the regional variations in
+ozone’s effects on vegetation phenology and greenness, remains largely unknown. Consequently, current ecosystem predictions often
+neglect the potential impact of varying surface ozone concentrations
+in the future, which depends on the implementation and effectiveness
+of policies. This oversight limits current carbon policies by failing to
+account for ozone-induced reductions in carbon sequestration. A
+more integrated approach that considers ozone, temperature, and
+CO₂ effects on vegetation is essential for accurately predicting ecosystem changes.
+In this study, we focus on the following questions: (a) Is there a
+detectable effect of ozone on vegetation phenology and greenness at
+a regional scale? (b) What are the magnitudes of ozone, temperature,
+and CO2 effects on vegetation phenology and greenness? (c) How
+
+will vegetation phenology and greenness change under future climate and ozone scenarios? We hypothesize higher ozone concentrations offset the lengthened growing season and enhanced
+vegetation greenness by increasing temperature and CO2 levels (Fig.
+1). To test this hypothesis, we investigate four key satellite-derived
+vegetation indicators: SOS and EOS to represent phenology, and
+maximum EVI (EVImax) and cumulative EVI throughout the entire
+growing season (EVIarea) to represent greenness, using the NASA
+Visible Infrared Imaging Radiometer Suite (VIIRS) Global Land Surface Phenology (GLSP) data product. We quantify ozone exposure
+using Accumulated dose of ozone over a Threshold of 40 ppbv
+(AOT40) and average surface ozone concentration derived from
+ground-based observation networks, most of which are located in
+urban areas. We assess the effects of ozone, temperature, and CO2 on
+the four vegetation indicators for the USA, Europe, and China using
+partial correlation analysis (see “Methods”). Future changes in
+vegetation phenology and greenness by 2050 are projected using an
+integrated machine-learning model (LightGBM and SHapley Additive
+exPlanations (SHAP)), driven by climate projections from the sixth
+phase of the Coupled Model Intercomparison Project (CMIP6) and
+surface ozone data from the Community Earth System Model version
+2 (CESM2). Because most monitoring sites are in urban areas, our
+estimates of ozone effects primarily capture responses of urban
+vegetation, while still providing insight into ozone–phenology relationships across broader land cover types.
+
+Nature Communications | (2026)17:5445
+
+Results
+Signiﬁcant ozone effect on vegetation phenology and greenness
+across regions
+Both vegetation indicators and environmental drivers exhibit pronounced regional variation across China, the USA, and Europe. China
+experiences
+the
+highest
+average
+annual
+AOT40
+(35.95 × 103 ppbv·hour), considerably exceeding levels in the USA
+(14.38 × 103 ppbv·hour) and Europe (9.61 × 103 ppbv·hour) (Fig. S1),
+with pronounced seasonal variations peaked in summer and autumn
+(Fig. S2). Decadal mean AOT40 show a distinct east low-west high
+spatial pattern in the USA, primarily attributed to the transport of
+ozone pollution originating from East Asia and stratospheric ozone
+intrusion25–27. Ozone levels show similar spatial patterns with AOT40
+(Fig. S3). The SOS shows clear latitudinal patterns, i.e., delayed with
+increasing latitude, especially in Europe where a difference of
+9–12 days in SOS is found in northern countries compared to the
+Mediterranean regions (Fig. 2a). In contrast, regional patterns in SOS
+across the USA and China reﬂect localized climatic inﬂuences; the
+western USA exhibits an earlier SOS than the east, while southeastern
+China shows a delayed SOS due to the spring East Asian monsoon,
+which brings heavy rainfall and reduced solar radiation (25). The EOS,
+2
+
+Article
+
+Fig. 2 | Signiﬁcant ozone effect on vegetation phenology and greenness in the
+USA, Europe, and China. a–d spatial patterns of long-term averaged start of season (SOS) (a), end of season (EOS) (b), maximum EVI (EVImax) (c), and cumulative
+EVI throughout the growing season (EVIarea) (d), along with their latitudinal variation. The line indicates the average of each variable and shadow indicates the
+
+Nature Communications | (2026)17:5445
+
+https://doi.org/10.1038/s41467-026-71959-y
+
+standard variances. e Partial correlation coefﬁcients (R) between Accumulated dose
+of ozone Over a Threshold of 40 ppbv (AOT40) and SOS, EOS, EVImax, and EVIarea,
+respectively, for USA (2013–2022, n = 3753), Europe (2013–2022, n = 11401), and
+China (2015–2022, n = 9272). Bars represent mean values, and error bars represent
+the standard deviations across years.
+
+3
+
+Article
+however, exhibits less distinct latitudinal patterns in all three study
+regions (Fig. 2b). Greenness indicators, EVImax and EVIarea, similarly
+show notable regional contrasts, e.g., higher in the eastern USA compared to the west (Fig. 2c, d). Temperature patterns align closely with
+SOS, showing clear latitudinal variations (Fig. S4). Average annual CO2
+levels are very similar across China (407 ppbv), Europe (406 ppbv),
+and the USA (405 ppbv), with no discernable latitudinal pattern (Fig. S5).
+We found ozone has signiﬁcant effects on both vegetation phenology and greenness across all three study regions (USA, Europe, and
+China), after removing effects of temperature, vapor pressure deﬁcit
+(VPD), precipitation, and CO2 through spatial partial correlation analysis (Figs. 2e and S6, p < 0.05). Speciﬁcally, higher temperature is
+associated with earlier SOS and later EOS, lengthening of the growing
+season, and increased EVImax and EVIarea, enhancing vegetation
+greenness (Fig. S6b, p < 0.05), while higher CO2 levels is associated
+with a further increase in EVImax and EVIarea (Fig. S6e, p < 0.05), consistent with the ﬁndings of existing studies28–30. In contrast, higher
+AOT40 is associated with delayed SOS (partial correlation coefﬁcient
+between AOT40 and SOS [RAOT40-SOS]: 0.21 ± 0.03 in the USA (Mean ±
+Standard Deviation [S.D.]), 0.09 ± 0.01 in Europe, and 0.11 ± 0.02 in
+China), and advanced EOS (RAOT40-EOS: −0.09 ± 0.02, −0.10 ± 0.02, and
+−0.12 ± 0.02) across all three regions (Fig. 2e). In other words, elevated
+ozone is associated with the shortening of growing season by shifting
+both SOS and EOS. Moreover, higher AOT40 is associated with
+reduced EVImax (RAOT40-EVImax: −0.11 ± 0.02, −0.03 ± 0.01, and
+−0.10 ± 0.02) and EVIarea (RAOT40-EVIarea: −0.03 ± 0.01, −0.20 ± 0.02, and
+−0.06 ± 0.02). The largest ozone impact on SOS and EVImax occurred in
+the USA, the greatest effect on EOS was in China, and the largest effect
+on EVIarea was found in Europe. We also conducted similar partial
+correlation analyses using average ozone concentrations (instead of
+AOT40, Fig. S6), an alternative XCO2 dataset (GOSAT Global Land 1°
+Mapping, see “Methods”; Fig. S7), and MODIS phenology data (instead
+of VIIRS, Fig. S8), all of which yielded consistent results. Analyses
+across land cover types showed similar patterns, though with varying
+effect magnitudes (Figs. S9 and S10).
+
+Stronger ozone effect on EOS than SOS over years
+To assess temporal relationships, we calculated the temporal partial
+correlation coefﬁcients of four vegetation indices with environmental
+factors for each site (Fig. 3). We found the effects of ozone, temperature, and CO2 on vegetation phenology and greenness are temporally
+and spatially consistent, although temporal effects show larger variations across sites. In general, the temporal RAOT40-SOS is positive
+(0.06 ± 0.004 on average, Mean ± Standard Error [S.E.]), indicating
+increasing AOT40 is associated with delay in SOS over years, although
+the correlation is negative in Northwest China, Western USA, and
+Northern Europe (Fig. 3a and e). In contrast, the temporal RAOT40-EOS is
+generally negative (−0.14 ± 0.003), which indicates increasing AOT40
+is associated with advancing EOS over years (Fig. 3b and e). The
+(−0.06 ± 0.004)
+and
+RAOT40-EVIarea
+negative
+RAOT40-EVImax
+(−0.12 ± 0.004) indicate that increasing AOT40 is associated with
+decreasing vegetation greenness (Fig. 3c, d). Interestingly, we found
+the average ozone effect (RAOT40-SOS: 0.06 ± 0.004) is weaker than the
+average temperature effect (RT-SOS: −0.09 ± 0.004) on SOS, but
+stronger than the temperature effect on EOS (RAOT40-EOS:
+−0.14 ± 0.003, and RT-EOS: 0.09 ± 0.004) (Figs. 3e and S11), indicating
+that ozone plays a comparatively greater role in EOS than in SOS. For
+EVImax and EVIarea, CO2 shows the strongest correlations (RCO2-EVImax:
+0.18 ± 0.004, RCO2-EVIarea: 0.15 ± 0.004), followed by AOT40 (RAOT40EVImax: −0.06 ± 0.004, RAOT40-EVIarea: −0.12 ± 0.004), while the effect of
+temperature is comparatively modest (RT-EVImax: 0.10 ± 0.004,
+RT-EVIarea: 0.13 ± 0.004) (Figs. 3e and S18). We conducted the same
+temporal partial correlation analysis using ozone concentration,
+instead of AOT40, and obtained similar results (Fig. S12).
+
+Nature Communications | (2026)17:5445
+
+https://doi.org/10.1038/s41467-026-71959-y
+
+The long-term trends of ozone, temperature, and CO2 as well as
+their impact on vegetation indexes vary widely across the three study
+regions (Figs. S13–S18). Temperature and CO2 increased in similar way
+across three regions, but ozone increased rapid in China, while
+decreased in the USA and Europe (Figs. S13–S16). In China, the correlation of AOT40 on delaying SOS (RAOT40-SOS: 0.11 ± 0.003) and
+advancing EOS (RAOT40-EOS: −0.19 ± 0.002) is greater than the correlation of temperature (RT-SOS: −0.08 ± 0.001, RT-EOS: 0.03 ± 0.002)
+(Fig. S11), suggesting the profound role of ozone on vegetation in
+China. In contrast, in both USA and Europe, AOT40 correlation with
+vegetation phenology (USA: RAOT40-SOS: 0.16 ± 0.004 and RAOT40-EOS:
+−0.06 ± 0.003; Europe: RAOT40-SOS: −0.04 ± 0.003 and RAOT40-EOS:
+−0.03 ± 0.004) is weaker than temperature correlation (RT-SOS:
+−0.21 ± 0.004 and RT-EOS: 0.17 ± 0.003 for USA; RT-SOS: −0.14 ± 0.004
+and RT-EOS: 0.11 ± 0.003 for Europe) (Figs. S11 and 17). In Europe,
+AOT40 effect on EVImax (RAOT40-EVIarea: −0.17 ± 0.003) is more pronounced compared to the CO2 effect (RCO2-EVIarea: 0.05 ± 0.004), while
+the opposite is observed in China and the USA (Figs. S11 and S18).
+
+Vegetation changes under future ozone scenarios
+To assess the potential impacts of future climate and ozone changes
+on vegetation, we developed a machine-learning model (LightGBM
+with SHAP interpretation) to project changes in four vegetation indicators by 2050 under climate scenarios with either ﬁxed 2022 ozone
+(no ozone effect) or CESM2 ozone projections. The difference between
+the two simulations represents the impact of ozone on future vegetation changes. We found the continuous increase in surface ozone
+concentration is expected to diminish the effects of warming and
+elevated CO2 on lengthening the growing season and enhancing
+vegetation greenness for 2050 (Fig. 4). Speciﬁcally, under ﬁxed ozone
+scenarios (no ozone effect), SOS will advance by 5–19 days by 2050,
+EOS will delay by 10–32 days, EVImax will increase by 0.15–0.45, and
+EVIarea will increase by 23–47 by 2050 (Fig. S24). After considering
+ozone effect in the prediction, SOS delays by about 3, 5, and 3 days in
+the USA, Europe, and China, respectively (SHAP: 0.29 ± 0.18, mean ±
+S.D.), EOS advances by 3, 2, and 3 days (SHAP: −0.21 ± 0.15), EVImax
+decreased by 0.03, 0.02, and 0.04 (SHAP: −0.20 ± 0.19), while EVIarea
+decreased by 2.07, 2.51, and 1.85 (SHAP: 0.16 ± 0.12, Figs. 4 and S25). In
+other words, increasing surface ozone concentration will mitigate
+warming-driven lengthening the growing season by 2 to 4 days, reduce
+maximum EVI by 0.4–8.3%, and reduce annual accumulated EVI by
+1.0–5.6% in 2050 under Shared Socioeconomic Pathway (SSP) 5–8.5.
+These ﬁndings align with the results obtained through partial correlation analysis of historical patterns. This consistency between different methodological approaches enhances the reliability of our
+conclusions regarding impacts of ozone.
+
+Discussion
+This study highlights ozone as a critical factor that shortens the
+growing season of vegetation and reduces vegetation greenness
+worldwide, especially in urban areas. While vegetation growing length
+and greenness are generally expected to increase with increases in
+temperature and CO2 levels in the near future31,32, the predicted rise in
+ozone levels is likely to offset these gains by reducing the duration of
+the growing season and vegetation greenness, thereby diminishing
+carbon sequestration capacity of ecosystems. Although the magnitude
+of the ozone effect is moderate compared to temperature and CO₂,
+incorporating it into future projections improves the accuracy of
+predicting vegetation dynamics and ecosystem functioning. Mitigating ozone pollution has profound and far-reaching signiﬁcance for
+sustaining ecosystem health, guiding effective environmental policy,
+and supporting global sustainability goals.
+Previous work has shown that ozone affects plant phenology and
+vegetation greenness through a multifaceted process33,34. As a powerful oxidant, ozone inﬁltrates plant tissues and disrupts cellular
+4
+
+Article
+
+Fig. 3 | The effects of ozone, temperature, and CO2 on vegetation phenology
+and greenness over time. a–d Spatial patterns of temporal partial correlation
+coefﬁcients (R) between Accumulated dose of ozone Over a Threshold of 40 ppbv
+(AOT40) and start of season (SOS) (a), end of season (EOS) (b), maximum EVI
+(EVImax) (c), and cumulative EVI throughout the growing season (EVIarea) (d). The
+inserted subplots above the map show histograms of R. Black dashed lines indicate
+zero values, while red dashed lines and numbers represent the mean coefﬁcients.
+
+Nature Communications | (2026)17:5445
+
+https://doi.org/10.1038/s41467-026-71959-y
+
+Left subplots show the changes with latitude, with lines indicate the averaged R and
+shadow indicates the standard variances. e Partial correlation coefﬁcients between
+AOT40, temperature, CO2 and vegetation phenology and greenness (n = 24426).
+The diamonds indicate the average of partial correlations; box edges denote 25 and
+75% quartiles; the whiskers represent 25% of the standard deviation. Signiﬁcance
+was assessed using two-sided tests. The spatial patterns of statistical signiﬁcance at
+the 95% conﬁdence level (p < 0.05) over each site are presented in Figs. S19–S22.
+
+5
+
+Article
+
+https://doi.org/10.1038/s41467-026-71959-y
+
+Fig. 4 | Predicted ozone impact on vegetation phenology and greenness in
+2050 in the USA, Europe, and China. a–d Differences in start of season (SOS) (a),
+end of season (EOS) (b), maximum EVI (EVImax) (c), and cumulative EVI throughout
+the growing season (EVIarea) (d) derived from predictions with and without ozone
+
+effects using CESM2 data under Shared Socioeconomic Pathway (SSP) 5–8.5 (see
+“Methods”) in the USA (n = 121), Europe (n = 528), and China (n = 575). The diamonds indicate the mean values; box edges denote 25 and 75% quartiles, and the
+whiskers represent 25% of the standard deviation.
+
+functions, impairing photosynthesis, and altering hormonal
+regulation35,36. Stomatal uptake serves as the primary pathway for
+ozone entry into leaves, where it rapidly decomposes and generates
+reactive oxygen species (ROS), further intensifying oxidative stress37,38.
+This stress reduces the activity of key photosynthetic enzymes such as
+Rubisco and disrupts chloroplast ultrastructure, thereby diminishing
+photosynthetic capacity39,40. Ozone-induced oxidative stress triggers
+the formation of ROS within plant cells, leading to cellular damage and
+a compromised defense mechanism against environmental
+stressors41,42. These physiological disruptions, combined with the
+inhibition of carbon assimilation, contribute to premature senescence
+(earlier EOS) and delayed ﬂowering, consequently shortening the
+growing season20,43,44. As the deleterious effects of ozone-induced
+oxidative stress accumulate within plant cells, chlorophyll content and
+the consequent greenness decrease45,46. This diminished capacity for
+photosynthesis results in reduced biomass production and overall
+growth, impacting vegetation greenness47,48.
+Ozone-induced damage varies widely across species, reﬂecting
+differences in antioxidant capacity, stomatal behavior, and repair
+mechanisms49. Species-speciﬁc responses, for example, shifts in carbohydrate metabolism in Phoebe spp. or photosynthetic decline in
+Fagus crenata and Quercus ilex, are further modulated by nutrient
+availability and interacting stressors such as drought and heat, which
+can either mitigate or amplify ozone injury50,51. These contextdependent responses highlight the need for models that capture
+species traits and multi-stressor interactions to better predict
+ecosystem-level impacts of ozone under future scenarios52.
+The divergent temporal trends observed in ozone concentration
+between China, on the one hand, and the USA and Europe, on the
+
+other, reﬂect differences in environmental regulation. USA and Europe
+have developed and implemented ozone pollution standards and
+preventive through the Clean Air Act Extension by the USA in 197053,
+and the Convention on Long-range Transboundary Air Pollution by
+Europe in 197954. More importantly, these regions have consistently
+updated standards of air quality and emissions controls, with crossdepartmental and regional cooperation for coordinated control measures targeting multiple pollutants, especially NOx and VOCs—key
+ozone precursors55–57. Consequently, most parts of the USA and Europe
+have curbed ozone levels and maintained air quality within prescribed
+limits in recent years. In contrast, China’s rapid industrialization and
+vehicle emissions drove elevated ozone levels—around 5%/year from
+2013 to 201914,17,18, as early policies focused mainly on NOx, SO2, and
+PM2.5. More recently, China has initiated measures aimed at curtailing
+the emissions of ozone precursors through coordinated control of
+VOCs, NOx, and PM2.5, with a target to reduce NOx and VOCs by 10% in
+2025 compared with 202014.
+We found that ozone impacts are highly spatially heterogeneous.
+Regional differences arise from variation in vegetation composition,
+meteorology, and chemical environments. In hot, high-VPD regions
+such as parts of China, reduced stomatal conductance may limit ozone
+uptake, yet concurrent high ozone and temperature can still accelerate
+senescence and reduce assimilation, as shown in this study. Urbanization intensity is also a key factor, with stronger ozone formation
+observed in dense city clusters such as the Pearl River and Yangtze
+River Deltas compared to surrounding rural areas. In addition, cooccurring pollutants like PM2.5 alter light and radiation regimes, further compounding ozone effects and contributing to regional variability in phenology and productivity. These complexities underscore
+
+Nature Communications | (2026)17:5445
+
+6
+
+Article
+the need for region-speciﬁc strategies that account for both ozone
+levels and local ecological contexts when aiming to sustain ecosystem
+function.
+Future strategies for ozone pollution control require strengthened cooperation within regional and international frameworks. Due
+to its relatively long atmospheric lifetime, ozone has the capacity to
+travel long distances, contributing to cross-boundary ozone pollution.
+For example, the western USA has struggled to meet established ozone
+standards, potentially because of the long-range transport of ozone
+and its precursors from other regions25,27,58. Changes in ozone pollution
+will also be affected by social and economic factors. The transition
+toward vehicle electriﬁcation and renewable electricity generation
+promises to signiﬁcantly reduce NOx emissions, especially in urban
+areas59. Additionally, in many rural areas, agricultural soil emissions of
+NOx are a major contributor to ozone, so policy responses will need to
+look beyond energy and transportation60–62. In addition to mitigating
+the impact of urban ozone pollution, adopting a forward-looking
+approach involves cultivation of plant species that exhibit lower sensitivity to ozone, such as Ginkgo biloba and Pinus armandii63.
+Monitoring surface ozone levels worldwide remains a signiﬁcant
+challenge. The integration of statistical modeling, remote sensing
+observations, and process modeling of transport and atmospheric
+chemistry have shown considerable advancement in estimating highresolution spatial patterns of surface ozone concentration from site
+observations64,65. However, current monitoring stations are predominantly situated in urban areas66. Given that ozone concentration
+is affected by not only anthropogenic emissions but also geographical
+features, vegetation types, meteorological conditions, and atmospheric transport processes67, representative ozone monitoring stations in rural and forested areas should be prioritized. At the same
+time, satellite instruments such as TROPOMI now provide global,
+repeated coverage of tropospheric ozone, enabling the detection of
+broad spatial and temporal patterns that cannot be resolved by sparse
+ground networks alone. Although satellite retrievals have limitations
+and require careful validation, fusing satellite products with groundcalibrated observations offers a promising pathway for spatial extrapolation of ozone estimates beyond urban cores. Similar data fusion
+approaches have been successfully applied in eddy covariance ﬂux
+studies to extend site level measurements to regional scales, and they
+are increasingly used to track ozone and smoke from remote ﬁres68.
+Our ﬁndings imply considering the ozone effect on vegetation
+growth in Earth system models is crucial for accurately predicting
+future changes in ecosystem dynamics and terrestrial carbon
+sequestration34,69. For example, most current phenology models
+mainly consider temperature and light availability63, overlooking the
+impacts of ozone and other pollutants on phenology and canopy
+greenness. This omission is signiﬁcant, as longer growing seasons and
+higher greenness are associated with greater cumulative CO₂ assimilation, yet our results show that ozone shortens the season and
+reduces greenness, reducing seasonal carbon uptake70. Current model
+frameworks, such as Community Land Model (CLM), lack explicit
+ozone-phenology mechanisms, resulting in systematic biases in
+simulating vegetation productivity and carbon exchange. Additionally,
+the duration of O3 exposure varies across vegetation types, e.g.,
+evergreen species may experience longer O3 exposure periods compared to deciduous species, potentially leading to greater cumulative
+damage. Future studies should account for these differences when
+reﬁning models across spatially heterogeneous regions to improve
+their completeness and accuracy.
+Several uncertainties remain in our study. Our results may
+underestimate the impact of ozone because AOT40 does not accurately reﬂect the full extent of ozone exposure, and plants often
+respond at lower ozone concentrations. A more process-based
+approach is to consider ozone uptake ﬂuxes (i.e., stomatal ozone
+uptake at the leaf and canopy scale), which better reﬂect the actual
+
+Nature Communications | (2026)17:5445
+
+https://doi.org/10.1038/s41467-026-71959-y
+
+dose received by vegetation. However, the lack of large-scale ﬂuxbased ozone observations highlights the need to establish more ﬂux
+sites across different land covers. Beyond the drivers analyzed here,
+factors such as nitrogen deposition, PM2.5, and co-pollutants may also
+inﬂuence phenology, either directly or through interactions with
+ozone71. For instance, nitrogen deposition may alter plant sensitivity to
+ozone by modifying photosynthetic capacity and nutrient availability,
+while PM2.5 can affect light availability and radiation diffusion72. These
+limitations highlight the importance of developing more comprehensive, integrated assessments as broader and higher-resolution pollution datasets become available.
+In summary, we report signiﬁcant effects of ozone on vegetation
+phenology and greenness, i.e., high concentrations of ozone delay SOS
+and advance EOS, shortening the growing season, and reduce vegetation greenness, potentially decreasing the carbon sequestration of
+ecosystem. By predicting future vegetation phenology and greenness
+under climate and ozone scenarios, we emphasize that ozone is
+expected to partly mitigate the increase in vegetation greenness driven by warming and elevated CO2. These ﬁndings provide insights into
+the impact of ozone pollution on vegetation health and have profound
+implications for the development of vegetation models, carbon cycle
+simulations, and carbon neutrality policies. Understanding the ozone
+effect will better inform policy making on ozone regulation toward
+ecosystem health and carbon neutrality, thereby fostering a more
+sustainable and environmentally resilient future.
+
+Methods
+Ground-based ozone observations
+Ground-based ozone observations in China, Europe, and the USA are
+available from the China National Environmental Monitoring Centre
+(CNEMC) network (http://www.cnemc.cn/en/), the European Environment Agency (EEA, https://www.eea.europa.eu/), and the United States
+Environmental Protection Agency (https://www.epa.gov/outdoor-airquality-data/download-daily-data), respectively. These datasets have
+been widely used in numerous studies to assess the situation of air
+pollution under climate change worldwide73. These ground-level
+ozone data are measured using active differential absorption ultraviolet (UV) analyzers. To ensure the data quality, we remove unreliable
+outliers following previous studies14,74 in the following steps: (a) convert all hourly measurement data into Z scores, (b) remove the data if
+(1) Zi is larger or smaller than the previous value Zi-1 by 9 (|Zi–Zi-1| >9); or
+(2) the absolute value of Zi is greater than 4 (|Zi| >4); or (3) the ratio of Zi
+to the third-order center moving average is greater than 2
+i
+> 2), where i represents the i-th hourly measurement data.
+(Z +3Z
+i1 Z i + Z i + 1
+We selected ozone sites in the following land cover types: evergreen
+needleleaf forests, evergreen broadleaf forests, deciduous needleleaf
+forests, deciduous broadleaf forests, mixed forests, shrublands,
+savannas, and urban lands. The land cover type data is extracted from
+MODIS Land Cover Type (MCD12Q1) Version 6.1 data product (https://
+lpdaac.usgs.gov/products/mcd12q1v061/). The ﬁnal dataset includes
+hourly ozone data in China from 2015 to 2022 and in Europe, and the
+USA from 2013 to 2022.
+
+Vegetation dataset
+We extracted vegetation phenology and greenness observations at the
+ozone sites in the USA, Europe, and China from the NASA VIIRS GLSP
+data product (https://lpdaac.usgs.gov/products/vnp22q2v001/). The
+VIIRS GLSP product generated phenological metrics of individual
+vegetation growing cycles on the vegetated land surface at a spatial
+resolution of 500 m across the globe75. In this study, we selected four
+indicators: Date_Mid_Greenup_Phase (the date at a mid-greenup phase,
+SOS) Date_Mid_Senescence_Phase (the date at a mid-senescence phase,
+EOS), EVI2_Onset_Greenness_Maximum (the EVI2 value at maturity
+onset, EVImax), and EVI2_Growing_Season_Area (the integrated EVI2
+during a growing season, EVIarea). We used VIIRS data from 2015 to
+7
+
+Article
+
+https://doi.org/10.1038/s41467-026-71959-y
+
+2022 in China and from 2013 to 2022 in Europe and the USA, corresponding to the ozone data time frame.
+To test the robustness of the results, we also use data from the
+Terra and Aqua combined Moderate Resolution Imaging Spectroradiometer (MODIS) Land Cover Dynamics (MCD12Q2) Version 6.1
+data product for 2013–2022. The MCD12Q2 Version 6.1 data product is
+derived from time series of the 2-band Enhanced Vegetation Index
+(EVI2) calculated from MODIS Nadir Bidirectional Reﬂectance Distribution Function (BRDF)-Adjusted Reﬂectance (NBAR). Vegetation
+phenology metrics at 500 m spatial resolution are identiﬁed for up to
+two detected growing cycles per year. We used the variable
+“Greenup_1” as SOS, the variable “MidGreenup_1” as EOS, the variable
+“EVI_Area_1” as EVIarea. For EVImax, we used the variable “EVI_Minimum_1” add the variable “ EVI_Amplitude_1”.
+
+Meteorology datasets
+The meteorological dataset from 2013 to 2022 at the ozone sites were
+obtained from the latest (v5) ERA5-Land climate reanalysis hourly
+dataset from the European Center for Medium-Term Weather Forecasting (ECMWF). Produced by an advanced four-dimensional variational (4D-Var) assimilation system, ERA5-Land reanalysis dataset
+provides global land meteorological data at 0.1° resolution (https://
+climate.copernicus.eu/climate-reanalysis)76. To enable the ERA5-Land
+operation computationally affordably, the forcing process is not
+directly coupled to the atmospheric model, instead it is generated by
+running the ECMWF land surface model driven by the downscaled
+ERA5 climate reanalysis in conjunction with an additional lapse-rate
+correction. In this study, we extracted 2-m temperature, surface precipitation, and surface relative humidity. VPD is a critical metric,
+representing the difference between the saturation vapor pressure
+(air’s maximum water-holding capacity) and the actual vapor pressure
+(current water vapor content), which quantiﬁes the atmospheric
+demand for water evaporation and inﬂuences plant transpiration,
+ecosystem productivity, and climate studies. The VPD is calculated as:
+V PD = esat  eactual
+
+ð1Þ
+
+Where esat is the saturation vapor pressure, computed using the
+Magnus formula:
+
+esat = 0:6108 × exp
+
+17:27 × T
+T + 237:3
+
+
+ð2Þ
+
+and eactual is the actual vapor pressure, derived from relative humidity
+(RH):
+eactual =
+
+RH
+× esat
+100
+
+ð3Þ
+
+Carbon dioxide (CO2) datasets
+We used two historical XCO2 datasets, SNDRAQIL3CMCCP and Global
+land 1° Mapping-XCO2, to account for the variability in atmospheric
+CO2. SNDRAQIL3CMCCP dataset was obtained by Sounder SIPS: AQUA
+AIRS IR-only Level 3 CLIMCAPS product (https://disc.gsfc.nasa.gov/
+datasets/SNDRAQIL3CMCCP_2/summary), which is retrieved by AIRS
+(Atmospheric Infrared Sounder) with the CLIMCAPS (Community
+Long-term Infrared Microwave Couple Product System) algorithm77.
+AIRS is a grating spectrometer aboard the second Earth Observing
+System (EOS) polar-orbiting platform, EOS Aqua, which was launched
+on May 4, 2002, into a polar sun-synchronous orbit. The CLIMCAPS
+algorithm uses an Optimal Estimation methodology with a-priori ﬁrst
+guesses to start the process. SNDRAQIL3CMCCP product is a monthly
+product with global coverage of XCO2, with a spatial resolution of 1°
+and temporal coverage from September 2002 to July 2023. The data
+
+Nature Communications | (2026)17:5445
+
+quality criteria are as follows: (a) Areas where the air pressure is less
+than 750 mB (areas of high altitude) and below 60 degrees south are
+marked in the visualization as low-quality data (striped areas); (b)
+Areas with data gaps and of high altitude less than 5% of the resolution
+of the product have been ﬁlled using the nearest neighbor algorithm.
+The Global Land 1° Mapping-XCO2 dataset is available at https://
+doi.org/10.7910/DVN/4WDTD878. The Mapping-XCO2 dataset is generated by the XCO2 retrievals from the Greenhouse Gases Observations Satellite (GOSAT) and Orbiting Carbon Observatory (OCO-2).
+This Mapping-XCO2 dataset is compiled on a monthly basis, with a
+spatial resolution of 1° and geographic coverage ranging from 56°S to
+65°N and 169°W to 180°E. The uncertainties in this dataset are generally less than 1.5 parts per million (ppm). The spatiotemporal characteristics of global XCO2 in Mapping-XCO2 dataset are similar to those
+of the modeling data obtained from CarbonTracker78. Since the
+Mapping-XCO2 dataset is available from 2009 to 2020, we only used it
+to conduct spatial partial correlation analysis.
+
+Future climate data
+To extend our ﬁndings for assessing future changes, we estimated
+phenology and greenness in 2050 using the projected monthly air
+temperature at all ozone sites from the Community Earth System
+Model 2 (CESM2) in the sixth phase of the Coupled Model Intercomparison Project (CMIP6) model simulations under SSP 5–8.5. This
+data has gone through a quality control procedure and ensures a high
+standard of dependability of the data (https://cds.climate.copernicus.
+eu/cdsapp#!/dataset/projections-cmip6?tab=form)79. The CMIP6 data
+underpins the Intergovernmental Panel on Climate Change 6th
+Assessment Report, providing estimates of future climate change and
+related uncertainties80. We selected the SSP5–8.5 scenario as a highend stress test, representing a fossil fuel–intensive pathway that produces the greatest radiative forcing and extreme climate outcomes.
+This scenario provides a critical upper bound for assessing potential
+impacts and underscores the urgency of aggressive mitigation and
+adaptation efforts. We extracted 2-m temperature, surface precipitation, and surface RH and calculated VPD using RH and temperature at
+all ozone sites.
+For future CO2, we used CO2 prediction data from the XCO2
+dataset obtained by Cheng et al. 81 (https://doi.org/10.5281/zenodo.
+5021361)81. This dataset provides global distributions of CO2 concentrations in the future under eight SSP and the representative concentration pathways scenarios from CMIP6, including SSP1–1.9,
+SSP1–2.6, SSP2–4.5, SSP3–7.0, SSP4–3.4, SSP4–6.0, SSP5–3.4, and
+SSP5–8.5. We selected the SSP5–8.5 scenario from XCO2 dataset for
+2022–2050 to ensure consistency with the selected future temperature projection.
+
+Future ozone data
+We used the simulated surface ozone from the Community Earth
+System Model version 2.1.3 (CESM2.1.3), employing its atmospheric
+component CAM4-chem, which incorporates full tropospheric O3NOx-CO-VOC-aerosol chemistry based on the MOZART-4
+mechanism78. The model was run in time-slice mode at ~1° horizontal
+resolution (0.9° latitude × 1.25° longitude) with 26 vertical levels
+extending to ~40 km. Land–atmosphere processes were represented
+by the Community Land Model version 5 (CLM5) with active biogeochemistry, in which biogenic VOC emissions were calculated online
+using MEGANv2.1 as a function of vegetation type, meteorology, and
+CO2 levels, while dry deposition was dynamically linked to stomatal
+conductance. Anthropogenic and biomass burning emissions followed
+the CMIP6 inventory, while future scenarios of land use, greenhouse
+gases, and short-lived species were prescribed from SSP. Simulations
+included factorial experiments isolating the effects of land-use change,
+climate change, and emissions, as well as combined forcings, each
+integrated for 15 years with the ﬁrst 5 years discarded for spin-up.
+8
+
+Article
+
+https://doi.org/10.1038/s41467-026-71959-y
+
+Calculation of AOT40
+In this study, we used AOT40 to evaluate the inﬂuence of ozone on
+vegetation phenology and greenness. The AOT40 (Accumulated
+Ozone Exposure Over a Threshold of 40 parts per billion volume,
+ppbv) is a standard metric in atmospheric science and environmental
+monitoring to assess the phytotoxic effects of elevated ground-level
+ozone concentrations on vegetation82,83. Numerous studies have
+established 40 ppbv as the critical threshold for ozone-induced
+vegetation damage, making AOT40 a widely adopted measure for
+quantifying cumulative ozone exposure above this threshold84.
+Unlike traditional methods that calculate AOT40 based only on
+daytime measurements (8 AM to 8 PM), we included a full 24-h period
+to provide a more accurate representation of ozone exposure. This
+approach captures potential vegetation impacts occurring both day
+and night, offering deeper insight into ozone’s inﬂuence on plant
+growth cycles. The formula used for this calculation is as follows:
+
+AOT40 =
+
+20
+X
+
+maxð½Cozone  40, 0Þ
+
+ð4Þ
+
+8
+
+where Cozone is the hourly ozone concentration (ppbv), and AOT40 is
+daily value.
+We calculated AOT40 values for different seasonal periods from
+daily value: spring (March 1st to May 31st), autumn (September 1st to
+November 31st), summer (June 1st to August 31st), and all-year (January
+1st to December 31st), respectively. These seasonal and annual AOT40
+were then used in the partial correlation analysis with key phenological
+metrics, including the SOS, EOS, EVImax, and EVIarea.
+
+Partial correlation analysis
+In this study, we used the partial correlation method to investigate the
+relationship between ozone pollution and vegetation indices by eliminating the inﬂuence of other environmental factors. The partial correlation between X (AOT40, or surface ozone level) and Y (e.g., SOS,
+EOS, EVImax, or EVImax), is denoted as Rð X , Y , j, Z Þ, where Z represents
+conditions on sets of environmental covariates to be excluded in the
+analysis. The partial correlation coefﬁcient is calculated as the residual
+correlation between X and Y after removing the linear inﬂuence of Z as
+follows:
+Rð X , Y Þ  Rð X , Z Þ  RðY , Z Þ
+ﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ
+Rð X , Y , j, Z Þ = r
+
+
+ð5Þ
+1  R2 ð X , Z Þ 1  R2 ðY , Z Þ
+We performed partial correlation analyses at two scales: spatial
+and temporal. Spatial partial correlation analysis conducted using data
+from all sites within a single year and repeated annually, representing
+the spatial relationship of environmental factors on vegetation. The
+temporal analysis was conducted for each site using the time series
+data spanning all years, thereby examining the temporal relationship
+of environmental factors with vegetation at each site. We obtained the
+spatial and temporal partial correlation coefﬁcients between environmental variables, including AOT40, temperature, precipitation, VPD,
+and CO2 concentrations and vegetation metrics (SOS, EOS, EVImax, and
+EVImax) (e.g., RAOT40-SOS, RAOT40-EOS, RAOT40-EVImax, and RAOT40-EVIarea).
+Previous studies have reported that changes in CO2 signiﬁcantly
+impact vegetation greenness but not much on vegetation
+phenology85,86. Therefore, we included CO2 in our analysis of vegetation greenness (EVImax and EVIarea), but not in vegetation phenology
+analysis (SOS or EOS)7,87,88.
+
+Machine learning model
+To assess the potential impacts of future climate and ozone changes
+on vegetation, we developed a machine-learning model (LightGBM),
+trained on historical vegetation and environmental data. LightGBM is a
+highly efﬁcient gradient boosting framework and powerful machine
+
+Nature Communications | (2026)17:5445
+
+learning technique that demonstrates remarkable capabilities in
+handling complex nonlinear relationships and mitigating the adverse
+effects of multicollinearity in high-dimensional datasets. The key
+innovation of LightGBM model is based on the leaf-wise tree growth
+strategy, which prioritizes optimal splits to better capture nonlinear
+patterns compared to traditional depth-wise methods. The LightGBM
+model incorporates two advanced techniques: Gradient-based OneSide Sampling for instance selection and Exclusive Feature Bundling
+for dimensionality reduction.
+In the LightGBM model, the dependent variable (Y) can be
+expressed as a complex function of multiple independent variables (X1,
+X2, X3, X4, X5) as follows:
+y = f ðX 1 , X 2 , X 3 , X 4 , X 5 Þ
+
+ð6Þ
+
+where y is the observed vegetation phenology and productivity data.
+The multiple independent variables (X1, X2, X3, X4, X5) are AOT40,
+temperature, precipitation, and VPD for SOS, EOS, and the AOT40,
+temperature, precipitation, VPD, and CO2 for EVImax and EVIarea. The
+metrics used for assessing the performance of the MLR models include
+the Pearson Correlation (R), Root-Mean-Square Error (RMSE), and
+Mean Absolute Error
+We also utilized SHAP to interpret the predictions of the
+LightGBM model. SHAP is an explainable AI analysis that quantiﬁes
+the contribution of individual features to model outputs. SHAP
+analysis revealed the relative importance of key variables (e.g.,
+AOT40, temperature, and CO₂) in driving predictions of vegetation
+phenology and productivity. Speciﬁcally, positive (negative) SHAP
+values indicate features that increase (decrease) the predicted outcome relative to the baseline, which is a positive correlation (negative correlation).
+
+Future predictions
+We conducted two simulations using machine learning model
+LightGBM to quantify ozone’s effect in vegetation changes (SOS,
+EOS, EVImax, and EVIarea) for all sites over the USA, Europe, and
+China in 2050. First, we held ozone concentrations ﬁxed at 2022
+level while using temperature, precipitation, VPD, and CO2 projections from the CMIP6 under SSP5–8.5. Second, we incorporated both climate variables from CMIP6 and the ozone
+projections from Bhattarai et al. 89 under SSP5–8.5. The difference
+between these two predictions speciﬁcally isolates ozone’s contribution to future vegetation changes.
+For each site, we calculated the spring (March 1st to May 31st),
+autumn (September 1st to November 31st), summer (June 1st to August
+31st), and all-year (January 1st to December 31st) mean temperature,
+precipitation, relative humidity, and XCO2 extracted from CMIP6
+model in 2050. We used temperature and RH to calculate VPD. Then,
+we used spring AOT40, temperature, precipitation, and VPD to predict
+SOS; autumn AOT40, temperature, precipitation, and VPD to predict
+EOS; summer AOT40, temperature, precipitation, and VPD to predict
+EVImax; and all-year AOT40, temperature, precipitation, and VPD to
+predict EVIarea.
+Our LightGBM model demonstrated strong performance in
+reproducing historical trends and variability across all study sites
+(Fig. S23), validating its application for future projections. Meanwhile,
+we compared the distributions of predictor variables between the
+training dataset and future scenarios. Meteorological variables,
+including VPD, temperature, and precipitation, remained within the
+range of the training data, indicating limited extrapolation for climate
+drivers, while increases in ozone and CO2 reﬂect the prescribed scenario assumptions (Fig. S26). Using this framework, we estimated
+changes in vegetation phenology and greenness under future conditions for 2050 across the USA, Europe, and China with and without
+considering ozone effect.
+9
+
+Article
+Reporting summary
+Further information on research design is available in the Nature
+Portfolio Reporting Summary linked to this article.
+
+Data availability
+The ground-based ozone data are obtained from the China National
+Environmental Monitoring Centre (CNEMC) network (http://www.
+cnemc.cn/en/), the European Environment Agency (EEA, https://www.
+eea.europa.eu/), and the United States Environmental Protection
+Agency
+(EPA,
+https://www.epa.gov/outdoor-air-quality-data/
+download-daily-data). The land cover type data is extracted from
+MODIS Land Cover Type (MCD12Q1) Version 6.1 data product (https://
+lpdaac.usgs.gov/products/mcd12q1v061/). The vegetation phenology
+and greenness datasets are obtained from NASA Visible Infrared Imaging Radiometer Suite (VIIRS) Global Land Surface Phenology (GLSP)
+data product (https://lpdaac.usgs.gov/products/vnp22q2v001/). The
+meteorological dataset are extracted from ERA5-Land climate reanalysis hourly dataset from the European Center for Medium-Term
+Weather Forecasting (ECMWF, https://climate.copernicus.eu/climatereanalysis). The historical XCO2 datasets are extracted from
+SNDRAQIL3CMCCP and Global land 1° Mapping-XCO2 [https://doi.org/
+10.7910/DVN/4WDTD8]. The future predictions datasets are extracted
+from the Community Earth System Model 2 (CESM2) in the sixth phase
+of the Coupled Model Intercomparison Project (CMIP6) model simulations under Shared Socioeconomic Pathways (SSP) 5–8.5 [https://
+cds.climate.copernicus.eu/cdsapp#!/dataset/projections-cmip6?tab=
+form]. CO2 prediction data is from the XCO2 dataset obtained by
+Cheng et al. 81 [https://doi.org/10.5281/zenodo.5021361].
+
+Code availability
+All data analysis and ﬁgures for this study were performed or created
+using Python v3.11. The code is available at: [https://doi.org/10.5281/
+zenodo.18826646]90. Code reuse is encouraged.
+
+References
+1.
+
+2.
+
+3.
+
+4.
+
+5.
+
+6.
+
+7.
+
+8.
+
+9.
+
+Richardson, A. D. et al. Terrestrial biosphere models need better
+representation of vegetation phenology: results from the North
+American Carbon Program Site Synthesis. Glob. Change Biol. 18,
+566–584 (2012).
+Leung, F. et al. CO2 fertilization of crops offsets yield losses due to
+future surface ozone damage and climate change. Environ. Res.
+Lett. 17, 074007 (2022).
+Piao, S. et al. Plant phenology and global climate change: current
+progresses and challenges. Glob. Change Biol. 25,
+1922–1940 (2019).
+Jeong, S.-J., Ho, C.-H., Gim, H.-J. & Brown, M. E. Phenology shifts at
+start vs. end of growing season in temperate vegetation over the
+Northern Hemisphere for the period 1982–2008. Glob. Change Biol.
+17, 2385–2399 (2011).
+Dubey, N. & Ghosh, S. CO2 fertilization enhances vegetation productivity and reduces ecological drought in India. Environ. Res. Lett.
+18, 064025 (2023).
+Ohta, S., Uchijima, Z. & Oshima, Y. Probable effects of CO2-induced
+climatic changes on net primary productivity of terrestrial vegetation in East Asia. Ecol. Res. 8, 199–213 (1993).
+Richardson, A. D. et al. Climate change, phenology, and phenological control of vegetation feedbacks to the climate system. Agric.
+For. Meteorol. 169, 156–173 (2013).
+Keenan, T. F. et al. Net carbon uptake has increased through
+warming-induced changes in temperate forest phenology. Nat.
+Clim. Change 4, 598–604 (2014).
+Monks, P. S. et al. Tropospheric ozone and its precursors from the
+urban to the global scale from air quality to short-lived climate
+forcer. Atmospheric Chem. Phys. 15, 8889–8973 (2015).
+
+Nature Communications | (2026)17:5445
+
+https://doi.org/10.1038/s41467-026-71959-y
+10. Lu, X. et al. Exploring 2016–2017 surface ozone pollution over
+China: source contributions and meteorological inﬂuences. Atmospheric Chem. Phys. 19, 8339–8361 (2019).
+11. Xu, L. et al. Ozone chemistry in western U.S. wildﬁre plumes. Sci.
+Adv. 7, eabl3648 (2021).
+12. Lin, M. et al. Vegetation feedbacks during drought exacerbate
+ozone air pollution extremes in Europe. Nat. Clim. Change 10,
+444–451 (2020).
+13. Lu, X. et al. The underappreciated role of agricultural soil nitrogen
+oxide emissions in ozone pollution regulation in North China. Nat.
+Commun. 12, 5021 (2021).
+14. Yin, H. et al. Unprecedented decline in summertime surface ozone
+over eastern China in 2020 comparably attributable to anthropogenic emission reductions and meteorology. Environ. Res. Lett.
+16, 124069 (2021).
+15. Gu, Y., Henze, D. K., Nawaz, M. O. & Wagner, U. J. Response of the
+ozone-related health burden in Europe to changes in local anthropogenic emissions of ozone precursors. Environ. Res. Lett. 18,
+114034 (2023).
+16. Yan, Y., Lin, J., Pozzer, A., Kong, S. & Lelieveld, J. Trend reversal from
+high-to-low and from rural-to-urban ozone concentrations over
+Europe. Atmos. Environ. 213, 25–36 (2019).
+17. Lu, X. et al. Severe surface ozone pollution in China: a global perspective. Environ. Sci. Technol. Lett. 5, 487–494 (2018).
+18. Lu, X. et al. Rapid increases in warm-season surface ozone and
+resulting health impact in China since 2013. Environ. Sci. Technol.
+Lett. 7, 240–247 (2020).
+19. Kobayashi, K. & Okada, M. Effects of ozone on the light use of rice
+(Oryza sativa L.) plants. Agric. Ecosyst. Environ. 53, 1–12 (1995).
+20. Jochner, S. et al. The effects of short- and long-term air pollutants
+on plant phenology and leaf characteristics. Environ. Pollut. 206,
+382–389 (2015).
+21. Unger, N., Zheng, Y., Yue, X. & Harper, K. L. Mitigation of ozone
+damage to the world’s land ecosystems by source sector. Nat. Clim.
+Change 10, 134–137 (2020).
+22. Zhou, X., Yue, X. & Tian, C. Responses of ecosystem productivity to
+anthropogenic ozone and aerosols at the 2060. Earths Fut. 12,
+e2023EF003781 (2024).
+23. Ma, Y. et al. Implementation of trait-based ozone plant sensitivity in
+the Yale Interactive Terrestrial Biosphere model v1.0 to assess
+global vegetation damage. Geosci. Model Dev. 16,
+2261–2276 (2023).
+24. Shao, Z. et al. Ozone-induced reduction in rice yield is closely
+related to the response of spikelet density under ozone stress. Sci.
+Total Environ. 712, 136560 (2020).
+25. Lin, M., Horowitz, L. W., Payton, R., Fiore, A. M. & Tonnesen, G. US
+surface ozone trends and extremes from 1980 to 2014: quantifying
+the roles of rising Asian emissions, domestic controls, wildﬁres, and
+climate. Atmospheric Chem. Phys. 17, 2943–2970 (2017).
+26. Lin, M. et al. Climate variability modulates western US ozone air
+quality in spring via deep stratospheric intrusions. Nat. Commun. 6,
+7105 (2015).
+27. Lin, M. et al. Transport of Asian ozone pollution into surface air over
+the western United States in spring. J. Geophys. Res. Atmospheres
+117, D00V07, (2012).
+28. Gao, M. et al. Three-dimensional change in temperature sensitivity
+of northern vegetation phenology. Glob. Change Biol. 26,
+5189–5201 (2020).
+29. Wang, T. et al. The inﬂuence of local spring temperature variance
+on temperature sensitivity of spring phenology. Glob. Change Biol.
+20, 1473–1480 (2014).
+30. Meng, L. et al. Urban warming advances spring phenology but reduces the response of phenology to temperature in the conterminous
+United States. Proc. Natl. Acad. Sci. USA 117, 4228–4233 (2020).
+
+10
+
+Article
+31. Gienapp, P., Hemerik, L. & Visser, M. E. A new statistical tool to
+predict phenology under climate change scenarios. Glob. Change
+Biol. 11, 600–606 (2005).
+32. Mo, Y., Chen, S., Wu, Z., Tang, J. & Fu, Y. The advancement in spring
+vegetation phenology in the northern hemisphere will reverse after
+2060 under future moderate warming scenarios. Earths Future 12,
+e2023EF003788 (2024).
+33. Sitch, S., Cox, P. M., Collins, W. J. & Huntingford, C. Indirect radiative forcing of climate change through ozone effects on the landcarbon sink. Nature 448, 791–794 (2007).
+34. Ollinger, S. V., Aber, J. D. & Reich, P. B. Simulating ozone effects on
+forest productivity: interactions among leaf-, canopy-, and standlevel processes. Ecol. Appl. 7, 1237–1251 (1997).
+35. Volin, J. C. & Reich, P. B. Interaction of elevated CO2 and O3 on
+growth, photosynthesis and respiration of three perennial species
+grown in low and high nitrogen. Physiol. Plant. 97, 674–684 (1996).
+36. Pell, E. J. et al. Differential response of four tree species to ozoneinduced acceleration of foliar senescence. Plant Cell Environ. 22,
+779–790 (1999).
+37. Ariura, R. et al. Effects of elevated ozone and carbon dioxide on the
+dynamic photosynthesis of Fagus crenata seedlings under variable
+light conditions. Sci. Total Environ. 891, 164398 (2023).
+38. Hasan, M. M. et al. Ozone induced stomatal regulations, MAPK and
+phytohormone signaling in plants. Int. J. Mol. Sci. 22, 6304
+(2021).
+39. Yendrek, C. R. et al. Elevated ozone reduces photosynthetic carbon
+gain by accelerating leaf senescence of inbred and hybrid maize in
+a genotype-speciﬁc manner. Plant Cell Environ. 40,
+3088–3100 (2017).
+40. Chen, Z., Cao, J., Yu, H. & Shang, H. Effects of elevated ozone levels
+on photosynthesis, biomass and non-structural carbohydrates of
+Phoebe bournei and Phoebe zhennan in subtropical China. Front.
+Plant Sci. 9, 1764 (2018).
+41. Tamaoki, M. The role of phytohormone signaling in ozone-induced
+cell death in plants. Plant Signal. Behav. 3, 166–174 (2008).
+42. Tripathy, B. C. & Oelmüller, R. Reactive oxygen species generation
+and signaling in plants. Plant Signal. Behav. 7, 1621–1633 (2012).
+43. Sanz, J. et al. Plant phenology, growth and nutritive quality of Briza
+maxima: responses induced by enhanced ozone atmospheric
+levels and nitrogen enrichment. Environ. Pollut. 159,
+423–430 (2011).
+44. Ribas, À, Peñuelas, J., Elvira, S. & Gimeno, B. S. Ozone exposure
+induces the activation of leaf senescence-related processes and
+morphological and growth changes in seedlings of Mediterranean
+tree species. Environ. Pollut. 134, 291–300 (2005).
+45. Saitanis, C. J., Riga-Karandinos, A. N. & Karandinos, M. G. Effects of
+ozone on chlorophyll and quantum yield of tobacco (Nicotiana
+tabacum L.) varieties. Chemosphere 42, 945–953 (2001).
+46. Della Torre, G. et al. Effects of ozone on morpho-anatomy and
+physiology of Hedera helix. Chemosphere 36, 651–656 (1998).
+47. Richardson, M. S. et al. Measurements of heterogeneous ice nuclei
+in the western United States in springtime and their relation to
+aerosol characteristics. J. Geophys. Res. Atmospheres 112,
+D02209, (2007).
+48. Felzer, B. et al. Future effects of ozone on carbon sequestration and
+climate change policy using a global biogeochemical model. Clim.
+Change 73, 345–373 (2005).
+49. Lee, E. H. et al. Ozone exposure-response relationships parametrized for sixteen tree species with varying sensitivity in the
+United States. Atmos. Environ. 284, 119191 (2022).
+50. Miller, J. D., Arteca, R. N. & Pell, E. J. Senescence-associated gene
+expression during ozone-induced leaf senescence in Arabidopsis1.
+https://doi.org/10.1104/pp.120.4.1015.
+51. Emberson, L. D. et al. Ozone effects on crops and consideration in
+crop models. Eur. J. Agron. 100, 19–34 (2018).
+
+Nature Communications | (2026)17:5445
+
+https://doi.org/10.1038/s41467-026-71959-y
+52. van Goethem, T. M. W. J. et al. Plant species sensitivity distributions
+for ozone exposure. Environ. Pollut. 178, 1–6 (2013).
+53. US EPA, O. EPA History: the Clean Air Act of 1970 https://www.epa.
+gov/archive/epa/aboutepa/epa-history-clean-air-act-1970.html.
+54. Convention on Long-Range Transboundary Air Pollution. United
+States Department of State https://www.state.gov/key-topicsofﬁce-of-environmental-quality-and-transboundary-issues/
+convention-on-long-range-transboundary-air-pollution/.
+55. Cooper, O. R., Gao, R.-S., Tarasick, D., Leblanc, T. & Sweeney, C.
+Long-term ozone trends at rural ozone monitoring sites across the
+United States, 1990–2010. J. Geophys. Res. Atmospheres 117,
+D22307, (2012).
+56. Lyu, C. et al. Elucidating emissions control strategies for ozone to
+protect human health and public welfare within the continental
+United States. Environ. Res. Lett. 14, 124093 (2019).
+57. Amann, M. et al. Cost-effective control of air quality and greenhouse gases in Europe: modeling and policy applications. Environ.
+Model. Softw. 26, 1489–1501 (2011).
+58. Zhang, L. et al. Transpaciﬁc transport of ozone pollution and the
+effect of recent Asian emission increases on air quality in North
+America: an integrated analysis using satellite, aircraft, ozonesonde, and surface observations. Atmospheric Chem. Phys. 8,
+6117–6136 (2008).
+59. Skipper, T. N., Lawal, A. S., Hu, Y. & Russell, A. G. Air quality impacts
+of electric vehicle adoption in California. Atmos. Environ. 294,
+119492 (2023).
+60. Li, M. et al. Assessment of Updated Fuel-Based Emissions Inventories Over the Contiguous United States Using TROPOMI NO2
+Retrievals. J. Geophys. Res. Atmospheres 126,
+e2021JD035484 (2021).
+61. Almaraz, M. et al. Agriculture is a major source of NOx pollution in
+California. Sci. Adv. 4, eaao3477 (2018).
+62. Zhao, Y. et al. Separately resolving NOx and VOC contributions to
+ozone formation. Atmos. Environ. 285, 119224 (2022).
+63. Xu, S. et al. Differential sensitivity of four urban tree species to
+elevated O3. Urban For. Urban Green. 14, 1166–1173 (2015).
+64. DeLang, M. N. et al. Mapping Yearly Fine Resolution Global Surface
+Ozone through the Bayesian Maximum Entropy Data Fusion of
+Observations and Model Output for 1990–2017. Environ. Sci.
+Technol. 55, 4389–4398 (2021).
+65. Li, T. & Cheng, X. Estimating daily full-coverage surface ozone
+concentration using satellite observations and a spatiotemporally
+embedded deep learning approach. Int. J. Appl. Earth Obs. Geoinformation 101, 102356 (2021).
+66. Feng, Z. et al. Emerging challenges of ozone impacts on asian
+plants: actions are needed to protect ecosystem health. Ecosyst.
+Health Sustain. 7, 1911602 (2021).
+67. Yin, H. et al. Quantifying the drivers of surface ozone anomalies in
+the urban areas over the Qinghai-Tibet Plateau. Atmospheric Chem.
+Phys. 22, 14401–14419 (2022).
+68. Watson, G. L., Telesca, D., Reid, C. E., Pﬁster, G. G. & Jerrett, M.
+Machine learning models accurately predict ozone exposure during wildﬁre events. Environ. Pollut. 254, 112792 (2019).
+69. Ollinger, S. V., Aber, J. D., Reich, P. B. & Freuder, R. J. Interactive
+effects of nitrogen deposition, tropospheric ozone, elevated CO2
+and land use history on the carbon dynamics of northern hardwood
+forests. Glob. Change Biol. 8, 545–562 (2002).
+70. Richardson, A. D. et al. Inﬂuence of spring and autumn phenological transitions on forest ecosystem productivity. Philos. Trans. R.
+Soc. B Biol. Sci. 365, 3227–3246 (2010).
+71. Emmerichs, T. et al. Widespread reduction of ozone extremes in
+storylines of future climate. Npj Clean Air 1, 19 (2025).
+72. Zhao, S., Xie, Y., Xi, G., Sun, Y. & Zhang, H. How does PM2.5 affect
+forest phenology? Integrating PM2.5 into phenology models for
+warm-temperate forests in China. Environ. Res. 263, 120044 (2024).
+11
+
+Article
+73. Li, K. et al. Anthropogenic drivers of 2013–2017 trends in summer
+surface ozone in China. Proc. Natl. Acad. Sci. 116, 422–427 (2019).
+74. Sun, Y. et al. Quantifying variability, source, and transport of CO in
+the urban areas over the Himalayas and Tibetan Plateau. Atmospheric Chem. Phys. 21, 9201–9222 (2021).
+75. Zhang, X. et al. Generation and evaluation of the VIIRS land surface
+phenology product. Remote Sens. Environ. 216, 212–229 (2018).
+76. Hersbach, H. et al. The ERA5 global reanalysis. Q. J. R. Meteorol.
+Soc. 146, 1999–2049 (2020).
+77. Smith, N. & Barnet, C. D. CLIMCAPS observing capability for temperature, moisture, and trace gases from AIRS/AMSU and CrIS/
+ATMS. Atmospheric Meas. Tech. 13, 4437–4459 (2020).
+78. Sheng, M. et al. Global land 1° mapping dataset of XCO2 from
+satellite observations of GOSAT and OCO-2 from 2009 to 2020. Big
+Earth Data 7, 170–190 (2023).
+79. Danabasoglu, G. et al. The Community Earth System Model version
+2 (CESM2). J. Adv. Model. Earth Syst. 12, e2019MS001916 (2020).
+80. Eyring, V. et al. Overview of the Coupled Model Intercomparison
+Project Phase 6 (CMIP6) experimental design and organization.
+Geosci. Model. Dev. 9, 1937–1958 (2016).
+81. Cheng, W. et al. Global monthly gridded atmospheric carbon
+dioxide concentrations under the historical and future scenarios.
+Sci. Data 9, 83 (2022).
+82. Li, D. et al. Surface ozone impacts on major crop production in
+China from 2010 to 2017. Atmospheric Chem. Phys. 22,
+2625–2638 (2022).
+83. Tang, H. et al. Mapping ozone risks for rice in China for years 2000
+and 2020 with ﬂux-based and exposure-based doses. Atmos.
+Environ. 86, 74–83 (2014).
+84. Mortensen, L., Bastrup-Birk, A. & Ro-Poulsen, H. Critical levels of O3
+for wood production of European beech (Fagus sylvatica L.). Water.
+Air. Soil Pollut. 85, 1349–1354 (1995).
+85. Zhang, Y. et al. Increasing sensitivity of dryland vegetation greenness to precipitation due to rising atmospheric CO2. Nat. Commun.
+13, 4875 (2022).
+86. Gonsamo, A., D’Odorico, P., Chen, J. M., Wu, C. & Buchmann, N.
+Changes in vegetation phenology are not reﬂected in atmospheric
+CO2 and 13C/12C seasonality. Glob. Change Biol. 23,
+4029–4044 (2017).
+87. Taylor, G. et al. Future atmospheric CO2 leads to delayed autumnal
+senescence. Glob. Change Biol. 14, 264–275 (2008).
+88. Herrick, J. D. & Thomas, R. B. Leaf senescence and late-season net
+photosynthesis of sun and shade leaves of overstory sweetgum
+(Liquidambar styraciﬂua) grown in elevated and ambient carbon
+dioxide concentrations. Tree Physiol. 23, 109–118 (2003).
+89. Bhattarai, H., Tai, A. P. K., Val Martin, M. & Yung, D. H. Y. Impacts of
+changes in climate, land use, and emissions on global ozone air
+quality by mid-21st century following selected Shared Socioeconomic Pathways. Sci. Total Environ. 906, 167759 (2024).
+90. Yin, H. & Meng, L. ozone vegetation code (code). Zenodo https://
+doi.org/10.5281/zenodo.18826646.
+
+https://doi.org/10.1038/s41467-026-71959-y
+Ridge National Laboratory (ORNL) through the Reducing Uncertainties in
+Biogeochemical Interactions through Synthesis and Computing Scientiﬁc Focus Area and the Terrestrial Ecosystem Science Scientiﬁc Focus
+Area, funded by the Earth and Environmental Systems Sciences Division
+of the Biological and Environmental Research Ofﬁce within the U.S.
+Department of Energy Ofﬁce of Science. ORNL is managed by UT-Battelle, LLC, for the DOE under contract DE-AC05-00OR22725. M.V.M.
+acknowledges funding from the UKRI Future Leaders Fellowship Programme (MR/T019867/1).
+
+Author contributions
+L.M. and H.Y. designed the research; H.Y. and L.M. performed the analysis; H.Y. and L.M. drafted the manuscript; H.Y., L.M., A.D.R., M.V.M.,
+J.M., H.L., J.M.G., H.B. and A.P.K.T. edited and revised the manuscript.
+
+Competing interests
+The authors declare no competing interests.
+
+Additional information
+Supplementary information The online version contains
+supplementary material available at
+https://doi.org/10.1038/s41467-026-71959-y.
+Correspondence and requests for materials should be addressed to
+Lin Meng.
+Peer review information Nature Communications thanks Alfredo Huete
+and the other, anonymous, reviewer(s) for their contribution to the peer
+review of this work. A peer review ﬁle is available.
+Reprints and permissions information is available at
+http://www.nature.com/reprints
+Publisher’s note Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional afﬁliations.
+Open Access This article is licensed under a Creative Commons
+Attribution 4.0 International License, which permits use, sharing,
+adaptation, distribution and reproduction in any medium or format, as
+long as you give appropriate credit to the original author(s) and the
+source, provide a link to the Creative Commons licence, and indicate if
+changes were made. The images or other third party material in this
+article are included in the article’s Creative Commons licence, unless
+indicated otherwise in a credit line to the material. If material is not
+included in the article’s Creative Commons licence and your intended
+use is not permitted by statutory regulation or exceeds the permitted
+use, you will need to obtain permission directly from the copyright
+holder. To view a copy of this licence, visit http://creativecommons.org/
+licenses/by/4.0/.
+© The Author(s) 2026
+
+Acknowledgements
+This work was supported by the Evolutionary Studies Initiative (ESI) Pilot
+Research Grant at Vanderbilt University. J.M. was supported by the Oak
+
+Nature Communications | (2026)17:5445
+
+12

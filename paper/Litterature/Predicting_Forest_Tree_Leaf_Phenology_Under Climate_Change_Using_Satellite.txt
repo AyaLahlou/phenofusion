@@ -1,0 +1,2332 @@
+Global Change Biology
+
+RESEARCH ARTICLE
+
+OPEN ACCESS
+
+Predicting Forest Tree Leaf Phenology Under Climate
+Change Using Satellite Monitoring and Population-­Based
+Genomic Trait Association
+Markus Pfenninger1,2
+| Liam Langan1 | Barbara Feldmeyer1 | Linda Eberhardt1 | Friederike Reuss1,3 | Janik Hoffmann1 |
+4
+Barbara Fussi | Muhidin Seho4 | Karl-Heinz Mellert4 | Thomas Hickler1,5
+1Senckenberg Biodiversity & Climate Research Centre, Frankfurt/Main, Germany
+
+| 2IOME, J. Gutenberg University, Mainz, Germany | 3Institute of
+Occupational, Social and Environmental Medicine, J.W.Goethe University, Frankfurt/Main, Germany | 4Bayerisches Amt für Waldgenetik, Bayerisches
+Staatsministerium für Ernährung, Landwirtschaft und Forsten, Teisendorf, Germany | 5Department Biogeography, J.W.Goethe University, Frankfurt/
+Main, Germany
+Correspondence: Markus Pfenninger (markus.pfenninger@senckenberg.de)
+Received: 14 May 2025 | Revised: 22 August 2025 | Accepted: 23 August 2025
+Funding: This study was partially funded by the Federal Ministry of Food den Agriculture and the Federal Ministry for the Environment, Nature
+Conservation, Nuclear Safety and Consumer Protection based on a resolution of the German Bundestag (project number 28W-­B -­4 -­058-­01) and the Bavarian
+Office for Forest Genetics.
+Keywords: large scale phenotyping | leaf flushing | statistical prediction
+
+ABSTRACT
+
+Leaf phenology, a critical determinant of plant fitness and ecosystem function, is undergoing rapid shifts due to global climate
+change, yet its complex genetic and environmental drivers remain incompletely understood. Understanding the genetic basis of
+phenological adaptation is crucial for forecasting forest responses to a changing climate. Here, we integrate multi-­year satellite-­
+derived phenology from 46 Fagus sylvatica (European beech) populations across Germany with a population-­based genome-­w ide
+association study to dissect the environmental and genetic drivers of leaf-­out day (LOD) and leaf shedding day (LSD). We show
+that environmental factors, particularly temperature forcing and water availability, are the primary drivers of LOD variation,
+while LSD is influenced by a more complex suite of climatic cues. Our genomic analysis identifies candidate genes associated
+with LOD and LSD, primarily linked to circadian rhythms and dormancy pathways, respectively. Furthermore, genomic prediction models incorporating these loci accurately reconstruct past phenological dynamics, providing a powerful framework to
+forecast forest vulnerability and adaptation to future climate change.
+
+1   |   Introduction
+Leaf phenology determines when and how long plants photosynthesize, directly influencing whether this activity aligns
+with favorable environmental conditions. In deciduous trees,
+leaf phenology links the vegetated land surface with atmospheric energy (e.g., albedo) and gas exchange (e.g., CO2 and
+water vapor), making it a key biological process with significant
+climate feedbacks (Richardson et al. 2013). For temperate deciduous trees, phenological timing is also a major fitness trait,
+
+balancing the benefits of a longer growing season with the risks
+of frost or drought (Alberto et al. 2013; Kramer et al. 2000; Li
+et al. 2023). Leaf phenology is triggered by environmental cues
+(Polgar and Primack 2011) but also has a genetic basis (Falusi
+and Calamassi 1996; Kramer 1995; Marchand et al. 2020; Robson
+et al. 2013; Vitasse et al. 2009), recently shown to be complex
+and polygenic (Satake et al. 2022). Like most quantitative traits
+(Walsh and Lynch 2018), it results from both environmental
+and genetic influences. Climate change is shifting environmental phenology cues in time and space, with major implications
+
+This is an open access article under the terms of the Creative Commons Attribution License, which permits use, distribution and reproduction in any medium,
+provided the original work is properly cited.
+© 2025 The Author(s). Global Change Biology published by John Wiley & Sons Ltd.
+Global Change Biology, 2025; 31:e70484
+https://doi.org/10.1111/gcb.70484
+
+1 of 18
+
+Until recently, large-­
+scale, long-­
+term phenotyping of phenological traits was logistically difficult and error-­
+prone (Gray
+and Ewers 2021). This is now changing with satellite-­based remote sensing, which provides spatially and temporally highly
+resolved phenotypic data suitable for genome-­w ide association
+studies (GWAS) (Bian et al. 2022). Calibration with field data
+(Dronova and Taddeo 2022) has shown that Synthetic Aperture
+Radar is proven effective for capturing forest phenology with
+high accuracy (Proietti et al. 2020).
+Leaf phenological variation in European beech (Fagus sylvatica) has been extensively studied (Čufar et al. 2008; Dittmar
+and Elling 2006; Dolschak et al. 2019; Wang et al. 2022); however, most efforts have focused on environmental correlates
+or candidate gene approaches (Krajmerová et al. 2017), leaving the genome-­w ide basis of phenological adaptation at the
+landscape scale largely unexplored. Here, we integrate high-­
+resolution satellite-­based phenological monitoring with a novel
+population-­based genome-­w ide association study (popGWAS)
+(Pfenninger 2025) to investigate the genetic and environmental
+drivers of spring and autumn leaf phenology. This approach,
+based on population allele frequencies, perfectly suits remote
+sensing data because it does not require individual phenotyping but exploits the mean trait differences among populations
+(Pfenninger 2025). Using a chromosome-­
+scale reference genome, multi-­year weather data (2015–2022), and phenological
+observations across 46 beech stands in Germany, we examine
+whether this integrated approach can address previous limitations and provide a foundation for large-­scale, long-­term forecasts of forest responses to climate change. European beech, a
+dominant forest species (Elsasser et al. 2021) supporting high
+biodiversity (Brunet et al. 2010; Dorow et al. 2010) and recognized by UNESCO for its primeval stands (Heim et al. 2018),
+serves as a model species to demonstrate how coupling large-­
+scale phenotyping with population genomics opens new pathways for forecasting ecosystem resilience under future climates.
+
+2   |   Material and Methods
+2.1   |   Study Populations
+We sampled 46 mature beech-­dominated stands (> 70 years old,
+> 4.5 ha, ≥ 75% beech basal area) across Germany, emphasizing
+climatic and ecological diversity with a focus on the state of
+Hessen. Sites likely included both autochthonous and afforested
+origins, typical of German beech forests. To minimize sampling
+
+2 of 18
+
+of close relatives, 48 canopy trees were collected per site, spaced
+≥ 30 m apart.
+
+2.2   |   Climatic Characterization
+Long-­
+term climatic data (1970–2000) were extracted from
+WorldClim v2.1 (Fick and Hijmans 2017) at 30″ resolution
+for all sites and 180 random points across the species range,
+using DIVA-­GIS 7.5 (Hijmans et al. 2012) and species distribution shapefiles (Caudullo et al. 2017). We used all BioClim
+variables and summarized variation via Principal Component
+Analysis (PCA).
+
+2.3   |   Remote Sensing-­Based Leaf Phenology
+Inference
+Leaf phenology dates were inferred from Sentinel-­1 Synthetic
+Aperture Radar (SAR) data (VV and VH bands, 10 m resolution), comprising 9236 ortho-­corrected scenes (2015–2022) in
+Interferometric Wide Swath mode (Potin et al. 2016), accessed
+via Google Earth Engine. The backscatter of these microwave
+bands is, amongst other things, sensitive to the vegetation, in
+particular tiny structures, like leaves and twigs. Repeated recordings of the signal can therefore be used to monitor temporal
+changes in foliation. Microwaves can penetrate clouds and can
+therefore acquire information in all weather (Schlund 2025).
+The VV/VH backscatter ratio was calculated using geemap
+(Wu 2020) (Python 3.11.4), then squared to enhance the signal-­
+to-­noise ratio. Smoothed time series (LOESS, span = 0.5) were
+segmented into early and late season (cutoff = day 200). Change
+points representing maximum signal rate change were estimated using the changepoint package (Killick and Eckley 2014)
+(BinSeg, Q = 1; R v4.2.2). These changes correspond to the dates
+when about half of the leaves have emerged (LOD) and have
+fallen (LSD). The period between LOD and LSD was considered
+the maximum potential vegetation period. Ground-­truth leaf
+phenology data covering Germany from the German Weather
+Service
+(https://​w ww.​dwd.​de/​DE/​leist​ungen/​​phaeno_​sta/​
+phaen​osta.​html) and the International Phenological Gardens
+(Renner and Chmielewski 2021) (station 189, Linden/Gießen)
+served as validation, using leaf phenology stage BBCH11 (first
+leaves completely unfolded) (Hack et al. 1992) (~LOD) and
+BBCH95 (50% of leaves fallen) (Hack et al. 1992) (~LSD) as
+comparison.
+
+2.4   |   Environmental Drivers of Leaf Phenology
+We assessed environmental influences on LOD and LSD
+using climate data from the German Weather Service (2015–
+2022, 1 km 2 grid, https://​c dc.​dwd.​de/​portal/​2 0220​9231028).
+Predictors for LOD included frost/ice days, temperature sums
+(Jan–Apr), precipitation (Mar–Apr), soil moisture (Mar–
+Apr), and latitude (photoperiod proxy). LSD predictors included temperature extremes, drought indices (de Martonne),
+soil moisture (May–Aug), and precipitation (May–Aug).
+Generalized Linear Models (GLMs) were fit for all parameter
+
+Global Change Biology, 2025
+
+13652486, 2025, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/gcb.70484 by Cochrane Peru, Wiley Online Library on [26/06/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+for forest ecosystems and climate dynamics (Peñuelas and
+Filella 2009; Richardson et al. 2013). With estimates of phenotypic reaction norms and genomic prediction scores accounting
+for heritable differences, forecasting phenotypes under novel
+conditions becomes feasible (Arnold et al. 2019). Accurate
+predictions therefore depend on disentangling environmental
+and genetic effects (Satake et al. 2022; Waldvogel et al. 2020).
+To improve understanding and forecasting of forest responses
+to climate change, it is crucial to integrate the environmental
+and genetic dimensions of phenological responses (Gray and
+Ewers 2021).
+
+2.5   |   Pooled Sequencing and Variant Calling
+From each individual, a 0.5 mm leaf disc (~50 mg) was collected,
+dried or frozen, and pooled by population. Samples were homogenized (Qiagen TissueLyser), and DNA extracted (Macherey-­
+Nagel NucleoMag Plant kit). Sequencing libraries were prepared
+and sequenced (150 bp paired-­end, ~35× coverage) by Novogene
+on an Illumina NovaSeq. Reads were trimmed (Trimmomatic
+v0.39), QC-­checked (FastQC v0.11.9), aligned to the beech reference genome (BWA mem v0.7.17), and processed (Samtools
+v1.10, Picard v2.20.8). PoPoolation2 v2.201 was used to remove
+indels, calculate allele frequencies, and compute FST values in
+non-­overlapping 1 kb windows (coverage range: 15–50×).
+
+2.6   |   Population Structure and Leaf Phenology
+Associations
+To test for confounding population structure, we performed
+PCA on allele frequencies, using one SNP per 50 kb with no
+missing data to reduce linkage. We then assessed correlations
+between the first five PCA axes and site-­specific leaf phenology
+offsets to verify independence between genetic structure and
+phenotypic variation.
+
+2.7   |   SNP–Trait Association (popGWAS)
+Using popGWAS (Pfenninger 2025), we regressed population
+mean offset in LOD and LSD against genome-­w ide allele frequencies. Filtering retained SNPs with ≥ 15 mean coverage,
+AF variance ≥ 0.10, MAF ≥ 0.10, and ≤ 35% missing data. For
+each SNP, we computed linear models and extracted −log10 (p-­
+values). Outliers (top 0.01%) were identified and grouped into
+regions based on 1 kb linkage disequilibrium. The most differentiated SNP per region was retained. A scheme of the pipeline
+can be found in Figure S7.
+
+2.8   |   Gene Annotation
+Outlier SNPs were annotated using BEDtools intersect with the
+F. sylvatica v2 genome GFF (Mishra et al. 2021). We queried
+gene functions via UniProt and the ORKG Ask scholarly search
+and exploration system (ask.​orkg.​org) with prompts of the following structure “what is known about the role of [gene name]
+in determining [trait] day?”
+
+2.9   |   Genomic Prediction
+To predict unmeasured phenotypes, we built a statistical genomic prediction model based on significant SNPs. Missing
+values were imputed using coverage relaxation, linked SNPs
+(r > 0.7), or population means. Feature selection was performed
+
+via minimum entropy feature selection (MEFS) (Palamidessi
+and Romanelli 2018). The best predictive model was selected
+using repeated cross-­validation over varying feature counts (2 to
+n–1), implemented in scikit-­learn (v1.3.2) (Pedregosa et al. 2011).
+Predictive performance was tested on a hold-­out set of six populations using Pearson's r.
+
+2.10   |   Candidate SNP Validation
+LOD in 2024 was monitored in 14 juvenile beeches at site KST
+(April 1–29). Individual phenotypes were correlated with the
+mean number of LOD-­increasing alleles via BayesianFirstAid
+in R. LSD data were unavailable.
+
+2.11   |   Postdicting Phenological Shifts
+We evaluated whether adding genomic prediction scores
+(SGPS) improved LOD models via AIC. For 27 sites, environmental data since 1971 were used to postdict LOD
+shifts under observed environmental change using the best
+GLM + SGPS model.
+
+3   |   Results
+3.1   |   Climatic and Geographic Distribution
+of Sampling Sites
+The 46 sampling sites (Figure 1a) were selected from the core
+range of F. sylvatica (Figure 1b), spanning central climatic conditions of the species' distribution (Figure 1C). Climatic variation
+was primarily structured by two gradients: PC1 (44.1% variance)
+contrasted warm, dry summers with cold, wet winters, while
+PC2 (27.5%) ranged from wet winters and cool summers to dry
+winters and hot summers. Sites from the southeastern refugial
+region (Magri 2008; Tsipidou et al. 2021) overlapped climatically
+with much of the species' current range (Figure S1A,B).
+
+3.2   |   Remote Sensing of Phenological Dates
+Between 2015 and 2022, 62,570 remote sensing observations
+were collected—averaging 170 per site per year—allowing for
+near-­continuous phenological monitoring. We inferred 339 LOD
+and 340 leaf-­L SD estimates (~92% coverage; Figure S2). Five
+sites (WIL, WUR, GER, ORB, RIM) accounted for most missing
+data; WIL and ORB were excluded due to insufficient observations (< 4).
+The mean LOD was 117.13 doy (s.d. 9.57, range 95–146), peaking in late April, and LSD averaged 298.99 doy (s.d. 10.12, range
+269–322), peaking in late October. The potential vegetation period spanned an average of 181.72 days (s.d. 15.39, range 137–226
+days). Both LOD and LSD varied significantly by year and site
+(Figure 2A,B). LOD was earliest in 2018 (mean 106.79 doy, s.d.
+4.74) and latest in 2021 (mean 130.00 doy, s.d. 6.39). VIE had the
+earliest mean LOD (107.86, s.d. 8.59), and NID the latest (131.14,
+s.d. 8.9). For LSD, 2017 had the earliest onset (291.71, s.d. 7.39),
+and 2016 the latest (306.58, s.d. 8.86). BRE showed the earliest
+3 of 18
+
+13652486, 2025, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/gcb.70484 by Cochrane Peru, Wiley Online Library on [26/06/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+combinations; best-­fit models were selected using AIC. Site-­
+specific phenological offsets (residuals from the environmental models) were extracted using ANOVA and averaged over
+years (≥ 4 years per site required).
+
+average LSD (289.57, s.d. 4.50), and LBA the latest (307.86, s.d.
+8.71). The shortest maximum potential vegetation period averaged over all sites was inferred for the year 2017 (163.71 days,
+s.d. 11.80), the longest 1 year later in 2018 (192.59 days, s.d. 14.75;
+Figure S2A).
+
+(LIN, r = 0.77, p = 0.026). For LSD, agreement with national
+data was moderate (r = 0.57, p = 0.12), with LSD leading by
+14.5 days (Figure S2C). However, local LSD from the phenological garden did not correlate with the nearby site (r = 0.42,
+p = 0.29).
+
+3.3   |   Validation of Remote Sensing Estimates
+
+3.4   |   Environmental Drivers of LOD and LSD
+
+LOD estimates correlated well with publicly available
+Germany-­
+w ide phenology data (r = 0.79, p = 0.01), lagging
+by 4.6 days on average (Figure S2A). A similar fit was seen
+between LOD from a phenological garden and a nearby site
+
+To identify environmental drivers of phenological timing, we
+applied model selection based on previously proposed predictors (Essiamah and Eschrich 1986; Falusi and Calamassi 1990;
+J. Urban et al. 2013; Vitasse et al. 2009) (Table S1). For LOD,
+
+4 of 18
+
+Global Change Biology, 2025
+
+13652486, 2025, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/gcb.70484 by Cochrane Peru, Wiley Online Library on [26/06/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+FIGURE 1    |    Geographic distribution and long-­term climate of Fagus sylvatica sampling sites. (a) Location of sampling sites. (b) Distribution range
+of F. sylvatica in Europe (dark green shading). (c) Principal Component Analysis (PCA) of long-­term climatic data (1960–1990) of the 46 sampling
+sites and 178 random points within the species range. The journal requires to state that map lines delineate study areas and do not necessarily depict
+accepted national boundaries.
+
+5 of 18
+
+13652486, 2025, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/gcb.70484 by Cochrane Peru, Wiley Online Library on [26/06/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+FIGURE 2    |    (a) Stand-­w ide mean Leaves-­Out-­Day (LOD) inferred from Sentinel1 satellite data in the observation period 2015–2022. (b) Likewise
+for Leaves-­Shedding-­Day (LSD).
+
+(A) Effect
+
+d.f.
+
+SS
+
+p
+
+Coeffcient
+
+Interpretation
+
+Number of days with frost
+
+1
+
+6012
+
+7.81e-­12
+
+−0.35
+
+More frost days trigger
+earlier leaf flushing
+
+Sum of daily minimum temperatures Jan
+& Feb
+
+1
+
+1150
+
+< 2e-­16
+
+−0.62
+
+Warmer winter triggers earlier flushing
+
+Sum of daily mean temperature Mar &
+Apr
+
+1
+
+7400
+
+< 2e-­16
+
+−1.02
+
+Warmer spring triggers earlier flushing
+
+Mean soil moisture Mar & Apr
+
+1
+
+2385
+
+4.39E-­07
+
+−0.10
+
+More precipitation in spring
+triggers earlier flushing
+
+Residuals
+
+328
+
+13,142
+
+Site
+
+43
+
+4227
+
+Residuals
+
+287
+
+8916
+
+Total
+
+332
+
+30,090
+
+6.92e-­13
+
+(B) Effect
+
+d.f.
+
+SS
+
+p
+
+Coefficient
+
+Interpretation
+
+Mean minimum temperature in Oct
+
+1
+
+107
+
+0.00387
+
+−1.15
+
+Number of hot days (> 30°C)
+
+1
+
+2428
+
+7.87e-­12
+
+0.71
+
+Cold October nights induce earlier leaf-­fall
+
+Mean de Martonne drought index
+May–Sep
+
+1
+
+56
+
+4.45e-­06
+
+−5.30
+
+Hot days in summer prolong
+vegetation period
+
+Mean soil moisture May–Sep
+
+1
+
+3241
+
+1.99e-­09
+
+0.58
+
+Drought in summer induces earlier leaf-­fall
+
+Residuals
+
+311
+
+26,374
+
+Site
+
+45
+
+7729
+
+Residuals
+
+293
+
+19,663
+
+Total
+
+315
+
+32,205
+
+Wetter soil in summer prolongs
+vegetation period
+2.52e-­10
+
+the best model included frost days, minimum temperatures in
+January to February, mean temperatures in March to April,
+and precipitation over those months. This model significantly
+outperformed alternatives (AIC = 2173; ∆AIC = 26.9; Table 1A),
+with all predictors having negative coefficients—indicating
+earlier leaf-­out under warmer, wetter conditions. Observed and
+modelled LOD were strongly correlated (r = 0.757, p < 2.2e-­16;
+Figure S4A).
+
+(Figure S3). LSD showed the opposite trend—decreasing with
+latitude and longitude, and with colder, wetter winters and
+cooler, wetter summers. Consequently, the length of the vegetation period varied widely: from just 159.3 days at NID to
+210.3 days at RIM.
+
+LSD variation was less well captured. The best model
+(AIC = 2306.9; ∆AIC = 6.5) explained moderate variance
+(r = 0.432, p = 9.73e-­16; Figure S4B). Key predictors included
+mean minimum temperature in October, number of hot days
+(> 30°C), mean de Martonne drought index (May–September),
+and soil moisture over the same period (Table 1B). Cold autumn
+nights and dry summers accelerated senescence, while hot extremes and higher soil moisture tended to delay it.
+
+On average, sites deviated from predicted LOD values by
+2.98 days (s.d. = 2.24). The spread between the earliest (GER,
+−9.97 days) and latest (NID, +8.23 d) site offset was 18.2 days
+(Figure 3a). LSD offsets ranged even more: from RIM (+13.54 d)
+to KEL (−8.60 d), a span of over 22 days. The mean offset for LSD
+was 3.72 days (s.d. = 3.03; Figure 3b).
+
+3.5   |   Geographic Patterns in Phenology
+LOD increased with both latitude and longitude, and was associated with colder, drier winters and cooler, wetter summers
+6 of 18
+
+3.6   |   Site-­Specific Phenological Offsets
+
+LOD offsets weakly correlated with latitude (r = −0.327,
+p = 0.030), with northern sites flushing earlier than expected
+(Figure 3c). LSD offsets showed weak positive correlations
+with long-­
+term winter/early-­
+spring maximum temperatures
+(r ≈0.31–0.32, p = 0.030–0.048), suggesting later leaf-­fall under
+warmer conditions. Notably, LOD and LSD offsets were uncorrelated (r = 0.035, p = 0.82; Figure 3d).
+Global Change Biology, 2025
+
+13652486, 2025, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/gcb.70484 by Cochrane Peru, Wiley Online Library on [26/06/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+TABLE 1    |    Results of model selection on phenological variation. (A) ANOVA table of best fit model and additional variance explained by systematic
+site effects on LOD. (B) Same for LSD.
+
+10
+
+LOD site off-set [d]
+
+8
+6
+4
+2
+0
+-2
+-4
+-6
+-8
+BEN
+BKH
+BRE
+BRO
+CUN
+DIE
+EDE
+FRA
+GER
+GNH
+HAB
+HAU
+HDR
+HEL
+HFD
+HIL
+KAR
+KAU
+KEL
+KST
+LAN
+LBA
+LBW
+LIN
+MAL
+MAR
+MOG
+MOM
+NID
+OBE
+OES
+ORB
+OTT
+PFA
+REI
+RIM
+RUN
+SCH
+SEI
+SIN
+TAU
+ULM
+VIE
+WEH
+WIL
+WUR
+
+-10
+
+14
+
+b)
+
+12
+10
+
+LSD site off-set [d]
+
+8
+6
+4
+2
+0
+-2
+-4
+-6
+-8
+BEN
+BKH
+BRE
+BRO
+CUN
+DIE
+EDE
+FRA
+GER
+GNH
+HAB
+HAU
+HDR
+HEL
+HFD
+HIL
+KAR
+KAU
+KEL
+KST
+LAN
+LBA
+LBW
+LIN
+MAL
+MAR
+MOG
+MOM
+NID
+OBE
+OES
+ORB
+OTT
+PFA
+REI
+RIM
+RUN
+SCH
+SEI
+SIN
+TAU
+ULM
+VIE
+WEH
+WIL
+WUR
+
+-10
+
+8
+6
+4
+2
+0
+-2
+-4
+-6
+-8
+-10
+
+d)
+
+48.0 48.5 49.0 49.5 50.0 50.5 51.0 51.5
+
+tude
+
+LOD Site off-set [d]
+
+LOD site off-set [d]
+
+c)
+
+10
+8
+6
+4
+2
+0
+-2
+-4
+-6
+-8
+
+-10
+
+-5
+
+0
+
+5
+
+LSD site off-set [d]
+
+10
+
+FIGURE 3    |    Site specific off-­sets in LOD and LSD. (a) Site specific off-­sets in LOD. (b) Site specific off-­sets in LSD. (c) Plot of the site specific LOD
+versus LSD effects. (d) Plot of LOD site offset against latitude.
+
+7 of 18
+
+13652486, 2025, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/gcb.70484 by Cochrane Peru, Wiley Online Library on [26/06/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+a)
+
+3.7   |   popGWAS Results
+None of the first five PCA axes (explaining together 17.6% of
+total allele frequency variation as measurement of population
+structure) correlated with site-­
+specific LOD or LSD offsets
+(Table S2). Combined with low population differentiation (mean
+8 of 18
+
+F ST = 0.062, s.d. = 0.002), this supported the validity of applying
+popGWAS (Pfenninger 2025).
+At a 0.9999 threshold (−log10 p > 6.0), 22 SNPs were associated with LOD offsets (Figure 4A), spread across all except
+one chromosome (Chromosome 9, Table 2A). Ten fell within
+Global Change Biology, 2025
+
+13652486, 2025, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/gcb.70484 by Cochrane Peru, Wiley Online Library on [26/06/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+FIGURE 4    |    Manhattan plots of popGWAS results and validation of genomic prediction. Shown are the −log10 p-­values above 3.0 along the chromosomes of F. sylvatica. (a) Plot for LOD. The horizontal line marks the chosen cut-­off above which SNPs were considered as candidates. (b) The
+same for LSD. (c) Plot of observed LOD off-­set scores against the polygenic prediction score derived from hold out populations. (d) The same for LSD.
+(e) Functional validation. Bayesian correlation analysis of the mean number of LOD-­increasing alleles at predictive loci in 16 individually sequenced
+trees against their observed LOD date in 2024.
+
+29,694,923
+
+36,902,340
+
+56,460,105
+
+66,760,356
+
+71,383,965
+
+18,380,215
+
+390,980
+
+2,383,739
+
+20,600,635
+
+38,116,095
+
+41,013,910
+
+Bhaga_1
+
+Bhaga_1
+
+Bhaga_1
+
+Bhaga_1
+
+Bhaga_10
+
+Bhaga_11
+
+Bhaga_11
+
+Bhaga_12
+
+Bhaga_2
+
+Bhaga_2
+
+POS
+
+Bhaga_1
+
+CHR
+
+(A)
+
+Intergenic
+
+In gene
+
+±2 kb
+
+In gene
+
+In gene
+
+In gene
+
+In gene
+
+In gene
+
+In gene
+
+In gene
+
+Intergenic
+
+Location
+
+—
+
+Bhaga_2.g4150
+
+Bhaga_12.g2433
+
+Bhaga_11.g261
+
+Bhaga_11.g48
+
+Bhaga_10.g2246
+
+Bhaga_1.g7194
+
+Bhaga_1.g6656
+
+Bhaga_1.g5529
+
+Bhaga_1.g3485
+
+—
+
+Gene ID
+
+—
+
+RVW75728.1
+
+XP_018836710
+
+XP_023870530.1
+
+XP_023899280.1
+
+XP_018820584.1
+
+RVX01392.1
+
+XP_023921151.1
+
+XP_023872109.1
+
+RVW73694.1
+
+—
+
+Uniprot ID
+Retrovirus-­related
+Pol polyprotein from
+transposon 297
+
+—
+
+Gene name
+
+—
+
+Retrovirus-­related
+Pol polyprotein from
+transposon RE1
+
+Receptor protein kinase-­
+like protein ZAR1
+
+E3 SUMO-­protein
+ligase KIAA1586-­like
+
+Wall-­associated
+receptor kinase 2-­like
+
+Histidine—tRNA ligase
+
+Transposon TX1
+uncharacterized
+149 kDa protein
+
+F-­box/kelch-­repeat
+protein At3g06240-­like
+
+Probable ribose-­5 -­
+phosphate isomerase 3
+
+TABLE 2    |    Annotation of outlier SNPs. (A) Outlier SNPs for LOD, (B) outlier SNPs for LSD.
+
+—
+
+Unclear
+
+Unclear
+
+Role in regulating key clock properties
+in the model plant Arabidopsis
+
+Potentially impact stomatal function and
+the circadian rhythm of stomatal opening
+both of which influence leaf out day.
+
+—
+
+—
+
+—
+
+(Continues)
+
+Hansen et al. (2017)
+
+Lebaudy et al. (2008)
+
+Baerenfaller
+et al. (2016);
+Skaf (2012)
+
+—
+
+Unclear
+
+The expression and regulation
+of a histidine—tRNA ligase
+gene might influence the H2B
+monoubiquitination status, which in
+turn could affect the timing of gene
+expression, including leaf out day
+
+Feke et al. (2021)
+
+Loivamäki et al. (2007)
+
+—
+
+—
+
+Citation
+
+Significant role in the regulation
+of plant circadian clocks and
+flowering time by sensing dusk
+
+Diurnal variation of isoprene synthase
+(ISPS) activity and gene expression in
+poplar trees, potentially affecting leaf
+out day through the involvement of this
+enzyme in the pentose phosphate pathway
+
+Unclear
+
+—
+
+Potential function in LOD
+
+13652486, 2025, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/gcb.70484 by Cochrane Peru, Wiley Online Library on [26/06/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+9 of 18
+
+10 of 18
+
+13,462,947
+
+31,490,757
+
+13,093,530
+
+23,175,138
+
+20,188,845
+
+22,393,706
+
+35,653,971
+
+8,482,558
+
+25,606,811
+
+25,807,997
+
+Bhaga_4
+
+Bhaga_4
+
+Bhaga_5
+
+Bhaga_5
+
+Bhaga_7
+
+Bhaga_7
+
+Bhaga_7
+
+Bhaga_8
+
+Bhaga_8
+
+Bhaga_8
+
+12,763,752
+
+58,851,447
+
+70,080,082
+
+14,094,514
+
+15,451,591
+
+Bhaga_1
+
+Bhaga_1
+
+Bhaga_10
+
+Bhaga_10
+
+POS
+
+In gene
+
+In gene
+
+±2 kb
+
+Intergenic
+
+Intergenic
+
+—
+
+Bhaga_10.g1898
+
+Bhaga_10.g1727
+
+Bhaga_1.g7039
+
+—
+
+—
+
+—
+
+—
+
+—
+
+—
+
+—
+
+XP_030924638.1
+
+RVW63395.1
+
+40S ribosomal
+protein S2-­3-­like
+
+—
+
+—
+
+Gene name
+
+—
+
+Potential function in LOD
+
+Uncharacterized protein
+LOC115951608
+
+Unclear
+
+Unclear
+
+Might be involved in leaf
+fall day through its role
+in senescence and plant
+tolerance to chilling stress
+
+—
+
+—
+
+Potential function LOD
+
+—
+
+—
+
+—
+
+—
+
+Unclear
+
+Unclear
+
+Unclear
+
+Unclear
+
+—
+
+Might impact leaf out day by
+influencing cell wall modifications
+
+Retrovirus-­related
+Pol polyprotein from
+transposon TNT 1–94
+
+—
+
+—
+
+—
+
+—
+
+Uncharacterized protein
+
+Putative disease
+resistance protein RGA3
+
+Transcription termination
+factor MTERF9
+
+Transposon Ty3-­I
+Gag-­Pol polyprotein
+
+XP_023926929.1
+
+—
+
+—
+
+—
+
+Gene name
+Probable xyloglucan
+endotransglucosylase/
+hydrolase protein 30
+
+Uniprot ID
+
+XP_030924992.1
+
+XP_030929277.1
+
+XP_030966320.1
+
+RVW68719.1
+
+—
+
+XP_023913658.1
+
+—
+
+Uniprot ID
+
+Gene ID
+
+Bhaga_8.g3097
+
+—
+
+—
+
+Bhaga_7.g2591
+
+Bhaga_7.g2359
+
+Bhaga_5.g2628
+
+Bhaga_5.g1475
+
+—
+
+Bhaga_4.g1582
+
+—
+
+Gene ID
+
+Location
+
+Intergenic
+
+In gene
+
+Intergenic
+
+Intergenic
+
+In gene
+
+±2 kb
+
+±2 kb
+
+±2 kb
+
+Intergenic
+
+In gene
+
+Intergenic
+
+Location
+
+Bhaga_1
+
+CHR
+
+(B)
+
+15,569,811
+
+POS
+
+Bhaga_3
+
+CHR
+
+(A)
+
+TABLE 2    |    (Continued)
+
+—
+
+—
+
+(Continues)
+
+Ekramoddoullah
+et al. (1995); Jehanzeb
+et al. (2017)
+
+—
+
+—
+
+Citation
+
+—
+
+—
+
+—
+
+—
+
+—
+
+—
+
+—
+
+—
+
+—
+
+Becnel (2006)
+
+—
+
+Citation
+
+13652486, 2025, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/gcb.70484 by Cochrane Peru, Wiley Online Library on [26/06/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+Global Change Biology, 2025
+
+28,050,045
+
+4,076,294
+
+14,934,036
+
+13,977,597
+
+28,990,891
+
+53,382,765
+
+24,739,929
+
+35,852,818
+
+17,419,372
+
+10,441,249
+
+36,823,695
+
+Bhaga_11
+
+Bhaga_11
+
+Bhaga_12
+
+Bhaga_2
+
+Bhaga_2
+
+Bhaga_3
+
+Bhaga_3
+
+Bhaga_4
+
+Bhaga_5
+
+Bhaga_5
+
+POS
+
+Bhaga_10
+
+CHR
+
+(B)
+
+TABLE 2    |    (Continued)
+
+In gene
+
+In gene
+
+In gene
+
+±2 kb
+
+Intergenic
+
+In gene
+
+Intergenic
+
+±2 kb
+
+In gene
+
+±2 kb
+
+Intergenic
+
+Location
+
+Bhaga_5.g4208
+
+Bhaga_5.g1169
+
+Bhaga_4.g2027
+
+Bhaga_3.g4054
+
+—
+
+Bhaga_2.g5932
+
+—
+
+Bhaga_12.g1708
+
+Bhaga_11.g1682
+
+Bhaga_11.g459
+
+—
+
+Gene ID
+
+XP_030929469.1
+
+XP_023876123.1
+
+RVW68719.1
+
+XP_023889866.1
+
+—
+
+XP_018824994.1
+
+—
+
+PNY17872.1
+
+PNY15174.1
+
+ACG58885.1
+
+—
+
+Uniprot ID
+
+G-­t ype lectin S-­
+receptor-­like serine/
+threonine-­protein kinase
+At4g27290 isoform X2
+
+ABC transporter A
+family member 2-­like
+
+Transposon Ty3-­I Gag-­
+Pol polyprotein-­
+
+Exosome complex
+exonuclease RRP44
+homolog A-­like
+
+—
+
+Exopolygalacturonase-­like
+
+—
+
+Putative gag-­pol polyprotein
+
+Ribonuclease H
+
+Cinnamyl alcohol
+dehydrogenase
+
+—
+
+Gene name
+
+Unclear
+
+ABC transporter A family
+member 2 genes, such as
+those encoded by PYL8
+in alfalfa, have been
+implicated in regulating fall
+dormancy (FD) in plants
+
+—
+
+(Continues)
+
+Du et al. (2017);
+Zhang et al. (2015)
+
+—
+
+—
+
+UNCLEAR
+
+Unclear
+
+—
+
+Du et al. (2017);
+Zhang et al. (2015)
+
+—
+
+—
+
+Du et al. (2017);
+Zhang et al. (2015)
+
+—
+
+—
+
+Citation
+
+—
+
+Might play a role in the
+leaf fall day by regulating
+fall dormancy (FD)
+
+—
+
+Unclear
+
+Might be involved in
+regulating fall dormancy
+(FD) in alfalfa through the
+expression of specific genes
+such as ILR1-­like 1, PYL8, and
+monogalactosyldiacylglycerol
+synthase-­3
+
+Unclear
+
+—
+
+Potential function LOD
+
+13652486, 2025, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/gcb.70484 by Cochrane Peru, Wiley Online Library on [26/06/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+11 of 18
+
+12 of 18
+
+29,440,369
+
+40,035,298
+
+30,834,279
+
+Bhaga_7
+
+Bhaga_7
+
+Bhaga_8
+
+178,270
+
+24,473,847
+
+Bhaga_7
+
+Bhaga_
+Unplaced_1597
+
+36,437,472
+
+POS
+
+Bhaga_6
+
+CHR
+
+(B)
+
+TABLE 2    |    (Continued)
+
+±2 kb
+
+In gene
+
+±2 kb
+
+In gene
+
+In gene
+
+±2 kb
+
+Location
+
+Bhaga_
+Unplaced_1597.
+g119
+
+Bhaga_8.g3674
+
+Bhaga_7.g4650
+
+Bhaga_7.g3376
+
+Bhaga_7.g2826
+
+Bhaga_6.g4081
+
+Gene ID
+
+NA
+
+XP_027190985.1
+
+XP_030973049.1
+
+XP_030970327.1
+
+XP_030971281.1
+
+XP_010446646.1
+
+Uniprot ID
+
+Protein NYNRIN-­like
+
+CASP-­like protein 2B1
+
+Dynamin-­related
+protein 4C-­like
+
+Probable LRR receptor-­like
+serine/threonine-­protein
+kinase At1g56140
+
+Egg cell-­secreted
+protein 1.1-­like
+
+Gene name
+
+Unclear
+
+Might be related to leaf
+fall day based on findings
+in poplar trees. In poplar
+species, a bark storage
+protein (BSP) accumulates
+during the fall and winter
+
+Might be involved in
+regulating leaf fall day
+through its role in frost
+hardiness or fall dormancy
+
+Might be involved in leaf
+fall day through its role in
+dormancy, starch degradation
+and cold acclimation
+
+Might play a role in the
+regulation of leaf fall day
+through the activation of
+mitogen-­activated protein
+kinases (MAPKs)
+
+Might be involved in the
+regulation of fall dormancy
+by programmed cell death
+
+Potential function LOD
+
+Du et al. (2017);
+Thomas et al. (2002)
+
+Du et al. (2017);
+Ekramoddoullah
+et al. (1995)
+
+Du et al. (2017)
+
+Chandra et al. (2016);
+Wang et al. (2023)
+
+Stahl et al. (2023)
+
+Citation
+
+13652486, 2025, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/gcb.70484 by Cochrane Peru, Wiley Online Library on [26/06/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+Global Change Biology, 2025
+
+For LSD, 22 candidate SNPs surpassed the 0.9999 threshold (−log10
+p > 5.2, Figure 4b). Of these, 10 were genic, 7 near genes, and 5 intergenic (Table 2B). Six were intronic, one synonymous, and three
+non-­synonymous (Table S2B). Nine associated genes had plausible
+or known roles in leaf senescence. Transposon-­related genes accounted for 4 (LOD) and 3 (LSD) SNPs. For both traits, SNPs on the
+same chromosome were well separated (≥ 1.7 Mb; mean = 14 Mb).
+
+3.8   |   Genomic Prediction and Functional
+Validation
+LOD phenotypes were best predicted by Minimum Entropy
+Feature Selection using allele frequencies at 10 selected candidate SNPs (model score > 0.99), achieving 0.97 accuracy in six
+hold-­out populations (Figure 4c). Similarly, 10 SNPs predicted
+LSD with a score of 0.98 and a validation accuracy of 0.88
+(Figure 4d).
+Of these 10 predictive loci, 7 were polymorphic in 16 independently whole-­genome sequenced individuals with available
+LOD data for the year 2024. Bayesian correlation analysis revealed a 93.9% posterior probability for a positive link between
+the mean number of LOD-­increasing alleles per locus and the
+observed LOD phenotype, with a moderate median correlation
+(r = 0.40; 95% HDI: −0.067 to 0.79; Figure 4e).
+
+3.9   |   Modeling Historical Phenological Change
+Adding genomic prediction scores to environmental data significantly improved predictive models for both LOD (∆AIC = 224.7)
+and LSD (∆AIC = 138.7), increasing correlations with observed
+values to r = 0.835 and r = 0.446, respectively. Using these enhanced models to reconstruct phenology between 1971 and
+2022, LOD shifted significantly earlier (slope = −0.16, p = 1.28e–
+27), advancing by ~1.6 days per decade, or ~8 days total since
+the 1970s (Figure 5a). While a linear trend described this shift
+reasonably, a sigmoidal Hill function provided a much better
+fit (∆AIC = 416.8, Figure S5A). This model identified an abrupt
+change around 1988, with mean LOD dropping from day 127.4
+to 117.6, coinciding with a sharp spring warming (Figure S5B).
+LSD, in contrast, remained stable near the end of October
+throughout the period (slope = 0.009, p = 0.545; Figure 5b). As
+a result, the potential vegetation period expanded significantly
+(slope = −0.22, p = 3.4e–13, Figure S6B), increasing from ~167 to
+~178 days over five decades.
+
+4   |   Discussion
+By integrating satellite-­
+based phenotyping with a novel
+GWAS framework, we assessed phenological variation across
+
+F. sylvatica stands with unprecedented spatial and temporal
+resolution. This allowed us to partition trait variance into environmental and genetic components, identify candidate loci
+underlying heritable variation, and build accurate genomic prediction models across the species' core range.
+Satellite remote sensing proved highly effective for large-­scale
+phenotyping, enabling consistent leaf status tracking over
+multiple years—at a resolution that would have required significant logistical and financial investment using field-­based
+methods. Although our primary goal was to capture a reliable,
+objective signal of canopy-­level phenological transitions, prior
+work (Proietti et al. 2020) confirms that the strongest change
+point aligns well with internationally recognized phenological
+stages. The strong agreement with publicly available phenology
+data (despite a consistent time lag) supports the reliability of our
+remote-­sensed estimates. Still, limitations exist. Dense undergrowth of beech—particularly where it retains winter foliage—
+can obscure canopy signals, occasionally preventing accurate
+LOD or LSD detection. Fortunately, such cases were rare and
+did not materially impact our analyses.
+Both leaf emergence (LOD) and leaf shedding (LSD)—and
+thus the total growing season—were primarily driven by
+environmental variation. As expected from previous studies
+(Essiamah and Eschrich 1986; Falusi and Calamassi 1990;
+Urban et al. 2013; Vitasse et al. 2009), early-­spring temperature forcing and water availability best explained spatial and
+temporal variation in LOD, accounting for ~56% of its variance. In contrast, LSD was shaped by competing effects:
+cold October nights and dry summers accelerated leaf fall,
+while very hot days and high soil moisture tended to delay it.
+Although prior work (Lukasová et al. 2020) reported heat as
+a trigger for early leaf coloring, this may still align with our
+findings—damaged leaves might senesce earlier but remain
+attached longer. However, environmental predictors were less
+effective for LSD. This likely reflects local, stochastic events—
+like windstorms or heavy rain—that can influence the exact
+timing of leaf fall but are not captured in large-­scale climate
+data (Mariën et al. 2019).
+LOD and LSD both showed opposing trends with geographical
+and climatic gradients, suggesting strong environmental control
+over the vegetation period, which in turn likely shapes beech
+distribution—particularly at northern and eastern range limits.
+This complements previous work highlighting drought susceptibility as a key constraint in the east (Roibu et al. 2017, 2022).
+Postdictive modeling supported this interpretation: climate
+change has already lengthened the growing season at the study
+sites, mostly through earlier LOD rather than delayed LSD,
+which is contrary to findings in other studies (Garate-­Escamilla
+et al. 2020). The observed advance of ~8 days since the 1970s was
+not linear. Instead, a sigmoidal model fit the data better, pointing to an abrupt shift in the late 1980s, coinciding with a well-­
+documented surge in spring temperatures (Menzel et al. 2006).
+Both leaf emergence (LOD) and leaf shedding (LSD) showed
+signs of local adaptation, with likely heritable components varying systematically across space and time. For LOD, site-­specific
+offsets not explained by environmental variables—that is, the
+variance where genetic differentiation may reside (Visscher
+13 of 18
+
+13652486, 2025, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/gcb.70484 by Cochrane Peru, Wiley Online Library on [26/06/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+genes, four within 2 kb of genes, and eight in intergenic regions. Among genic SNPs: 3 were intronic, 2 synonymous,
+and 5 non-­
+s ynonymous with potentially large protein effects (Table S2A). Of the 14 genes associated with these
+SNPs, 8 were linked to circadian regulation or leaf flushing
+(Table 2B), while 6 involved retrotransposon elements, or
+were uncharacterized.
+
+Modelled LOD [day of the year]
+
+140
+
+120
+
+100
+
+1970
+
+1980
+
+1990
+
+1970
+
+1980
+
+1990
+
+Year
+
+2000
+
+2010
+
+2020
+
+2000
+
+2010
+
+2020
+
+b)
+
+Modelled LSD [day of year]
+
+320
+
+300
+
+280
+
+Year
+FIGURE 5    |    Postdictive modelling of phenological dates for the period 1971–2022. (a) LOD modelled for a set of 27 sites. (b) LSD modelled for the
+same sites. The grey lines correspond to the slopes of a linear model fitted for each site.
+
+et al. 2008) —accounted for ~14% of the total variation. These
+offsets negatively correlated with latitude, suggesting that
+northern stands initiate leaf-­out earlier than expected based on
+climate alone, likely compensating for photoperiod constraints
+via local genetic tuning (Garate-­Escamilla et al. 2020). This supports previous findings of local adaptation in leaf emergence
+timing (Lazic et al. 2024; Meger et al. 2021), and implicates photoperiod perception as a driver (Zohner and Renner 2015).
+Site-­specific offsets in LSD were even more substantial, explaining ~24% of variance. Stands with generally warmer
+14 of 18
+
+winters—where frost risk is lower—tended to retain their leaves
+longer, again hinting at local genetic adaptation. Though this
+association was relatively weak, it is the first evidence of such
+a pattern in European beech. Crucially for the GWAS approach,
+the presumed genetic components of LOD and LSD were entirely uncorrelated, implying distinct genetic architectures for
+these traits (Cheverud 1988). This independence means natural
+or artificial selection could potentially act on leaf-­out and leaf-­
+drop timing separately (Svensson et al. 2021). Moreover, predicting the effect of climate change on the length of the growing
+season requires considering these traits separately.
+Global Change Biology, 2025
+
+13652486, 2025, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/gcb.70484 by Cochrane Peru, Wiley Online Library on [26/06/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+a)
+
+Many identified outlier loci were located in or near genes known
+or plausibly related to the traits, making the associations highly
+unlikely to be due to chance. For LOD, eight genes were linked
+to the circadian clock or leaf flushing, with similar roles in
+regulating leaf emergence in tree species like poplar (Edwards
+et al. 2018; Ibáñez et al. 2010). Circadian clock components were
+shown to be crucial in regulating various growth activities in for
+example, poplar trees, including leaf emergence, by modulating
+gene expression and physiological processes by synchronizing
+these processes with environmental cues such as light and temperature (Wenden et al. 2012). For LSD, nine genes were previously associated with fall dormancy or leaf fall (Du et al. 2017;
+Zhang et al. 2015). A notable proportion of candidate SNPs were
+found in transposon genes, where polymorphisms are known to
+influence gene expression (Linker and Hedges 2013). However,
+validation and fine mapping of these loci are necessary to confirm their functional roles (Cano-­Gamez and Trynka 2020).
+Notably, a positive correlation between the mean number of
+LOD-­increasing alleles and observed LOD in an independent
+dataset of 16 sequenced beech trees suggests a significant functional role of these SNPs.
+We successfully developed accurate statistical models to predict
+the site-­specific genetic component of phenotypes. Prediction
+accuracy for hold-­out populations was high—0.97 for LOD and
+0.88 for LSD—despite LSD's greater environmental sensitivity.
+This level of success is notable given the modest performance of
+genomic prediction in other contexts (Visscher et al. 2017; Wray
+et al. 2019). For a correct evaluation, it is essential to distinguish
+the dual aims of GWAS: identifying causative loci and predicting
+outcomes. While related, explanation and prediction are distinct.
+A model can predict well without fully capturing underlying
+mechanisms, as long as key features correlate strongly with the
+outcome (Shmueli 2010). Although including more functional
+loci can enhance predictive accuracy (Pfenninger 2025), it is not
+necessary to include all or even most trait-­related loci. Thus, our
+model should not be interpreted as a comprehensive functional
+(quantitative) genetic model. Accurate predictions of phenotypic
+means can emerge when allele frequency differences at just a few
+loci follow a linear pattern, while other loci behave nearly neutrally. The imperfect fit of outlier loci to linear models reflects
+the redundancy typical of polygenic traits (Barghi et al. 2020).
+Still, if key loci are shared across populations—via shared ancestry or gene flow—accurate predictions remain feasible.
+
+These loci are typically of intermediate frequency, as rare alleles
+contribute little to variation in population means, regardless of
+effect size (Pfenninger 2025). Conversely, individual phenotypes
+may be shaped by rare alleles of large effect (Pickrell et al. 2016;
+Sinclair-­Waters et al. 2020). Thus, loci important for mean differences among populations may offer limited predictive power
+at the individual level. Predicting individual phenotypes likely
+requires a broader set of loci.
+Contrary to its application in medicine or selective breeding (Wray
+et al. 2019), however, accurate prediction of population responses is
+in many instances of the current biodiversity crisis probably more
+important than the prediction of individual phenotypes (Urban
+et al. 2024; Waldvogel et al. 2020). Within these limits, our approach yielded highly accurate predictions. While not functionally
+comprehensive (de Los Campos et al. 2018), these prediction scores
+reliably correlate with trait means and may extend across much
+of the central F. sylvatica range (Lazic et al. 2024; Magri 2008;
+Postolache et al. 2021), given its low genetic differentiation. Such
+scores could support identifying populations with adaptive potential under future climates.
+The polygenic nature of both traits, the pronounced genetic
+offsets among populations together with the low population
+differentiation and high effective population size suggests that
+there is ample opportunity for natural selection to fine-­tune
+phenological dates in European beech according to the changing conditions also in the future. However, this presupposes
+that forest management is carried out in a way that maintains
+genetic diversity and allows natural selection to take place
+(Gömöry et al. 2020; Ratnam et al. 2014).
+Our study highlights the power of combining satellite remote sensing with a novel population-­based GWAS to assess phenological
+variation in F. sylvatica at an unprecedented scale. Remote sensing
+enabled consistent, large-­scale phenotyping across years, uncovering spatial and temporal patterns in leaf-­out and senescence that
+traditional methods would struggle to capture. By separating genetic from environmental influences, we provide strong evidence
+for local adaptation and identify candidate genomic regions involved in phenological regulation.
+Our predictive modeling further demonstrates the potential
+of integrating genomic and remote sensing data to forecast
+population-­
+level phenotypic responses—critical for conservation and forest management under climate change. While
+functional validation of key loci and refinement of remote
+sensing techniques remain important next steps, our findings
+underscore the value of linking high-­throughput ecological
+monitoring with genomic tools to better predict biodiversity
+responses and inform adaptation strategies for long-­l ived tree
+species.
+
+Author Contributions
+Markus Pfenninger: conceptualization, data curation, formal analysis, funding acquisition, methodology, project administration, writing –
+original draft. Liam Langan: conceptualization, writing – review and
+editing. Barbara Feldmeyer: data curation, formal analysis, writing –
+review and editing. Linda Eberhardt: data curation, writing – review
+
+15 of 18
+
+13652486, 2025, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/gcb.70484 by Cochrane Peru, Wiley Online Library on [26/06/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+This study represents the first empirical application of the popGWAS approach (Pfenninger 2025). Unlike traditional GWAS,
+which links individual genotypes to phenotypes, popGWAS
+uses genome-­w ide allele frequencies to explain population-­level
+phenotypic variation, offering greater statistical power with the
+same sequencing effort. Simulations show that popGWAS reliably detects true positive loci for polygenic traits when at least
+~36 populations are analyzed and a few dozen top outlier candidates are considered. We analyzed 46 populations, well above
+the recommended minimum, and selected 22 top outlier regions
+per trait as a conservative approach for F. sylvatica's 0.5 Gb genome (Pfenninger 2025). A key requirement for successful application is weak population structure unrelated to the traits under
+study, which was met, as evidenced by the low F ST (0.062) and
+lack of correlation between PCA axes and the genetic components of LOD and LSD.
+
+Acknowledgments
+This study received support from the “Fachzentrum für Klimawandel
+und Anpassung des Hessisches Landesamtes für Naturschutz, Umwelt
+und Geologie” in the framework of the FAST-­project. This study was
+partially funded by the Federal Ministry of Food den Agriculture
+and the Federal Ministry for the Environment, Nature Conservation,
+Nuclear Safety and Consumer Protection based on a resolution of the
+German Bundestag (project number 28W-­B -­4 -­058-­01) and the Bavarian
+Office for Forest Genetics. We thank Enno Uhl and Matthias Steckel for
+support in the site and tree selection as well as Yves-­Daniel Hofmann,
+Jorge Cueva-­Ortiz and Rebekka Stüwe for data acquisition in the field
+under sometimes very difficult conditions. Open Access funding enabled and organized by Projekt DEAL.
+Conflicts of Interest
+The authors declare no conflicts of interest.
+Data Availability Statement
+The raw data of all samples sequenced can be found at ENA (study
+numbers: PRJEB64934 and PRJEB60881). Other data can be found at
+Zenodo https://​doi.​org/​10.​5281/​zenodo.​15401304. Scripts can be found
+at Zenodo https://​doi.​org/​10.​5281/​zenodo.​15341395. WorldClim 2.1
+data is deposited at https://​doi.​org/​10.​5281/​zenodo.​8319614. Current
+Sentinel–1 Synthetic Aperture Radar (SAR) data are available through
+the Google Earth Engine cloud–processing platform (https://​devel​opers.​
+google.​com/​earth​-­​engine/​datas​ets/​c atal​og/​COPER ​N ICUS_ ​S1_​GRD?​
+hl=​de). Phenological data was obtained from German Weather Service
+(DWD) via their service platform (https://​w ww.​dwd.​de/​DE/​leist​ungen/​​
+phaeno_ ​sta/​phaen​osta.​html). Historical weather data was downloaded
+from the DWD portal (https://​cdc.​dwd.​de/​portal/​2 0220​9231028).
+References
+Alberto, F. J., S. N. Aitken, R. Alía, et al. 2013. “Potential for Evolutionary
+Responses to Climate Change–Evidence From Tree Populations.”
+Global Change Biology 19, no. 6: 1645–1661.
+Arnold, P. A., L. E. Kruuk, and A. B. Nicotra. 2019. “How to Analyse
+Plant Phenotypic Plasticity in Response to a Changing Climate.” New
+Phytologist 222, no. 3: 1235–1241.
+Baerenfaller, K., H. Shu, M. Hirsch-­Hoffmann, et al. 2016. “Diurnal
+Changes in the Histone H3 Signature H3K9ac|H3K27ac|H3S28p Are
+Associated With Diurnal Gene Expression in Arabidopsis.” Plant, Cell
+& Environment 39, no. 11: 2557–2569. https://​doi.​org/​10.​1111/​pce.​12811​.
+Barghi, N., J. Hermisson, and C. Schlötterer. 2020. “Polygenic
+Adaptation: A Unifying Framework to Understand Positive Selection.”
+Nature Reviews Genetics 21, no. 12: 769–781.
+Becnel, J. 2006. “Xyloglucan Endotransglucosylase/Hydrolases
+of Arabidopsis: Expression and Function of A Gene Family.” Rice
+University.
+https://​search.​proqu​est.​com/​openv​iew/​bdbc6​01829​3fcec​
+04bd9​19370​cbdc5​d0/1?​pq-­​origs​ite=​gscho​lar&​cbl=​18750​&​diss=​y.
+Bian, L., H. Zhang, Y. Ge, J. Čepl, J. Stejskal, and Y. A. El-­Kassaby.
+2022. “Closing the Gap Between Phenotyping and Genotyping: Review
+of Advanced, Image-­
+Based Phenotyping Technologies in Forestry.”
+Annals of Forest Science 79, no. 1: 1–21.
+
+16 of 18
+
+Brunet, J., Ö. Fritz, and G. Richnau. 2010. “Biodiversity in European
+Beech Forests-­A Review With Recommendations for Sustainable Forest
+Management.” Ecological Bulletins 53: 77–94.
+Cano-­Gamez, E., and G. Trynka. 2020. “From GWAS to Function:
+Using Functional Genomics to Identify the Mechanisms Underlying
+Complex Diseases.” Frontiers in Genetics 11: 424.
+Caudullo, G., E. Welk, and J. San-­
+Miguel-­
+Ayanz. 2017.
+“Chorological Maps for the Main European Woody Species.” Data in
+Brief 12: 662–666.
+Chandra, S., D. Singh, J. Pathak, et al. 2016. “De Novo Assembled
+Wheat Transcriptomes Delineate Differentially Expressed Host Genes
+in Response to Leaf Rust Infection.” PLoS One 11, no. 2: e0148453.
+https://​doi.​org/​10.​1371/​journ​al.​pone.​0148453.
+Cheverud, J. M. 1988. “A Comparison of Genetic and Phenotypic
+Correlations.” Evolution 42, no. 5: 958–968. https://​doi.​org/​10.​1111/j.​
+1558-­​5646.​1988.​tb025​14.​x.
+Čufar, K., P. Prislan, M. De Luis, and J. Gričar. 2008. “Tree-­R ing
+Variation, Wood Formation and Phenology of Beech (Fagus sylvatica)
+From a Representative Site in Slovenia, SE Central Europe.” Trees 22:
+749–758.
+de Los Campos, G., A. I. Vazquez, S. Hsu, and L. Lello. 2018. “Complex-­
+Trait Prediction in the Era of Big Data.” Trends in Genetics 34, no. 10:
+746–754.
+Dittmar, C., and W. Elling. 2006. “Phenological Phases of Common
+Beech (Fagus sylvatica L.) and Their Dependence on Region and
+Altitude in Southern Germany.” European Journal of Forest Research
+125: 181–188.
+Dolschak, K., K. Gartner, and T. W. Berger. 2019. “The Impact of Rising
+Temperatures on Water Balance and Phenology of European Beech
+(Fagus sylvatica L.) Stands.” Modeling Earth Systems and Environment
+5: 1347–1363.
+Dorow, W. H., T. Blick, and J.-­P. Kopelke. 2010. “Zoologische Forschung
+in hessischen Naturwaldreservaten–Exemplarische Ergebnisse und
+Perspektiven.” Forstarchiv 81: 61–68.
+Dronova, I., and S. Taddeo. 2022. “Remote Sensing of Phenology:
+Towards the Comprehensive Indicators of Plant Community Dynamics
+From Species to Regional Scales.” Journal of Ecology 110, no. 7:
+1460–1484.
+Du, H., Y. Shi, D. Li, W. Fan, G. Wang, and C. Wang. 2017. “Screening
+and Identification of Key Genes Regulating Fall Dormancy in Alfalfa
+Leaves.” PLoS One 12, no. 12: e0188964.
+Edwards, K. D., N. Takata, M. Johansson, et al. 2018. “Circadian Clock
+Components Control Daily Growth Activities by Modulating Cytokinin
+Levels and Cell Division-­A ssociated Gene Expression in Populus Trees.”
+Plant, Cell & Environment 41, no. 6: 1468–1482. https://​doi.​org/​10.​1111/​
+pce.​13185​.
+Ekramoddoullah, A. K. M., D. Taylor, and B. J. Hawkins. 1995.
+“Characterisation of a Fall Protein of Sugar Pine and Detection of Its
+Homologue Associated With Frost Hardiness of Western White Pine
+Needles.” Canadian Journal of Forest Research 25, no. 7: 1137–1147.
+https://​doi.​org/​10.​1139/​x 95-­​126.
+Elsasser, P., K. Altenbrunn, M. Köthke, M. Lorenz, and J. Meyerhoff.
+2021. “Spatial Distribution of Forest Ecosystem Service Benefits in
+Germany: A Multiple Benefit-­Transfer Model.” Forests 12, no. 2: 169.
+Essiamah, S., and W. Eschrich. 1986. “Water Uptake in Deciduous
+Trees During Winter and the Role of Conducting Tissues in Spring
+Reactivation.” IAWA Journal 7, no. 1: 31–38.
+Falusi, M., and R. Calamassi. 1990. “Bud Dormancy in Beech (Fagus
+sylvatica L.). Effect of Chilling and Photoperiod on Dormancy Release
+of Beech Seedlings.” Tree Physiology 6, no. 4: 429–438.
+
+Global Change Biology, 2025
+
+13652486, 2025, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/gcb.70484 by Cochrane Peru, Wiley Online Library on [26/06/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+and editing. Friederike Reuss: data curation, funding acquisition,
+writing – review and editing. Janik Hoffmann: data curation, formal
+analysis, writing – review and editing. Barbara Fussi: data curation,
+writing – review and editing. Muhidin Seho: conceptualization, writing – review and editing. Karl-­Heinz Mellert: conceptualization, writing – review and editing. Thomas Hickler: conceptualization, writing
+– review and editing.
+
+National Academy of Sciences 105, no. 13: 5271–5276. https://​doi.​org/​10.​
+1073/​pnas.​07097​32105​.
+
+Feke, A., M. Vanderwall, W. Liu, and J. M. Gendron. 2021. “Functional
+Domain Studies Uncover Novel Roles for the ZTL Kelch Repeat Domain
+in Clock Function.” PLoS One 16, no. 3: e0235938.
+
+Li, Y., W. Zhang, C. R. Schwalm, et al. 2023. “Widespread Spring
+Phenology Effects on Drought Recovery of Northern Hemisphere
+Ecosystems.” Nature Climate Change 13, no. 2: 182–188. https://​doi.​org/​
+10.​1038/​s 4155​8-­​022-­​01584​-­​2 .
+
+Fick, S. E., and R. J. Hijmans. 2017. “WorldClim 2: New 1-­K m Spatial
+Resolution Climate Surfaces for Global Land Areas.” International
+Journal of Climatology 37, no. 12: 4302–4315. https://​doi.​org/​10.​1002/​
+joc.​5086.
+
+Linker, S., and D. Hedges. 2013. “Linear Decay of Retrotransposon
+Antisense Bias Across Genes Is Contingent Upon Tissue Specificity.”
+PLoS One 8, no. 11: e79402. https://​doi.​org/​10.​1371/​journ​al.​pone.​
+0079402.
+
+Garate-­
+E scamilla, H., C. C. Brelsford, A. Hampe, T. M. Robson,
+and M. B. Garzon. 2020. “Greater Capacity to Exploit Warming
+Temperatures in Northern Populations of European Beech Is
+Partly Driven by Delayed Leaf Senescence.” Agricultural and Forest
+Meteorology 284: 107908.
+
+Loivamäki, M., S. Louis, G. Cinege, I. Zimmer, R. J. Fischbach, and J.-­P.
+Schnitzler. 2007. “Circadian Rhythms of Isoprene Biosynthesis in Grey
+Poplar Leaves.” Plant Physiology 143, no. 1: 540–551.
+
+Gömöry, D., D. Krajmerová, M. Hrivnák, and R. Longauer. 2020.
+“Assisted Migration vs. Close-­
+To-­
+Nature Forestry: What Are the
+Prospects for Tree Populations Under Climate Change?” Central
+European Forestry Journal 66, no. 2: 63–70. https://​doi.​org/​10.​2 478/​
+forj-­​2 020-­​0 008.
+Gray, R. E., and R. M. Ewers. 2021. “Monitoring Forest Phenology in a
+Changing World.” Forests 12, no. 3: 297.
+Hack, H., H. Bleiholder, L. Buhr, et al. 1992. “Einheitliche Codierung der
+phänologischen Entwicklungsstadien mono-­und dikotyler Pflanzen.-­
+Erweiterte BBCH-­Skala, Allgemein.” Heft 44, no. 12: 265–270.
+Hansen, L. L., H. A. van den Burg, and G. van Ooijen. 2017. “Sumoylation
+Contributes to Timekeeping and Temperature Compensation of the
+Plant Circadian Clock.” Journal of Biological Rhythms 32, no. 6: 560–
+569. https://​doi.​org/​10.​1177/​07487​30417​737633.
+Heim, J., M. Krott, and M. Böcher. 2018. “Nomination and Inscription
+of the “Ancient Beech Forests of Germany” as Natural World Heritage:
+Multi-­L evel Governance Between Science and Politics.” International
+Environmental Agreements: Politics, Law and Economics 18: 599–617.
+Hijmans, R. J., L. Guarino, and P. Mathur. 2012. “DIVA-­GIS. Version
+7.5. A Geographic Information System for the Analysis of Species
+Distribution Data.” Bioinformatics, 19.
+Ibáñez, C., I. Kozarewa, M. Johansson, E. Ögren, A. Rohde, and M.
+E. Eriksson. 2010. “Circadian Clock Components Regulate Entry and
+Affect Exit of Seasonal Dormancy as Well as Winter Hardiness in
+Populus Trees.” Plant Physiology 153, no. 4: 1823–1833.
+Jehanzeb, M., X. Zheng, and Y. Miao. 2017. “The Role of the S40 Gene
+Family in Leaf Senescence.” International Journal of Molecular Sciences
+18, no. 10: 2152.
+Killick, R., and I. Eckley. 2014. “Changepoint: An R Package for
+Changepoint Analysis.” Journal of Statistical Software 58, no. 3: 1–19.
+Krajmerová, D., M. Hrivnák, L. Ditmarová, et al. 2017. “Nucleotide
+Polymorphisms Associated With Climate, Phenology and Physiological
+Traits in European Beech (Fagus sylvatica L.).” New Forests 48: 463–477.
+Kramer, K. 1995. “Phenotypic Plasticity of the Phenology of Seven
+European Tree Species in Relation to Climatic Warming.” Plant, Cell &
+Environment 18, no. 2: 93–104.
+Kramer, K., I. Leinonen, and D. Loustau. 2000. “The Importance of
+Phenology for the Evaluation of Impact of Climate Change on Growth
+of Boreal, Temperate and Mediterranean Forests Ecosystems: An
+Overview.” International Journal of Biometeorology 44: 67–75.
+
+Lukasová, V., J. Vido, J. Škvareninová, et al. 2020. “Autumn Phenological
+Response of European Beech to Summer Drought and Heat.” Water 12,
+no. 9: 2610.
+Magri, D. 2008. “Patterns of Post-­Glacial Spread and the Extent of
+Glacial Refugia of European Beech (Fagus sylvatica).” Journal of
+Biogeography 35, no. 3: 450–463.
+Marchand, L. J., I. Dox, J. Gričar, et al. 2020. “Inter-­Individual Variability
+in Spring Phenology of Temperate Deciduous Trees Depends on Species,
+Tree Size and Previous Year Autumn Phenology.” Agricultural and
+Forest Meteorology 290: 108031.
+Mariën, B., M. Balzarolo, I. Dox, et al. 2019. “Detecting the Onset of
+Autumn Leaf Senescence in Deciduous Forest Trees of the Temperate
+Zone.” New Phytologist 224, no. 1: 166–176.
+Meger, J., B. Ulaszewski, and J. Burczyk. 2021. “Genomic Signatures
+of Natural Selection at Phenology-­
+Related Genes in a Widely
+Distributed Tree Species Fagus sylvatica L.” BMC Genomics 22, no.
+1: 1–20.
+Menzel, A., T. H. Sparks, N. Estrella, et al. 2006. “European Phenological
+Response to Climate Change Matches the Warming Pattern.” Global
+Change Biology 12, no. 10: 1969–1976. https://​doi.​org/​10.​1111/j.​1365-­​
+2486.​2 006.​01193.​x.
+Mishra, B., B. Ulaszewski, J. Meger, et al. 2021. “A
+Chromosome-­
+L evel Genome Assembly of the European Beech
+(Fagus sylvatica) Reveals Anomalies for Organelle DNA
+Integration, Repeat Content and Distribution of SNPs.” Frontiers in
+Genetics 12: 691058.
+Palamidessi, C., and M. Romanelli. 2018. “Feature Selection With Rényi
+min-­Entropy.” In Artificial Neural Networks in Pattern Recognition, edited by L. Pancioni, F. Schwenker, and E. Trentin, vol. 11081, 226–239.
+Springer International Publishing. https://​doi.​org/​10.​1007/​978-­​3 -­​319-­​
+99978​-­​4 _​18.
+Pedregosa, F., G. Varoquaux, A. Gramfort, et al. 2011. “Scikit-­L earn:
+Machine Learning in Python.” Journal of Machine Learning Research
+12, no. 85: 2825–2830.
+Peñuelas, J., and I. Filella. 2009. “Phenology Feedbacks on Climate
+Change.” Science 324, no. 5929: 887–888.
+Pfenninger, M. 2025. “On the Potential for GWAS With Phenotypic
+Population Means and Allele-­
+Frequency Data (popGWAS).” Peer
+Community Journal 5: e40.
+Pickrell, J. K., T. Berisa, J. Z. Liu, L. Ségurel, J. Y. Tung, and D. A. Hinds.
+2016. “Detection and Interpretation of Shared Genetic Influences on 42
+Human Traits.” Nature Genetics 48, no. 7: 709–717.
+
+Lazic, D., C. Geßner, K. J. Liepe, et al. 2024. “Genomic Variation of
+European Beech Reveals Signals of Local Adaptation Despite High
+Levels of Phenotypic Plasticity.” Nature Communications 15, no. 1: 8553.
+
+Polgar, C. A., and R. B. Primack. 2011. “Leaf-­
+Out Phenology of
+Temperate Woody Plants: From Trees to Ecosystems.” New Phytologist
+191, no. 4: 926–941.
+
+Lebaudy, A., A. Vavasseur, E. Hosy, et al. 2008. “Plant Adaptation
+to Fluctuating Environment and Biomass Production Are Strongly
+Dependent on Guard Cell Potassium Channels.” Proceedings of the
+
+Postolache, D., S. Oddou-­Muratorio, E. Vajana, et al. 2021. “Genetic
+Signatures of Divergent Selection in European Beech (Fagus sylvatica L.) are Associated With the Variation in Temperature and
+
+17 of 18
+
+13652486, 2025, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/gcb.70484 by Cochrane Peru, Wiley Online Library on [26/06/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+Falusi, M., and R. Calamassi. 1996. “Geographic Variation and Bud
+Dormancy in Beech Seedlings (Fagus sylvatica L).” Annales des Sciences
+Forestières 53, no. 5: 967–979.
+
+Potin, P., B. Rosich, P. Grimont, et al. 2016. “Sentinel-­1 Mission Status.”
+Proceedings of EUSAR 2016: 11th European Conference on Synthetic
+Aperture Radar, 1–6.
+Proietti, R., S. Antonucci, M. C. Monteverdi, et al. 2020. “Monitoring
+Spring Phenology in Mediterranean Beech Populations Through in Situ
+Observation and Synthetic Aperture Radar Methods.” Remote Sensing
+of Environment 248: 111978.
+
+Urban, J., E. Bednářová, R. Plichta, and J. Kučera. 2013. “Linking
+Phenological Data to Ecophysiology of European Beech.” Acta
+Horticulturae 991: 293–299.
+Urban, M. C., J. Swaegers, R. Stoks, et al. 2024. “When and How Can
+We Predict Adaptive Responses to Climate Change?” Evolution Letters
+8, no. 1: 172–187.
+Visscher, P. M., W. G. Hill, and N. R. Wray. 2008. “Heritability in the
+Genomics Era–Concepts and Misconceptions.” Nature Reviews Genetics
+9, no. 4: 255–266.
+
+Ratnam, W., O. P. Rajora, R. Finkeldey, et al. 2014. “Genetic Effects
+of Forest Management Practices: Global Synthesis and Perspectives.”
+Forest Ecology and Management 333: 52–65.
+
+Visscher, P. M., N. R. Wray, Q. Zhang, et al. 2017. “10 Years of GWAS
+Discovery: Biology, Function, and Translation.” American Journal of
+Human Genetics 101, no. 1: 5–22.
+
+Renner, S. S., and F.-­
+M. Chmielewski. 2021. “The International
+Phenological Garden Network (1959 to 2021): Its 131 Gardens, Cloned
+Study Species, Data Archiving, and Future.” International Journal of
+Biometeorology 66, no. 1: 35–39.
+
+Vitasse, Y., S. Delzon, E. Dufrêne, et al. 2009. “Leaf Phenology Sensitivity
+to Temperature in European Trees: Do Within-­Species Populations
+Exhibit Similar Responses?” Agricultural and Forest Meteorology 149,
+no. 5: 735–744.
+
+Richardson, A. D., T. F. Keenan, M. Migliavacca, Y. Ryu, O. Sonnentag,
+and M. Toomey. 2013. “Climate Change, Phenology, and Phenological
+Control of Vegetation Feedbacks to the Climate System.” Agricultural
+and Forest Meteorology 169: 156–173.
+
+Waldvogel, A.-­
+M., B. Feldmeyer, G. Rolshausen, et al. 2020.
+“Evolutionary Genomics Can Improve Prediction of Species' Responses
+to Climate Change.” Evolution Letters 4, no. 1: 4–18.
+
+Robson, T. M., E. Rasztovits, P. J. Aphalo, R. Alia, and I. Aranda. 2013.
+“Flushing Phenology and Fitness of European Beech (Fagus sylvatica
+L.) Provenances From a Trial in La Rioja, Spain, Segregate According
+to Their Climate of Origin.” Agricultural and Forest Meteorology 180:
+76–85.
+Roibu, C.-­C., C. Palaghianu, V. Nagavciuc, et al. 2022. “The Response
+of Beech (Fagus sylvatica L.) Populations to Climate in the Easternmost
+Sites of Its European Distribution.” Plants 11, no. 23: 3310.
+Roibu, C.-­C., I. Popa, A. J. Kirchhefer, and C. Palaghianu. 2017. “Growth
+Responses to Climate in a Tree-­
+R ing Network of European Beech
+(Fagus sylvatica L.) From the Eastern Limit of Its Natural Distribution
+Area.” Dendrochronologia 42: 104–116.
+Satake, A., A. Nagahama, and E. Sasaki. 2022. “A Cross-­Scale Approach
+to Unravel the Molecular Basis of Plant Phenology in Temperate and
+Tropical Climates.” New Phytologist 233, no. 6: 2340–2353.
+Schlund, M. 2025. “Potential of Sentinel-­
+1 Time-­
+Series Data for
+Monitoring the Phenology of European Temperate Forests.” ISPRS
+Journal of Photogrammetry and Remote Sensing 223: 131–145.
+Shmueli, G. 2010. “To Explain or to Predict?” Statistical Science 25, no.
+3: 289–310. https://​doi.​org/​10.​1214/​10-­​STS330.​short​.
+Sinclair-­Waters, M., J. Ødegård, S. A. Korsvoll, et al. 2020. “Beyond
+Large-­Effect Loci: Large-­Scale GWAS Reveals a Mixed Large-­Effect
+and Polygenic Architecture for Age at Maturity of Atlantic Salmon.”
+Genetics Selection Evolution 52, no. 1: 9. https://​doi.​org/​10.​1186/​s1271​
+1-­​020-­​0529-­​8.
+Skaf, J. 2012. “Diel Mediated Populus Balsamifera Transcriptome
+Components Test the Impacts of Artificial Nighttime Lighting.” PhD
+thesis. https://​libra​r y-­​archi​ves.​canada.​ca/​eng/​servi​ces/​servi​ces-­​libra​
+ries/​theses/​Pages/​​item.​aspx?​idNum​ber=​10194​77795​.
+Stahl, E., L.-­
+P. Maier, and P. Reymond. 2023. “Insect Egg-­
+Induced
+Innate Immunity: Who Benefits?” PLoS Pathogens 19, no. 1: e1011072.
+Svensson, E. I., S. J. Arnold, R. Bürger, et al. 2021. “Correlational
+Selection in the Age of Genomics.” Nature Ecology & Evolution 5, no.
+5: 562–573.
+
+Walsh, B., and M. Lynch. 2018. Evolution and Selection of Quantitative
+Traits. Oxford University Press.
+Wang, H., S. Lin, J. Dai, and Q. Ge. 2022. “Modeling the Effect of
+Adaptation to Future Climate Change on Spring Phenological Trend of
+European Beech (Fagus sylvatica L.).” Science of the Total Environment
+846: 157540.
+Wang, H., W.-­M. Wang, and J. Fan. 2023. “Life and Death: The Destiny
+of Phytophthora Sojae Determined by a Receptor-­Like Kinase.” Stress
+Biology 3, no. 1: 49. https://​doi.​org/​10.​1007/​s 4415​4 -­​023-­​0 0132​-­​y.
+Wenden, B., D. L. K. Toner, S. K. Hodge, R. Grima, and A. J. Millar.
+2012. “Spontaneous Spatiotemporal Waves of Gene Expression From
+Biological Clocks in the Leaf.” Proceedings of the National Academy
+of Sciences 109, no. 17: 6757–6762. https://​doi.​org/​10.​1073/​pnas.​11188​
+14109​.
+Wray, N. R., K. E. Kemper, B. J. Hayes, M. E. Goddard, and P. M. Visscher.
+2019. “Complex Trait Prediction From Genome Data: Contrasting EBV
+in Livestock to PRS in Humans: Genomic Prediction.” Genetics 211, no.
+4: 1131–1141.
+Wu, Q. 2020. “Geemap: A Python Package for Interactive Mapping With
+Google Earth Engine.” Journal of Open Source Software 5, no. 51: 2305.
+Zhang, S., Y. Shi, N. Cheng, H. Du, W. Fan, and C. Wang. 2015. “De Novo
+Characterization of Fall Dormant and Nondormant Alfalfa (Medicago
+sativa L.) Leaf Transcriptome and Identification of Candidate Genes
+Related to Fall Dormancy.” PLoS One 10, no. 3: e0122170.
+Zohner, C. M., and S. S. Renner. 2015. “Perception of Photoperiod in
+Individual Buds of Mature Trees Regulates Leaf-­Out.” New Phytologist
+208, no. 4: 1023–1030. https://​doi.​org/​10.​1111/​nph.​13510​.
+Supporting Information
+Additional supporting information can be found online in the
+Supporting Information section. Data S1: gcb70484-­sup- ­0 001-­DataS1.
+docx.
+
+Thomas, H., H. Ougham, P. Canter, and I. Donnison. 2002. “What
+Stay-­Green Mutants Tell Us About Nitrogen Remobilization in Leaf
+Senescence.” Journal of Experimental Botany 53, no. 370: 801–808.
+Tsipidou, O., L. Leinemann, G. Korakis, R. Finkeldey, O. Gailing, and
+A. C. Papageorgiou. 2021. “Fine-­Scale Spatial Patterns of the Genetic
+Diversity ofEuropean Beech (Fagus sylvatica L.) Around a Mountainous
+Glacial Refugium in the SW Balkans.” Forests 12, no. 6: 725.
+
+18 of 18
+
+Global Change Biology, 2025
+
+13652486, 2025, 9, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/gcb.70484 by Cochrane Peru, Wiley Online Library on [26/06/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+Precipitation Across Its Distribution Range.” Molecular Ecology 30,
+no. 20: 5029–5047.

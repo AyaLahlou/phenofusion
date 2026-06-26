@@ -1,0 +1,310 @@
+%Version 3.1 December 2024
+% See section 11 of the User Manual for version history
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%\documentclass[referee,sn-basic]{sn-jnl}% referee option is meant for double line spacing
+
+%%=======================================================%%
+%% to print line numbers in the margin use lineno option %%
+%%=======================================================%%
+
+%%\documentclass[lineno,pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+%%=========================================================================================%%
+%% the documentclass is set to pdflatex as default. You can delete it if not appropriate.  %%
+%%=========================================================================================%%
+
+%%\documentclass[sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+%%Note: the following reference styles support Namedate and Numbered referencing. By default the style follows the most common style. To switch between the options you can add or remove Numbered in the optional parenthesis.
+%%The option is available for: sn-basic.bst, sn-chicago.bst%
+
+%%\documentclass[pdflatex,sn-nature]{sn-jnl}% Style for submissions to Nature Portfolio journals
+%%\documentclass[pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}% Math and Physical Sciences Numbered Reference Style
+%%\documentclass[pdflatex,sn-mathphys-ay]{sn-jnl}% Math and Physical Sciences Author Year Reference Style
+%%\documentclass[pdflatex,sn-aps]{sn-jnl}% American Physical Society (APS) Reference Style
+%%\documentclass[pdflatex,sn-vancouver-num]{sn-jnl}% Vancouver Numbered Reference Style
+%%\documentclass[pdflatex,sn-vancouver-ay]{sn-jnl}% Vancouver Author Year Reference Style
+%%\documentclass[pdflatex,sn-apa]{sn-jnl}% APA Reference Style
+%%\documentclass[pdflatex,sn-chicago]{sn-jnl}% Chicago-based Humanities Reference Style
+
+%%%% Standard Packages
+%%<additional latex packages if required can be included here>
+
+\usepackage{graphicx}%
+\usepackage[inkscapelatex=false]{svg}%
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage{mathrsfs}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs}%
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage{algpseudocode}%
+\usepackage{listings}%
+%%%%
+
+%%%%%=============================================================================%%%%
+%%%%  Remarks: This template is provided to aid authors with the preparation
+%%%%  of original research articles intended for submission to journals published
+%%%%  by Springer Nature. The guidance has been prepared in partnership with
+%%%%  production teams to conform to Springer Nature technical requirements.
+%%%%  Editorial and presentation requirements differ among journal portfolios and
+%%%%  research disciplines. You may find sections in this template are irrelevant
+%%%%  to your work and are empowered to omit any such section if allowed by the
+%%%%  journal you intend to submit to. The submission guidelines and policies
+%%%%  of the journal take precedence. A detailed User Manual is available in the
+%%%%  template package for technical guidance.
+%%%%%=============================================================================%%%%
+
+%% as per the requirement new theorem styles can be included as shown below
+\theoremstyle{thmstyleone}%
+\newtheorem{theorem}{Theorem}%  meant for continuous numbers
+%%\newtheorem{theorem}{Theorem}[section]% meant for sectionwise numbers
+%% optional argument [theorem] produces theorem numbering sequence instead of independent numbers for Proposition
+\newtheorem{proposition}[theorem]{Proposition}%
+%%\newtheorem{proposition}{Proposition}% to get separate numbers for theorem and proposition etc.
+
+\theoremstyle{thmstyletwo}%
+\newtheorem{example}{Example}%
+\newtheorem{remark}{Remark}%
+
+\theoremstyle{thmstylethree}%
+\newtheorem{definition}{Definition}%
+
+\raggedbottom
+%%\unnumbered% uncomment this for unnumbered level heads
+
+\begin{document}
+
+\title[Blooming Insights: Deep Learning Reveals Key Climatic Drivers and Shifting Sensitivities of Phenology]{Blooming Insights: Deep Learning Reveals Key Climatic Drivers and Shifting Sensitivities of Phenology}
+
+%%=============================================================%%
+%% GivenName	-> \fnm{Joergen W.}
+%% Particle	-> \spfx{van der} -> surname prefix
+%% FamilyName	-> \sur{Ploeg}
+%% Suffix	-> \sfx{IV}
+%% \author*[1,2]{\fnm{Joergen W.} \spfx{van der} \sur{Ploeg}
+%%  \sfx{IV}}\email{iauthor@gmail.com}
+%%=============================================================%%
+
+\author[1,2]{\fnm{Aya} \sur{Lahlou}}\email{al4385@columbia.edu}
+
+\author[3]{\fnm{Maria Fernanda} \sur{Sampaio Ferreira}}\email{ms7073@columbia.edu}
+
+\author[1,2]{\fnm{Linnia} \sur{Hawkins}}\email{lh3194@columbia.edu}
+
+\author[1,2]{\fnm{Pierre} \sur{Gentine}}\email{pg2328@columbia.edu}
+
+\affil[1]{\orgdiv{Department of Earth and Environmental Engineering}, \orgname{Columbia University}, \orgaddress{\city{New York}, \postcode{10027}, \state{NY}, \country{USA}}}
+
+\affil[2]{\orgdiv{Center for Learning the Earth with Artificial Intelligence and Physics (LEAP)}, \orgname{Columbia University}, \orgaddress{\city{New York}, \postcode{10027}, \state{NY}, \country{USA}}}
+
+\affil[3]{\orgdiv{Department of Applied Mathematics and Physics}, \orgname{Columbia University}, \orgaddress{\city{New York}, \postcode{10027}, \state{NY}, \country{USA}}}
+%%==================================%%
+%% Sample for unstructured abstract %%
+%%==================================%%
+
+\abstract{Plant phenology,the timing of leaf emergence and senescence, critically influences ecosystem dynamics, carbon sequestration, and water cycles. However, modeling phenology is challenging due to complex environmental drivers and regional variability linked to climate, plant species, and functional types. Here, we show that deep learning models, specifically temporal transformers integrated with satellite observations, can globally predict phenological timing with high accuracy (R² ~ 1) across major plant functional types. Our model effectively captures spatial and inter-annual variability, long-standing challenges in phenology modeling. Using an interpretable attention mechanism, the model identifies key phenological drivers and highlights memory effects, showing strong influences from prior growing-season conditions. Notably, water availability has increasingly regulated global phenology, while temperature's influence has diminished over time. These results highlight deep learning’s potential for forecasting ecological responses to climate change and underscore the importance of expanding this approach to additional ecosystems and finer spatial scales.}
+
+%%================================%%
+%% Sample for structured abstract %%
+%%================================%%
+
+
+\keywords{Plant phenology, Deep Learning, Interpretable Attention, Ecological forecasting}
+
+%%\pacs[JEL Classification]{D8, H51}
+
+%%\pacs[MSC Classification]{35A01, 65L10, 65L12, 65L20, 65L70}
+
+\maketitle
+
+\section{Introduction}\label{sec1}
+
+Plant phenology—the timing of life cycle events such as leaf emergence, flowering, and senescence—is a critical regulator of ecosystem function and a fundamental component of terrestrial carbon and water cycling \citep{wang_comparison_2022, de_beurs_land_2005}. These events play a central role in controlling land–atmosphere exchanges of carbon, energy, and water, and their timing directly influences plant productivity, transpiration, and climate feedbacks \citep{gray_monitoring_2021, chen_influences_2022}. Shifts in phenology, including earlier springs and delayed autumns, have become widely observed indicators of climate change, affecting biodiversity, biogeochemical processes, and ecosystem services \citep{fu_editorial_2022, yuan_maps_2021}.
+
+Accurately modeling phenological dynamics is essential for forecasting ecosystem responses to climate variability, managing forests and crops, and improving Earth System Model (ESM) projections. Phenological predictions guide key decisions in agriculture and forestry, including planting, harvesting, and assessing forest productivity under climate change \citep{cao_identifying_2021, alberton_relationship_2023}. However, simulating phenology remains challenging due to the complexity of plant-environment interactions and an incomplete mechanistic understanding of phenological cues \citep{liu_modeling_2020, lu_diminishing_2024}.
+
+Traditional phenology modules in ESM land components—such as the Community Land Model (CLM), JULES, and IBIS—typically rely on simplified, temperature-based thresholds or heuristic rules to determine the onset and end of the growing season. While temperature is a key driver, it alone cannot explain observed patterns of leaf-out and senescence, especially across arid, semi-arid, and high-latitude regions \citep{zhao_plant_2013, wadgymar_phenological_2018}. Studies show that these process-based models often produce biases of up to two weeks in the start or end of the growing season, fail to represent interannual variability, and diverge significantly across models \citep{peano_plant_2021, richardson_terrestrial_2012}. Moreover, the influence of other environmental variables—such as soil moisture, radiation, and photoperiod—has become increasingly apparent, particularly in the context of extreme weather events, which can cause nonlinear and region-specific responses in phenology \citep{qiu_understanding_2020, wang_comparison_2022}.
+
+Recent efforts have focused on improving phenology modeling by integrating remote sensing data with advanced computational methods, including empirical-statistical approaches and hybrid models \citep{satake_forecasting_2013, guan_study_2023}. Machine learning (ML) techniques, such as Random Forests and Gradient Boosted Trees, have shown improved performance in regional settings but often lack generalizability and mechanistic insight \citep{seyednasrollah_tracking_2019, jeong_random_2016}. Deep learning models, including Convolutional Neural Networks (CNNs) and Long Short-Term Memory (LSTM) networks, can extract temporal patterns from long-term satellite observations but frequently fall short in capturing interannual anomalies, legacy effects, or in providing interpretable outputs \citep{liu_modeling_2020, guan_study_2023}.
+
+Transformer-based architectures have recently emerged as powerful tools for temporal ecological modeling. These models leverage attention mechanisms to capture long-range dependencies in time series data and provide interpretability through attribution of importance to specific inputs. Early applications, such as the PhenoFormer model and other regional implementations, have shown superior performance over traditional ML and process-based models \citep{wang_comparison_2022}. However, most of these efforts remain geographically limited, lack temporal depth, and have not been integrated into efforts to refine or inform ESM phenology modules.
+
+In this study, we develop a global, interpretable deep-learning framework to address these limitations. Specifically, we train a temporal Transformer model on four decades (1982–2021) of contiguous solar-induced fluorescence (CSIF) data to predict land surface phenology across all major plant functional types and climate zones. Our approach captures complex interactions among temperature, soil moisture, radiation, and photoperiod, while using attention-based attribution to reveal how the relative importance of these drivers shifts across space and time. We benchmark our results against widely used ESM phenology modules, demonstrating substantial improvements in capturing interannual variability, climate extremes, and long-term trends.
+
+By uniting global-scale predictive performance, dynamic driver attribution, and actionable insights for improving land surface models, our framework advances both the scientific foundation of phenology modeling and the capacity for climate-informed ecosystem management in a rapidly changing world.
+
+
+\section{Methods}\label{sec5}
+
+\subsection{Data sources}\label{subsec2}
+\subsubsection{Vegetation Index: Contiguous Solar Induced Fluorescence (CSIF)}\label{subsubsec2}
+To robustly track phenological shifts across various climates and time periods, we utilized solar-induced chlorophyll fluorescence (SIF) as a proxy for photosynthetic activity. Specifically, we employed the long-term Contiguous SIF dataset, a novel long-term contiguous SIF dataset with a temporal span from 1982 to 2021\cite{fang_reconstruction_2024}. This dataset leverages a neural network model trained on surface reflectance bands from the Advanced Very High Resolution Radiometer (AVHRR) and MODerate-resolution Imaging Spectroradiometer (MODIS), to reproduce the Orbiting Carbon Observatory-2 (OCO-2) SIF data at long time scales.
+The original LCSIF dataset has a spatial resolution of 0.05 degrees and a temporal resolution of 15 days. To match the spatial resolution of other climate variables and enhance computational efficiency, we downsampled the spatial resolution to 0.25 degrees. The temporal resolution was interpolated to daily time steps using a cubic spline function. This interpolation method was chosen because it provides a smooth transition between data points, which is crucial for maintaining the continuity and quality of the time series data at daily time scales.
+
+\subsubsection{Climate Forcing: ERA-5  }\label{subsubsec2}
+For climate forcing, we used the ERA-5 reanalysis data from the Copernicus Climate Change Service (C3S) Climate Data Store (CDS)\cite{c3s_era5_2018}. This dataset includes key environmental predictors such as maximum and minimum daily temperatures, soil moisture, precipitation, solar radiation, and photoperiod, all at a spatial resolution of 0.25 degrees. To ensure consistency with the LCSIF dataset, we performed spatial downscaling on the CSIF data to align it with the ERA-5 resolution.
+
+\subsubsection{Soil Texture }\label{subsubsec2}
+Soil texture data were derived from the Noah model within the Global Land Data Assimilation System (GLDAS2), which uses the FAO 16-category soil texture classification
+\cite{beaudoing_gldas_2019}. The soil texture map combines 30-second STATSGO data over the contiguous United States (CONUS) with 5-minute FAO data for other regions. This static predictor was included to account for the influence of soil properties on phenological patterns.
+\subsection{Data Preparation}\label{subsec2}
+The compiled dataset spans from 1982 to 2021, covering all continents except Antarctica, at a spatial resolution of 0.25 degrees. Due to the high variability of phenology across different species, we categorized the data by plant functional type (PFT) using the ESA PFT v2.0.8 global dataset \cite{harper_esa_2023}: needleleaf evergreen trees, needleleaf deciduous trees, broadleaf deciduous trees, and broadleaf evergreen trees. Broadleaf deciduous trees were further divided into four latitudinal clusters: (1) 90-50°N, (2) 50-20°N, (3) 20°N-20°S, and (4) -20-60°S. For quality control, we selected only pixels where the land cover of the PFT of interest exceeded 50\%. Before model training, we normalized all input features using z-score normalization to ensure comparability and stability during the training process.
+
+We temporally split the dataset, with 50\% allocated to training, 25\% to validation, and 25\% to testing. The training set included data from 1982-1992 and 2011-2021, chosen to mitigate biases from non-stationary climate conditions and potential inaccuracies in older remote sensing data. The validation set and testing set covered the periods 1992-2002 and 2002-2010 respectively. We divided each time series into samples of 395 days, using the first 365 days as historical input and the remaining 30 days as the forecast period, where only environmental predictors were known.
+
+
+\subsection{Model Selection and Optimization}\label{subsec2}
+
+\begin{figure}[h!]
+        \centering
+        \includesvg[width=1.15\columnwidth]{pipeline.svg}
+        \caption{Overview of the modeling pipeline. Solar-induced fluorescence (CSIF) data were integrated with ERA5 climate drivers (temperature, soil moisture, precipitation, radiation, photoperiod) and soil texture. Daily time series (1982–2021) were preprocessed and stratified by plant functional type (PFT), then split into training, validation, and testing sets. A Temporal Fusion Transformer (TFT) was trained to forecast CSIF 30 days ahead using the preceding 365 days of climate inputs. Model performance was evaluated across spatial, seasonal, and interannual dimensions. The interpretable attention mechanism was then applied to quantify driver importance and legacy effects, enabling global mapping of phenological controls and climate sensitivities.}
+        \label{fig:pipeline}
+    \end{figure}
+Initial attempts with a Long Short-Term Memory (LSTM) model yielded suboptimal results, particularly in forecasting across different seasonalities. We selected the Temporal Fusion Transformers (TFT) model due to its superior performance in multi-horizon forecasting, its ability to handle long-term dependencies, and its interpretability\cite{lim_temporal_2019}. The TFT model performed better because of its ability to capture complex temporal relationships and interactions among input features, which are critical for accurate phenology predictions.
+We performed hyperparameter tuning using a random search procedure, optimizing parameters such as batch size, the number of layers, the number of attention heads, and the learning rate. Early stopping was employed during training to prevent overfitting.
+
+\subsection{Evaluation Metrics}\label{subsec2}
+We assessed model performance using root mean square error (RMSE), the coefficient of determination (R²), and bias values. The evaluation process involved decomposing observed and predicted data into three categories of variability: among-site variability, seasonal variation, and anomalies. We first calculated the mean seasonal cycle (FMSC) per site by averaging monthly values across all available years. To ensure robustness, we required at least two years of data for each month. We then calculated a mean value for each site (FSITE) and computed seasonal variation (FSEAS) by removing FSITE from FMSC. Anomalies were defined as deviations from FMSC. Performance metrics included Pearson’s correlation (Cor) or R squared, Nash-Sutcliffe’s modeling efficiency (MEf) or BIAS, RMSE. Extreme outliers, identified as data points outside the range of median residuals ±7 times the interquartile range, were removed to avoid biased statistics.
+
+
+\subsection{Characterizing Global Phenology using Interpretable Attention}\label{subsec2}
+\begin{figure}[h!]
+        \centering
+        \includesvg[width=1\columnwidth]{attention_method.svg}
+        \caption{Illustration of the attention-based interpretability framework. The temporal fusion transformer (TFT) assigns attention weights to climate drivers (temperature, soil moisture, precipitation, radiation, photoperiod) across daily input sequences. For each pixel and season, attention weights are aggregated over time to identify periods and variables most influential for forecasting CSIF. These attributions are then used to quantify feature importance, map spatial patterns of phenological drivers, and characterize memory effects by highlighting the role of preceding seasons.}
+        \label{fig:attention}
+    \end{figure}
+
+\subsubsection{Feature Importance and Memory Effects}\label{subsubsec2}
+We used the multi-horizon attention scores from the TFT model's interpretable multi-head attention mechanism to analyze feature importance and memory effects. The historical and future selection weights obtained from variable selection gates allowed us to determine the relative importance of environmental drivers at specific time steps.
+
+\subsubsection{Mapping Phenology Drivers}\label{subsubsec2}
+To map the drivers of phenological events such as SOS and EOS, we identified the 30-day period with the highest attention score sum across the 365 historical time steps and 30 future time steps. We calculated the importance of temperature by summing the feature importance values for maximum and minimum daily temperatures, the importance of radiation by summing the values for accumulated solar radiation and photoperiod, and the importance of water availability by summing the values for precipitation and soil moisture. The global maps were generated at a spatial resolution of 0.25 degrees, ensuring consistency with other datasets.
+
+
+\subsubsection{Mapping Legacy Effects}\label{subsubsec2}
+We created global maps to represent legacy effects on SOS and EOS by selecting samples with onset dates near the start of the season at corresponding latitudes. The memory effects were mapped using the 30-day period with the highest attention score sum. This approach was also applied to EOS mapping, highlighting the temporal dependencies of environmental drivers.
+
+\section{Results}\label{sec2}
+
+\begin{figure}[h!]
+        \centering
+        \includesvg[width=1.5\columnwidth]{metrics.svg}
+        \caption{Predicted versus observed CSIF. Model performance is evaluated across all data points and partitioned into across-site variability, seasonal variability, and interannual anomalies, capturing distinct sources of predictive skill. Seasonal variations (F\_SEAS) were obtained by removing the site-level mean from the mean seasonal cycle, while anomalies represent deviations from this seasonal cycle. Separating these components allows evaluation of the model’s ability to reproduce spatial patterns, seasonal dynamics, and interannual variability in vegetation activity.}
+        \label{fig:metrics}
+    \end{figure}
+
+\subsection{Forecasting Performance}\label{subsec2}
+
+As seen in Figure~\ref {fig:metrics}, the model exhibits high predictive ability across all plant functional types and climate regions (see Figure 1). For broadleaf deciduous trees (BDT), needleleaf deciduous trees (NDT), and needleleaf evergreen trees (NET), the model achieves an overall R² value of 0.99 and root mean square error (RMSE) of 0.01 with a minimal bias of 0.01, 0.02, and 0.01, respectively.  For broadleaf evergreen trees (BET) alone, the model achieves an R² value of 0.98, an RMSE of 0.02, and a bias value of 0.04. The model also demonstrated strong generalization across climates, as defined by the across-site metrics (taking the long-term mean at each pixel), with an R² value near 1.00 and an RMSE approaching zero across all plant functional types.
+The model performs consistently in terms of reproduction of the climatological (mean) seasonal cycles across the world and across plant functional types, with R² values of 0.98, 0.99, and 0.99 for BDT, NDT, and NET, respectively, and 0.95 for BET. Importantly, the model shows relatively high performance in forecasting interannual anomalies, with R² values of 0.69 for BDT, 0.43 for NDT, 0.45 for BET, and 0.33 for NET (Figure 1). Predicting interannual variability has been a long-standing challenge for both statistical and models or land-surface models, further demonstrating the transformer architecture's potential for sequence prediction in environmental applications and the effectiveness of our method in phenology prediction.
+
+\subsection{Drivers of Phenology}\label{subsec2}
+
+\begin{figure}[h!]
+        \centering
+        \includesvg[width=1\columnwidth]{driver_map.svg}
+        \caption{Global climatic drivers of phenology derived from attention scores and feature importance weights. Maps show the relative importance of temperature, water availability (soil moisture and precipitation), and radiation/photoperiod in regulating vegetation activity, expressed as proportional contributions to CSIF forecasts. Hue indicates the dominant driver, while saturation reflects driver strength. Strong latitudinal and biome-specific patterns emerge: temperature dominates temperate regions, photoperiod constrains high-latitude systems, and moisture regulates arid and semi-arid ecosystems. Mixed contributions are observed in tropical and Mediterranean regions, highlighting the spatial diversity of phenological controls.}
+        \label{fig:drivers}
+    \end{figure}
+\subsubsection{Leaf-out }\label{subsubsec2}
+
+Figure ~\ref {fig:drivers} illustrates global distributions of relative importance weights for three climatic drivers—temperature (yellow), moisture availability (cyan), and solar radiation and photoperiod (magenta)—for spring phenology from 1982 to 2021. These driver importance values, derived from a temporal-transformer-based machine learning model, are visualized at 0.25° spatial resolution through a ternary colormap, where each pixel's hue indicates proportional driver contributions.
+
+A pronounced latitudinal gradient in climatic drivers emerges clearly. Mid-to-high latitude temperate regions (eastern North America, Europe, East Asia) exhibit dominance by temperature (70–90\%). At higher latitudes ($>$60°N), particularly in boreal Siberia, Alaska, and northern Canada, photoperiod gains prominence ($~$50–60\% contribution), indicated by a shift toward magenta hues. Moisture availability distinctly dominates ($>$80\%) in arid and semi-arid regions including the Sahel, central Australia, southwestern United States, and subtropical Africa. Tropical rainforest regions (Amazon, Congo Basin, Southeast Asia) display balanced contributions from temperature and radiation (~40–50\% each), with minimal moisture influence.
+
+Quantitatively, extreme values are observed in regions such as the Sahel and central Australia, where moisture consistently contributes over 80\% to phenological onset. High-latitude needleleaf deciduous forests in Siberia and Canada show photoperiod sensitivities surpassing 50\%. Mediterranean and mountainous ecosystems reveal mixed driver signals (~50\% temperature, ~30–40\% moisture).
+
+PFT-specific analysis (Figures Y1–Y4) highlights additional nuances. Broadleaf deciduous trees (BDT) predominantly align with temperature-driven phenology (~70–90\%), while needleleaf deciduous trees (NDT) notably emphasize photoperiod (~50–60\%). Needleleaf evergreen trees (NET) demonstrate combined temperature and photoperiod signals, while broadleaf evergreen trees (BET), particularly in tropical regions, balance temperature and radiation (~40–50\%), shifting to moisture (~60–70\%) in subtropical dry forests.
+
+
+
+\subsubsection{Senescence  }\label{subsubsec2}
+
+
+
+\subsection{ Climate Legacy Effects}\label{subsec2}
+
+Given the interpretability of our deep learning model, we can assess the time lag for the influence of environmental drivers. We therefore use this to analyze the memory effects of different climate drivers on SOS and EOS. The model's attention scores highlighted the long-term dependencies between past and current seasons, particularly the impact of previous year’s spring precipitation on the length of the growing season in the following year (Figure 3 ). Specifically, we want to understand where the previous season had the most influence on the phenological cycle. This effect was most pronounced in broadleaf deciduous trees between 20° and 50°N, where winter conditions had a substantial impact on both SOS and EOS predictions. (explain typical time scales in more details)
+
+Broadleaf deciduous trees in mid-high latitudes were notably impacted by time steps from the winter season, with both SOS and EOS forecasts being strongly influenced by environmental conditions during this period.
+
+\subsection{ Long-term shifts in Climate Sensitivity  }\label{subsec2}
+
+Since our deep learning model is able to accurately predict the interannual variability across regions and plant functional types, we use it to understand the main changes in phenology across the world from different drivers of climate change. Between 1982 and 2022, there were notable shifts in the sensitivity of phenology to environmental drivers. The impact of water availability on both SOS and EOS has generally increased, especially over Africa and Brazil. However, in southern Africa, there has been a decrease in sensitivity to water availability during the EOS, with radiation becoming a more important factor. The influence of radiation on the EOS also increased in northern Europe and Russia.
+In the southeastern United States, interesting patterns were observed in the drivers of the SOS, with an increased impact of radiation closer to the coast, and a decreased influence in states such as West Virginia, Tennessee, Kentucky, Michigan, and Arkansas, where water availability became more significant. Across all regions, the impact of temperature on both SOS and EOS appeared to decrease during this period (Figure x).
+
+
+\section{Discussion}\label{sec3}
+
+\subsection{Improved Accuracy in phenological predictions and its implications}\label{subsec2}
+The high predictive accuracy achieved by our model, particularly in forecasting interannual anomalies, represents a significant advancement over previous phenology models, which have often struggled with this aspect. The R² values of 0.69 for DBT, 0.45 for EBT, 0.43 for DNT, and 0.33 for ENT highlight the model's capability to capture phenological variability, though with varying degrees of success across different PFTs. The relatively lower performance in ENT could be attributed to the model's reliance on photoperiod as a key driver, a factor with minimal interannual variation. This challenge has been noted in other studies, such as Zhang et al. (2017), where photoperiod-based models showed limitations in capturing interannual phenological shifts. Our findings suggest that while temperature and precipitation are significant, their influence may be modulated by other factors, especially in ecosystems where photoperiod plays a critical role.
+\subsection{Spatial Variability in Climate Drivers of Phenology}\label{subsec2}
+
+\subsubsection{Spring Phenology  }\label{subsubsec2}
+
+
+The identified latitudinal and biome-specific gradients are consistent with ecological mechanisms underpinning spring phenology. Temperature dominance in temperate regions aligns with thermal accumulation needed for dormancy release (Richardson et al., 2012). High-latitude photoperiod sensitivity corroborates prior evidence that prolonged daylength prevents premature phenological responses, protecting vegetation from frost (Smith et al., 2010; Basler, 2016). The strong moisture-driven signals in arid and semi-arid ecosystems reflect ecological adaptations to rainfall pulses critical for vegetation growth in water-limited contexts, aligning with observations from seasonal ecosystems (Jolly \& Running, 2004; Zhao et al., 2017).
+
+Contrasts with existing global land-surface model (LSM) phenology parameterizations reveal key insights. For instance, the substantial moisture-driven phenology observed in drylands significantly differs from classical LSM schemes, such as the Community Land Model (CLM) and JULES, which traditionally emphasize thermal drivers (Peano et al., 2021). This divergence underscores the need for integrating dynamic soil-moisture triggers into phenological schemes for accurate representation of semi-arid and subtropical vegetation dynamics.
+
+The mixed signals of temperature and radiation in tropical evergreen forests challenge previous satellite-derived statistical products predominantly attributing phenological cues to radiation alone (Chen et al., 2011; Wright et al., 2013). This finding implies underrepresented temperature sensitivity, suggesting a re-evaluation of current assumptions and parameterizations in tropical phenology modules.
+
+Analysis by plant functional types deepens ecological insights, highlighting distinct driver strategies among vegetation types. Needleleaf deciduous forests at higher latitudes clearly prioritize photoperiodic control, reflecting adaptations to mitigate frost risk despite warming temperatures (Chuine, 2000). Evergreen phenology, characterized by less pronounced seasonal shifts, still shows nuanced driver sensitivities, underscoring the necessity of differentiated parameterizations within evergreen PFTs in global models.
+
+Despite robust findings, limitations persist. The 0.25° resolution may obscure localized driver variations, particularly in mountainous or complex topographies. Additionally, the reliance on remotely sensed proxies in the machine-learning approach introduces potential biases toward well-sampled ecosystems, underrepresenting moisture-driven phenology in data-scarce regions. Grouping solar radiation and photoperiod into a single category may also mask distinct ecological responses and necessitates more refined future analyses.
+
+Nonetheless, these spatially explicit driver insights present significant implications for refining global vegetation models. Adjusting moisture sensitivities in arid and semi-arid zones, incorporating explicit photoperiod thresholds in high-latitude phenology modules, and refining tropical evergreen temperature-radiation interactions can substantially enhance model accuracy. Such improvements are crucial for accurately predicting vegetation dynamics, carbon cycling, and ecosystem-climate feedbacks under changing climatic conditions.
+
+\subsection{Climate Change Impacts and Shifting Sensitivity}\label{subsec2}
+The increasing influence of water availability on both SOS and EOS, particularly in drought-prone regions such as Africa, South America, boreal Canada, and South Asia, suggests that areas under greater climatic stress exhibit stronger phenological responses to water availability. This trend is consistent with previous studies \cite{wang_comparison_2022}, which indicated that phenological shifts in these regions are increasingly driven by changes in precipitation and soil moisture . Conversely, the model indicates a declining impact of temperature on SOS and EOS over time, aligning with recent findings suggest many regions may be reaching thermal thresholds where further warming no longer significantly advances phenological events\cite{lu_diminishing_2024}.
+These observations point to a broader shift in the relative importance of environmental drivers on phenology. As temperature effects stabilize, other factors such as water availability and radiation are gaining prominence in driving seasonal cycles. This highlights the need for future phenological models to account for the evolving significance of these environmental factors, particularly in the context of climate change.
+
+
+\subsection{Legacy Effects and Long-Term Dependencies}\label{subsec2}
+Our analysis of memory effects revealed that most regions and PFTs are primarily influenced by the previous growing season's environmental conditions when forecasting the current season. This finding aligns with the concept of ecological memory, where the conditions of one season affect physiological processes in subsequent seasons \cite{ogle_quantifying_2015}. The observed long-term dependency, particularly the influence of spring precipitation on the subsequent year’s growing season, corroborates previous studies that identified winter dormancy as a critical period for predicting phenological timing \cite{chuine_warming_2010, hanninen_dynamic_2016}.
+The strong correlation between phenological events and past environmental conditions suggests that incorporating multivariate memory effects into phenology models can significantly enhance their predictive accuracy. Such models could provide more accurate forecasts of phenological shifts under changing climatic conditions, particularly in regions where water availability is a limiting factor.
+
+\subsection{Limitations and Future Work}\label{subsec2}
+
+While our model demonstrates high predictive accuracy, several limitations warrant consideration. The reliance on remote sensing data introduces uncertainties, particularly due to the MODIS orbit shift, which can affect vegetation and land cover data accuracy . Additionally, the spatial resolution of the model, while suitable for broad-scale analysis, may not capture fine-scale variations in phenology, particularly in regions with heterogeneous landscapes or complex microclimates as well as differences across species or plants’ traits. Future studies could enhance the precision of such phenology models by integrating in-situ observations or drone data and applying them to smaller regions with higher resolution.
+
+\subsection{Broader Ecological Implications}\label{subsec2}
+The implications of our findings are significant for understanding how climate change may alter phenological patterns. As temperature and radiation continue to change under global warming, the timing of SOS and EOS may shift, potentially leading to longer or shorter growing seasons depending on the region and PFT. These shifts could have cascading effects on ecosystem productivity and carbon cycling, emphasizing the importance of refining phenology models to better predict these changes. Future models that can accurately incorporate these shifting environmental drivers will be crucial in managing ecosystems and mitigating the impacts of climate change.
+
+
+\section{Conclusion}\label{sec4}
+
+This study represents a significant advance in the field of phenology modeling, leveraging advanced deep learning techniques to achieve unprecedented predictive accuracy across diverse plant functional types. The model’s high predictive performance underscores its exceptional ability to predict across a wide range of regions and environmental conditions. Combined with its high interpretability, this method is a powerful tool for understanding and predicting complex phenological patterns.
+One of the key contributions of this work is the integration of long-term memory effects into phenology forecasting. Our findings reveal that past environmental conditions, particularly in preceding seasons, can play a crucial role in shaping current phenological events. This novel approach allows for a more nuanced understanding of how temporal dependencies influence phenology, offering insights that were previously unattainable with traditional modeling methods.
+The study also highlights significant regional and functional variability in the environmental drivers of phenological events. For example, in high-latitude regions, temperature and water availability are critical drivers, while in specific clusters, such as the southeastern United States, radiation emerges as a dominant factor. These findings emphasize the need for location-specific models that account for the unique environmental conditions influencing phenology in different regions and across different plant functional types.
+Moreover, our analysis uncovered a shift in the sensitivity of phenology to environmental drivers over time. Water availability has become increasingly important, while the influence of temperature has waned. This trend is particularly evident in regions like sub-Saharan Africa and South America, where water availability now plays a pivotal role in determining the timing of phenological events. These results suggest that as climate change progresses, the traditional focus on temperature as the primary driver of phenology may need to be re-evaluated in favor of more complex models that account for a broader range of environmental factors.
+While our model demonstrates strong predictive capabilities, it is important to acknowledge potential limitations. For instance, the reliance on coarse remote sensing data, while offering extensive spatial and temporal coverage, may introduce uncertainties due to resolution constraints or data quality. For instance, in dense tropical forests, microwave soil moisture retrievals are relatively poor. Additionally, the model’s performance, though robust, may vary in ecosystems with extreme or rapidly changing environmental conditions that might have been underrepresented in the training data. Future research should aim to address these limitations by incorporating higher-resolution data and expanding the range of ecosystems studied.
+The findings of this study have significant implications, particularly within the context of climate change and ecosystem management. As environmental conditions continue to evolve, the capacity to accurately predict phenological patterns is essential for developing strategies to mitigate the impacts of global warming on biodiversity and ecosystem services. This study serves as proof that deep learning methods not only advance the field of phenology modeling but also provide crucial tools for understanding the complex interactions between vegetation and climate.
+
+
+\
+
+\bibliography{references}% common bib file
+%% if required, the content of .bbl file can be included here once bbl is generated
+%%\input sn-article.bbl
+
+\end{document}

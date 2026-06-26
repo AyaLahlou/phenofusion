@@ -1,0 +1,1223 @@
+Article
+
+https://doi.org/10.1038/s41467-026-70187-8
+
+Quantifying the trade-off between spring
+phenology and lethal frost risk: a metaanalysis
+Received: 14 May 2025
+
+Check for updates
+
+1234567890():,;
+
+1234567890():,;
+
+Accepted: 20 February 2026
+
+Zhengjie Yan1, Cheng Chen1, Yue Liu1, Yujiang Li 1, Huiying Liu 2, Hao Wang
+Tao Yan1, Xin Jing 1, Shuai Ren4, Hongbiao Zi1, Yan Shi1, Tao Wang 5 &
+Jin-Sheng He 1,6
+
+3
+
+,
+
+The timing of spring phenology represents a critical trade-off between growing season extension and frost risk avoidance, the balance of which governs
+plant ﬁtness and shapes plant species’ distributions. However, few quantitative
+assessments exist, indicating that this trade-off is largely untested empirically.
+Here, we present a global meta-analysis encompassing 193 plant species across
+126 study sites, ﬁnding consistently high freezing resistance (to −12 °C) with
+remarkably low lethal frost risk (safety margin of 17 °C) during spring emergence. Under projected climate warming scenarios, predictions indicate that
+advances in spring phenology do not affect the lethal frost risk under light and
+moderate warming scenarios. This is likely due to the reduced temperature
+sensitivity, consistent with trade-off predictions. By contrast, in the highwarming scenario, the freezing safety margin is predicted to expand (by
+~1.7 °C), resulting in a lower lethal frost risk. This expansion may compensate
+for the diminished freezing resistance predicted under extreme warming. Our
+ﬁndings challenge the conventional view that simple environmental factors
+moderate spring phenology, and highlight the necessity of incorporating
+biotic factors (e.g., freezing resistance) and biotic processes (e.g., early growth
+versus frost risk trade-offs) into next-generation phenological models to
+enhance prediction accuracy under climate change.
+
+Plant phenology, or the timing of recurrent biological events during
+the year, plays a pivotal role in shaping species distributions, regulating water and nutrient cycles1–3. In recent decades, advanced spring
+phenology with warmer springs is widely reported4,5. However, it
+remains unclear whether this phenological advance, accompanied by
+
+warmer temperatures, alters the risk of lethal frost (LFR). Theoretically,
+spring phenology represents an adaptive compromise between maximizing the growing season and avoiding lethal frost damage, which
+reﬂecting an evolutionary adaptation shaped by long-term selection
+pressures6–10. The timing of spring phenology under climate warming
+
+1
+
+State Key Laboratory of Herbage Improvement and Grassland Agro-Ecosystems, College of Pastoral Agriculture Science and Technology, Lanzhou University, Lanzhou, China. 2Zhejiang Tiantong Forest Ecosystem National Observation and Research Station, Institute of Eco-Chongming, Zhejiang Zhoushan
+Island Ecosystem Observation and Research Station, School of Ecological and Environmental Sciences, East China Normal University, Shanghai, China. 3State
+Key Laboratory of Herbage Improvement and Grassland Agro-ecosystems, College of Ecology, Lanzhou University, Lanzhou, China. 4Department of Civil and
+Environmental Engineering, Massachusetts Institute of Technology, Cambridge, MA, USA. 5State Key Laboratory of Tibetan Plateau Earth System, Environment and Resources (TPESER), Institute of Tibetan Plateau Research, Chinese Academy of Sciences, Beijing, China. 6Institute of Ecology, College of Urban and
+Environmental Sciences, and Key Laboratory for Earth Surface Processes of the Ministry of Education, Peking University, Beijing, China.
+e-mail: jshe@pku.edu.cn
+
+Nature Communications | (2026)17:3519
+
+1
+
+Article
+
+https://doi.org/10.1038/s41467-026-70187-8
+
+arises from adaptive trade-offs between two competing phenological
+strategies. Emerging earlier provides a competitive advantage by
+extending the photosynthetic period, maximizing light-use efﬁciency
+and photosynthetic activity11,12, reducing herbivore/pathogen
+pressure13,14, and providing priority access to ecological niches15, all of
+which may enhance plant ﬁtness and reproductive success16. On the
+other hand, potentially lethal spring frost events favor delayed emergence, which protect vulnerable tissues17 and enabling greater
+resource allocation to growth and reproduction instead of frost
+tolerance18,19 (Fig. 1a, Supplementary Table 1). Ultimately, natural
+selection favors a balance between these two opposing pressures, the
+beneﬁts of early emergence versus the risk of lethal frost events, which
+allows individual species to optimize their spring phenology based on
+local environmental conditions. This evolutionary balance, known as
+the evolutionarily stable strategy (ESS), provides a theoretical framework for predicting plant phenological responses to a changing
+climate.
+Speciﬁcally, this balance manifests as a buffering mechanism:
+safeguarding against lethal frost damage during spring phenological
+stages while simultaneously maximizing individual ﬁtness. Such tradeoffs broadly shape plant evolutionary strategies and explain spring
+phenological variation across species and regions18,20. Therefore, the
+optimal phenological strategy for plants under climate change is to
+maintain this evolutionary balance. Lenz et al.9 propose a metric
+termed the ‘safety margin’, deﬁned as the difference between the daily
+minimum temperature and freezing resistance during spring emergence, which operationalizes and quantiﬁes this evolutionary balance
+(Fig. 1a). The key advantage of this dynamic metric lies in its incorporation of biotic factors (e.g., plant freezing resistance), rather than
+relying solely on abiotic factors21–25. In fact, plants must cope with
+stochastic freeze events throughout the year6. The capacity to withstand such events, termed freezing resistance, peaks during deep
+physiological dormancy in winter and declines sharply with spring leaf
+emergence7. Consequently, when both biotic and abiotic factors are
+considered simultaneously, a larger safety margin indicates greater
+tolerance of freezing (and lower frost risk), while narrower margins
+correspond to greater vulnerability (Fig. 1a).
+Climate-change-induced shifts in spring phenology may fundamentally alter this risk-reward trade-offs in natural plant
+populations22,26, leading to three potential distinct risk scenarios
+(Fig. 1b). In the high-risk scenario, earlier springs confer transient
+
+competitive advantages, but a single extreme climatic event beyond a
+critical thermal threshold could result in local extinction7 (Fig. 1b). The
+low-risk scenario allows for near-complete frost avoidance, but comes
+at the cost of a competitive disadvantage that may lead to replacement
+by other aggressive species (Fig. 1b). The stable-risk scenario, which
+best aligns with the EES, illustrates the fundamental trade-off between
+advancing growth and avoiding lethal frost damage (Fig. 1b). However,
+empirical data supporting the existence of a spring phenology riskreward trade-offs under warming conditions remain scarce, rendering
+this theoretical framework highly speculative.
+In this study, we investigate (i) plant spring freezing resistance and
+associated safety margin, as well as their environmental drivers; (ii)
+how warming-induced spring phenological shifts may modify riskreward trade-offs. To this end, we perform a global meta-analysis
+encompassing 193 plant species belonging to 336 orders, 54 families,
+and 122 genera across 126 sites (Fig. 2a, c). Data are collected from 88
+peer-reviewed articles (Supplementary Data 1) published before September 1st, 2024 (Supplementary Fig. 1). The meta-analysis quantiﬁes
+lethal frost risk during spring emergence and identiﬁes key environmental drivers predicting freezing resistance and the safety margin.
+We also implement eight process-based phenological models to evaluate the trade-off between early emergence and frost risk under climate warming, as projected by three Shared Socioeconomic Pathways
+(SSPs). We show that biotic factors and the trade-off mechanisms play
+a critical role in regulating spring phenology.
+
+Fig. 1 | A conceptual framework of the trade-offs shaping spring phenology and
+frost risk under climate warming. a Spring phenology represents a balance
+between two competing pressures: initiating growth early to maximize resource
+acquisition versus delaying it to avoid lethal frost risk. This risk is quantiﬁed by the
+safety margin, calculated as the difference between the daily minimum temperature
+
+and the plant’s freezing resistance during spring emergence. b Comparison of spring
+phenology under current conditions (black curve) and future warming (red curve).
+Climate-change-induced phenological shifts create three possible frost risk scenarios,
+lower risk (light blue), stable risk (black), or higher risk (red). The number of lines
+corresponds to the magnitude of the safety margin.
+
+Nature Communications | (2026)17:3519
+
+Results
+Low lethal frost risk during the spring phenology
+Overall, study species exhibited strong spring freezing resistance
+(−12.42 °C ± 5.19 °C, mean value ± SD) relative to the daily minimum
+temperature during spring phenology (Fig. 2d), resulted in wide safety
+margin (17.14 °C ± 5.58 °C) which ensured an low lethal frost risk (Fig. 2e).
+The observed patterns of both freezing resistance (K = 0.059, p = 0.144)
+and safety margin (K = 0.048, p = 0.409) did not differ signiﬁcantly from
+the null expectation under a Brownian motion model, indicating that the
+inﬂuence of phylogenetic relatedness did not differ from what would be
+expected by chance (Fig. 2d, e). Furthermore, convergent cross mapping
+(CCM) analysis identiﬁed a strong mutual causality between freezing
+resistance and safety margin, providing evidence for a fundamental
+adaptive trade-off within plants, balancing cold hardiness against growth
+opportunity (Fig. 2f, Supplementary Fig. 2).
+
+2
+
+Article
+
+https://doi.org/10.1038/s41467-026-70187-8
+
+Fig. 2 | Global dataset of plant freezing resistance and safety margins during
+spring emergence. a, b Geographic distribution and environmental characteristics
+of study sites. Circle size indicates species number per site. c Phylogenetic relationships among study species79. Branch colors represent taxonomic orders; blue
+and orange bars show freezing resistance and safety margin for each lineage.
+d, e Frequency distributions of freezing resistance and safety margin for all
+
+samples; arrows indicate mean values. f Convergent cross mapping (CCM) analysis
+showing cross-mapping correlation coefﬁcients (Rho) versus library size. Lines and
+shading represent mean ± SD from 10 bootstrap iterations. Convergence of pvalues (twin-surrogate method) indicates strength and direction of causal relationships; p < 0.1 indicates signiﬁcant potential causality. See Methods for details
+on Blomberg’s K and CCM analysis. Source data are provided as a Source Data ﬁle.
+
+Across studies, after accounting for potential sample effects
+(e.g., smaller n in shrubland, n = 17), plant species within the same
+ecosystem showed similar levels of freezing resistance and safety
+margin (Fig. 3). Neither freezing resistance nor the safety margin
+varied signiﬁcantly among different life forms (i.e., trees, herbs, and
+shrubs) or across life cycles (i.e., perennial and annual species).
+However, early-spring species showed higher freezing resistance
+than medium-spring species, while medium-spring species exhibited
+a lower safety margin than both early- and late-spring species (Fig. 3).
+Surprisingly, freezing resistance estimates were sensitive to methodological variation. Values from differential thermal analysis (DTA)
+were systematically overestimated, leading to a consequent overestimation of the safety margin (Fig. 3). However, after excluding
+these observations, we found our results remain unchanged (Supplementary Figs. 3, 4).
+
+(24.34%, p = 0.002), diurnal temperature range (DTR) (21.62%), and
+mean annual temperature (Tmean) (17.62%, p < 0.001) (Fig. 4a). It is
+worth noting, that the relationship between freezing resistance and
+DTR (slope = 0.16, p = 0.33) was not signiﬁcant in the linear mixed
+model analysis (Supplementary Fig. 5e). Absolute latitude (slope =
+-0.06, p < 0.001) and frost day frequency (FRS) (slope = −0.02, p = 0.01)
+exhibit strong and moderate negative correlations, respectively. Daily
+minimum temperature during phenology (Phe-Tmin) (slope = 0.37,
+p < 0.001), Tmean (slope = 0.34, p < 0.001), Tmax (slope = 0.35,
+p = 0.002), evapotranspiration (Eva) (slope = 0.01, p < 0.001), solar
+radiation (slope = 1.18, p < 0.001) and sunshine duration (Ssh) (slope =
+0.01, p < 0.001) show strong positive correlations, while Tmin (slope =
+0.14, p = 0.01) showed a moderate positive correlation (Fig. 4b–f, j). For
+forest-inhabiting species, the most signiﬁcant predictors of freezing
+resistance were Tmax, DTR, and Tmean, whereas for grassland species,
+precipitation and elevation were most inﬂuential (Supplementary
+Table 4). Freezing resistance in early spring species were more
+dependent on solar radiation and water availability, while mid- and
+late-spring species relied more on Tmax (Supplementary Table 4).
+
+Environmental and ecological drivers
+For freezing resistance, random forest modeling identiﬁed the three
+most important predictors as annual maximum temperature (Tmax)
+Nature Communications | (2026)17:3519
+
+3
+
+Article
+
+https://doi.org/10.1038/s41467-026-70187-8
+
+Fig. 3 | Comparison of freezing resistance and safety margin among different functional types. a Freezing resistance and b safety margin across data subsets. Boxplots show mean (solid line), quartiles (25th-75th percentiles, colored
+boxes), and range (whiskers). Jittered points indicate individual samples. Sample
+
+sizes shown in parentheses. P-values from linear mixed models using two-sided
+t-tests with classical degrees of freedom; bold indicates p < 0.1 (see Methods). REL
+relative electrolytic leakage, DTA differential thermal analysis, VOB visual observation (see Supplementary Table 2). Source data are provided as a Source Data ﬁle.
+
+Fig. 4 | Predictors of freezing resistance across all species. a Relative importance
+of signiﬁcant predictors (p < 0.1) measured by mean square error increase (IncMSE)
+from random forest analysis. b–j Relationships between freezing resistance and key
+predictors, with slopes and p-values from linear mixed models using two-sided ttests with classical degrees of freedom (see Methods). Points show individual
+observations. Source data are provided as a Source Data ﬁle. Tmax annual maximum
+
+temperature, DTR diurnal temperature range, Tmean mean annual temperature, Pre
+precipitation, FRS frost day frequency, Solar solar radiation, Eva evapotranspiration, DSI drought severity index, Tmin-var annual minimum temperature variance,
+Ssh sunshine duration, Tmin annual minimum temperature, Tvar mean annual temperature variance (see Supplementary Table 3).
+
+Nature Communications | (2026)17:3519
+
+4
+
+Article
+
+https://doi.org/10.1038/s41467-026-70187-8
+
+Fig. 5 | Predictors of safety margin across all species. a Relative importance of
+signiﬁcant predictors (p < 0.1) measured by mean square error increase (IncMSE)
+from random forest analysis. b–g Relationships between safety margin and key
+predictors, with slopes and p-values from linear mixed models using two-sided ttests with classical degrees of freedom (see Methods). Points show individual
+observations. Source data are provided as a Source Data ﬁle. FR freezing resistance,
+
+Phe-Tmin daily minimum temperature during spring phenology, FRS frost day frequency, Tmin annual minimum temperature, Tmin-var annual minimum temperature
+variance, Pre precipitation, Tmean mean annual temperature, Ssh sunshine duration,
+Tmax annual maximum temperature, Solar solar radiation, DTR diurnal temperature
+range, Tvar mean annual temperature variance, Eva evapotranspiration, DSI drought
+severity index (see Supplementary Table 3).
+
+For safety margin, freezing resistance (FR) (60.42%, p < 0.001) was
+the strongest predictor, followed by Phe-Tmin (27.65%, p < 0.001) and
+FRS (17.90%, p < 0.001) (Fig. 5a). Linear mixed models revealed strong
+positive correlations with Phe-Tmin (slope = 0.63, p = 0.03), Tmean
+(slope = 0.24, p = 0.009) and Tmin (slope = 0.21, p < 0.001), and strong
+negative correlations with minimum temperature variance (Tmin-var)
+(slope = −0.68, p < 0.001) and FRS (slope = -0.03, p < 0.001) showed
+the strong negative correlations (Fig. 5b–g). Our analysis revealed
+consistent safety margin across ecosystem types, life cycles, life forms,
+and phenological strategies (Supplementary Table 5).
+
+2021–2099 using four climate scenarios and four process-based chilling models. Most models indicate that chilling accumulation was not
+always diminished under warming, however, half of the results show a
+strong decline only under the SSP5-8.5 scenario (Supplementary
+Fig. 10). Additionally, our in situ observations show no signiﬁcant
+change in the freezing resistance of the 15 perennial herbs under
+moderate warming (Supplementary Figs. 11, 12, see methods). Despite
+the inherent methodological limitations of such manipulative studies,
+our results suggest that plant freezing resistance may remain stable at
+least two warming scenarios. Subsequently, we calculated the future
+safety margin using the same methods described previously (Supplementary Fig. 14, see methods). Interestingly, under both the low- and
+medium-warming scenarios, the safety margin predictions remained
+stable (p = 0.51 and 0.11, respectively; Fig. 6b), which aligns with the
+stable-risk scenario outlined in Fig. 1b. In contrast, under the highwarming scenario, the safety margin increased signiﬁcantly, even
+though spring phenology exhibited the lowest temperature sensitivity
+(Fig. 6a). To address potential methodological biases from differential
+thermal analysis (DTA), we repeated all analyses after excluding DTAderived observations. The similarity of the results reinforced conﬁdence in our ﬁndings (Supplementary Fig. 14).
+
+Spring phenology and safety margin under future warming
+scenarios
+Based on projected future climatic data from the Coupled Model
+Intercomparison Project Phase 6 (CMIP6) (Supplementary Fig. 6), we
+compared spring phenology predictions (2020-2090) from eight
+models (Supplementary Fig. 7). Predictions were generally consistent
+across the models (Supplementary Figs. 8, 9). Given this agreement, we
+generated an ensemble by averaging the outputs of all eight models.
+The results showed climate warming signiﬁcantly advanced spring
+phenology, at a rate of −7.14, −6.82, and −5.71 days per degree Celsius
+under the low-, medium-, and high-warming scenarios, respectively
+(Fig. 6a). To account for these shifts when calculating the freezing risk,
+we extracted projected daily minimum temperature data from CMIP6
+corresponding to the updated onset timings of spring phenology.
+Regarding future freezing resistance, numerous studies have demonstrated that warming leads to reduced chilling accumulation, which
+may impair freezing resistance8,19,27–29. However, the actual impact
+depends on the future climate scenarios30, data sources, and the chilling model used31. Therefore, we projected chilling accumulation for
+
+Nature Communications | (2026)17:3519
+
+Discussion
+Quantifying how the lethal frost risk varies with phenological shifts is
+critical for accurately predicting future spring phenology under climate warming. Although recent studies have highlighted the complex
+relationship between phenology and freezing events24,25, quantifying
+how spring phenology responds to frost risk dynamics remains challenging. Our global meta-analysis offers fresh insights into how phenological strategies balance the potential growth beneﬁts of early
+5
+
+Article
+
+https://doi.org/10.1038/s41467-026-70187-8
+
+Fig. 6 | Projected spring phenology and safety margins under future climate
+scenarios (2021–2099). Projections use CMIP6 general circulation models for
+three Shared Socioeconomic Pathways: SSP1-2.6 (low warming), SSP2-4.5 (medium
+warming), and SSP5-8.5 (high warming). a Spring phenology predictions with
+temperature sensitivity values in parentheses. b Safety margins predictions.
+
+Shading shows mean ± standard error across all phenological models (one- and
+two-phase). Bold indicates signiﬁcant results (linear mixed model using two-sided ttests with classical degrees of freedom, p < 0.1). ΔSFM: change in safety margin
+between 2095–2099 and 2020–2024. Source data are provided as a Source
+Data ﬁle.
+
+emergence with the increased risk of lethal frost. We highlighted two
+key ﬁndings that enhance our understanding of how plant spring
+phenology may respond to climate change. First, we found that plants
+sustain enhanced freezing resistance during the spring emergence,
+resulting in an exceptionally low lethal frost risk, which may have been
+driven by the stress of extreme events. Second, although spring phenology advanced markedly under future warming, the lethal frost risk
+did not increase in any scenarios. These ﬁndings challenge the prevailing consensus that earlier spring phenology inevitably heightens
+lethal frost risk22,23,26.
+We found that Tmax, DTR, and Tmin were key predictors of
+freezing resistance; however, the linear mixed model showed no
+signiﬁcant relationship with DTR. This discrepancy is likely because
+distinct freezing-resistance strategies (e.g., freezing avoidance versus tolerance) entail different biochemical requirements6. Variations
+in methods used to assess freezing resistance can lead to inconsistent results. For instance, in differential thermal analysis (DTA),
+the rapid biophysical changes during metastable equilibrium may
+compromise measurement reliability32. This underscores the need
+for further research to validate and reconcile these methodological
+discrepancies.
+The correlation between freezing resistance and various climatic
+factors, including temperature, evapotranspiration, and solar radiation, ﬁts within an eco-physiological framework. This framework posits
+that the development of freezing resistance is shaped by the interplay
+of intrinsic physiological constraints and extrinsic ecological constraints. In terms of intrinsic factors, plant biochemistry, particularly
+the concentrations of non-structural carbohydrates (NSCs), such as
+antifreeze proteins (AFPs) and soluble sugars, is essential for freezing
+resistance. Notably, NSC concentrations in plant tissues are higher in
+colder regions33 and also in areas with greater diurnal temperature
+variation34. This physiological pattern offers a mechanistic explanation
+for why both Tmean and DTR emerged as strong predictors of freezing
+resistance in our analysis19,35. In addition, plant species inhabiting
+colder regions and those with earlier leaf-out dates typically experience more severe environmental conditions, necessitating greater
+freezing resistance7,22. This may explain the observed positive correlations between freezing resistance and both Tmin and Phe-Tmin.
+Extrinsic factors inﬂuence freezing resistance primarily through cold
+acclimation and de-acclimation processes. For example, non-lethal low
+temperatures promote cold acclimation and enhance freezing resistance, whereas warmer spells trigger de-acclimation, reducing freezing
+
+resistance6,36. This explains why Tmax was identiﬁed as a key predictor
+of freezing resistance in our study. We also observed positive correlations between freezing resistance and both evapotranspiration and
+solar radiation. The evapotranspiration relationship likely reﬂects a
+physiological trade-off, higher transpiration rates can increase tissue
+water content and metabolic activity, thereby reducing freezing
+resistance19. Similarly, under high light conditions, plants preferentially
+allocate more resources to growth versus defense mechanisms37,38,
+potentially explaining the negative effect of solar radiation on freezing
+resistance.
+The above discussion outlines the predictors of freezing resistance identiﬁed in our global meta-analysis, as well as the relative
+importance of these predictors and underlying mechanisms. Our
+ﬁndings align with established eco-physiological principles concerning
+freezing resistance (Supplementary Table 6). Interestingly, we found
+that the relative importance of predictors varied across both ecosystem types and species with different phenological strategies. Among
+forest-dwelling species, solar radiation was a stronger predictor of
+freezing resistance than Tmax, likely due to their enhanced capacity for
+NSC synthesis and storage39. Conversely, grassland herbs face greater
+water limitations40, particularly at higher elevations, their shallow root
+systems must contend with frozen spring soils, which exacerbates
+hydrological constraints41 and impedes the development of freezing
+resistance. Plant phenological strategy further moderates these
+adaptive responses. Early-spring emerging species with shallow root
+systems must acquire resources (e.g., solar radiation and water) before
+canopy closure11,13,42,43. In contrast, mid- and late-season species, which
+preferentially invest in nutrient stores, rely on high storage capacity
+that is determined by peak photosynthetic activity, a process regulated
+by Tmax9,13.
+Our meta-analysis demonstrates that enhanced freezing resistance signiﬁcantly reduces lethal frost risk (Fig. 5b). This indicates that
+freezing tolerance is a primary mechanism for withstanding spring
+frost, as opposed to simple phenological escape11,13,42. Furthermore, we
+identiﬁed Tmean, Phe-Tmin, and FRS as key determinants of the freezing
+safety margin. This is critical because narrower safety margins, which
+are associated with a higher lethal frost risk, predominantly occur in
+cold regions characterized by more frequent and intense frost
+events7,9,20. Frequent frost exposure can reduce photosynthetic
+productivity24, potentially undermining the biochemical foundation
+(photosynthates, such as sugars, proteins, enzymes, and other nonstructural carbohydrates) necessary for freezing resistance. This
+
+Nature Communications | (2026)17:3519
+
+6
+
+Article
+relationship between frost exposure and photosynthetic rate may
+explain the strong-to-moderate negative relationships we observed
+between the safety margin and both freezing resistance and FRS.
+Notably, we found a strong negative correlation between Tmin-var and
+safety margin (Supplementary Table 7). This suggests that in regions
+with high temperature variability, plants are exposed to a greater risk
+of severe frost damage, resulting in consistently narrower safety
+margins.
+Our phenological models consistently showed that (i) climate
+warming signiﬁcantly advanced spring phenology, though with
+diminishing sensitivity (days per degree Celsius), and (ii) safety margins remained stable under low- and medium-warming scenarios but
+increased signiﬁcantly under high-warming scenarios. Our ﬁndings of
+diminishing phenological sensitivity align with previous long-term
+observational studies43,44. As expected from risk-reward trade-offs,
+safety margins remained stable under the low- and medium-warming
+scenarios. Although Tmin across our study sites responded more
+rapidly to warming than Tmax or Tmean (Supplementary Fig. 6), which
+substantially reduces future lethal frost risk and should theoretically
+support phenological advances. However, our analysis did not detect
+such shifts. Compared to low-to-moderate warming scenarios, plants
+under high-warming scenarios adopted more conservative strategies,
+which substantially increased safety margins despite the longer
+growing season. This paradoxical pattern will require further study to
+determine its underlying mechanisms. Here, we attempt to explain
+these ﬁndings within the trade-off framework. Contrary to common
+assumption, plants initiate spring phenology depend on multimodal
+environmental cues rather than relying solely on temperature45. An
+overreliance on thermal signals risks a premature start to the growing
+season, the well-documented ‘false spring’ phenomenon46. Consequently, by integrating supplementary cues such as photoperiod,
+plants can achieve greater phenological precision and thereby maximize frost avoidance45. Recent studies have documented substantial
+phenological plasticity, enabling plants to track ﬂuctuating temperature regimes2,21,45,47,48. Together with the reliance on multimodal cues,
+this plasticity provides the substrate upon which natural selection can
+optimize individual responses to contemporary climate. This evolutionary framework is precisely what our stable-risk scenario represents. Therefore, both photoperiod constraints and the reduced
+phenological sensitivity resulting from insufﬁcient chilling44,49 may
+represent adaptations that enable plants to optimize growth while
+minimizing lethal frost risk. However, this system seems to fall apart
+under high-warming scenarios (e.g., SSP5-8.5). One possible mechanism, a decline in freezing resistance under extreme warming (e.g., SSP8.5), but currently lacks robust evidence. To our knowledge, only two
+studies to date have directly demonstrated that warming reduces
+freezing resistance, with the effect being contingent on the magnitude
+of warming50,51. For instance, Ettinger et al. (2019) showed that the
+stalling effects of chilling appear only above 4 °C of warming30, a
+pattern that aligns with our ﬁndings. A universal spring risk-reward
+trade-off would imply that wider safety margins can offset declining
+freezing resistance under high-warming scenarios, a pivotal hypothesis
+that now demands empirical testing.
+Understanding how spring phenology is shaped by the lethal
+frost risk is critical for predicting ecosystem-level responses to global
+warming. Our comprehensive meta-analysis revealed that conservative phenological strategies systematically minimized the lethal
+frost risk during the spring phenology. Furthermore, models projections conﬁrm the central role of spring risk-reward trade-offs in
+shaping phenological shifts under climate warming. Crucially, we
+found that biotic factors, such as freezing resistance, are key regulators of plant phenology. This ﬁnding underscores the necessity of
+incorporating biotic factors into next-generation phenological
+models, as current models primarily account for environmental
+drivers alone.
+
+Nature Communications | (2026)17:3519
+
+https://doi.org/10.1038/s41467-026-70187-8
+
+Caveats, limitations, and implications
+Our study represents a signiﬁcant step into the trade-off between
+spring phenology and lethal frost risk, providing a fresh perspective on
+predicting future spring phenology. Nevertheless, several limitations
+must be acknowledged. First, plant phenology and freezing resistance
+data remain scarce for regions such as Africa, the Eurasian Steppe, and
+the Southern Hemisphere (Fig. 1a), limiting our ability to generate
+robust global predictions of terrestrial plant phenology under future
+climate warming scenarios. Second, fundamental challenges in modeling spring phenology persist due to two key limitations: (1) discontinuous phenological series can undermine the accuracy of future
+phenological predictions; (2) overly empirical parameterizations in
+current phenological models31. Third, and most importantly, there is a
+notable lack of data on how warming affects plant freezing resistance,
+especially in trees under extreme warming (e.g., SSP5-8.5 scenario), as
+implementing simulated warming on trees is particularly challenging.
+Addressing such constraints will require innovative approaches. Promising directions such as long-term monitoring of freezing resistance
+dynamics, which integrate controlled manipulations with advanced
+physiological measurements.
+
+Methods
+Data compilation
+In this study, we present a global meta-analysis of plant freezing
+resistance and its relationship to lethal frost risk in the context of
+spring phenology. We searched for journal articles on the ISI Web of
+Science and the China National Knowledge Infrastructure using the
+following key word combinations: ‘freezing resistance*frost resistance*cold resistance’ OR ‘freezing tolerance*frost tolerance*cold tolerance’ OR ‘freezing hardiness*frost hardiness*cold hardiness’ OR
+‘hardening*de-hardening’ OR ‘cold acclimation*cold de-acclimation*cold re-acclimation’ AND ‘leaf*foliage*bud*‘. We selected studies
+that satisﬁed the following criteria: (i) data were collected at the species level under natural conditions, excluding garden or glasshouse
+studies to avoid human management; (ii) freezing tests were conducted during spring phenology on new leaves/buds using standardized methods (Supplementary Fig. 1), excluding studies based solely
+on visual scores; and (iii) the study site location was clearly documented. For experimental studies, our meta-analysis included only
+data from control groups. Means, standard errors and/or standard
+deviations, and sample sizes were extracted from the study text,
+tables, and/or ﬁgures using the GetData (V. 2.26) image tool. To ensure
+the independence of data from individual studies, we averaged
+freezing resistance measurements for each species within a study site.
+In the ﬁnal dataset (Supplementary Data 1), the selected studies
+spanned 110.53 ° of latitude (from 65.45 °N to 54.06 °S), 1 °-170.23 ° of
+absolute longitude (Supplementary Table 2), and almost all terrestrial
+biomes (Fig. 2b).
+We quantiﬁed the lethal frost risk using the safety margin (SFM)9,
+which is deﬁned as the difference between plant freezing resistance
+and the absolute daily minimum temperature during spring phenology
+(Fig. 1a):
+SFM = Phe-T min  LT 50
+
+ð1Þ
+
+where Phe-Tmin is the daily minimum temperature during spring
+emergency, LT50 means the freezing resistance (i.e., the lethal
+temperature of which 50% of samples died) (Supplementary Table 3).
+In context of climatic instability and unpredictable extreme cold
+events, a larger safety margin translates into a lower lethal frost risk.
+Based on this negative relationship, we quantiﬁed the species-speciﬁc
+lethal frost risk in spring (Fig. 1a).
+From each study, we compiled ancillary site information spanning
+three categories: site spatial distribution, temperature regime, and
+water availability. To characterize the sites spatially, we recorded their
+7
+
+Article
+geographic coordinates (latitude, longitude), elevation, and key solar
+parameters (solar radiation and sunshine duration). These data are
+critical because photoperiod cues can protect plants from a potentially
+fatal consequences, initiating growth at the wrong time by relying
+solely on ambient temperature48. We compiled key temperature
+parameters, including the annual means, extremes, variances, diurnal
+range, frost frequency, and daily minimum temperature during spring
+phenology. These variables are established drivers of cold acclimation/
+de-acclimation processes and the associated biochemical activities
+that determine freezing resistance36,37. We compiled site-level moisture
+data, including drought severity, evapotranspiration, and precipitation, due to their established role in governing freezing resistance
+mechanisms52 (Supplementary Table 3). Where possible, we extracted
+site-level data from the individual studies, missing data were obtained
+from the WorldClim Database and/or the Climatic Research Unit (CRU
+TS Version 4.06, provides daily climatic data with a spatial resolution
+of 1 ° from 1981 to 2021). Additionally, we recorded the ecosystem type
+(forest, grassland, or shrubland)53, life cycle (perennial or annual plant
+species), and life form (tree, herb, or shrub), these data were gleaned
+from the papers themselves, with missing data collected from online
+databases such as the USDA Plants Database or the China Flora/Fauna
+Handbook (Supplementary Table 2). Study species were classiﬁed into
+early-, mid-, and late-spring groups based on their emergence dates,
+reﬂecting distinct phenological strategies. For Southern Hemisphere
+observations, dates were standardized by subtracting 180 days, following the typical green-up period in the latter half of the year.
+A central objective of this study is to project the future risk of
+lethal frost. This is achieved by integrating projected shifts in spring
+phenology and the potential changes in freezing resistance under
+warming scenarios. Such an integrated approach is critical, as the
+direct impact of climate warming on freezing resistance itself remains
+poorly understood. To evaluate the freezing resistance during spring
+phenology under warming conditions, we selected 15 perennial herbaceous species at the Qinghai Haibei National Field Research Station
+of Alpine Grassland Ecosystems (37 °29′-37 °45′N, 101 °12′-101 °23′E,
+3200 m a.s.l., see our previous studies for site details54–56). The warming treatment increased air temperature by an average of approximately 1.8 °C over a ten-year period. Plant cutting samples (leaves)
+were cooled to each target temperature (using commercial freezers)
+and subsequently thawed at a rate of approximately 6 °C h-1 until room
+temperature was reached (Supplementary Fig. 11a). Initial assessment
+of freezing damage was conducted through visual inspection, such
+damage typically manifested as tissue discoloration due to polyphenol
+oxidation, or as a characteristic odor resulting from protoplast
+decompartmentalization and autolysis9. Following visual inspection,
+cutting samples were transferred to small beakers containing distilled
+water for electrical conductivity (Ec) measurement. These Ec assays
+were conducted hourly until values stabilized, a process typically
+requiring over ten hours (the slow leakage of electrolyte). Concurrently, fresh samples were boiled at 100 °C for 30 min and then
+cooled to room temperature to determine the maximum electrolyte
+conductance (Ecmax). In this study, freezing resistance was deﬁned as
+the lethal temperature (LT50, °C) at which electrolyte leakage reached
+50% of ECmax57–59, and this LT50 value serves as a common proxy for the
+temperature at which 50% of the sample cells died9 (Supplementary
+Fig. 11b).
+
+Phenological models and future climatic data
+We employed eight phenological models, four one-stage and four twostage, to project future spring phenology. One-stage model assume
+that spring phenological events are triggered when plants have
+experienced sufﬁcient warming (forcing temperature) over a ﬁxed
+period (Eq. 2). Note the dormancy phase is not accounted for, as the
+requirements for dormancy release (i.e., sufﬁcient chilling) are
+assumed to have been met before the starting date60. The state of
+
+Nature Communications | (2026)17:3519
+
+https://doi.org/10.1038/s41467-026-70187-8
+
+forcing (Sf) is modeled as:
+Sf ðDÞ =
+
+D
+X
+
+Rf ðTÞ
+
+ð2Þ
+
+t = t1f
+
+where Rf determines the rate of change in Sf, t1f is the ﬁrst day of the
+forcing period, and D is the day of the year. Spring phenological events
+are triggered when Sf reaches a forcing threshold F*:
+Sf ðDÞ ≥ F*
+
+ð3Þ
+
+In this study, we employed four forcing models to estimate the
+growing degree days (GDDs) needed for the initiation of spring
+growth31.
+The ﬁrst model F1, assumes that the rate of forcing is linearly
+correlated with the temperature above a particular threshold. This
+widely accepted model adopts a temperature threshold of 0 °C in
+calculating the accumulated GDDs (Eq. 4)61:
+T 0 = maxðT, 0Þ
+
+ð4Þ
+
+where T0 is the rate of forcing for model F1 and T is the daily mean
+temperature (°C).
+The second model F2, assumes that the rate of forcing represents
+a logistic function of temperature. This model allows a larger forcing
+rate in relatively warm spells. Here, we used a logistic function to
+describe this linear function as proposed by Hänninen62:
+T lf =
+
+28:4
+T>0
+1 + e0:185ðT18:5Þ
+
+ð5Þ
+
+where Tlf is the rate of forcing for model F2 and T is the daily mean
+temperature (°C).
+According to Piao et al.61, the onset of spring phenological events
+is more strongly inﬂuenced by daytime than nighttime temperatures.
+Thus, we estimated a third model F3, based on the maximum temperature with a threshold of 5 °C:
+T max R = maxðT max  5, 0Þ
+
+ð6Þ
+
+where Tmax_R is the rate of forcing for model F3, and Tmax is the daily
+maximum temperature (°C).
+The fourth model F4, considers both daytime and nighttime
+temperatures, as Fu et al.63 demonstrated that the impact of daytime
+temperatures on spring phenology was approximately threefold
+higher than that of nighttime temperatures. Thus, we utilized a
+temperature-mixed model with two parameters (0.75 and 0.25) to
+weight the impact of daytime versus nighttime temperatures (°C) on
+GDD accumulation:
+T mix = 0:75 × maxðT max  5, 0Þ + 0:25 × maxðT min  5, 0Þ
+
+ð7Þ
+
+where Tmix is the rate of forcing for model F4, and Tmax and Tmin are the
+daily maximum and minimum temperatures (°C), respectively.
+The two-stage phenological models are based on the premise that
+spring phenology is initiated only after sufﬁcient chilling accumulation. We applied the commonly used Parallel model, a chilling-based
+framework, to simulate future spring phenology31. The state of chilling
+(Sc) is modeled as:
+Sc ðDÞ =
+
+D
+X
+
+Rc ðTÞ
+
+ð8Þ
+
+t = t1c
+
+where Rc determines the rate of change in Sc, t1c is the ﬁrst day of the
+chilling period, and D is the day of the year. The triggering of spring
+8
+
+Article
+
+https://doi.org/10.1038/s41467-026-70187-8
+
+phenological events occurs when both Sf (Eq. 2) and Sc (Eq. 8) reach
+their speciﬁc thresholds. We adopted the commonly used model for
+calculating Sf (Eq. 4), and employed four chilling models to quantify
+the chilling accumulation required for spring phenology31:
+if Sf ðDÞ ≥ F* then leaf induction is completed
+then dormancy is completed
+if Sc ðDÞ ≥ C*
+
+ð9Þ
+
+The ﬁrst model C1, also known as the Utah Model, incorporates
+differential temperature weighting (Eq. 10). It was originally proposed
+for quantifying the chilling requirements of peach trees64:
+8
+0
+>
+>
+>
+>
+>
+0:5
+>
+>
+>
+>
+>
+>
+<1
+CU1 = 0:5
+>
+>
+>
+0
+>
+>
+>
+>
+>
+>
+0:5
+>
+>
+:
+1
+
+T ≤ 1:4
+1:4 < T ≤ 2:4
+2:4 < T ≤ 9:1
+9:1 < T ≤ 12:4
+
+ð10Þ
+
+12:4 < T ≤ 15:9
+15:9 < T ≤ 18
+T > 18
+
+Future-SFM = Future-Phe-Tmin  LT50
+
+T ≤ 1:4
+1:4 < T ≤ 2:4
+2:4 < T ≤ 9:1
+
+ð11Þ
+
+9:1 < T ≤ 12:4
+T > 12:4
+
+where CU1 and CU2 is the rate of chilling for model C1 and C2,
+respectively. T is the daily mean temperature (°C).
+Note that models C1 and C2 operate on the premise that no relevant plant physiological activity occurs below freezing. Therefore, subzero temperatures are omitted from their chilling calculations. However, Zhang et al.66 ﬁtted the triangular model to observational data
+from 24 plant species and found that a mean optimal chilling temperature of 0.2 °C and an upper chilling threshold of 6.9 °C were most
+effective. Consequently, we adopted a triangular function with these
+parameters (0.2 °C and 6.9 °C) as our model C3:
+8 T + 6:5
+>
+< 6:90:2
+CU3 = 0
+>
+: 6:9T
+6:90:2
+
+6:5 < T ≤ 0:2
+T ≤  6:5 or T ≥ 6:9
+0:2 < T ≤ 6:9
+
+ð12Þ
+
+Model C4 also adopts a triangular form, as deﬁned by Hänninen62
+through ﬁtting to previous experimental results for Finnish birch
+seedlings:
+8
+>
+<0
+T + 4:66
++ 4:66
+CU4 = 3:13ðT10:93
+Þ2:10eð 10:93 Þ3:10
+>
+:
+1
+
+else
+T ≤  4:7 or T ≥ 16
+
+ð13Þ
+
+2:5 < T ≤ 7:4
+
+where CU3 and CU4 is the rate of chilling for model C3 and C4,
+respectively. T is the daily mean temperature (°C). Note that both
+model C3 and model C4 permit chilling accumulation to occur at subzero temperatures.
+Given the varying observation years in our dataset (up to 2020),
+we harmonized all projections to a 2020 baseline using the aforementioned phenological models. For future climatic data
+(2020–2099), we used daily near-surface mean, minimum, and maximum temperatures from a multi-model ensemble based on CMIP6.
+This ensemble integrated four climate models (CAMS-CSM1-0, CAS-
+
+Nature Communications | (2026)17:3519
+
+ð14Þ
+
+where Future-Phe-Tmin is the daily minimum temperature during
+spring phenology and LT50 is the freezing resistance (Eq. 1).
+
+After removing the negative contributions of warm temperatures
+to the accumulated chilling, we obtained the modiﬁed Utah Model65,
+designated as model CU2:
+8
+0
+>
+>
+>
+>
+>
+>
+< 0:5
+CU2 = 1
+>
+>
+>
+0:5
+>
+>
+>
+:
+0
+
+ESM2-0, CESM2-WACCM, MRI-ESM2-0) across three Shared Socioeconomic Pathways (SSP1-2.6, SSP2-4.5, SSP5-8.5). These three scenarios belong to low, medium and high emission scenarios,
+respectively, and represent forcing levels with a peak of 2.6, 4.5, and
+8.5 W m-2 by the end of this century. The projected mean, maximum,
+and minimum temperature anomalies under these three emission
+scenarios range from 1.2–2.2 °C, 2.2–3.2 °C, and 4.6–5.7 °C, respectively (Supplementary Fig. 6). We posit that plant frost resistance is
+likely to remain stable under moderate climate warming scenarios
+(<4 °C)30. This stability is attributed to the relatively stable chilling
+accumulation under such conditions (Supplementary Fig. 10), a conclusion also supported by our in situ manipulation experiment (Supplementary Fig. 12). Therefore, future safety margins under different
+warming scenarios can be derived as the difference between current
+freezing resistance and the projected daily minimum temperature
+during spring phenology:
+
+Statistical analysis
+We obtained a species-level phylogeny using the V.PHYLOMAKER
+package16, which utilizes the largest dated phylogeny for vascular
+plants (GBOTB.extended.tre). Next, we assessed whether evolutionary
+history was a key predictor of freezing resistance and the safety margin
+using Blomberg’s K (R package ‘phytools’, version 4.1.3)67. Blomberg’s
+K is a statistical metric that quantiﬁes the phylogenetic signal in species
+traits by comparing their observed variance against a Brownian motion
+model of evolution:
+Blomberg's K =
+
+concordance between trait and phylogenetic relationships
+concordance expected under a Brownian motion model
+
+ð15Þ
+Under this model, a value of K > 1 indicates that closely related
+species are more similar than expected under Brownian motion,
+reﬂecting a strong phylogenetic signal. Conversely, a value of
+K < 1 signiﬁes that trait variation is more random than expected,
+making the pattern indistinguishable from randomness and demonstrating a weak or absent phylogenetic signal. However, the K value
+alone is insufﬁcient and must be accompanied by a signiﬁcance test to
+determine if it deviates from random expectation. We therefore
+employed a permutation test (n = 5000) to generate a null distribution
+of K values (Fig. 2d, e). The observed K was compared against this
+distribution, with signiﬁcance assessed at 0.1 level, a more lenient
+threshold applied consistently across all subsequent analyses in this
+study. We applied convergent cross mapping (CCM)68, an algorithm
+designed to detect causal relationships, to explore the potential
+causality between freezing resistance and the safety margin. The
+method is grounded in the principle that if X causally inﬂuences Y, then
+the state of X can be reconstructed from the historical record of Y,
+because the evolutionary trajectory of Y embeds information about
+X69,70. We performed the analysis using the ‘rEDM’ package in R. We
+tested library sizes from 31 to 304 (τ = 1) to evaluate the convergence
+of prediction correlation (Rho). The optimal embedding dimension
+(E = 5) was determined via simplex projection over a range of dimensions (E = 1-20) (Supplementary Fig. 2). We assessed convergence using
+the twin-surrogate method with 10 bootstrapped iterations, and considered a causal relationship signiﬁcant at 0.1 level.
+As part of an importance ranking analysis, we used an inversevariance weighting method to account for heteroscedasticity across
+study observations. This method assigned higher weights to cases
+where estimates had greater precision and lower variance71. The
+9
+
+Article
+
+https://doi.org/10.1038/s41467-026-70187-8
+
+Code availability
+
+weights were computed as:
+Pk
+
+wixi
+Weighted ðXÞ = Pi =k 1
+i = 1 wi
+
+ð16Þ
+
+where X is an observation, k the number of cases, and wi the weighting
+factor. The weighting factor took both between-case (τ2) and withincase variance in X (Vx) into account and was calculated as72:
+wi =
+
+1
+τ2 + VxðiÞ
+
+ð17Þ
+
+Given the absence of heterogeneity in our dataset, we restricted
+our weighting scheme to within-case variance components and set
+τ2 = 0 for all subsequent analyses.
+To assess the relative importance of our study predictors, we used
+random forest models as implemented in R (R package ‘randomForest’, version 4.7-1.2)73. Variable importance was quantiﬁed using the
+percent increase in the mean squared error (%IncMSE), with higher
+values indicating greater contributions. Negative %IncMSE values
+indicate improved model predictions when excluding the predictor in
+question, suggesting that the predictor should be removed from the
+model. Many ecological processes covary, and the sheer number of
+possible combinations (of predictors) in our analyses made predictor
+ranking and the interpretation of signiﬁcant interactions complicated,
+while also increasing the risk of model over-ﬁtting33,74. Thus, we
+retained all predictor variables (without implementing stepwise
+backward elimination) in the following analyses, as most explanatory
+variables were statistically signiﬁcant (p < 0.1) (Supplementary
+Tables 4, 5). Next, we evaluated associations between the two response
+variables (i.e., freezing resistance and the freezing safety margin) and
+seventeen predictors (i.e., ﬁve measures of site spatial distribution,
+eight temperature-related traits, three moisture-related traits, and one
+biotic trait (freezing resistance) using linear mixed models, with random intercepts among species and sites. To interpret the mixed model
+results, instead of signiﬁcance testing with an arbitrary p-value cutoff,
+we implemented the gradual language of evidence recommended by
+Muff et al.75 (Supplementary Tables 4, 5, 6, 7), this approach allowed us
+to communicate model ﬁndings in a more nuanced way16.
+To determine the phenological temperature sensitivity (that is,
+days per °C), we used ordinary least squares linear regression40 for the
+entire future period (2020–2099). We then compared future temperature sensitivity to predicted trends in spring phenology and
+freezing safety margins under future warming scenarios76. To assess
+differences in spring phenology and freezing safety margins among
+diverse warming scenarios, we applied linear mixed model with random intercepts among species and sites. We conducted all our statistical analyses using MATLAB R2022b and R 4.4.277.
+
+Reporting summary
+Further information on research design is available in the Nature
+Portfolio Reporting Summary linked to this article.
+
+Data availability
+All data used in this study are available and stored in Figshare repository: https://doi.org/10.6084/m9.ﬁgshare.2887707278. All data supporting the results are available as follows: WorldClim Database, www.
+worldclim.com; Climatic Research Unit (CRU TS Version 4.06), crudata.uea.ac.uk; USDA Plants Database, plants.usda.gov; China Flora/
+Fauna Handbook (CFH search), www.cfh.ac.cn; Future climatic data
+with three Shared Socioeconomic Pathways (SSP1-2.6, SSP2-4.5, and
+SSP5-8.5) derived from Coupled Model Inter-Comparison Project
+Phase 6 (CMIP6), esgf-node.llnl.gov/ projects/cmip6/. Source data are
+provided with this paper.
+
+Nature Communications | (2026)17:3519
+
+All ﬁgures generate, models and statistical background were performed using R 4.4.2 and MATLAB R2022b, the complete codes used
+to generate the results reported in this study are available in the Figshare repository: https://doi.org/10.6084/m9.ﬁgshare.2887707278.
+
+References
+1.
+
+Richardson, A. D. et al. Climate change, phenology, and phenological control of vegetation feedbacks to the climate system. Agric.
+Meteorol. 169, 156–173 (2013).
+2. Piao, S. L. et al. Plant phenology and global climate change: current
+progresses and challenges. Glob. Chang Biol. 25, 1922–1940 (2019).
+3. Lieth, H. Phenology and Seasonality Modeling Vol. 444 (Springer
+Verlag, Berlin, 1974).
+4. Fu, Y. H. et al. Recent spring phenology shifts in western Central
+Europe based on multiscale observations. Glob. Ecol. Biogeogr. 23,
+1255–1263 (2014).
+5. Guo, J. et al. Meta-analytic and experimental evidence that warmer
+climate leads to shift from advanced to delayed spring phenology.
+Agric. Meteorol. 342, 109721 (2023).
+6. Vitasse, Y., Lenz, A. & Körner, C. The interaction between freezing
+tolerance and phenology in temperate deciduous trees. Front Plant
+Sci. 5, 541 (2014).
+7. Vitasse, Y., Lenz, A., Hoch, G. & Körner, C. Earlier leaf-out rather than
+difference in freezing resistance puts juvenile trees at greater risk of
+damage than adult trees. J. Ecol. 102, 981–988 (2014).
+8. Vitra, A., Lenz, A. & Vitasse, Y. Frost hardening and dehardening
+potential in temperate trees from winter to budburst. N. Phytol. 216,
+113–123 (2017).
+9. Lenz, A., Hoch, G., Vitasse, Y. & Körner, C. European deciduous
+trees exhibit similar safety margins against damage by spring
+freeze events along elevational gradients. N. Phytol. 200,
+1166–1175 (2013).
+10. Lenz, A., Hoch, G. & Vitasse, Y. Fast acclimation of freezing resistance suggests no inﬂuence of winter minimum temperature on the
+range limit of European beech. Tree Physiol. 36, 490–501 (2016).
+11. Lee, B. R. & Ibáñez, I. Improved phenological escape can help
+temperate tree seedlings maintain demographic performance
+under climate change conditions. Glob. Chang Biol. 27,
+3883–3897 (2021).
+12. Buermann, W. et al. Widespread seasonal compensation effects of
+spring warming on northern plant productivity. Nature 562,
+110–114 (2018).
+13. Lee, B. R. & Ibáñez, I. Spring phenological escape is critical for the
+survival of temperate tree seedlings. Funct. Ecol. 35,
+1848–1861 (2021).
+14. Vitasse, Y. et al. Ontogenic changes rather than difference in temperature cause understory trees to leaf out earlier. N. Phytol. 198,
+149–155 (2013).
+15. Yan, Z. J. et al. No slowdown of growing season extension with
+warming in a permafrost- affected meadow on the Tibetan Plateau.
+J. Ecol. 112, 1774–1786 (2024).
+16. Zi, H. B. et al. Simulated climate warming decreases fruit number
+but increases seed mass. Glob. Chang Biol. 29, 841–855 (2022).
+17. Chamberlain, C. J. & Wolkovich, E. M. Late spring freezes coupled
+with warming winters alter temperate tree phenology and growth.
+N. Phytol. 231, 987–995 (2021).
+18. Körner, C. Plant adaptation to cold climates. F1000Res 5,
+2769 (2016).
+19. Grossman, J. J. Phenological physiology: seasonal patterns of plant
+stress tolerance in a changing climate. N. Phytol. 237,
+1508–1524 (2022).
+20. Neuner, G. Frost resistance in alpine woody plants. Front. Plant Sci.
+5, 654 (2014).
+
+10
+
+Article
+21. Liu, Q. et al. Extension of the growing season increases vegetation
+exposure to frost. Nat. Commun. 9, 426 (2018).
+22. Zohner, C. M. et al. Late-spring frost risk between 1959 and 2017
+decreased in North America but increased in Europe and Asia. Proc.
+Natl. Acad. Sci. USA 117, 12192–12200 (2020).
+23. Ma, Q. Q., Huang, J. G., Hänninen, H. & Berninger, F. Divergent
+trends in the risk of spring frost damage to trees in Europe with
+recent warming. Glob. Chang Biol. 25, 351–360 (2018).
+24. Wang, J. M. et al. Late spring frost delays tree spring phenology by
+reducing photosynthetic productivity. Nat. Clim. Change 15,
+201–209 (2025).
+25. Qiu, H. Y. et al. Flowering in the Northern Hemisphere is delayed by
+frost after leaf-out. Nat. Commun. 15, 9123 (2024).
+26. Richardson, A. D. et al. Ecosystem warming extends vegetation
+activity but heightens vulnerability to cold temperatures. Nature
+560, 368–371 (2018).
+27. Kovaleski, A. P., Reisch, B. I. & Londo, J. P. Deacclimation kinetics as
+a quantitative phenotype for delineating the dormancy transition
+and thermal efﬁciency for budbreak in Vitis species. AoB PLANTS
+10, ply066 (2018).
+28. North, M., Workmaster, B. A. & Atucha, A. Effects of chill unit
+accumulation and temperature on woody plant deacclimation
+kinetics. Physiol. Plant. 174, e13717 (2022).
+29. Hu, Z., Lin, S., Wang, H. & Dai, J. Seasonal variations of cold hardiness and dormancy depth in ﬁve temperate woody plants in China.
+Front. Glob. Change 5, 1061191 (2022).
+30. Ettinger, A. K. et al. Winter temperatures predominate in spring
+phenological responses to warming. Nat. Clim. Chang. 10,
+1137–U119 (2020).
+31. Wang, H. J. et al. Overestimation of the effect of climatic warming
+on spring phenology due to misrepresentation of chilling. Nat.
+Commun. 11, 4945 (2020).
+32. Zhang, G. Review on methods for measuring frost hardiness in
+woody plants abroad. World Res. 18, 16–22 (2005).
+33. Blumstein, M., Gersony, J., Martínez-Vilalta, J. & Sala, A. Global
+variation in nonstructural carbohydrate stores in response to climate. Glob. Chang Biol. 29, 1854–1869 (2022).
+34. Tan, X. Q. et al. Characterization of the difference between day and
+night temperatures on the growth, photosynthesis, and metabolite
+accumulation of tea seedlings. Int. J. Mol. Sci. 24, 6718 (2023).
+35. Ouyang, L., Leus, L., Keyser, E. D. & Labeke, M. C. V. Temperature is
+an important driver for cold acclimation in garden roses. Sci. Hortic.
+296, 110905 (2022).
+36. Vyse, K., Pagter, M., Zuther, E. & Hincha, D. K. De-acclimation after
+cold acclimation—a crucial, but widely neglected part of plant
+winter survival. J. Exp. Bot. 70, 4595–4604 (2019).
+37. Malyshev, A. V., Henry, H. A. L. & Kreyling, J. Relative effects of
+temperature vs. photoperiod on growth and cold acclimation of
+northern and southern ecotypes of the grass Arrhenatherum elatius.
+Environ. Exp. Bot. 106, 189–196 (2014).
+38. Sierra-Almeida, A., Cavieres, L. A. & Bravo, L. A. Freezing resistance
+of high-elevation plant species is not related to their height or
+growth-form in the Central Chilean Andes. Environ. Exp. Bot. 69,
+273–278 (2010).
+39. Zohner, C. M., Rockinger, A. & Renner, S. S. Increased autumn
+productivity permits temperate trees to compensate for spring frost
+damage. N. Phytol. 221, 789–795 (2019).
+40. Wang, S. P. et al. Asymmetric sensitivity of ﬁrst ﬂowering date to
+warming and cooling in alpine plants. Ecology 95, 3387–3398 (2014).
+41. Wang, J. & Liu, D. S. Vegetation green-up date is more sensitive to
+permafrost degradation than climate change in spring across the
+northern permafrost region. Glob. Chang Biol. 28, 1569–1582 (2021).
+42. Gamhewa, H. et al. The duration of high spring light for understorey
+plants: Contrasting responses to spatial and temporal temperature
+variation. J. Ecol. 113, 2526–2538 (2025).
+
+Nature Communications | (2026)17:3519
+
+https://doi.org/10.1038/s41467-026-70187-8
+43. Bennie, J., Kubin, E., Wiltshire, A., Huntley, B. & Baxter, R. Predicting
+spatial and temporal patterns of bud-burst and spring frost risk in
+north-west Europe: the implications of local adaptation to climate.
+Glob. Chang Biol. 16, 1503–1514 (2010).
+44. Fu, Y. S. H. et al. Declining global warming effects on the phenology
+of spring leaf unfolding. Nature 526, 104–107 (2015).
+45. Körner, C. & Basler, D. Phenology under global warming. Science
+327, 1461–1462 (2010).
+46. Augspurger, C. K. Reconstructing patterns of temperature, phenology, and frost damage over 124 years: spring damage risk is
+increasing. Ecology 94, 41–50 (2013).
+47. Chuine, I., Morin, X. & Bugmann, H. Warming, photoperiods, and
+tree phenology. Science 329, 277–278 (2010).
+48. Menzel, A. & Fabian, P. Growing season extended in Europe. Nature
+397, 659–659 (1999).
+49. Fu, Y. S. H. et al. Increased heat requirement for leaf ﬂushing in
+temperate woody species over 1980-2012: effects of chilling, precipitation and insolation. Glob. Chang Biol. 21, 2687–2697 (2015).
+50. Sierra-Almeida, A., Cavieres, L. A. & Bravo, L. A. Warmer temperatures affect the in situ freezing resistance of the Antarctic vascular
+plants. Front. Plant Sci. 9, 1456 (2018).
+51. Tao, Z. X., Xu, Y. J., Ge, Q. S., Dai, J. H. & Wang, H. J. Reduced frost
+hardiness in temperate woody species due to climate warming: a
+model-based analysis. Clim. Change 165, 35 (2021).
+52. Visakorpi, K. et al. Leaf-level resistance to frost, drought and heat
+covaries across European temperate tree seedlings. J. Ecol. 112,
+559–574 (2023).
+53. Ren, S. et al. Projected soil carbon loss with warming in constrained
+Earth system models. Nat. Commun. 15, 102 (2024).
+54. Qi, Q. et al. More sensitive microbial responses to the interactive
+effects of warming and altered precipitation in subsoil than topsoil
+of an alpine grassland ecosystem. Glob. Chang Biol. 30,
+e17487 (2024).
+55. Zhu, E. X. et al. Inactive and inefﬁcient: warming and drought effect
+on microbial carbon processing in alpine grassland at depth. Glob.
+Chang Biol. 27, 2241–2253 (2021).
+56. Liu, H. Y. Shifting plant species composition in response to climate
+change stabilizes grassland primary production. Proc. Natl. Acad.
+Sci. USA 115, 4051–4056 (2018).
+57. Wisniewski, M., Nassuth, A. & Arora, R. Cold hardiness in trees: a
+mini-review. Front. Plant Sci. 9, 1394 (2018).
+58. Repo, T., Wu, D. X. & Hänninen, H. Autumn cold acclimation of
+shoots does not explain the northern distribution limit of three
+southern exotic tree species in Finland. Environ. Exp. Bot. 188,
+104526 (2021).
+59. Rubio-Cuadrado, A. et al. Differential response of oak and beech to
+late frost damage: an integrated analysis from organ to forest.
+Agric. Meteorol. 297, 108243 (2021).
+60. Fu, Y. S. H., Campioli, M., Oijen, M. V., Deckmyn, G. & Janssens, I. A.
+Bayesian comparison of six different temperature-based budburst
+models for four temperate tree species. Ecol. Model. 230,
+92–100 (2012).
+61. Piao, S. L. et al. Leaf onset in the northern hemisphere triggered by
+daytime mltemperature. Nat. Commun. 6, 6911 (2015).
+62. Hänninen, H. Modelling bud dormancy release in trees from cool
+and temperate regions. Acta Forestalia Fennica 213, 1–47 (1990).
+63. Fu, Y. S. H. et al. Three times greater weight of daytime than of
+night-time temperature on leaf unfolding phenology in temperate
+trees. N. Phytol. 212, 590–597 (2016).
+64. Richardson, E. A., Seeley, S. D. & Walker, D. R. A model for estimating the completion of rest for Redhaven and Elberta peach
+trees. Hortscience 9, 331–332 (1974).
+65. Luedeling, E., Zhang, M., Luedeling, V. & Girvetz, E. H. Sensitivity of
+winter chill models for fruit and nut trees to climatic changes expected
+in California’s Central Valley. Agr. Ecosyst. Environ. 133, 23–31 (2009).
+11
+
+Article
+66. Zhang, H., Liu, S., Regnier, P. & Yuan, W. New insights on plant
+phenological response to temperature revealed from long-term
+widespread observations in China. Glob. Change Biol. 24,
+2066–2078 (2018).
+67. Blomberg, S. P., Garland, T. & Ives, A. R. Testing for phylogenetic
+signal in comparative data: Behavioral traits are more labile. Evolution 57, 717–745 (2003).
+68. Bai, L. et al. Contrasting responses of ﬂowering phenology in C3
+and C4 plants shape grassland community structure under global
+change. Ecol 106, e70139 (2025).
+69. Sugihara, G. et al. Detecting causality in complex ecosystems. Sci
+338, 496–500 (2012).
+70. Clark, A. T. et al. Spatial convergent cross mapping to detect causal
+relationships from short time series. Ecol 96, 1174–1181 (2015).
+71. Liu, H. Y., Lu, C. Y., Wang, S. D., Ren, F. & Wang, H. Climate warming
+extends growing season but not reproductive phase of terrestrial
+plants. Glob. Ecol. Biogeogr. 30, 950–960 (2021).
+72. Veroniki, A. A. et al. Methods to estimate the between-study variance and its uncertainty in meta-analysis. Res. Synth. Methods 7,
+55–79 (2016).
+73. Breiman, L. et al. Classiﬁcation and Regression Trees (Routledge, 2017).
+74. Song, B. et al. Global analysis of ﬂoral longevity reveals latitudinal
+gradients and biotic and abiotic correlates. N. Phytol. 235,
+2054–2065 (2022).
+75. Muff, S., Nilsen, E. B., O’Hara, R. B. & Nater, C. R. Rewriting results
+sections in the language of evidence. Trends Ecol. Evol. 37,
+203–210 (2021).
+76. Liu, H. Y. et al. Phenological mismatches between above- and
+belowground plant responses to climate warming. Nat. Clim.
+Change 12, 97–102 (2022).
+77. R Core Team. R: a language and environment for statistical computing. R Foundation for Statistical Computing (2021).
+78. Yan, Z. J. et al. Supporting data for ‘Quantifying the trade-off between
+spring phenology and lethal frost risk: a global meta-analysis.’ Figshare https://doi.org/10.6084/m9.ﬁgshare.28877072 (2025).
+79. Xie, J. M. et al. Tree Visualization By One Table (tvBOT): a web
+application for visualizing, modifying and annotating phylogenetic
+trees. Nucleic Acids Res. 51, W587–W592 (2023).
+
+Acknowledgements
+We sincerely thank the editor and the anonymous reviewers for their
+insightful comments that substantially improved this paper. This
+research was ﬁnancially sponsored by the National Natural Science
+Foundation of China (Grant No. 32130065 to J.-S.H.), National Key
+Research and Development Program Project (Grant No.
+2022YFF0801902 to J.-S.H.).
+
+Nature Communications | (2026)17:3519
+
+https://doi.org/10.1038/s41467-026-70187-8
+
+Author contributions
+Z.J.Y. and J.-S.H. conceived the study. Z.J.Y. mobilized and processed data for the meta-analysis. Z.J.Y., Y.L., and Y.J.L. performed
+all analyses. Z.J.Y. wrote the ﬁrst version of the paper. C.C., H.Y.L.,
+H.W., T.Y., X.J., S.R., H.B.Z., Y.S., T.W., and J.-S.H. contributed to
+revisions of the manuscript. All authors read and approved the ﬁnal
+version.
+
+Competing interests
+The authors declare no competing interests.
+
+Additional information
+Supplementary information The online version contains
+supplementary material available at
+https://doi.org/10.1038/s41467-026-70187-8.
+Correspondence and requests for materials should be addressed to
+Jin-Sheng He.
+Peer review information Nature Communications thanks Écio Diniz and
+the other, anonymous, reviewer(s) for their contribution to the peer
+review of this work. A peer review ﬁle is available.
+Reprints and permissions information is available at
+http://www.nature.com/reprints
+Publisher’s note Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional afﬁliations.
+Open Access This article is licensed under a Creative Commons
+Attribution-NonCommercial-NoDerivatives 4.0 International License,
+which permits any non-commercial use, sharing, distribution and
+reproduction in any medium or format, as long as you give appropriate
+credit to the original author(s) and the source, provide a link to the
+Creative Commons licence, and indicate if you modiﬁed the licensed
+material. You do not have permission under this licence to share adapted
+material derived from this article or parts of it. The images or other third
+party material in this article are included in the article’s Creative
+Commons licence, unless indicated otherwise in a credit line to the
+material. If material is not included in the article’s Creative Commons
+licence and your intended use is not permitted by statutory regulation or
+exceeds the permitted use, you will need to obtain permission directly
+from the copyright holder. To view a copy of this licence, visit http://
+creativecommons.org/licenses/by-nc-nd/4.0/.
+© The Author(s) 2026
+
+12
