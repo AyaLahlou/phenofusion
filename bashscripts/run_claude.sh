@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --account=glab        
+#SBATCH --account=glab
 #SBATCH --job-name=claude-agent
 #SBATCH --output=logs/agent_%j.out
 #SBATCH --error=logs/agent_%j.err
@@ -9,7 +9,7 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=64G
 #SBATCH --gres=gpu:1             # request 1 GPU
-#SBATCH --qos=hpc_test  
+#SBATCH --qos=hpc_test
 
 
 
@@ -27,13 +27,13 @@ tmux wait-for claude
 #### Optional: Attach to the tmux session to interact with the agent
 #srun --jobid=8597152 --overlap --pty tmux attach -t claude
 
-#### how to detach form claude session 
-# press ctrl+b then d 
+#### how to detach form claude session
+# press ctrl+b then d
 
 
 
 ####
 #example prompts to test the agent
-# /ralph-loop:ralph-loop “Please keep working on the task until the success criterion 
+# /ralph-loop:ralph-loop “Please keep working on the task until the success criterion
 #of 0.1% accuracy across the entire parameter range is achieved.”
 # --max-iterations 20 --completion-promise “DONE”

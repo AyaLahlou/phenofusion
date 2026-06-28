@@ -30,7 +30,7 @@ This ordering is hardcoded in model weights and attention analysis. Changing ord
 
 ### Prediction Pickle Keys
 - `historical_selection_weights`: shape (samples, 365, 7) - encoder attention
-- `future_selection_weights`: shape (samples, 30, 7) - decoder attention  
+- `future_selection_weights`: shape (samples, 30, 7) - decoder attention
 - `attention_scores`: cross-attention weights for driver importance
 - `predicted_quantiles`: shape (samples, forecast_len, 3) - [0.1, 0.5, 0.9] quantiles
 
