@@ -69,13 +69,22 @@ class WindowMapGenerator:
         cmap: str = "plasma",
         vmin: Optional[float] = None,
         vmax: Optional[float] = None,
+        value_col: str = "window_start",
+        legacy_offset: float = 335.0,
     ):
         """
         Args:
-            data_dir:   Directory containing window_start CSV files.
-            output_dir: Directory to write PNG outputs.
-            cmap:       Matplotlib colormap name for the scalar field.
-            vmin/vmax:  Color scale limits. If None, determined from data.
+            data_dir:      Directory containing the source CSV files.
+            output_dir:    Directory to write PNG outputs.
+            cmap:          Matplotlib colormap name for the scalar field.
+            vmin/vmax:     Color scale limits. If None, determined from data.
+            value_col:     Name of the column holding the raw per-location
+                            metric (e.g. "window_start" or "mean_attention_day").
+            legacy_offset: `legacy_depth = legacy_offset - df[value_col]`.
+                            Defaults to 335 to match the max-attention-window
+                            pipeline (365-day axis minus a 30-day window
+                            minus its buffer); pass 365 for a metric defined
+                            over every day of the historical axis.
         """
         self.data_dir = Path(data_dir)
         self.output_dir = Path(output_dir)
@@ -83,13 +92,15 @@ class WindowMapGenerator:
         self.cmap = cmap
         self.vmin = vmin
         self.vmax = vmax
+        self.value_col = value_col
+        self.legacy_offset = legacy_offset
 
     # ------------------------------------------------------------------
     # Data loading & processing
     # ------------------------------------------------------------------
 
     def load_csv_data(self, file_path: str, pft: str) -> pd.DataFrame:
-        """Load and latitude-filter a window_start CSV for a given PFT."""
+        """Load and latitude-filter a per-location metric CSV for a given PFT."""
         try:
             df = pd.read_csv(file_path)
             logger.info(f"Loaded {len(df)} records from {Path(file_path).name}")
@@ -103,7 +114,7 @@ class WindowMapGenerator:
                     df = df[df["latitude"] < lat_filter]
                 logger.info(f"  After lat filter: {len(df)} records")
 
-            df["legacy_depth"] = 335 - df["window_start"]
+            df["legacy_depth"] = self.legacy_offset - df[self.value_col]
             return df
 
         except Exception as e:
