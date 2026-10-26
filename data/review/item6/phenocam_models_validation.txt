@@ -1,0 +1,4 @@
+windows built 80/80
+input max abs diff {'hist': 0.0, 'fut': 0.0, 'snum': 0.0, 'scat': 0.0, 'target': 0.0}
+TFT max|rerun-stored| builder 3.7e-05 pickle 3.7e-05
+PF max|rerun-stored| 2.86e-06
